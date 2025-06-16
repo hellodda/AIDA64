@@ -1,0 +1,8 @@
+namespace AIDA64_BLL
+{
+    [default_interface]
+    runtimeclass WMIComponentObject 
+    {
+        WMIComponentObject();
+    }
+}
