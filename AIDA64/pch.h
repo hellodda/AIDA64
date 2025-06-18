@@ -32,3 +32,10 @@
 
 #include <WbemIdl.h>
 #pragma comment(lib, "wbemuuid.lib")
+
+#define OPEN_CONSOLE                                \
+        AllocConsole();                             \
+        FILE* stream;                               \
+        freopen_s(&stream, "CONOUT$", "w", stdout); \
+        freopen_s(&stream, "CONOUT$", "w", stderr); \
+        freopen_s(&stream, "CONIN$", "r", stdin);   

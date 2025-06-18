@@ -16,7 +16,6 @@ namespace winrt::AIDA64::Framework
         void PropertyChanged(winrt::event_token const& token) noexcept;
 
     protected:
-
         void RaisePropertyChanged(winrt::hstring const& propertyName);
 
     private:

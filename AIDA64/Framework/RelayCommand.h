@@ -25,7 +25,6 @@ namespace winrt::AIDA64::Framework
 
         void RaiseCanExecuteChanged();
 
-
     private:
         std::function<IAsyncAction()> m_execute;
         std::function<bool()> m_canExecute;

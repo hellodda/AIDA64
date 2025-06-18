@@ -28,6 +28,8 @@ namespace winrt::AIDA64::implementation
     }
     void App::OnLaunched([[maybe_unused]] LaunchActivatedEventArgs const& e)
     {
+        OPEN_CONSOLE
+
         window = make<MainWindow>();
         window.Activate();
     }
