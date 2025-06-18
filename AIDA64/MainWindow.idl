@@ -1,9 +1,12 @@
-namespace AIDA64_UI
+import "Models/ProcessModel.idl";
+
+namespace AIDA64
 {
     [default_interface]
     runtimeclass MainWindow : Microsoft.UI.Xaml.Window
     {
         MainWindow();
         Int32 MyProperty;
+        Windows.Foundation.Collections.IObservableVector<ProcessModel> Models;
     }
 }

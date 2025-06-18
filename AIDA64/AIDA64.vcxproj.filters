@@ -8,13 +8,19 @@
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
+    <Midl Include="Models\ProcessModel.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
+    <ClCompile Include="WMIDataContext.cpp" />
+    <ClCompile Include="Framework\ProcessService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
+    <ClInclude Include="WMIDataContext.h" />
+    <ClInclude Include="Framework\Utilities.h" />
+    <ClInclude Include="Framework\ProcessService.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -41,7 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
-      <UniqueIdentifier>{bd22f48c-5f15-4a8f-88ab-4865b6e42e02}</UniqueIdentifier>
+      <UniqueIdentifier>{04e79f7d-c2d5-4655-bda3-2a2175d0edc0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

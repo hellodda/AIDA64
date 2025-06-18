@@ -8,14 +8,14 @@
   IgnorableNamespaces="uap rescap">
 
   <Identity
-    Name="9d5add77-6a16-41e6-944e-a27895db6b32"
+    Name="37a8f761-3da1-4e9a-ae8e-ce50a9171071"
     Publisher="CN=user"
     Version="1.0.0.0" />
 
-  <mp:PhoneIdentity PhoneProductId="9d5add77-6a16-41e6-944e-a27895db6b32" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+  <mp:PhoneIdentity PhoneProductId="37a8f761-3da1-4e9a-ae8e-ce50a9171071" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>AIDA64.UI</DisplayName>
+    <DisplayName>AIDA64</DisplayName>
     <PublisherDisplayName>user</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -34,8 +34,8 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="$targetentrypoint$">
       <uap:VisualElements
-        DisplayName="AIDA64.UI"
-        Description="AIDA64.UI"
+        DisplayName="AIDA64"
+        Description="AIDA64"
         BackgroundColor="transparent"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png">

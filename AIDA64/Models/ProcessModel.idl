@@ -1,0 +1,12 @@
+namespace AIDA64
+{
+    [bindable]
+    [default_interface]
+    runtimeclass ProcessModel 
+    {
+        ProcessModel();
+        Int32 Id;
+        Int32 ThreadCount;
+        String Name;
+    }
+}

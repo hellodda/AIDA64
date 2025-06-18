@@ -1,5 +1,5 @@
 ========================================================================
-    AIDA64.UI Project Overview
+    AIDA64 Project Overview
 ========================================================================
 
 This project demonstrates how to get started writing WinUI3 apps directly

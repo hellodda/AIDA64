@@ -2,7 +2,7 @@
 
 #include "App.xaml.g.h"
 
-namespace winrt::AIDA64_UI::implementation
+namespace winrt::AIDA64::implementation
 {
     struct App : AppT<App>
     {
