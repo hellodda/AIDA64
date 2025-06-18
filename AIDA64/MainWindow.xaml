@@ -10,22 +10,6 @@
     Title="AIDA64">
 
     <Grid>
-        <TextBlock Text="{x:Bind Models[0].Name}"/>
-        <ListView ItemsSource="{x:Bind Models, Mode=OneWay}" Width="480" Grid.Row="1">
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <Setter Property="Margin" Value="0,0,0,8"/>
-                </Style>
-            </ListView.ItemContainerStyle>
-            <ListView.ItemTemplate>
-                <DataTemplate x:DataType="local:ProcessModel">
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <TextBlock Text="{x:Bind Id}"/>
-                        <TextBlock Text="{x:Bind Name}"/>
-                        <TextBlock Text="{x:Bind ThreadCount}"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+       
     </Grid>
 </Window>

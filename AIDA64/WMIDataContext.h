@@ -16,8 +16,12 @@ namespace winrt::AIDA64::Framework
 		std::vector<com_ptr<IWbemClassObject>> Query(hstring query);
 		std::future<std::vector<com_ptr<IWbemClassObject>>> QueryAsync(hstring query);
 
+		void ContextNameSpace(hstring const& nameSpace);
+		hstring ContextNameSpace() const noexcept;
+
 	private:
 
+		hstring m_usingNameSpace{ L"ROOT\\CIMV2" };
 		com_ptr<IWbemServices> m_services{ nullptr };
 	};
 }

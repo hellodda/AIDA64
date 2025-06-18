@@ -6,7 +6,5 @@ namespace AIDA64
     runtimeclass MainWindow : Microsoft.UI.Xaml.Window
     {
         MainWindow();
-        Int32 MyProperty;
-        Windows.Foundation.Collections.IObservableVector<ProcessModel> Models;
     }
 }

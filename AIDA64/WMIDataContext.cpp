@@ -74,14 +74,20 @@ namespace winrt::AIDA64::Framework
 	std::future<std::vector<com_ptr<IWbemClassObject>>> WmiDataContext::QueryAsync(hstring query)
 	{
 		return std::async(std::launch::async, [this, query] {
-
-			winrt::init_apartment(winrt::apartment_type::multi_threaded);
-
-			auto result = Query(query);
-
-			winrt::uninit_apartment();
-
-			return result;
+			return Query(query);
 		});
+	}
+
+	void WmiDataContext::ContextNameSpace(hstring const& nameSpace)
+	{
+		if (m_usingNameSpace != nameSpace)
+		{
+			m_usingNameSpace = nameSpace;
+		}
+	}
+
+	hstring WmiDataContext::ContextNameSpace() const noexcept
+	{
+		return m_usingNameSpace;
 	}
 }

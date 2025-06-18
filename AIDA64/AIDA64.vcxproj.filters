@@ -9,18 +9,25 @@
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
     <Midl Include="Models\ProcessModel.idl" />
+    <Midl Include="ViewModels\MainViewModel.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="$(GeneratedFilesDir)module.g.cpp" />
     <ClCompile Include="WMIDataContext.cpp" />
     <ClCompile Include="Framework\ProcessService.cpp" />
+    <ClCompile Include="Framework\BindableBase.cpp" />
+    <ClCompile Include="Framework\Logger.cpp" />
+    <ClCompile Include="Framework\RelayCommand.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="WMIDataContext.h" />
     <ClInclude Include="Framework\Utilities.h" />
     <ClInclude Include="Framework\ProcessService.h" />
+    <ClInclude Include="Framework\BindableBase.h" />
+    <ClInclude Include="Framework\ILogger.h" />
+    <ClInclude Include="Framework\Logger.h" />
+    <ClInclude Include="Framework\RelayCommand.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -61,5 +68,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natstepfilter" />
   </ItemGroup>
 </Project>

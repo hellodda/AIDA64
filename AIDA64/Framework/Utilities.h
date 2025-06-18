@@ -2,6 +2,12 @@
 #include "pch.h"
 #include <Models/ProcessModel.h>
 
+//-----------------------------------------------------------------
+//-
+//-		helper functions for defining types
+//-
+//-----------------------------------------------------------------
+
 bool is_integer(VARTYPE const& type)
 {
 	return (type == VT_I4 || type == VT_UI4);
@@ -11,6 +17,17 @@ bool is_string(VARTYPE const& type)
 {
 	return type == VT_BSTR;
 }
+
+bool is_boolean(VARTYPE const& type)
+{
+	return type == VT_BOOL;
+}
+
+//-----------------------------------------------------------------
+//-
+//-		Mapping : VARIANT to Models
+//-
+//-----------------------------------------------------------------
 
 template<typename T>
 T from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
