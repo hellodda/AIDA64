@@ -47,7 +47,7 @@ namespace winrt::AIDA64::Framework
 		co_return;
 	}
 
-	std::vector<com_ptr<IWbemClassObject>> WmiDataContext::Query(hstring query)
+	std::vector<com_ptr<IWbemClassObject>> WmiDataContext::Query(hstring const& query)
 	{
 		winrt::com_ptr<IEnumWbemClassObject> enumerator{ nullptr };
 
@@ -75,7 +75,7 @@ namespace winrt::AIDA64::Framework
 		return objects;
 	}
 
-	std::future<std::vector<com_ptr<IWbemClassObject>>> WmiDataContext::QueryAsync(hstring query)
+	std::future<std::vector<com_ptr<IWbemClassObject>>> WmiDataContext::QueryAsync(hstring const& query)
 	{
 		return std::async(std::launch::async, [this, query] {
 			apartment_guard<apartment_type::multi_threaded> mta_context;
@@ -83,11 +83,11 @@ namespace winrt::AIDA64::Framework
 		});
 	}
 
-	void WmiDataContext::ContextNameSpace(hstring const& nameSpace)
+	void WmiDataContext::ContextNameSpace(hstring const& namespace_)
 	{
-		if (m_usingNameSpace != nameSpace)
+		if (m_usingNameSpace != namespace_)
 		{
-			m_usingNameSpace = nameSpace;
+			m_usingNameSpace = namespace_;
 		}
 	}
 
