@@ -1,8 +1,10 @@
 ﻿#pragma once
 
 #include "MainViewModel.g.h"
-#include <Framework/BindableBase.h>
-#include <Framework/RelayCommand.h>
+
+#include <Helpers/BindableBase.h>
+#include <Helpers/RelayCommand.h>
+
 #include <Framework/ILogger.h>
 #include <Framework/IProcessService.h>
 
@@ -12,6 +14,7 @@ namespace winrt
     using namespace Windows::Foundation::Collections;
     using namespace Microsoft::UI::Xaml::Data;
     using namespace AIDA64::Framework;
+    using namespace AIDA64::Helpers;
 }
 
 namespace winrt::AIDA64::implementation

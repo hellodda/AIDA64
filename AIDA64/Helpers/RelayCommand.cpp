@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "RelayCommand.h"
 
-namespace winrt::AIDA64::Framework
+namespace winrt::AIDA64::Helpers
 {
 	void RelayCommand::Execute(winrt::IInspectable const&) const
 	{

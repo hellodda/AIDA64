@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "BindableBase.h"
 
-namespace winrt::AIDA64::Framework
+namespace winrt::AIDA64::Helpers
 {
     winrt::event_token BindableBase::PropertyChanged(winrt::PropertyChangedEventHandler const& handler)
     {

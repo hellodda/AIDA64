@@ -10,6 +10,288 @@
     Title="AIDA64">
 
     <Grid>
-       
+        <NavigationView>
+            <NavigationView.MenuItems>
+
+                <!-- hardware -->
+
+                <NavigationViewItem Content="Hardware">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE958;" />
+                    </NavigationViewItem.Icon>
+
+
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="CPU">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE950;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Memory">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE77C;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Motherboard">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE964;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Storage Devices">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xEDA2;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Graphics Adapter">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xEDA3;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Display">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE7F4;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Multimedia">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xED47;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Input Devices">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE961;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Audio Devices">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE7F5;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Network Adapters">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE968;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="USB Devices">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE88E;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="PCI Devices">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE990;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
+                <!--software-->
+                
+                <NavigationViewItem Content="Software">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEBE8;" />
+                    </NavigationViewItem.Icon>
+
+
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="Running Processes">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE9F5;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Drivers">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE975;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Operating System">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE770;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Installed Software">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE7B8;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Services">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE83B;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Startup Programs">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE768;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Updates">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE895;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Security">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE705;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Firewall">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xECAD;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="User Accounts">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE716;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Remote Access">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xEDA3;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Virtualization">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xEEA3;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+                
+                <!-- Monitoring -->
+                <NavigationViewItem Content="Monitoring">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEB44;" />
+                    </NavigationViewItem.Icon>
+
+
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="Sensors">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE957;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Temperature">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE9CA;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Fan Control">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE7BC;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Power Management">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xEC0B;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Battery">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xF5FC;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Performance">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xEC4A;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Events / Logs">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE945;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Alerts">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE730;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
+                <!-- Sys Tools -->
+                <NavigationViewItem Content="System Tools">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEC7A;" />
+                    </NavigationViewItem.Icon>
+
+
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="Clipboard">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE77F;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Registry">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xEC19;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Environment Variables">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE74C;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Command Line">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE756;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Logs Export">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xF584;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Reports">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE9F9;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+
+                <!-- Settings -->
+                <NavigationViewItem Content="Settings">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xE713;" />
+                    </NavigationViewItem.Icon>
+
+
+                    <NavigationViewItem.MenuItems>
+                        <NavigationViewItem Content="Preferences">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xF210;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Language / Localization">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xF2B7;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Themes">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE790;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="About">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xE946;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                        <NavigationViewItem Content="Feedback">
+                            <NavigationViewItem.Icon>
+                                <FontIcon Glyph="&#xED15;" />
+                            </NavigationViewItem.Icon>
+                        </NavigationViewItem>
+                    </NavigationViewItem.MenuItems>
+                </NavigationViewItem>
+                
+                <!--sub-->
+                
+                <NavigationViewItem Content="Help">
+                    <NavigationViewItem.Icon/>
+                </NavigationViewItem>
+                
+            </NavigationView.MenuItems>
+        </NavigationView>
     </Grid>
 </Window>

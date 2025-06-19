@@ -6,7 +6,7 @@ namespace winrt
 	using namespace Microsoft::UI::Xaml::Input;
 }
 
-namespace winrt::AIDA64::Framework
+namespace winrt::AIDA64::Helpers
 {
 	struct RelayCommand : winrt::implements<RelayCommand, winrt::ICommand>
 	{

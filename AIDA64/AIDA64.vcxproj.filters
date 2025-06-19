@@ -4,33 +4,67 @@
     <ApplicationDefinition Include="App.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="MainWindow.xaml" />
+    <Page Include="MainWindow.xaml">
+      <Filter>Views\Windows</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
-    <Midl Include="Models\ProcessModel.idl" />
-    <Midl Include="ViewModels\MainViewModel.idl" />
+    <Midl Include="Models\ProcessModel.idl">
+      <Filter>Models</Filter>
+    </Midl>
+    <Midl Include="ViewModels\MainViewModel.idl">
+      <Filter>ViewModels</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="WMIDataContext.cpp" />
-    <ClCompile Include="Framework\ProcessService.cpp" />
-    <ClCompile Include="Framework\BindableBase.cpp" />
-    <ClCompile Include="Framework\Logger.cpp" />
-    <ClCompile Include="Framework\RelayCommand.cpp" />
-    <ClCompile Include="Framework\Utilities.cpp" />
+    <ClCompile Include="WMIDataContext.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\RelayCommand.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Utilities.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\ProcessService.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Logger.cpp">
+      <Filter>Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Helpers\BindableBase.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
-    <ClInclude Include="WMIDataContext.h" />
-    <ClInclude Include="Framework\Utilities.h" />
-    <ClInclude Include="Framework\ProcessService.h" />
-    <ClInclude Include="Framework\BindableBase.h" />
-    <ClInclude Include="Framework\ILogger.h" />
-    <ClInclude Include="Framework\Logger.h" />
-    <ClInclude Include="Framework\RelayCommand.h" />
-    <ClInclude Include="Framework\IProcessService.h" />
     <ClInclude Include="DIConfig.h" />
+    <ClInclude Include="WMIDataContext.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\RelayCommand.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Utilities.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\ProcessService.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Logger.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IProcessService.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\ILogger.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Helpers\BindableBase.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -58,6 +92,30 @@
   <ItemGroup>
     <Filter Include="Assets">
       <UniqueIdentifier>{04e79f7d-c2d5-4655-bda3-2a2175d0edc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views">
+      <UniqueIdentifier>{e4488072-0f0d-4563-8b1c-1710f1d8daa0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ViewModels">
+      <UniqueIdentifier>{6bc4dda4-b29f-4c6c-b76c-4838b52e08ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{b36f7b44-0fea-4daf-a3df-58ecf3039d9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework">
+      <UniqueIdentifier>{0825623c-528b-4c1a-a494-2a38bbb17ad1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{9fc55544-d5f4-4a5c-bcf3-6bd70f590a5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\Pages">
+      <UniqueIdentifier>{3121cbd4-b19f-4cbf-90f1-ee92db78454b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\Windows">
+      <UniqueIdentifier>{bd759ee0-19b7-4539-9843-0fa102678e2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\Pages\Hardware">
+      <UniqueIdentifier>{b7c5e2a1-7d78-4236-ad05-a11789ada28e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

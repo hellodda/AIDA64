@@ -5,7 +5,7 @@ namespace winrt
     using namespace Microsoft::UI::Xaml::Data;
 }
 
-namespace winrt::AIDA64::Framework
+namespace winrt::AIDA64::Helpers
 {
     struct BindableBase : winrt::implements<BindableBase, INotifyPropertyChanged>
     {

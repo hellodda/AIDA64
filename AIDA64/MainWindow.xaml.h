@@ -20,11 +20,16 @@ namespace winrt::AIDA64::implementation
         MainWindow()
         {
             InitializeComponent();
+            Setup();
         }
 
         void Inject(winrt::MainViewModel const& model, std::shared_ptr<ILogger> logger);
-
+        
         winrt::MainViewModel MainViewModel();
+
+    private:
+
+        void Setup();
 
     private:
 

@@ -15,6 +15,11 @@ namespace winrt::AIDA64::implementation
 		m_logger = std::move(logger);
 	}
 
+	void MainWindow::Setup()
+	{
+		ExtendsContentIntoTitleBar(true);
+	}
+
 	AIDA64::MainViewModel MainWindow::MainViewModel()
 	{
 		return m_viewModel;

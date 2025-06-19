@@ -111,7 +111,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DIConfig.h" />
-    <ClInclude Include="Framework\BindableBase.h" />
+    <ClInclude Include="Helpers\BindableBase.h" />
     <ClInclude Include="Framework\ILogger.h" />
     <ClInclude Include="Framework\IProcessService.h" />
     <ClInclude Include="Framework\Logger.h" />
@@ -128,7 +128,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClInclude>
     <ClInclude Include="Framework\ProcessService.h" />
-    <ClInclude Include="Framework\RelayCommand.h" />
+    <ClInclude Include="Helpers\RelayCommand.h" />
     <ClInclude Include="ViewModels\MainViewModel.h">
       <DependentUpon>ViewModels\MainViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -138,9 +138,10 @@
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
     <Page Include="MainWindow.xaml" />
+    <Xaml Include="Views\Hardware\CpuPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Framework\BindableBase.cpp" />
+    <ClCompile Include="Helpers\BindableBase.cpp" />
     <ClCompile Include="Framework\Logger.cpp" />
     <ClCompile Include="Framework\Utilities.cpp" />
     <ClCompile Include="Models\ProcessModel.cpp">
@@ -157,7 +158,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </ClCompile>
     <ClCompile Include="Framework\ProcessService.cpp" />
-    <ClCompile Include="Framework\RelayCommand.cpp" />
+    <ClCompile Include="Helpers\RelayCommand.cpp" />
     <ClCompile Include="ViewModels\MainViewModel.cpp">
       <DependentUpon>ViewModels\MainViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
