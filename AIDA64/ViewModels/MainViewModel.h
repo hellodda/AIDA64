@@ -4,6 +4,7 @@
 #include <Framework/BindableBase.h>
 #include <Framework/RelayCommand.h>
 #include <Framework/ILogger.h>
+#include <Framework/IProcessService.h>
 
 namespace winrt
 {

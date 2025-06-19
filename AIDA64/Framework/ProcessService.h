@@ -1,6 +1,5 @@
 #pragma once
-#include <Models/ProcessModel.h>
-#include <WMIDataContext.h>
+#include "IProcessService.h"
 
 namespace winrt
 {
@@ -9,11 +8,11 @@ namespace winrt
 
 namespace winrt::AIDA64::Framework
 {
-	struct ProcessService
+	struct ProcessService : IProcessService
 	{
 		ProcessService(WmiDataContext context);
 
-		IAsyncOperation<IVector<ProcessModel>> GetAllProcessesAsync();
+		IAsyncOperation<IVector<ProcessModel>> GetAllProcessesAsync() override;
 
 	private:
 

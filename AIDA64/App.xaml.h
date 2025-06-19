@@ -9,6 +9,7 @@ namespace winrt::AIDA64::implementation
         App();
 
         void OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const&);
+        void ConfigureDependencies();
 
     private:
         winrt::Microsoft::UI::Xaml::Window window{ nullptr };

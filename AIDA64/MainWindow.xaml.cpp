@@ -9,5 +9,14 @@ using namespace Microsoft::UI::Xaml;
 
 namespace winrt::AIDA64::implementation
 {
-   
+	void MainWindow::Inject(winrt::MainViewModel const& model, std::shared_ptr<ILogger> logger)
+	{
+		m_viewModel = model;
+		m_logger = std::move(logger);
+	}
+
+	AIDA64::MainViewModel MainWindow::MainViewModel()
+	{
+		return m_viewModel;
+	}
 }

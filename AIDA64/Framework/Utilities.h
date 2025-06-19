@@ -4,24 +4,40 @@
 
 //-----------------------------------------------------------------
 //-
+//-		helpers for COM
+//-
+//-----------------------------------------------------------------
+
+template<winrt::apartment_type type>
+struct apartment_guard
+{
+	apartment_guard()
+	{
+		winrt::init_apartment(type);
+	}
+	~apartment_guard()
+	{
+		winrt::uninit_apartment();
+	}
+};
+
+namespace this_thread
+{
+	bool is_mta();
+	bool is_sta();
+	APTTYPE get_apartment_type();
+}
+
+//-----------------------------------------------------------------
+//-
 //-		helper functions for defining types
 //-
 //-----------------------------------------------------------------
 
-bool is_integer(VARTYPE const& type)
-{
-	return (type == VT_I4 || type == VT_UI4);
-}
-
-bool is_string(VARTYPE const& type)
-{
-	return type == VT_BSTR;
-}
-
-bool is_boolean(VARTYPE const& type)
-{
-	return type == VT_BOOL;
-}
+bool is_integer(VARTYPE const& type);
+bool is_string(VARTYPE const& type);
+bool is_boolean(VARTYPE const& type);
+bool try_get_property(std::wstring const& property_name, winrt::com_ptr<IWbemClassObject> const& object, VARIANT& variant);
 
 //-----------------------------------------------------------------
 //-
@@ -33,34 +49,4 @@ template<typename T>
 T from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
 
 template<>
-winrt::AIDA64::ProcessModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object)
-{
-	winrt::AIDA64::ProcessModel model{};
-	VARIANT var;
-
-	//process name \/
-	if (SUCCEEDED(object->Get(L"Name", NULL, &var, NULL, NULL)))
-	{
-		if (is_string(var.vt))
-			model.Name(var.bstrVal);
-		VariantClear(&var);
-	}
-
-	//process id \/
-	if (SUCCEEDED(object->Get(L"ProcessId", NULL, &var, NULL, NULL)))
-	{
-		if (is_integer(var.vt))
-			model.Id(var.uintVal);
-		VariantClear(&var);
-	}
-
-	//thread count
-	if (SUCCEEDED(object->Get(L"ThreadCount", NULL, &var, NULL, NULL)))
-	{
-		if (is_integer(var.vt))
-			model.ThreadCount(var.uintVal);
-		VariantClear(&var);
-	}
-
-	return model;
-}
+winrt::AIDA64::ProcessModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);

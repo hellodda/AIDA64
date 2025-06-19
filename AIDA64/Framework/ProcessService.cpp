@@ -2,6 +2,9 @@
 #include "Utilities.h"
 #include "ProcessService.h"
 
+inline constexpr wchar_t* QUERY_PROCESS_LIST = L"SELECT * FROM Win32_Process";
+inline constexpr wchar_t* QUERY_PROCESS_FROM = L"SELECT * FROM Win32_Process WHERE";
+
 namespace winrt::AIDA64::Framework
 {
 	ProcessService::ProcessService(WmiDataContext context)
@@ -11,7 +14,7 @@ namespace winrt::AIDA64::Framework
 
 	IAsyncOperation<IVector<ProcessModel>> ProcessService::GetAllProcessesAsync()
 	{
-		auto result = co_await m_context.QueryAsync(L"SELECT * FROM Win32_Process");
+		auto result = co_await m_context.QueryAsync(QUERY_PROCESS_LIST);
 
 		IVector<ProcessModel> models = single_threaded_vector<ProcessModel>();
 

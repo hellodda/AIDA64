@@ -1,11 +1,18 @@
 #include "pch.h"
 #include "WMIDataContext.h"
 
+#include <Framework/Utilities.h>
+
 namespace winrt::AIDA64::Framework
 {
 	WmiDataContext::WmiDataContext()
 	{
-		winrt::init_apartment(winrt::apartment_type::multi_threaded);
+		InitializeAsync();
+	}
+
+	IAsyncAction WmiDataContext::InitializeAsync()
+	{
+		co_await winrt::resume_background();
 
 		winrt::com_ptr<IWbemLocator> locator;
 		winrt::check_hresult(CoCreateInstance(
@@ -36,11 +43,8 @@ namespace winrt::AIDA64::Framework
 			NULL,
 			EOAC_NONE
 		));
-	}
 
-	WmiDataContext::~WmiDataContext()
-	{
-		winrt::uninit_apartment();
+		co_return;
 	}
 
 	std::vector<com_ptr<IWbemClassObject>> WmiDataContext::Query(hstring query)
@@ -74,6 +78,7 @@ namespace winrt::AIDA64::Framework
 	std::future<std::vector<com_ptr<IWbemClassObject>>> WmiDataContext::QueryAsync(hstring query)
 	{
 		return std::async(std::launch::async, [this, query] {
+			apartment_guard<apartment_type::multi_threaded> mta_context;
 			return Query(query);
 		});
 	}
@@ -90,4 +95,5 @@ namespace winrt::AIDA64::Framework
 	{
 		return m_usingNameSpace;
 	}
+	
 }

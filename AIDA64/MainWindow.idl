@@ -1,4 +1,4 @@
-import "Models/ProcessModel.idl";
+import "ViewModels/MainViewModel.idl";
 
 namespace AIDA64
 {
@@ -6,5 +6,6 @@ namespace AIDA64
     runtimeclass MainWindow : Microsoft.UI.Xaml.Window
     {
         MainWindow();
+        MainViewModel MainViewModel{ get; };
     }
 }

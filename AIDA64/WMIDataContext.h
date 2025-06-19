@@ -11,13 +11,17 @@ namespace winrt::AIDA64::Framework
 	struct WmiDataContext
 	{
 		WmiDataContext();
-		~WmiDataContext();
+		~WmiDataContext() = default;
 	
 		std::vector<com_ptr<IWbemClassObject>> Query(hstring query);
 		std::future<std::vector<com_ptr<IWbemClassObject>>> QueryAsync(hstring query);
 
 		void ContextNameSpace(hstring const& nameSpace);
 		hstring ContextNameSpace() const noexcept;
+
+	private:
+
+		IAsyncAction InitializeAsync();
 
 	private:
 

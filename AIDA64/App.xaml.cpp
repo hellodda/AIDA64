@@ -6,9 +6,16 @@
 #  include "module.g.cpp"
 #endif
 
+#include "DIConfig.h"
 
-using namespace winrt;
-using namespace Microsoft::UI::Xaml;
+namespace winrt
+{
+    using namespace Microsoft::UI::Xaml;
+    using namespace AIDA64::Framework;
+    using namespace AIDA64;
+}
+
+
 
 namespace winrt::AIDA64::implementation
 {
@@ -30,7 +37,23 @@ namespace winrt::AIDA64::implementation
     {
         OPEN_CONSOLE
 
-        window = make<MainWindow>();
+        ConfigureDependencies();
+
         window.Activate();
+    }
+
+    void AIDA64::implementation::App::ConfigureDependencies()
+    {
+        auto injector = CreateInjector();
+
+        auto logger = injector.create<std::shared_ptr<ILogger>>();
+
+        auto main_view_model = winrt::make<implementation::MainViewModel>();
+
+        main_view_model.as<implementation::MainViewModel>()->Inject(logger);
+
+        window = make<MainWindow>();
+
+        window.as<MainWindow>()->Inject(main_view_model, logger);
     }
 }

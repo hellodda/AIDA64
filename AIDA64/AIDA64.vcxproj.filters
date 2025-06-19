@@ -18,6 +18,7 @@
     <ClCompile Include="Framework\BindableBase.cpp" />
     <ClCompile Include="Framework\Logger.cpp" />
     <ClCompile Include="Framework\RelayCommand.cpp" />
+    <ClCompile Include="Framework\Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -28,6 +29,8 @@
     <ClInclude Include="Framework\ILogger.h" />
     <ClInclude Include="Framework\Logger.h" />
     <ClInclude Include="Framework\RelayCommand.h" />
+    <ClInclude Include="Framework\IProcessService.h" />
+    <ClInclude Include="DIConfig.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">

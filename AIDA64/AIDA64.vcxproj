@@ -110,8 +110,10 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DIConfig.h" />
     <ClInclude Include="Framework\BindableBase.h" />
     <ClInclude Include="Framework\ILogger.h" />
+    <ClInclude Include="Framework\IProcessService.h" />
     <ClInclude Include="Framework\Logger.h" />
     <ClInclude Include="Models\ProcessModel.h">
       <DependentUpon>Models\ProcessModel.idl</DependentUpon>
@@ -140,6 +142,7 @@
   <ItemGroup>
     <ClCompile Include="Framework\BindableBase.cpp" />
     <ClCompile Include="Framework\Logger.cpp" />
+    <ClCompile Include="Framework\Utilities.cpp" />
     <ClCompile Include="Models\ProcessModel.cpp">
       <DependentUpon>Models\ProcessModel.idl</DependentUpon>
       <SubType>Code</SubType>
