@@ -1,0 +1,8 @@
+namespace AIDA64
+{
+    [default_interface]
+    runtimeclass CpuPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        CpuPage();
+    }
+}

@@ -7,6 +7,9 @@
     <Page Include="MainWindow.xaml">
       <Filter>Views\Windows</Filter>
     </Page>
+    <Page Include="CpuPage.xaml">
+      <Filter>Views\Pages\Hardware</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -16,54 +19,57 @@
     <Midl Include="ViewModels\MainViewModel.idl">
       <Filter>ViewModels</Filter>
     </Midl>
+    <Midl Include="ViewModels\CpuPageViewModel.idl">
+      <Filter>ViewModels</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
-    <ClCompile Include="WMIDataContext.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
     <ClCompile Include="Helpers\RelayCommand.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\Utilities.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\ProcessService.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
-    <ClCompile Include="Framework\Logger.cpp">
-      <Filter>Framework</Filter>
-    </ClCompile>
     <ClCompile Include="Helpers\BindableBase.cpp">
       <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\ProcessService.cpp">
+      <Filter>Framework\Services\ProcessService</Filter>
+    </ClCompile>
+    <ClCompile Include="WMIDataContext.cpp">
+      <Filter>Framework\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Utilities.cpp">
+      <Filter>Framework\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\Logger.cpp">
+      <Filter>Framework\Utilities\Logger</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
     <ClInclude Include="DIConfig.h" />
-    <ClInclude Include="WMIDataContext.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
     <ClInclude Include="Helpers\RelayCommand.h">
       <Filter>Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\Utilities.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\ProcessService.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\Logger.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\IProcessService.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\ILogger.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
     <ClInclude Include="Helpers\BindableBase.h">
       <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\ProcessService.h">
+      <Filter>Framework\Services\ProcessService</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IProcessService.h">
+      <Filter>Framework\Services\ProcessService</Filter>
+    </ClInclude>
+    <ClInclude Include="WMIDataContext.h">
+      <Filter>Framework\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Utilities.h">
+      <Filter>Framework\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\ILogger.h">
+      <Filter>Framework\Utilities\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\Logger.h">
+      <Filter>Framework\Utilities\Logger</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +122,24 @@
     </Filter>
     <Filter Include="Views\Pages\Hardware">
       <UniqueIdentifier>{b7c5e2a1-7d78-4236-ad05-a11789ada28e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\Pages\Software">
+      <UniqueIdentifier>{6df02bf7-cf06-4d4e-9255-0a33833ef691}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Services">
+      <UniqueIdentifier>{1cbb02ab-4386-48c7-9877-afee187fb84f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Services\ProcessService">
+      <UniqueIdentifier>{0856d59a-5076-49c1-a147-47b69dc9ed14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Data">
+      <UniqueIdentifier>{188bbfc5-7c34-4a68-b0b3-635011ea1f55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Utilities">
+      <UniqueIdentifier>{97faa9e9-653e-4b0d-a811-8e4696db2ba7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Utilities\Logger">
+      <UniqueIdentifier>{c4175e8e-774b-4176-890c-a1e8f3c4083a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

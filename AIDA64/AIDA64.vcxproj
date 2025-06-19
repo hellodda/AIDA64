@@ -110,6 +110,14 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CpuPage.xaml.h">
+      <DependentUpon>CpuPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ViewModels\CpuPageViewModel.h">
+      <DependentUpon>ViewModels\CpuPageViewModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="DIConfig.h" />
     <ClInclude Include="Helpers\BindableBase.h" />
     <ClInclude Include="Framework\ILogger.h" />
@@ -137,10 +145,21 @@
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
+    <Page Include="CpuPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml" />
     <Xaml Include="Views\Hardware\CpuPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CpuPage.xaml.cpp">
+      <DependentUpon>CpuPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ViewModels\CpuPageViewModel.cpp">
+      <DependentUpon>ViewModels\CpuPageViewModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="Helpers\BindableBase.cpp" />
     <ClCompile Include="Framework\Logger.cpp" />
     <ClCompile Include="Framework\Utilities.cpp" />
@@ -166,6 +185,13 @@
     <ClCompile Include="WMIDataContext.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Midl Include="CpuPage.idl">
+      <DependentUpon>CpuPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="ViewModels\CpuPageViewModel.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="Models\ProcessModel.idl">
       <SubType>Designer</SubType>
     </Midl>
