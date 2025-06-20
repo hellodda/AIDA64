@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "App.xaml.h"
 #include "MainWindow.xaml.h"
+#include <Framework/CpuService.h>
 
 #if __has_include("module.g.cpp")
 #  include "module.g.cpp"
@@ -36,7 +37,7 @@ namespace winrt::AIDA64::implementation
     void App::OnLaunched([[maybe_unused]] LaunchActivatedEventArgs const& e)
     {
         OPEN_CONSOLE
-
+       
         ConfigureDependencies();
 
         window.Activate();

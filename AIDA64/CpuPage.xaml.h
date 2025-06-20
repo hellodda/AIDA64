@@ -6,10 +6,7 @@ namespace winrt::AIDA64::implementation
 {
     struct CpuPage : CpuPageT<CpuPage>
     {
-        CpuPage()
-        {
-            
-        }
+        CpuPage();
     };
 }
 

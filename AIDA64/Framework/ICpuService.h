@@ -1,5 +1,5 @@
 #pragma once
-#include <Models/ProcessModel.h>
+#include <Models/ProcessorModel.h>
 #include <WMIDataContext.h>
 
 namespace winrt
@@ -10,8 +10,8 @@ namespace winrt
 
 namespace winrt::AIDA64::Framework
 {
-	struct IProcessService
+	struct ICpuService
 	{
-		virtual IAsyncOperation<IVector<ProcessModel>> GetAllProcessesAsync() = 0;
+		virtual IAsyncOperation<IVector<ProcessorModel>> GetAllProcessorsAsync() = 0;
 	};
 }

@@ -10,13 +10,13 @@ namespace winrt::AIDA64::Framework
 {
 	struct ProcessService : IProcessService
 	{
-		ProcessService(WmiDataContext context);
+		ProcessService(std::shared_ptr<WmiDataContext> context);
 
 		IAsyncOperation<IVector<ProcessModel>> GetAllProcessesAsync() override;
 
 	private:
 
-		WmiDataContext m_context;
+		std::shared_ptr<WmiDataContext> m_context;
 	};
 }
 

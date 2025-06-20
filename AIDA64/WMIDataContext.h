@@ -11,21 +11,21 @@ namespace winrt::AIDA64::Framework
 	struct WmiDataContext
 	{
 		WmiDataContext();
-		~WmiDataContext() = default;
+		~WmiDataContext();
 	
 		std::vector<com_ptr<IWbemClassObject>> Query(hstring const& query);
-		std::future<std::vector<com_ptr<IWbemClassObject>>> QueryAsync(hstring const& query);
+		IAsyncAction WmiDataContext::QueryAsync(hstring const& query, std::vector<com_ptr<IWbemClassObject>>& result);
 
 		void ContextNameSpace(hstring const& namespace_);
 		hstring ContextNameSpace() const noexcept;
 
 	private:
 
-		IAsyncAction InitializeAsync();
+		void initialize();
 
-	private:
-
-		hstring m_usingNameSpace{ L"ROOT\\CIMV2" };
+	private:		
+		
+		hstring m_namespace{ L"ROOT\\CIMV2" };
 		com_ptr<IWbemServices> m_services{ nullptr };
 	};
 }

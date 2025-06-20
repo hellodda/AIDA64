@@ -1,6 +1,17 @@
 #pragma once
-#include "pch.h"
 #include <Models/ProcessModel.h>
+#include <Models/ProcessorModel.h>
+#include <WMIDataContext.h>
+
+//-
+//- other helpers \/
+//-
+
+IAsyncAction mta_context(std::function<void()> const& action);
+
+std::shared_ptr<AIDA64::Framework::WmiDataContext> get_mta_wmi_context();
+
+void wait(std::function<IAsyncAction()> action);
 
 //-----------------------------------------------------------------
 //-
@@ -37,7 +48,7 @@ namespace this_thread
 bool is_integer(VARTYPE const& type);
 bool is_string(VARTYPE const& type);
 bool is_boolean(VARTYPE const& type);
-bool try_get_property(std::wstring const& property_name, winrt::com_ptr<IWbemClassObject> const& object, VARIANT& variant);
+bool try_get_property(std::wstring const& property_name, winrt::com_ptr<IWbemClassObject> const& object, _variant_t& variant);
 
 //-----------------------------------------------------------------
 //-
@@ -50,3 +61,6 @@ T from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
 
 template<>
 winrt::AIDA64::ProcessModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
+
+template<>
+winrt::AIDA64::ProcessorModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);

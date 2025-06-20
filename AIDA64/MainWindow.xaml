@@ -10,7 +10,8 @@
     Title="AIDA64">
 
     <Grid>
-        <NavigationView>
+        <NavigationView x:Name="MainNavigation" ItemInvoked="MainNavigation_ItemInvoked">
+            <Frame x:Name="ContentFrame"/>
             <NavigationView.MenuItems>
 
                 <!-- hardware -->
@@ -22,7 +23,7 @@
 
 
                     <NavigationViewItem.MenuItems>
-                        <NavigationViewItem Content="CPU">
+                        <NavigationViewItem Content="CPU" Tag="cpu">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE950;" />
                             </NavigationViewItem.Icon>

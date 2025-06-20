@@ -1,5 +1,35 @@
 #include <pch.h>
+
+
 #include "Utilities.h"
+
+IAsyncAction mta_context(std::function<void()> const& action)
+{
+    co_await winrt::resume_background();
+
+    action();
+
+    co_return;
+}
+
+std::shared_ptr<AIDA64::Framework::WmiDataContext> get_mta_wmi_context()
+{
+    static auto context = std::async(std::launch::async, [] {
+       return std::make_shared<AIDA64::Framework::WmiDataContext>();
+    }).get();
+    return context;
+}
+
+void wait(std::function<IAsyncAction()> action)
+{
+    std::async(std::launch::async, [&action] {
+        action().get();
+    }).get();
+}
+
+//-------------------------------------------------------------
+// other helpers /\ apartment helpers \/
+//-------------------------------------------------------------
 
 namespace this_thread
 {
@@ -31,7 +61,7 @@ namespace this_thread
 
 bool is_integer(VARTYPE const& type)
 {
-    return (type == VT_I4 || type == VT_UI4);
+    return (type == VT_I4 || type == VT_UI4 || type == VT_INT || type == VT_UINT);
 }
 bool is_string(VARTYPE const& type)
 {
@@ -41,7 +71,7 @@ bool is_boolean(VARTYPE const& type)
 {
     return type == VT_BOOL;
 }
-bool try_get_property(std::wstring const& property_name, winrt::com_ptr<IWbemClassObject> const& object,  VARIANT& variant)
+bool try_get_property(std::wstring const& property_name, winrt::com_ptr<IWbemClassObject> const& object,  _variant_t& variant)
 {
     return SUCCEEDED(object->Get(property_name.c_str(), NULL, &variant, NULL, NULL));
 }
@@ -54,22 +84,74 @@ template<>
 winrt::AIDA64::ProcessModel from_wbem<winrt::AIDA64::ProcessModel>(winrt::com_ptr<IWbemClassObject> const& object)
 {
     winrt::AIDA64::ProcessModel model{};
-    VARIANT var;
+    _variant_t var;
 
     VariantInit(&var);
 
     if (try_get_property(L"Name", object, var)) {
         if (is_string(var.vt)) model.Name(var.bstrVal);
-        VariantClear(&var);
+        var.Clear();
     }
     if (try_get_property(L"ProcessId", object, var)) {
         if (is_integer(var.vt)) model.Id(var.uintVal);
-        VariantClear(&var);
+        var.Clear();
     }
     if (try_get_property(L"ThreadCount", object, var)) {
         if (is_integer(var.vt)) model.ThreadCount(var.uintVal);
-        VariantClear(&var);
+        var.Clear();
     }
     return model;
 }
 
+template<>
+winrt::AIDA64::ProcessorModel from_wbem<winrt::AIDA64::ProcessorModel>(winrt::com_ptr<IWbemClassObject> const& object)
+{
+    winrt::AIDA64::ProcessorModel model{};
+    _variant_t var;
+
+    VariantInit(&var);
+
+    if (try_get_property(L"Name", object, var)) {
+        if (is_string(var.vt)) model.Name(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Manufacturer", object, var)) {
+        if (is_string(var.vt)) model.Manufacturer(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ProcessorId", object, var)) {
+        if (is_string(var.vt)) model.Id(var.bstrVal);
+        var.Clear();
+    }
+
+    //int \/
+    if (try_get_property(L"NumberOfCores", object, var)) {
+        if (is_integer(var.vt)) model.CoreCount(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"MaxClockSpeed", object, var)) {
+        if (is_integer(var.vt)) model.MaxClockSpeed(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"CurrentClockSpeed", object, var)) {
+        if (is_integer(var.vt)) model.CurrentClockSpeed(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"LoadPercentage", object, var)) {
+        if (is_integer(var.vt)) model.LoadPercentage(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Architecture", object, var)) {
+        if (is_integer(var.vt)) model.Architecture(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"AddressWidth", object, var)) {
+        if (is_integer(var.vt)) model.AddressWidth(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"DataWidth", object, var)) {
+        if (is_integer(var.vt)) model.DataWidth(var.uintVal);
+        var.Clear();
+    }
+    return model;
+}

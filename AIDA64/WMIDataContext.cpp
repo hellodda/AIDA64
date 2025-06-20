@@ -3,27 +3,32 @@
 
 #include <Framework/Utilities.h>
 
+
 namespace winrt::AIDA64::Framework
 {
 	WmiDataContext::WmiDataContext()
 	{
-		InitializeAsync();
+		initialize();
 	}
 
-	IAsyncAction WmiDataContext::InitializeAsync()
+	WmiDataContext::~WmiDataContext()
 	{
-		co_await winrt::resume_background();
+		winrt::uninit_apartment();
+	}
 
+	void WmiDataContext::initialize()
+	{
 		winrt::com_ptr<IWbemLocator> locator;
 		winrt::check_hresult(CoCreateInstance(
 			CLSID_WbemLocator,
 			NULL,
 			CLSCTX_INPROC_SERVER,
-			IID_PPV_ARGS(locator.put())
+			__uuidof(IWbemLocator),
+			locator.put_void()
 		));
 
 		winrt::check_hresult(locator->ConnectServer(
-			BSTR(L"ROOT\\CIMV2"),
+			BSTR(m_namespace.c_str()),
 			NULL,
 			NULL,
 			0,
@@ -43,8 +48,6 @@ namespace winrt::AIDA64::Framework
 			NULL,
 			EOAC_NONE
 		));
-
-		co_return;
 	}
 
 	std::vector<com_ptr<IWbemClassObject>> WmiDataContext::Query(hstring const& query)
@@ -75,25 +78,26 @@ namespace winrt::AIDA64::Framework
 		return objects;
 	}
 
-	std::future<std::vector<com_ptr<IWbemClassObject>>> WmiDataContext::QueryAsync(hstring const& query)
+	IAsyncAction WmiDataContext::QueryAsync(hstring const& query, std::vector<com_ptr<IWbemClassObject>>& result)
 	{
-		return std::async(std::launch::async, [this, query] {
-			apartment_guard<apartment_type::multi_threaded> mta_context;
-			return Query(query);
-		});
+		co_await winrt::resume_background();
+
+		result = Query(query);
+
+		co_return;
 	}
 
 	void WmiDataContext::ContextNameSpace(hstring const& namespace_)
 	{
-		if (m_usingNameSpace != namespace_)
+		if (m_namespace != namespace_)
 		{
-			m_usingNameSpace = namespace_;
+			m_namespace = namespace_;
 		}
 	}
 
 	hstring WmiDataContext::ContextNameSpace() const noexcept
 	{
-		return m_usingNameSpace;
+		return m_namespace;
 	}
 	
 }

@@ -36,6 +36,8 @@ namespace winrt::AIDA64::implementation
         std::shared_ptr<ILogger> m_logger;
 
         winrt::MainViewModel m_viewModel;
+    public:
+        void MainNavigation_ItemInvoked(winrt::Microsoft::UI::Xaml::Controls::NavigationView const& sender, winrt::Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs const& args);
     };
 }
 

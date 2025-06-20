@@ -1,0 +1,22 @@
+namespace AIDA64
+{
+    [bindable]
+    [default_interface]
+    runtimeclass ProcessorModel 
+    {
+        ProcessorModel();
+
+        String Name;
+        String Manufacturer;
+        String Id;
+
+        UInt32 CoreCount;
+        UInt32 MaxClockSpeed;
+        UInt32 CurrentClockSpeed;
+
+        UInt16 LoadPercentage;
+        UInt16 Architecture;
+        UInt16 AddressWidth;
+        UInt16 DataWidth;
+    }
+}

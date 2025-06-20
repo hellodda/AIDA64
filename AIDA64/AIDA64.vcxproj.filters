@@ -22,6 +22,9 @@
     <Midl Include="ViewModels\CpuPageViewModel.idl">
       <Filter>ViewModels</Filter>
     </Midl>
+    <Midl Include="Models\ProcessorModel.idl">
+      <Filter>Models</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -43,7 +46,7 @@
     <ClCompile Include="Framework\Logger.cpp">
       <Filter>Framework\Utilities\Logger</Filter>
     </ClCompile>
-    <ClCompile Include="CpuService.cpp">
+    <ClCompile Include="Framework\CpuService.cpp">
       <Filter>Framework\Services\CpuService</Filter>
     </ClCompile>
   </ItemGroup>
@@ -74,10 +77,10 @@
     <ClInclude Include="Framework\Logger.h">
       <Filter>Framework\Utilities\Logger</Filter>
     </ClInclude>
-    <ClInclude Include="CpuService.h">
+    <ClInclude Include="Framework\CpuService.h">
       <Filter>Framework\Services\CpuService</Filter>
     </ClInclude>
-    <ClInclude Include="ICpuService.h">
+    <ClInclude Include="Framework\ICpuService.h">
       <Filter>Framework\Services\CpuService</Filter>
     </ClInclude>
   </ItemGroup>

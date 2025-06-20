@@ -114,8 +114,12 @@
       <DependentUpon>CpuPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
-    <ClInclude Include="CpuService.h" />
-    <ClInclude Include="ICpuService.h" />
+    <ClInclude Include="Framework\CpuService.h" />
+    <ClInclude Include="Framework\ICpuService.h" />
+    <ClInclude Include="Models\ProcessorModel.h">
+      <DependentUpon>Models\ProcessorModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ViewModels\CpuPageViewModel.h">
       <DependentUpon>ViewModels\CpuPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -158,7 +162,11 @@
       <DependentUpon>CpuPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
-    <ClCompile Include="CpuService.cpp" />
+    <ClCompile Include="Framework\CpuService.cpp" />
+    <ClCompile Include="Models\ProcessorModel.cpp">
+      <DependentUpon>Models\ProcessorModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="ViewModels\CpuPageViewModel.cpp">
       <DependentUpon>ViewModels\CpuPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -191,6 +199,9 @@
     <Midl Include="CpuPage.idl">
       <DependentUpon>CpuPage.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="Models\ProcessorModel.idl">
+      <SubType>Designer</SubType>
     </Midl>
     <Midl Include="ViewModels\CpuPageViewModel.idl">
       <SubType>Designer</SubType>
