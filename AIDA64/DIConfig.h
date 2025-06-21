@@ -20,9 +20,8 @@ using namespace winrt;
 inline auto CreateInjector()
 {
     return di::make_injector(
-      
-        di::bind<ILogger>.to<Logger>().in(di::singleton),
-       
-        di::bind<IProcessService>.to<ProcessService>().in(di::singleton)
+
+        di::bind<ILogger>.to<Logger>().in(di::singleton)
+
     );
 }

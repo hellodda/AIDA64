@@ -1,8 +1,11 @@
+import "ViewModels/CpuPageViewModel.idl";
+
 namespace AIDA64
 {
     [default_interface]
     runtimeclass CpuPage : Microsoft.UI.Xaml.Controls.Page
     {
         CpuPage();
+        CpuPageViewModel ViewModel{ get; };
     }
 }

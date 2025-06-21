@@ -22,7 +22,7 @@
     <Midl Include="ViewModels\CpuPageViewModel.idl">
       <Filter>ViewModels</Filter>
     </Midl>
-    <Midl Include="Models\ProcessorModel.idl">
+    <Midl Include="Models\CpuModel.idl">
       <Filter>Models</Filter>
     </Midl>
   </ItemGroup>
@@ -48,6 +48,9 @@
     </ClCompile>
     <ClCompile Include="Framework\CpuService.cpp">
       <Filter>Framework\Services\CpuService</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\ServiceLocator.cpp">
+      <Filter>Framework\Services\ServiceLocator</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -82,6 +85,9 @@
     </ClInclude>
     <ClInclude Include="Framework\ICpuService.h">
       <Filter>Framework\Services\CpuService</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\ServiceLocator.h">
+      <Filter>Framework\Services\ServiceLocator</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -155,6 +161,9 @@
     </Filter>
     <Filter Include="Framework\Services\CpuService">
       <UniqueIdentifier>{c6c4072c-2ab5-453a-9b79-fa86ccf1874f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Services\ServiceLocator">
+      <UniqueIdentifier>{0070b55d-03f6-4c7a-bfc6-dba8965e4229}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

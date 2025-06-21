@@ -5,16 +5,19 @@
 #endif
 
 #include <winrt/Windows.UI.Xaml.Interop.h>
+#include <ViewModels/CpuPageViewModel.h>
+#include <Framework/Utilities.h>
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 
 namespace winrt::AIDA64::implementation
 {
-	void MainWindow::Inject(winrt::MainViewModel const& model, std::shared_ptr<ILogger> logger)
+	void MainWindow::Inject(winrt::MainViewModel model, std::shared_ptr<ILogger> logger, std::vector<page_data_t> pages)
 	{
-		m_viewModel = model;
+		m_viewModel = std::move(model);
 		m_logger = std::move(logger);
+        m_pages = std::move(pages);
 	}
 
 	void MainWindow::Setup()
@@ -24,7 +27,7 @@ namespace winrt::AIDA64::implementation
 
 	AIDA64::MainViewModel MainWindow::MainViewModel()
 	{
-		return m_viewModel;
+        return m_viewModel;
 	}
 }
 
@@ -51,21 +54,12 @@ void winrt::AIDA64::implementation::MainWindow::MainNavigation_ItemInvoked(winrt
             return;
         }
 
-        if (tag == L"cpu")
-        {
-            ContentFrame().Navigate(xaml_typename<CpuPage>());
+            for (auto& page : m_pages)  
+            {  
+                if (tag == page.tag)  
+                {  
+                    ContentFrame().Navigate(page.page_type, page.view_model);
+                }  
+            }
         }
-        else if (tag == L"memory")
-        {
-            //ContentFrame().Navigate(xaml_typename<MemoryPage>());
-        }
-        else if (tag == L"disk")
-        {
-            //ContentFrame().Navigate(xaml_typename<DiskPage>());
-        }
-        else
-        {
-          
-        }
-    }
 }

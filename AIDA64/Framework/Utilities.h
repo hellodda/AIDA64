@@ -1,16 +1,44 @@
 #pragma once
+#include <Models/CpuModel.h>
 #include <Models/ProcessModel.h>
-#include <Models/ProcessorModel.h>
 #include <WMIDataContext.h>
+#include <winrt/Windows.UI.Xaml.Interop.h>
 
-//-
+//------------------------------------------------------------------
 //- other helpers \/
-//-
+//------------------------------------------------------------------
+
+// nav helper :)
+struct page_data_t
+{
+	page_data_t() = default;
+
+	template<typename view_modelT, typename pageT>
+	page_data_t(winrt::hstring const& tag, view_modelT view_model, pageT page)
+	{
+		this->view_model = box_value(view_model);
+		this->page_type = xaml_typename<pageT>();
+		this->tag = tag;
+	}
+
+	winrt::IInspectable view_model;
+	Windows::UI::Xaml::Interop::TypeName page_type;
+	winrt::hstring tag;
+};
+
+
+template<typename T>
+T exchange_ptr(winrt::com_ptr<T> ptr)
+{
+	return *ptr.get();
+}
+
 
 IAsyncAction mta_context(std::function<void()> const& action);
 
 std::shared_ptr<AIDA64::Framework::WmiDataContext> get_mta_wmi_context();
 
+//don't use in ui context
 void wait(std::function<IAsyncAction()> action);
 
 //-----------------------------------------------------------------
@@ -63,4 +91,4 @@ template<>
 winrt::AIDA64::ProcessModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
 
 template<>
-winrt::AIDA64::ProcessorModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
+winrt::AIDA64::CpuModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);

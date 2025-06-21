@@ -1,5 +1,6 @@
 #pragma once
 #include "ICpuService.h"
+#include "ILogger.h"
 
 namespace winrt
 {
@@ -10,12 +11,13 @@ namespace winrt::AIDA64::Framework
 {
 	struct CpuService : ICpuService
 	{
-		CpuService(std::shared_ptr<WmiDataContext> context);
+		CpuService(std::shared_ptr<WmiDataContext> context, std::shared_ptr<ILogger> logger);
 
-		IAsyncOperation<IVector<ProcessorModel>> GetAllProcessorsAsync() override;
+		IAsyncOperation<IVector<CpuModel>> GetAllProcessorsAsync() override;
 
 	private:
 
 		std::shared_ptr<WmiDataContext> m_context;
+		std::shared_ptr<ILogger> m_logger;
 	};
 }

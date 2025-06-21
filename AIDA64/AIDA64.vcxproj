@@ -110,16 +110,17 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Models\CpuModel.h">
+      <DependentUpon>Models\CpuModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="CpuPage.xaml.h">
       <DependentUpon>CpuPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="Framework\CpuService.h" />
     <ClInclude Include="Framework\ICpuService.h" />
-    <ClInclude Include="Models\ProcessorModel.h">
-      <DependentUpon>Models\ProcessorModel.idl</DependentUpon>
-      <SubType>Code</SubType>
-    </ClInclude>
+    <ClInclude Include="Framework\ServiceLocator.h" />
     <ClInclude Include="ViewModels\CpuPageViewModel.h">
       <DependentUpon>ViewModels\CpuPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -158,15 +159,16 @@
     <Xaml Include="Views\Hardware\CpuPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Models\CpuModel.cpp">
+      <DependentUpon>Models\CpuModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="CpuPage.xaml.cpp">
       <DependentUpon>CpuPage.xaml</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="Framework\CpuService.cpp" />
-    <ClCompile Include="Models\ProcessorModel.cpp">
-      <DependentUpon>Models\ProcessorModel.idl</DependentUpon>
-      <SubType>Code</SubType>
-    </ClCompile>
+    <ClCompile Include="Framework\ServiceLocator.cpp" />
     <ClCompile Include="ViewModels\CpuPageViewModel.cpp">
       <DependentUpon>ViewModels\CpuPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -196,12 +198,12 @@
     <ClCompile Include="WMIDataContext.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Midl Include="Models\CpuModel.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="CpuPage.idl">
       <DependentUpon>CpuPage.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Midl>
-    <Midl Include="Models\ProcessorModel.idl">
-      <SubType>Designer</SubType>
     </Midl>
     <Midl Include="ViewModels\CpuPageViewModel.idl">
       <SubType>Designer</SubType>

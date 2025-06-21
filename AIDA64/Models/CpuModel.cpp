@@ -1,17 +1,17 @@
 ﻿#include "pch.h"
-#include "ProcessorModel.h"
-#if __has_include("ProcessorModel.g.cpp")
-#include "ProcessorModel.g.cpp"
+#include "CpuModel.h"
+#if __has_include("CpuModel.g.cpp")
+#include "CpuModel.g.cpp"
 #endif
 
 namespace winrt::AIDA64::implementation
 {
-    hstring ProcessorModel::Name() const noexcept
+    winrt::hstring CpuModel::Name() const noexcept
     {
         return m_name;
     }
 
-    void ProcessorModel::Name(hstring const& value)
+    void CpuModel::Name(winrt::hstring const& value)
     {
         if (m_name != value)
         {
@@ -19,11 +19,12 @@ namespace winrt::AIDA64::implementation
         }
     }
 
-    hstring ProcessorModel::Manufacturer() const noexcept {
+    winrt::hstring CpuModel::Manufacturer() const noexcept
+    {
         return m_manufacturer;
     }
 
-    void ProcessorModel::Manufacturer(hstring const& value)
+    void CpuModel::Manufacturer(winrt::hstring const& value)
     {
         if (m_manufacturer != value)
         {
@@ -31,11 +32,12 @@ namespace winrt::AIDA64::implementation
         }
     }
 
-    hstring ProcessorModel::Id() const noexcept {
+    winrt::hstring CpuModel::Id() const noexcept
+    {
         return m_processor_id;
     }
 
-    void ProcessorModel::Id(hstring const& value)
+    void CpuModel::Id(winrt::hstring const& value)
     {
         if (m_processor_id != value)
         {
@@ -43,12 +45,12 @@ namespace winrt::AIDA64::implementation
         }
     }
 
-    uint32_t ProcessorModel::CoreCount() const noexcept
+    uint32_t CpuModel::CoreCount() const noexcept
     {
         return m_core_count;
     }
 
-    void ProcessorModel::CoreCount(uint32_t const& value)
+    void CpuModel::CoreCount(uint32_t const& value)
     {
         if (m_core_count != value)
         {
@@ -56,25 +58,25 @@ namespace winrt::AIDA64::implementation
         }
     }
 
-    uint32_t ProcessorModel::MaxClockSpeed() const noexcept
+    uint32_t CpuModel::MaxClockSpeed() const noexcept
     {
         return m_max_clock_speed;
     }
 
-    void ProcessorModel::MaxClockSpeed(uint32_t const& value)
+    void CpuModel::MaxClockSpeed(uint32_t const& value)
     {
-        if (m_max_clock_speed != value) 
+        if (m_max_clock_speed != value)
         {
             m_max_clock_speed = value;
         }
     }
 
-    uint32_t ProcessorModel::CurrentClockSpeed() const noexcept
+    uint32_t CpuModel::CurrentClockSpeed() const noexcept
     {
         return m_current_clock_speed;
     }
 
-    void ProcessorModel::CurrentClockSpeed(uint32_t const& value)
+    void CpuModel::CurrentClockSpeed(uint32_t const& value)
     {
         if (m_current_clock_speed != value)
         {
@@ -82,11 +84,12 @@ namespace winrt::AIDA64::implementation
         }
     }
 
-    uint16_t ProcessorModel::LoadPercentage() const noexcept {
+    uint16_t CpuModel::LoadPercentage() const noexcept
+    {
         return m_load_percentage;
     }
 
-    void ProcessorModel::LoadPercentage(uint16_t const& value)
+    void CpuModel::LoadPercentage(uint16_t const& value)
     {
         if (m_load_percentage != value)
         {
@@ -94,24 +97,25 @@ namespace winrt::AIDA64::implementation
         }
     }
 
-    uint16_t ProcessorModel::Architecture() const noexcept
+    uint16_t CpuModel::Architecture() const noexcept
     {
         return m_architecture;
     }
 
-    void ProcessorModel::Architecture(uint16_t const& value)
+    void CpuModel::Architecture(uint16_t const& value)
     {
-        if (m_architecture != value) {
+        if (m_architecture != value)
+        {
             m_architecture = value;
         }
     }
 
-    uint16_t ProcessorModel::AddressWidth() const noexcept
+    uint16_t CpuModel::AddressWidth() const noexcept
     {
         return m_address_width;
     }
 
-    void ProcessorModel::AddressWidth(uint16_t const& value)
+    void CpuModel::AddressWidth(uint16_t const& value)
     {
         if (m_address_width != value)
         {
@@ -119,14 +123,15 @@ namespace winrt::AIDA64::implementation
         }
     }
 
-    uint16_t ProcessorModel::DataWidth() const noexcept
+    uint16_t CpuModel::DataWidth() const noexcept
     {
         return m_data_width;
     }
 
-    void ProcessorModel::DataWidth(uint16_t const& value)
+    void CpuModel::DataWidth(uint16_t const& value)
     {
-        if (m_data_width != value) {
+        if (m_data_width != value)
+        {
             m_data_width = value;
         }
     }

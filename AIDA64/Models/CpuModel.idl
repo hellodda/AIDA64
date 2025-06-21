@@ -2,10 +2,10 @@ namespace AIDA64
 {
     [bindable]
     [default_interface]
-    runtimeclass ProcessorModel 
+    runtimeclass CpuModel 
     {
-        ProcessorModel();
-
+        CpuModel();
+        
         String Name;
         String Manufacturer;
         String Id;

@@ -10,5 +10,12 @@
 
     <Grid Padding="25">
         <TextBlock Text="Cpu" FontSize="25"/>
+        <StackPanel Spacing="20">
+
+            <Border CornerRadius="10">
+                
+            </Border>
+            
+        </StackPanel>
     </Grid>
 </Page>

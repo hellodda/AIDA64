@@ -104,9 +104,9 @@ winrt::AIDA64::ProcessModel from_wbem<winrt::AIDA64::ProcessModel>(winrt::com_pt
 }
 
 template<>
-winrt::AIDA64::ProcessorModel from_wbem<winrt::AIDA64::ProcessorModel>(winrt::com_ptr<IWbemClassObject> const& object)
+winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemClassObject> const& object)
 {
-    winrt::AIDA64::ProcessorModel model{};
+    winrt::AIDA64::CpuModel model{};
     _variant_t var;
 
     VariantInit(&var);

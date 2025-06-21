@@ -13,28 +13,23 @@
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 
-IAsyncAction Load()
-{
-	co_await winrt::resume_background();
-
-	std::shared_ptr<winrt::AIDA64::Framework::ICpuService> service = std::make_shared<winrt::AIDA64::Framework::CpuService>(get_mta_wmi_context());
-	auto result = co_await service->GetAllProcessorsAsync();
-
-	for (auto& info : result)
-	{
-		std::cout << info.LoadPercentage() << std::endl;
-		MessageBoxW(NULL, info.Name().c_str(), info.Manufacturer().c_str(), MB_OK);
-	}
-	co_return;
-}
-
 namespace winrt::AIDA64::implementation
 {
 	CpuPage::CpuPage()
 	{
-		wait(Load);
 		NavigationCacheMode(Microsoft::UI::Xaml::Navigation::NavigationCacheMode::Required);
     }
+	void CpuPage::OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
+	{
+		if (auto param = e.Parameter().try_as<AIDA64::CpuPageViewModel>())
+		{
+			m_viewModel = param;
+		}
+	}
 
+	winrt::CpuPageViewModel CpuPage::ViewModel()
+	{
+		return m_viewModel;
+	}
 	
 }

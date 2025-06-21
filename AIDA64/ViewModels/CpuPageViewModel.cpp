@@ -6,5 +6,9 @@
 
 namespace winrt::AIDA64::implementation
 {
-    
+	void CpuPageViewModel::Inject(std::shared_ptr<ICpuService> service, std::shared_ptr<ILogger> logger)
+	{
+		m_service = std::move(service);
+		m_logger = std::move(logger);
+	}
 }

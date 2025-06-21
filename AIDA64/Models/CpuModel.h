@@ -1,21 +1,19 @@
 ﻿#pragma once
 
-#include "ProcessorModel.g.h"
-
-using namespace winrt;
+#include "CpuModel.g.h"
 
 namespace winrt::AIDA64::implementation
 {
-    struct ProcessorModel : ProcessorModelT<ProcessorModel>
+    struct CpuModel : CpuModelT<CpuModel>
     {
-        ProcessorModel() = default;
+        CpuModel() = default;
 
         hstring Name() const noexcept;
         void Name(hstring const& value);
 
         hstring Manufacturer() const noexcept;
         void Manufacturer(hstring const& value);
-        
+
         hstring Id() const noexcept;
         void Id(hstring const& value);
 
@@ -47,8 +45,8 @@ namespace winrt::AIDA64::implementation
         hstring m_processor_id{};
 
         uint32_t m_core_count{ 0 };
-        uint32_t m_max_clock_speed{ 0 };   
-        uint32_t m_current_clock_speed{ 0 }; 
+        uint32_t m_max_clock_speed{ 0 };
+        uint32_t m_current_clock_speed{ 0 };
 
         uint16_t m_load_percentage{ 0 };
         uint16_t m_architecture{ 0 };
@@ -59,7 +57,7 @@ namespace winrt::AIDA64::implementation
 
 namespace winrt::AIDA64::factory_implementation
 {
-    struct ProcessorModel : ProcessorModelT<ProcessorModel, implementation::ProcessorModel>
+    struct CpuModel : CpuModelT<CpuModel, implementation::CpuModel>
     {
     };
 }

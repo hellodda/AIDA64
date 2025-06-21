@@ -7,6 +7,7 @@
 
 #include <Framework/ILogger.h>
 #include <Framework/IProcessService.h>
+#include <Framework/ServiceLocator.h>
 
 namespace winrt
 {
