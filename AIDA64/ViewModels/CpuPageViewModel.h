@@ -4,6 +4,8 @@
 #include <Framework/ICpuService.h>
 #include <Framework/ILogger.h>
 
+#include <Helpers/BindableBase.h>
+
 namespace winrt
 {
     using namespace AIDA64;
@@ -18,7 +20,16 @@ namespace winrt::AIDA64::implementation
 
         void Inject(std::shared_ptr<ICpuService> service, std::shared_ptr<ILogger> logger);
 
+        winrt::CpuModel CpuModel();
+        void CpuModel(winrt::CpuModel const& value);
+
     private:
+
+        winrt::IAsyncAction LoadData();
+
+    private:
+
+        winrt::CpuModel m_cpu_model;
 
         std::shared_ptr<ICpuService> m_service;
         std::shared_ptr<ILogger> m_logger;

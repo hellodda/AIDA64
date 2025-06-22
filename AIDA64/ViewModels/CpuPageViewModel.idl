@@ -1,9 +1,12 @@
+import "Models/CpuModel.idl";
+
 namespace AIDA64
 {
     [bindable]
     [default_interface]
-    runtimeclass CpuPageViewModel 
+    runtimeclass CpuPageViewModel
     {
         CpuPageViewModel();
+        CpuModel CpuModel;
     }
 }

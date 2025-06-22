@@ -8,12 +8,31 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Padding="25">
-        <TextBlock Text="Cpu" FontSize="25"/>
-        <StackPanel Spacing="20">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        
+        <Border Grid.Row="0" VerticalAlignment="Top" Height="50" Padding="10">
+            <TextBlock Text="Cpu" FontSize="25"/>
+        </Border>
+        
+        <StackPanel Grid.Row="1" Spacing="20" Padding="25">
 
-            <Border CornerRadius="10">
-                
+            <Border CornerRadius="10" Background="{ThemeResource ControlFillColorDefaultBrush}" Width="500" Height="350" Padding="25">
+                <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
+                    <FontIcon Glyph="&#xE950;" 
+                  FontSize="25"
+                  VerticalAlignment="Top"
+                  Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+
+                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Name, Mode=OneWay}"
+                   FontSize="20"
+                   VerticalAlignment="Top"
+                   TextTrimming="CharacterEllipsis" />
+                </StackPanel>
             </Border>
             
         </StackPanel>
