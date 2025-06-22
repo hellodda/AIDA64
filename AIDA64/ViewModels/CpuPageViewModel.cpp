@@ -26,13 +26,17 @@ namespace winrt::AIDA64::implementation
 		if (m_cpu_model != value)
 		{
 			m_cpu_model = value;
-			//this->RaisePropertyChanged(L"CpuModel");
+			RaisePropertyChanged(L"CpuModel");
 		}
 	}
 	winrt::IAsyncAction CpuPageViewModel::LoadData()
 	{
-		auto model = (co_await m_service->GetAllProcessorsAsync()).GetAt(0);
-		CpuModel(model);
+		while (true)
+		{
+			auto model = (co_await m_service->GetAllProcessorsAsync()).GetAt(0);
+			CpuModel(model);
+		}
+		
 
 		co_return;
 	}

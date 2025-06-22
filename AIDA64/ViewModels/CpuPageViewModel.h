@@ -14,7 +14,7 @@ namespace winrt
 
 namespace winrt::AIDA64::implementation
 {
-    struct CpuPageViewModel : CpuPageViewModelT<CpuPageViewModel>
+    struct CpuPageViewModel : CpuPageViewModelT<CpuPageViewModel, Helpers::BindableBase>
     {
         CpuPageViewModel() = default;
 
