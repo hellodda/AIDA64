@@ -52,6 +52,7 @@
     <ClCompile Include="Framework\ServiceLocator.cpp">
       <Filter>Framework\Services\ServiceLocator</Filter>
     </ClCompile>
+    <ClCompile Include="DIConfig.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />

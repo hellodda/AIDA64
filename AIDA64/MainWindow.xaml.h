@@ -7,8 +7,6 @@
 #include <Framework/ILogger.h>
 #include <Framework/Utilities.h>
 
-
-
 namespace winrt
 {
     using namespace winrt::AIDA64::Framework;

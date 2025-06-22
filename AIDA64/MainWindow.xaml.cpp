@@ -31,7 +31,7 @@ namespace winrt::AIDA64::implementation
 	}
 }
 
-void winrt::AIDA64::implementation::MainWindow::MainNavigation_ItemInvoked(winrt::Microsoft::UI::Xaml::Controls::NavigationView const& sender, winrt::Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs const& args)
+void winrt::AIDA64::implementation::MainWindow::MainNavigation_ItemInvoked([[maybe_unused]] winrt::Microsoft::UI::Xaml::Controls::NavigationView const& sender, winrt::Microsoft::UI::Xaml::Controls::NavigationViewItemInvokedEventArgs const& args)
 {
     if (args.IsSettingsInvoked())
     {
