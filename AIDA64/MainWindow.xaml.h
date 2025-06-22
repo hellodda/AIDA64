@@ -7,8 +7,6 @@
 #include <Framework/ILogger.h>
 #include <Framework/Utilities.h>
 
-#include <boost/di.hpp>
-
 
 
 namespace winrt
@@ -39,8 +37,7 @@ namespace winrt::AIDA64::implementation
     private:
 
         std::shared_ptr<ILogger> m_logger;
-        std::shared_ptr<ServiceLocator> m_locator;
-
+      
         std::vector<page_data_t> m_pages;
 
         winrt::MainViewModel m_viewModel;

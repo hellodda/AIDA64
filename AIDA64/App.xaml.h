@@ -10,8 +10,10 @@ namespace winrt::AIDA64::implementation
 
         void OnLaunched(Microsoft::UI::Xaml::LaunchActivatedEventArgs const&);
         void ConfigureDependencies();
+        void StartTimer();
 
     private:
         winrt::Microsoft::UI::Xaml::Window window{ nullptr };
+        winrt::Windows::System::Threading::ThreadPoolTimer m_timer{ nullptr };
     };
 }

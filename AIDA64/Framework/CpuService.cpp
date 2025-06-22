@@ -2,7 +2,7 @@
 #include "CpuService.h"
 #include "Utilities.h"
 
-constexpr wchar_t* QUERY_PROCESSOR_LIST = L"SELECT * FROM Win32_Processor";
+inline constexpr const wchar_t* QUERY_PROCESSOR_LIST = L"SELECT * FROM Win32_Processor";
 
 namespace winrt::AIDA64::Framework
 {

@@ -2,8 +2,8 @@
 #include "Utilities.h"
 #include "ProcessService.h"
 
-inline constexpr wchar_t* QUERY_PROCESS_LIST = L"SELECT * FROM Win32_Process";
-inline constexpr wchar_t* QUERY_PROCESS_FROM = L"SELECT * FROM Win32_Process WHERE";
+inline constexpr const wchar_t* QUERY_PROCESS_LIST = L"SELECT * FROM Win32_Process";
+inline constexpr const wchar_t* QUERY_PROCESS_FROM = L"SELECT * FROM Win32_Process WHERE";
 
 namespace winrt::AIDA64::Framework
 {

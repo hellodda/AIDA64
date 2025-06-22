@@ -2,7 +2,7 @@ namespace AIDA64
 {
     [bindable]
     [default_interface]
-    runtimeclass MainViewModel : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+    runtimeclass MainViewModel
     {
         MainViewModel();
     }

@@ -3,7 +3,7 @@
 
 #include "Utilities.h"
 
-IAsyncAction mta_context(std::function<void()> const& action)
+winrt::Windows::Foundation::IAsyncAction mta_context(std::function<void()> const& action)
 {
     co_await winrt::resume_background();
 
@@ -12,15 +12,15 @@ IAsyncAction mta_context(std::function<void()> const& action)
     co_return;
 }
 
-std::shared_ptr<AIDA64::Framework::WmiDataContext> get_mta_wmi_context()
+std::shared_ptr<winrt::AIDA64::Framework::WmiDataContext> get_mta_wmi_context()
 {
     static auto context = std::async(std::launch::async, [] {
-       return std::make_shared<AIDA64::Framework::WmiDataContext>();
+       return std::make_shared<winrt::AIDA64::Framework::WmiDataContext>();
     }).get();
     return context;
 }
 
-void wait(std::function<IAsyncAction()> action)
+void wait(std::function<winrt::Windows::Foundation::IAsyncAction()> action)
 {
     std::async(std::launch::async, [&action] {
         action().get();

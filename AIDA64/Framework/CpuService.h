@@ -1,9 +1,11 @@
 #pragma once
 #include "ICpuService.h"
 #include "ILogger.h"
+#include <Models/CpuModel.h>
 
 namespace winrt
 {
+	using namespace AIDA64;
 	using namespace Windows::Foundation;
 }
 

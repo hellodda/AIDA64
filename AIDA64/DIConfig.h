@@ -1,7 +1,6 @@
 #pragma once
 
 #pragma once
-#include <boost/di.hpp>
 #include <Framework/Logger.h>
 #include <Framework/ProcessService.h>
 #include <ViewModels/MainViewModel.h>

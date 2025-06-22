@@ -2,7 +2,7 @@
 
 namespace winrt
 {
-    using namespace Microsoft::UI::Xaml::Data;
+    using namespace winrt::Microsoft::UI::Xaml::Data;
 }
 
 namespace winrt::AIDA64::Helpers

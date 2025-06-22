@@ -1,4 +1,4 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "App.xaml.h"
 #include "MainWindow.xaml.h"
 #include <Framework/CpuService.h>
@@ -42,6 +42,7 @@ namespace winrt::AIDA64::implementation
        
         ConfigureDependencies();
 
+
         window.Activate();
     }
 
@@ -69,5 +70,13 @@ namespace winrt::AIDA64::implementation
         window = make<MainWindow>();
 
         window.as<MainWindow>()->Inject(main_view_model, logger, pages);
+    }
+    void App::StartTimer()  
+    {  
+        using namespace std::chrono_literals; 
+
+        m_timer = winrt::Windows::System::Threading::ThreadPoolTimer::CreatePeriodicTimer([](winrt::Windows::System::Threading::ThreadPoolTimer const& time) {  
+            OutputDebugString(L"Таймер сработал!\n");  
+        }, 1000ms);  
     }
 }
