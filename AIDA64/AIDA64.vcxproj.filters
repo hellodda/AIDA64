@@ -25,13 +25,13 @@
     <Midl Include="Models\CpuModel.idl">
       <Filter>Models</Filter>
     </Midl>
+    <Midl Include="Helpers\BindableBase.idl">
+      <Filter>Helpers</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="Helpers\RelayCommand.cpp">
-      <Filter>Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="Helpers\BindableBase.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
     <ClCompile Include="Framework\ProcessService.cpp">
@@ -58,9 +58,6 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="DIConfig.h" />
     <ClInclude Include="Helpers\RelayCommand.h">
-      <Filter>Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="Helpers\BindableBase.h">
       <Filter>Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Framework\ProcessService.h">

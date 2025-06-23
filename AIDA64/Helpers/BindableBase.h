@@ -1,13 +1,15 @@
-#pragma once
+﻿#pragma once
+
+#include "BindableBase.g.h"
 
 namespace winrt
 {
     using namespace winrt::Microsoft::UI::Xaml::Data;
 }
 
-namespace winrt::AIDA64::Helpers
+namespace winrt::AIDA64::implementation
 {
-    struct BindableBase : winrt::implements<BindableBase, INotifyPropertyChanged>
+    struct BindableBase : BindableBaseT<BindableBase, INotifyPropertyChanged>
     {
         BindableBase() = default;
 
@@ -20,5 +22,12 @@ namespace winrt::AIDA64::Helpers
 
     private:
         winrt::event<winrt::PropertyChangedEventHandler> m_propertyChanged;
+    };
+}
+
+namespace winrt::AIDA64::factory_implementation
+{
+    struct BindableBase : BindableBaseT<BindableBase, implementation::BindableBase>
+    {
     };
 }

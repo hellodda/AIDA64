@@ -28,7 +28,7 @@
                   VerticalAlignment="Top"
                   Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" />
 
-                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Name, Mode=OneWay}"
+                    <TextBlock Text="{x:Bind ViewModel.CpuModel.LoadPercentage, Mode=OneWay}"
                    FontSize="20"
                    VerticalAlignment="Top"
                    TextTrimming="CharacterEllipsis" />

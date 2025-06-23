@@ -14,7 +14,7 @@ namespace winrt
 
 namespace winrt::AIDA64::implementation
 {
-    struct CpuPageViewModel : CpuPageViewModelT<CpuPageViewModel, Helpers::BindableBase>
+    struct CpuPageViewModel : CpuPageViewModelT<CpuPageViewModel, implementation::BindableBase>
     {
         CpuPageViewModel() = default;
 
@@ -24,11 +24,6 @@ namespace winrt::AIDA64::implementation
         void CpuModel(winrt::CpuModel const& value);
 
     private:
-
-        winrt::IAsyncAction LoadData();
-
-    private:
-
         winrt::CpuModel m_cpu_model;
 
         std::shared_ptr<ICpuService> m_service;

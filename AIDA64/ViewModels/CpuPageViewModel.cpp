@@ -4,16 +4,12 @@
 #include "CpuPageViewModel.g.cpp"
 #endif
 
-#include <Framework/Utilities.h>
-
 namespace winrt::AIDA64::implementation
 {
 	void CpuPageViewModel::Inject(std::shared_ptr<ICpuService> service, std::shared_ptr<ILogger> logger)
 	{
 		m_service = std::move(service);
 		m_logger = std::move(logger);
-
-		LoadData();
 	}
 
 	winrt::CpuModel CpuPageViewModel::CpuModel()
@@ -28,16 +24,5 @@ namespace winrt::AIDA64::implementation
 			m_cpu_model = value;
 			RaisePropertyChanged(L"CpuModel");
 		}
-	}
-	winrt::IAsyncAction CpuPageViewModel::LoadData()
-	{
-		while (true)
-		{
-			auto model = (co_await m_service->GetAllProcessorsAsync()).GetAt(0);
-			CpuModel(model);
-		}
-		
-
-		co_return;
 	}
 }

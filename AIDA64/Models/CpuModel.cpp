@@ -16,6 +16,7 @@ namespace winrt::AIDA64::implementation
         if (m_name != value)
         {
             m_name = value;
+            
         }
     }
 

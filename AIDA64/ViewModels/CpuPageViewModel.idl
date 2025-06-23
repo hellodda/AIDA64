@@ -1,10 +1,11 @@
 import "Models/CpuModel.idl";
+import "Helpers/BindableBase.idl";
 
 namespace AIDA64
 {
     [bindable]
     [default_interface]
-    runtimeclass CpuPageViewModel
+    runtimeclass CpuPageViewModel : BindableBase
     {
         CpuPageViewModel();
         CpuModel CpuModel;

@@ -2,7 +2,7 @@ namespace AIDA64
 {
     [bindable]
     [default_interface]
-    runtimeclass CpuModel 
+    runtimeclass CpuModel
     {
         CpuModel();
         

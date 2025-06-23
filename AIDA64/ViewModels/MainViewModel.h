@@ -20,7 +20,7 @@ namespace winrt
 
 namespace winrt::AIDA64::implementation
 {
-    struct MainViewModel : MainViewModelT<MainViewModel, BindableBase>
+    struct MainViewModel : MainViewModelT<MainViewModel, implementation::BindableBase>
     {
         MainViewModel();
 

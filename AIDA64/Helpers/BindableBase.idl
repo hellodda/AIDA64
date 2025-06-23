@@ -1,0 +1,10 @@
+namespace AIDA64
+{
+    [bindable]
+    [default_interface]
+    unsealed runtimeclass BindableBase 
+    {
+        BindableBase();
+       
+    }
+}
