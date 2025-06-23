@@ -1,13 +1,13 @@
 import "Models/CpuModel.idl";
-import "Helpers/BindableBase.idl";
 
 namespace AIDA64
 {
     [bindable]
     [default_interface]
-    runtimeclass CpuPageViewModel : BindableBase
+    runtimeclass CpuPageViewModel : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
     {
         CpuPageViewModel();
         CpuModel CpuModel;
+        Microsoft.UI.Xaml.Input.ICommand TEST { get; };
     }
 }

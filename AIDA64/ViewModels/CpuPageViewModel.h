@@ -1,20 +1,23 @@
 ﻿#pragma once
 
 #include "CpuPageViewModel.g.h"
+
 #include <Framework/ICpuService.h>
 #include <Framework/ILogger.h>
 
 #include <Helpers/BindableBase.h>
+#include <Helpers/RelayCommand.h>
 
 namespace winrt
 {
     using namespace AIDA64;
     using namespace AIDA64::Framework;
+    using namespace AIDA64::Helpers;
 }
 
 namespace winrt::AIDA64::implementation
 {
-    struct CpuPageViewModel : CpuPageViewModelT<CpuPageViewModel, implementation::BindableBase>
+    struct CpuPageViewModel : CpuPageViewModelT<CpuPageViewModel, BindableBase>
     {
         CpuPageViewModel() = default;
 
@@ -23,8 +26,11 @@ namespace winrt::AIDA64::implementation
         winrt::CpuModel CpuModel();
         void CpuModel(winrt::CpuModel const& value);
 
+        winrt::ICommand TEST();
+
     private:
         winrt::CpuModel m_cpu_model;
+        winrt::ICommand AOAOAO;
 
         std::shared_ptr<ICpuService> m_service;
         std::shared_ptr<ILogger> m_logger;

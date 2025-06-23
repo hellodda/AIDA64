@@ -25,9 +25,6 @@
     <Midl Include="Models\CpuModel.idl">
       <Filter>Models</Filter>
     </Midl>
-    <Midl Include="Helpers\BindableBase.idl">
-      <Filter>Helpers</Filter>
-    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -53,6 +50,7 @@
       <Filter>Framework\Services\ServiceLocator</Filter>
     </ClCompile>
     <ClCompile Include="DIConfig.cpp" />
+    <ClCompile Include="Helpers\BindableBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -87,6 +85,7 @@
     <ClInclude Include="Framework\ServiceLocator.h">
       <Filter>Framework\Services\ServiceLocator</Filter>
     </ClInclude>
+    <ClInclude Include="Helpers\BindableBase.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">

@@ -25,4 +25,18 @@ namespace winrt::AIDA64::implementation
 			RaisePropertyChanged(L"CpuModel");
 		}
 	}
+	winrt::ICommand CpuPageViewModel::TEST()
+	{
+		if (!AOAOAO)
+		{
+			AOAOAO = winrt::make<RelayCommand>([this]() -> IAsyncAction {
+
+				m_cpu_model.LoadPercentage((m_cpu_model.LoadPercentage() + 1) * 2);
+				RaisePropertyChanged(L"CpuModel");
+
+				co_return;
+			});
+		}
+		return AOAOAO;
+	}
 }

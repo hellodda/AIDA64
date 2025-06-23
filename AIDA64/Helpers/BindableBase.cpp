@@ -1,10 +1,7 @@
-﻿#include "pch.h"
+#include "pch.h"
 #include "BindableBase.h"
-#if __has_include("BindableBase.g.cpp")
-#include "BindableBase.g.cpp"
-#endif
 
-namespace winrt::AIDA64::implementation
+namespace winrt::AIDA64::Helpers
 {
     winrt::event_token BindableBase::PropertyChanged(winrt::PropertyChangedEventHandler const& handler)
     {

@@ -24,18 +24,15 @@
 #include <winrt/Microsoft.UI.Xaml.h>
 #include <winrt/Microsoft.UI.Xaml.Controls.h>
 #include <winrt/Microsoft.UI.Xaml.Controls.Primitives.h>
-#include <winrt/Microsoft.UI.Xaml.Data.h>
 #include <winrt/Microsoft.UI.Xaml.Input.h>
 #include <winrt/Microsoft.UI.Xaml.Media.h>
 #include <winrt/Microsoft.UI.Xaml.Navigation.h>
 #include <winrt/Microsoft.UI.Dispatching.h>
 
+
 #include <future>
-#include <functional>
-#include <chrono>
 #include <boost/di.hpp>
 
-#include <wil/cppwinrt_helpers.h>
 
 //
 // \/ patom udalyu

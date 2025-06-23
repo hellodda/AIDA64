@@ -32,6 +32,7 @@
                    FontSize="20"
                    VerticalAlignment="Top"
                    TextTrimming="CharacterEllipsis" />
+                    <Button Content="haziv ara" Command="{x:Bind ViewModel.TEST}"/>
                 </StackPanel>
             </Border>
             

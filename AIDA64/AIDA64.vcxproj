@@ -81,7 +81,7 @@
       <PrecompiledHeaderFile>pch.h</PrecompiledHeaderFile>
       <PrecompiledHeaderOutputFile>$(IntDir)pch.pch</PrecompiledHeaderOutputFile>
       <WarningLevel>Level4</WarningLevel>
-      <AdditionalOptions>%(AdditionalOptions) /bigobj /utf-8 /Zm300
+      <AdditionalOptions>%(AdditionalOptions) /bigobj /utf-8 /Zm1000
 </AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -112,10 +112,7 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Helpers\BindableBase.h">
-      <DependentUpon>Helpers\BindableBase.idl</DependentUpon>
-      <SubType>Code</SubType>
-    </ClInclude>
+    <ClInclude Include="Helpers\BindableBase.h" />
     <ClInclude Include="Models\CpuModel.h">
       <DependentUpon>Models\CpuModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -164,11 +161,8 @@
     <Xaml Include="Views\Hardware\CpuPage.xaml" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Helpers\BindableBase.cpp">
-      <DependentUpon>Helpers\BindableBase.idl</DependentUpon>
-      <SubType>Code</SubType>
-    </ClCompile>
     <ClCompile Include="DIConfig.cpp" />
+    <ClCompile Include="Helpers\BindableBase.cpp" />
     <ClCompile Include="Models\CpuModel.cpp">
       <DependentUpon>Models\CpuModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -207,9 +201,6 @@
     <ClCompile Include="WMIDataContext.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Midl Include="Helpers\BindableBase.idl">
-      <SubType>Designer</SubType>
-    </Midl>
     <Midl Include="Models\CpuModel.idl">
       <SubType>Designer</SubType>
     </Midl>
