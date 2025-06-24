@@ -88,16 +88,16 @@ winrt::AIDA64::ProcessModel from_wbem<winrt::AIDA64::ProcessModel>(winrt::com_pt
 
     VariantInit(&var);
 
-    if (try_get_property(L"Name", object, var)) {
-        if (is_string(var.vt)) model.Name(var.bstrVal);
+    if (try_get_property(L"Name", object, var) && is_string(var.vt)) {
+        model.Name(var.bstrVal);
         var.Clear();
     }
-    if (try_get_property(L"ProcessId", object, var)) {
-        if (is_integer(var.vt)) model.Id(var.uintVal);
+    if (try_get_property(L"ProcessId", object, var) && is_integer(var.vt)) {
+        model.Id(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"ThreadCount", object, var)) {
-        if (is_integer(var.vt)) model.ThreadCount(var.uintVal);
+    if (try_get_property(L"ThreadCount", object, var) && is_integer(var.vt)) {
+        model.ThreadCount(var.uintVal);
         var.Clear();
     }
     return model;
@@ -134,7 +134,6 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
         model.Id(var.bstrVal);
         var.Clear();
     }
-
     if (try_get_property(L"NumberOfCores", object, var) && is_integer(var.vt)) {
         model.CoreCount(var.uintVal);
         var.Clear();
@@ -159,7 +158,6 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
         model.CurrentClockSpeed(var.uintVal);
         var.Clear();
     }
-
     if (try_get_property(L"LoadPercentage", object, var) && is_integer(var.vt)) {
         model.LoadPercentage(static_cast<uint16_t>(var.uintVal));
         var.Clear();
