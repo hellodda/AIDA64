@@ -11,7 +11,7 @@ namespace winrt::AIDA64::Framework
         m_context = std::move(context);
         m_logger = std::move(logger);
 	}
-	IAsyncOperation<IVector<CpuModel>> CpuService::GetAllProcessorsAsync()
+	IAsyncOperation<IVector<CpuModel>> CpuService::GetAllCpusAsync()
     { 
         co_await winrt::resume_background();
 

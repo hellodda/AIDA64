@@ -85,7 +85,6 @@ winrt::AIDA64::ProcessModel from_wbem<winrt::AIDA64::ProcessModel>(winrt::com_pt
 {
     winrt::AIDA64::ProcessModel model{};
     _variant_t var;
-
     VariantInit(&var);
 
     if (try_get_property(L"Name", object, var) && is_string(var.vt)) {

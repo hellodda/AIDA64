@@ -35,7 +35,7 @@ namespace winrt::AIDA64::implementation
 	{
 		if (!m_service) co_return;
 
-		auto model = (co_await m_service->GetAllProcessorsAsync()).GetAt(0);
+		auto model = (co_await m_service->GetAllCpusAsync()).GetAt(0);
 
 		if (!model) co_return;
 

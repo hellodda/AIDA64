@@ -12,6 +12,6 @@ namespace winrt::AIDA64::Framework
 {
 	struct ICpuService
 	{
-		virtual IAsyncOperation<IVector<CpuModel>> GetAllProcessorsAsync() = 0;
+		virtual IAsyncOperation<IVector<CpuModel>> GetAllCpusAsync() = 0;
 	};
 }

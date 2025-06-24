@@ -15,7 +15,7 @@ namespace winrt::AIDA64::Framework
 	{
 		CpuService(std::shared_ptr<WmiDataContext> context, std::shared_ptr<ILogger> logger);
 
-		IAsyncOperation<IVector<CpuModel>> GetAllProcessorsAsync() override;
+		IAsyncOperation<IVector<CpuModel>> GetAllCpusAsync() override;
 
 	private:
 
