@@ -159,35 +159,35 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
         var.Clear();
     }
     if (try_get_property(L"LoadPercentage", object, var) && is_integer(var.vt)) {
-        model.LoadPercentage(static_cast<uint16_t>(var.uintVal));
+        model.LoadPercentage(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"Architecture", object, var) && is_integer(var.vt)) {
-        model.Architecture(static_cast<uint16_t>(var.uintVal));
+        model.Architecture(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"AddressWidth", object, var) && is_integer(var.vt)) {
-        model.AddressWidth(static_cast<uint16_t>(var.uintVal));
+        model.AddressWidth(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"DataWidth", object, var) && is_integer(var.vt)) {
-        model.DataWidth(static_cast<uint16_t>(var.uintVal));
+        model.DataWidth(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"Revision", object, var) && is_integer(var.vt)) {
-        model.Revision(static_cast<uint16_t>(var.uintVal));
+        model.Revision(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"Stepping", object, var) && is_integer(var.vt)) {
-        model.Stepping(static_cast<uint16_t>(var.uintVal));
+        model.Stepping(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"Family", object, var) && is_integer(var.vt)) {
-        model.Family(static_cast<uint16_t>(var.uintVal));
+        model.Family(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"CurrentVoltage", object, var) && is_integer(var.vt)) {
-        model.CurrentVoltage(static_cast<uint16_t>(var.uintVal));
+        model.CurrentVoltage(var.uintVal);
         var.Clear();
     }
 
