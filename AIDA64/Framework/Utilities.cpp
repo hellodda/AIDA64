@@ -108,50 +108,90 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
 {
     winrt::AIDA64::CpuModel model{};
     _variant_t var;
-
     VariantInit(&var);
 
-    if (try_get_property(L"Name", object, var)) {
-        if (is_string(var.vt)) model.Name(var.bstrVal);
+    if (try_get_property(L"Name", object, var) && is_string(var.vt)) {
+        model.Name(var.bstrVal);
         var.Clear();
     }
-    if (try_get_property(L"Manufacturer", object, var)) {
-        if (is_string(var.vt)) model.Manufacturer(var.bstrVal);
+    if (try_get_property(L"Manufacturer", object, var) && is_string(var.vt)) {
+        model.Manufacturer(var.bstrVal);
         var.Clear();
     }
-    if (try_get_property(L"ProcessorId", object, var)) {
-        if (is_string(var.vt)) model.Id(var.bstrVal);
+    if (try_get_property(L"DeviceID", object, var) && is_string(var.vt)) {
+        model.DeviceId(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Caption", object, var) && is_string(var.vt)) {
+        model.Caption(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Description", object, var) && is_string(var.vt)) {
+        model.Description(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ProcessorId", object, var) && is_string(var.vt)) {
+        model.Id(var.bstrVal);
         var.Clear();
     }
 
-    //int \/
-    if (try_get_property(L"NumberOfCores", object, var)) {
-        if (is_integer(var.vt)) model.CoreCount(var.uintVal);
+    if (try_get_property(L"NumberOfCores", object, var) && is_integer(var.vt)) {
+        model.CoreCount(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"MaxClockSpeed", object, var)) {
-        if (is_integer(var.vt)) model.MaxClockSpeed(var.uintVal);
+    if (try_get_property(L"NumberOfLogicalProcessors", object, var) && is_integer(var.vt)) {
+        model.NumberOfLogicalProcessors(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"CurrentClockSpeed", object, var)) {
-        if (is_integer(var.vt)) model.CurrentClockSpeed(var.uintVal);
+    if (try_get_property(L"L2CacheSize", object, var) && is_integer(var.vt)) {
+        model.L2CacheSize(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"LoadPercentage", object, var)) {
-        if (is_integer(var.vt)) model.LoadPercentage(var.uintVal);
+    if (try_get_property(L"L3CacheSize", object, var) && is_integer(var.vt)) {
+        model.L3CacheSize(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"Architecture", object, var)) {
-        if (is_integer(var.vt)) model.Architecture(var.uintVal);
+    if (try_get_property(L"MaxClockSpeed", object, var) && is_integer(var.vt)) {
+        model.MaxClockSpeed(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"AddressWidth", object, var)) {
-        if (is_integer(var.vt)) model.AddressWidth(var.uintVal);
+    if (try_get_property(L"CurrentClockSpeed", object, var) && is_integer(var.vt)) {
+        model.CurrentClockSpeed(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"DataWidth", object, var)) {
-        if (is_integer(var.vt)) model.DataWidth(var.uintVal);
+
+    if (try_get_property(L"LoadPercentage", object, var) && is_integer(var.vt)) {
+        model.LoadPercentage(static_cast<uint16_t>(var.uintVal));
         var.Clear();
     }
+    if (try_get_property(L"Architecture", object, var) && is_integer(var.vt)) {
+        model.Architecture(static_cast<uint16_t>(var.uintVal));
+        var.Clear();
+    }
+    if (try_get_property(L"AddressWidth", object, var) && is_integer(var.vt)) {
+        model.AddressWidth(static_cast<uint16_t>(var.uintVal));
+        var.Clear();
+    }
+    if (try_get_property(L"DataWidth", object, var) && is_integer(var.vt)) {
+        model.DataWidth(static_cast<uint16_t>(var.uintVal));
+        var.Clear();
+    }
+    if (try_get_property(L"Revision", object, var) && is_integer(var.vt)) {
+        model.Revision(static_cast<uint16_t>(var.uintVal));
+        var.Clear();
+    }
+    if (try_get_property(L"Stepping", object, var) && is_integer(var.vt)) {
+        model.Stepping(static_cast<uint16_t>(var.uintVal));
+        var.Clear();
+    }
+    if (try_get_property(L"Family", object, var) && is_integer(var.vt)) {
+        model.Family(static_cast<uint16_t>(var.uintVal));
+        var.Clear();
+    }
+    if (try_get_property(L"CurrentVoltage", object, var) && is_integer(var.vt)) {
+        model.CurrentVoltage(static_cast<uint16_t>(var.uintVal));
+        var.Clear();
+    }
+
     return model;
 }

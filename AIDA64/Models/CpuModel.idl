@@ -5,7 +5,7 @@ namespace AIDA64
     runtimeclass CpuModel
     {
         CpuModel();
-        
+
         String Name;
         String Manufacturer;
         String Id;
@@ -18,5 +18,18 @@ namespace AIDA64
         UInt16 Architecture;
         UInt16 AddressWidth;
         UInt16 DataWidth;
+
+        String DeviceId;
+        String Caption;
+        String Description;
+
+        UInt32 NumberOfLogicalProcessors;
+        UInt32 L2CacheSize;
+        UInt32 L3CacheSize;
+
+        UInt16 Revision;
+        UInt16 Stepping;
+        UInt16 Family;
+        UInt16 CurrentVoltage;
     }
 }

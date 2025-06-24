@@ -6,10 +6,16 @@
 
 namespace winrt::AIDA64::implementation
 {
+	CpuPageViewModel::CpuPageViewModel()
+	{
+
+	}
+
 	void CpuPageViewModel::Inject(std::shared_ptr<ICpuService> service, std::shared_ptr<ILogger> logger)
 	{
 		m_service = std::move(service);
 		m_logger = std::move(logger);
+		LoadDataAsync();
 	}
 
 	winrt::CpuModel CpuPageViewModel::CpuModel()
@@ -25,18 +31,16 @@ namespace winrt::AIDA64::implementation
 			RaisePropertyChanged(L"CpuModel");
 		}
 	}
-	winrt::ICommand CpuPageViewModel::TEST()
+	winrt::IAsyncAction CpuPageViewModel::LoadDataAsync()
 	{
-		if (!AOAOAO)
-		{
-			AOAOAO = winrt::make<RelayCommand>([this]() -> IAsyncAction {
+		if (!m_service) co_return;
 
-				m_cpu_model.LoadPercentage((m_cpu_model.LoadPercentage() + 1) * 2);
-				RaisePropertyChanged(L"CpuModel");
+		auto model = (co_await m_service->GetAllProcessorsAsync()).GetAt(0);
 
-				co_return;
-			});
-		}
-		return AOAOAO;
+		if (!model) co_return;
+
+		CpuModel(model);
+
+		co_return;
 	}
 }

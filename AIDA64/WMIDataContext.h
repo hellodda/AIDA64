@@ -1,5 +1,7 @@
 #pragma once
 
+static constexpr const wchar_t* STANDART_NAMESPACE = L"ROOT\\CIMV2";
+
 namespace winrt
 {
 	using namespace winrt::Windows::Foundation;
@@ -25,7 +27,7 @@ namespace winrt::AIDA64::Framework
 
 	private:		
 		
-		hstring m_namespace{ L"ROOT\\CIMV2" };
+		hstring m_namespace{ STANDART_NAMESPACE };
 		com_ptr<IWbemServices> m_services{ nullptr };
 	};
 }

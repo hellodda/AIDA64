@@ -8,6 +8,5 @@ namespace AIDA64
     {
         CpuPageViewModel();
         CpuModel CpuModel;
-        Microsoft.UI.Xaml.Input.ICommand TEST { get; };
     }
 }

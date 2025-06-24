@@ -13,29 +13,88 @@
             <RowDefinition Height="auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        
-        
-        <Border Grid.Row="0" VerticalAlignment="Top" Height="50" Padding="10">
+
+        <Border Grid.Row="0" VerticalAlignment="Top" Padding="25">
             <TextBlock Text="Cpu" FontSize="25"/>
         </Border>
-        
-        <StackPanel Grid.Row="1" Spacing="20" Padding="25">
 
-            <Border CornerRadius="10" Background="{ThemeResource ControlFillColorDefaultBrush}" Width="500" Height="350" Padding="25">
-                <StackPanel Orientation="Horizontal" Spacing="10" VerticalAlignment="Center">
-                    <FontIcon Glyph="&#xE950;" 
-                  FontSize="25"
-                  VerticalAlignment="Top"
-                  Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}" />
+        <ScrollViewer Grid.Row="1"
+            HorizontalScrollMode="Disabled"
+            VerticalScrollMode="Enabled"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
+            <StackPanel Grid.Row="1" Spacing="20" Padding="25">
 
-                    <TextBlock Text="{x:Bind ViewModel.CpuModel.LoadPercentage, Mode=OneWay}"
-                   FontSize="20"
-                   VerticalAlignment="Top"
-                   TextTrimming="CharacterEllipsis" />
-                    <Button Content="haziv ara" Command="{x:Bind ViewModel.TEST}"/>
+                <StackPanel Orientation="Vertical" Spacing="2" VerticalAlignment="Center">
+
+                    <Border Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="5 5 0 0" Height="60" Padding="15">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
+                            <FontIcon Glyph="&#xE950;"  FontSize="20"/>
+                            <TextBlock Text="{x:Bind ViewModel.CpuModel.Name, Mode=OneWay}" FontSize="20"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" Padding="15">
+
+                        <StackPanel Orientation="Vertical" Spacing="20">
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
+                                <FontIcon Glyph="&#xE946;" />
+                                <TextBlock Text="About CPU" FontSize="20"/>
+                            </StackPanel>
+
+                            <StackPanel Spacing="15" Orientation="Horizontal">
+
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="Manufacturer:"/>
+                                    <TextBlock Text="Architecture:"/>
+                                    <TextBlock Text="Address Width:"/>
+                                    <TextBlock Text="Data Width:"/>
+                                    <TextBlock Text="Physical Cores:"/>
+                                    <TextBlock Text="Max Clock Speed:"/>
+                                    <TextBlock Text="Device ID:"/>
+                                    <TextBlock Text="Caption:"/>
+                                    <TextBlock Text="Description:"/>
+                                    <TextBlock Text="Logical Processors:"/>
+                                    <TextBlock Text="L2 Cache Size (KB):"/>
+                                    <TextBlock Text="L3 Cache Size (KB):"/>
+                                    <TextBlock Text="Revision:"/>
+                                    <TextBlock Text="Stepping:"/>
+                                    <TextBlock Text="Family:"/>
+                                    <TextBlock Text="Current Voltage:"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Manufacturer, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Architecture, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.AddressWidth, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.DataWidth, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.CoreCount, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.MaxClockSpeed, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.DeviceId, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Caption, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Description, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.NumberOfLogicalProcessors, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.L2CacheSize, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.L3CacheSize, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Revision, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Stepping, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Family, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.CurrentVoltage, Mode=OneWay}"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="0 0 5 5" Height="60" Padding="15">
+
+                    </Border>
+
                 </StackPanel>
-            </Border>
-            
-        </StackPanel>
+
+
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
