@@ -30,7 +30,7 @@
                     <Border Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="5 5 0 0" Height="60" Padding="15">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
                             <FontIcon Glyph="&#xE950;"  FontSize="20"/>
-                            <TextBlock Text="{x:Bind ViewModel.CpuModel.Name, Mode=OneWay}" FontSize="20"/>
+                            <TextBlock Text="{x:Bind ViewModel.CpuModel.Name, Mode=OneWay}" FontSize="20" Margin="0 -2 0 0"/>
                         </StackPanel>
                     </Border>
 
@@ -40,7 +40,7 @@
 
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
                                 <FontIcon Glyph="&#xE946;" />
-                                <TextBlock Text="Identification" FontSize="20"/>
+                                <TextBlock Text="Identification" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
 
                             <StackPanel Spacing="15" Orientation="Horizontal">
@@ -70,7 +70,7 @@
 
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
                                 <FontIcon Glyph="&#xE74C;" />
-                                <TextBlock Text="Architecture" FontSize="20"/>
+                                <TextBlock Text="Architecture" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
 
                             <StackPanel Spacing="15" Orientation="Horizontal">
@@ -103,7 +103,7 @@
 
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
                                 <FontIcon Glyph="&#xEC4A;" />
-                                <TextBlock Text="Performance" FontSize="20"/>
+                                <TextBlock Text="Performance" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
 
                             <StackPanel Spacing="15" Orientation="Horizontal">
@@ -136,7 +136,7 @@
 
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
                                 <FontIcon Glyph="&#xE946;" />
-                                <TextBlock Text="Cache" FontSize="20"/>
+                                <TextBlock Text="Cache" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
 
                             <StackPanel Spacing="15" Orientation="Horizontal">
@@ -159,7 +159,7 @@
                         <StackPanel Orientation="Vertical" Spacing="25">
                             <StackPanel Orientation="Horizontal" Spacing="5">
                                 <FontIcon Glyph="&#xE945;" />
-                                <TextBlock Text="Power Management" FontSize="20"/>
+                                <TextBlock Text="Power Management" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
                             <StackPanel Spacing="15" Orientation="Horizontal">
                                 <StackPanel Orientation="Vertical" Spacing="10">
@@ -183,7 +183,7 @@
                         <StackPanel Orientation="Vertical" Spacing="25">
                             <StackPanel Orientation="Horizontal" Spacing="5">
                                 <FontIcon Glyph="&#xE770;" />
-                                <TextBlock Text="System Info" FontSize="20"/>
+                                <TextBlock Text="System Info" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
                             <StackPanel Spacing="15" Orientation="Horizontal">
                                 <StackPanel Orientation="Vertical" Spacing="10">
@@ -210,7 +210,7 @@
                         <StackPanel Orientation="Vertical" Spacing="25">
                             <StackPanel Orientation="Horizontal" Spacing="5">
                                 <FontIcon Glyph="&#xE9CE;" />
-                                <TextBlock Text="Advanced Info" FontSize="20"/>
+                                <TextBlock Text="Advanced Info" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
                             <StackPanel Spacing="15" Orientation="Horizontal">
                                 <StackPanel Orientation="Vertical" Spacing="10">

@@ -254,11 +254,11 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
         var.Clear();
     }
     if (try_get_property(L"PowerManagementSupported", object, var) && is_boolean(var.vt)) {
-        model.PowerManagementSupported(var.boolVal == VARIANT_TRUE);
+        model.PowerManagementSupported(var.boolVal);
         var.Clear();
     }
     if (try_get_property(L"ErrorCleared", object, var) && is_boolean(var.vt)) {
-        model.ErrorCleared(var.boolVal == VARIANT_TRUE);
+        model.ErrorCleared(var.boolVal);
         var.Clear();
     }
     return model;
