@@ -6,30 +6,49 @@ namespace AIDA64
     {
         CpuModel();
 
+        String Caption;
         String Name;
         String Manufacturer;
-        String Id;
-
-        UInt32 CoreCount;
-        UInt32 MaxClockSpeed;
-        UInt32 CurrentClockSpeed;
-
-        UInt16 LoadPercentage;
-        UInt16 Architecture;
-        UInt16 AddressWidth;
-        UInt16 DataWidth;
-
+        String ProcessorId;
         String DeviceId;
-        String Caption;
+        String PNPDeviceId;
+        String SystemName;
+        String CreationClassName;
         String Description;
+        String PartNumber;
+        String OtherFamilyDescription;
+        String UniqueId;
+        String InstallDate;
+        String Status;
+        String Role;
 
+        UInt32 AddressWidth;
+        UInt32 DataWidth;
+        UInt32 ExternalClock;
+        UInt32 CurrentClockSpeed;
+        UInt32 MaxClockSpeed;
+        UInt32 NumberOfCores;
         UInt32 NumberOfLogicalProcessors;
         UInt32 L2CacheSize;
         UInt32 L3CacheSize;
+        UInt32 Level;
+        UInt32 LastErrorCode;
 
-        UInt16 Revision;
-        UInt16 Stepping;
+        UInt16 LoadPercentage;
+        UInt16 Architecture;
         UInt16 Family;
+        UInt16 Stepping;
+        UInt32 Revision;
+        UInt16 CpuStatus;
         UInt16 CurrentVoltage;
+        UInt16 StatusInfo;
+        UInt16 Characteristics;
+        UInt16 UpgradeMethod;
+
+        Boolean PowerManagementSupported;
+        Boolean ErrorCleared;
+
+        Windows.Foundation.Collections.IVector<UInt16> VoltageCaps;
+        Windows.Foundation.Collections.IVector<UInt16> PowerManagementCapabilities;
     }
 }

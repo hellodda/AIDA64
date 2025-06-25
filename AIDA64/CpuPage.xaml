@@ -36,50 +36,93 @@
 
                     <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" Padding="15">
 
-                        <StackPanel Orientation="Vertical" Spacing="20">
+                        <StackPanel Orientation="Vertical" Spacing="25">
 
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
                                 <FontIcon Glyph="&#xE946;" />
-                                <TextBlock Text="About CPU" FontSize="20"/>
+                                <TextBlock Text="Identification" FontSize="20"/>
+                            </StackPanel>
+
+                            <StackPanel Spacing="15" Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="Device ID:"/>
+                                    <TextBlock Text="Name:"/>
+                                    <TextBlock Text="Manufacturer:"/>
+                                    <TextBlock Text="Caption:"/>
+                                    <TextBlock Text="Description:"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.DeviceId, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Name, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Manufacturer, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Caption, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Description, Mode=OneWay}"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" Padding="15">
+
+                        <StackPanel Orientation="Vertical" Spacing="25">
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
+                                <FontIcon Glyph="&#xE74C;" />
+                                <TextBlock Text="Architecture" FontSize="20"/>
                             </StackPanel>
 
                             <StackPanel Spacing="15" Orientation="Horizontal">
 
                                 <StackPanel Orientation="Vertical" Spacing="10">
-                                    <TextBlock Text="Manufacturer:"/>
                                     <TextBlock Text="Architecture:"/>
                                     <TextBlock Text="Address Width:"/>
                                     <TextBlock Text="Data Width:"/>
-                                    <TextBlock Text="Physical Cores:"/>
-                                    <TextBlock Text="Max Clock Speed:"/>
-                                    <TextBlock Text="Device ID:"/>
-                                    <TextBlock Text="Caption:"/>
-                                    <TextBlock Text="Description:"/>
-                                    <TextBlock Text="Logical Processors:"/>
-                                    <TextBlock Text="L2 Cache Size (KB):"/>
-                                    <TextBlock Text="L3 Cache Size (KB):"/>
+                                    <TextBlock Text="Family:"/>
                                     <TextBlock Text="Revision:"/>
                                     <TextBlock Text="Stepping:"/>
-                                    <TextBlock Text="Family:"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Architecture, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.AddressWidth, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.DataWidth, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Family, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Revision, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Stepping, Mode=OneWay}"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" Padding="15">
+
+                        <StackPanel Orientation="Vertical" Spacing="25">
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
+                                <FontIcon Glyph="&#xEC4A;" />
+                                <TextBlock Text="Performance" FontSize="20"/>
+                            </StackPanel>
+
+                            <StackPanel Spacing="15" Orientation="Horizontal">
+
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="Physical Cores:"/>
+                                    <TextBlock Text="Logical Processors:"/>
+                                    <TextBlock Text="Max Clock Speed:"/>
+                                    <TextBlock Text="Current Clock Speed:"/>
+                                    <TextBlock Text="Load Percentage:"/>
                                     <TextBlock Text="Current Voltage:"/>
                                 </StackPanel>
 
                                 <StackPanel Orientation="Vertical" Spacing="10">
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Manufacturer, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Architecture, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.AddressWidth, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.DataWidth, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.CoreCount, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.MaxClockSpeed, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.DeviceId, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Caption, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Description, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.NumberOfCores, Mode=OneWay}"/>
                                     <TextBlock Text="{x:Bind ViewModel.CpuModel.NumberOfLogicalProcessors, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.L2CacheSize, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.L3CacheSize, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Revision, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Stepping, Mode=OneWay}"/>
-                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Family, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.MaxClockSpeed, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.CurrentClockSpeed, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.LoadPercentage, Mode=OneWay}"/>
                                     <TextBlock Text="{x:Bind ViewModel.CpuModel.CurrentVoltage, Mode=OneWay}"/>
                                 </StackPanel>
 
@@ -87,13 +130,123 @@
                         </StackPanel>
                     </Border>
 
+                    <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" Padding="15">
+
+                        <StackPanel Orientation="Vertical" Spacing="25">
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="5">
+                                <FontIcon Glyph="&#xE946;" />
+                                <TextBlock Text="Cache" FontSize="20"/>
+                            </StackPanel>
+
+                            <StackPanel Spacing="15" Orientation="Horizontal">
+
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="L2 Cache Size (KB):"/>
+                                    <TextBlock Text="L3 Cache Size (KB):"/>
+                                </StackPanel>
+
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.L2CacheSize, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.L3CacheSize, Mode=OneWay}"/>
+                                </StackPanel>
+
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
+                        <StackPanel Orientation="Vertical" Spacing="25">
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <FontIcon Glyph="&#xE945;" />
+                                <TextBlock Text="Power Management" FontSize="20"/>
+                            </StackPanel>
+                            <StackPanel Spacing="15" Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="Power Management Supported:"/>
+                                    <TextBlock Text="Error Cleared:"/>
+                                    <!--<TextBlock Text="Power Capabilities:"/>
+                                    <TextBlock Text="Voltage Capabilities:"/>-->
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.PowerManagementSupported, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.ErrorCleared, Mode=OneWay}"/>
+                                    <!--<TextBlock Text="{x:Bind ViewModel.CpuModel.PowerManagementCapabilities, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.VoltageCaps, Mode=OneWay}"/>-->
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
+                        <StackPanel Orientation="Vertical" Spacing="25">
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <FontIcon Glyph="&#xE770;" />
+                                <TextBlock Text="System Info" FontSize="20"/>
+                            </StackPanel>
+                            <StackPanel Spacing="15" Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="System Name:"/>
+                                    <TextBlock Text="PNP Device ID:"/>
+                                    <TextBlock Text="Creation Class Name:"/>
+                                    <TextBlock Text="Install Date:"/>
+                                    <TextBlock Text="Status:"/>
+                                    <TextBlock Text="Role:"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.SystemName, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.PNPDeviceId, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.CreationClassName, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.InstallDate, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Status, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Role, Mode=OneWay}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
+                        <StackPanel Orientation="Vertical" Spacing="25">
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <FontIcon Glyph="&#xE9CE;" />
+                                <TextBlock Text="Advanced Info" FontSize="20"/>
+                            </StackPanel>
+                            <StackPanel Spacing="15" Orientation="Horizontal">
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="Processor ID:"/>
+                                    <TextBlock Text="Part Number:"/>
+                                    <TextBlock Text="Other Family Description:"/>
+                                    <TextBlock Text="Unique ID:"/>
+                                    <TextBlock Text="Last Error Code:"/>
+                                    <TextBlock Text="CPU Status:"/>
+                                    <TextBlock Text="Status Info:"/>
+                                    <TextBlock Text="Level:"/>
+                                    <TextBlock Text="Characteristics:"/>
+                                    <TextBlock Text="Upgrade Method:"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.ProcessorId, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.PartNumber, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.OtherFamilyDescription, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.UniqueId, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.LastErrorCode, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.CpuStatus, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.StatusInfo, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Level, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.Characteristics, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.CpuModel.UpgradeMethod, Mode=OneWay}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+
                     <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="0 0 5 5" Height="60" Padding="15">
 
                     </Border>
 
                 </StackPanel>
-
-
             </StackPanel>
         </ScrollViewer>
     </Grid>

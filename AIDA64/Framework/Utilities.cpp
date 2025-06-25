@@ -108,7 +108,11 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
     winrt::AIDA64::CpuModel model{};
     _variant_t var;
     VariantInit(&var);
-
+   
+    if (try_get_property(L"Caption", object, var) && is_string(var.vt)) {
+        model.Caption(var.bstrVal);
+        var.Clear();
+    }
     if (try_get_property(L"Name", object, var) && is_string(var.vt)) {
         model.Name(var.bstrVal);
         var.Clear();
@@ -117,24 +121,76 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
         model.Manufacturer(var.bstrVal);
         var.Clear();
     }
+    if (try_get_property(L"ProcessorId", object, var) && is_string(var.vt)) {
+        model.ProcessorId(var.bstrVal);
+        var.Clear();
+    }
     if (try_get_property(L"DeviceID", object, var) && is_string(var.vt)) {
         model.DeviceId(var.bstrVal);
         var.Clear();
     }
-    if (try_get_property(L"Caption", object, var) && is_string(var.vt)) {
-        model.Caption(var.bstrVal);
+    if (try_get_property(L"PNPDeviceID", object, var) && is_string(var.vt)) {
+        model.PNPDeviceId(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"SystemName", object, var) && is_string(var.vt)) {
+        model.SystemName(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"CreationClassName", object, var) && is_string(var.vt)) {
+        model.CreationClassName(var.bstrVal);
         var.Clear();
     }
     if (try_get_property(L"Description", object, var) && is_string(var.vt)) {
         model.Description(var.bstrVal);
         var.Clear();
     }
-    if (try_get_property(L"ProcessorId", object, var) && is_string(var.vt)) {
-        model.Id(var.bstrVal);
+    if (try_get_property(L"PartNumber", object, var) && is_string(var.vt)) {
+        model.PartNumber(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"OtherFamilyDescription", object, var) && is_string(var.vt)) {
+        model.OtherFamilyDescription(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"UniqueId", object, var) && is_string(var.vt)) {
+        model.UniqueId(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"InstallDate", object, var) && is_string(var.vt)) {
+        model.InstallDate(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Status", object, var) && is_string(var.vt)) {
+        model.Status(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Role", object, var) && is_string(var.vt)) {
+        model.Role(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"AddressWidth", object, var) && is_integer(var.vt)) {
+        model.AddressWidth(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"DataWidth", object, var) && is_integer(var.vt)) {
+        model.DataWidth(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ExternalClock", object, var) && is_integer(var.vt)) {
+        model.ExternalClock(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"CurrentClockSpeed", object, var) && is_integer(var.vt)) {
+        model.CurrentClockSpeed(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"MaxClockSpeed", object, var) && is_integer(var.vt)) {
+        model.MaxClockSpeed(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"NumberOfCores", object, var) && is_integer(var.vt)) {
-        model.CoreCount(var.uintVal);
+        model.NumberOfCores(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"NumberOfLogicalProcessors", object, var) && is_integer(var.vt)) {
@@ -149,12 +205,12 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
         model.L3CacheSize(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"MaxClockSpeed", object, var) && is_integer(var.vt)) {
-        model.MaxClockSpeed(var.uintVal);
+    if (try_get_property(L"Level", object, var) && is_integer(var.vt)) {
+        model.Level(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"CurrentClockSpeed", object, var) && is_integer(var.vt)) {
-        model.CurrentClockSpeed(var.uintVal);
+    if (try_get_property(L"LastErrorCode", object, var) && is_integer(var.vt)) {
+        model.LastErrorCode(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"LoadPercentage", object, var) && is_integer(var.vt)) {
@@ -165,30 +221,45 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
         model.Architecture(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"AddressWidth", object, var) && is_integer(var.vt)) {
-        model.AddressWidth(var.uintVal);
-        var.Clear();
-    }
-    if (try_get_property(L"DataWidth", object, var) && is_integer(var.vt)) {
-        model.DataWidth(var.uintVal);
-        var.Clear();
-    }
-    if (try_get_property(L"Revision", object, var) && is_integer(var.vt)) {
-        model.Revision(var.uintVal);
+    if (try_get_property(L"Family", object, var) && is_integer(var.vt)) {
+        model.Family(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"Stepping", object, var) && is_integer(var.vt)) {
         model.Stepping(var.uintVal);
         var.Clear();
     }
-    if (try_get_property(L"Family", object, var) && is_integer(var.vt)) {
-        model.Family(var.uintVal);
+    if (try_get_property(L"Revision", object, var) && is_integer(var.vt)) {
+        model.Revision(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"CpuStatus", object, var) && is_integer(var.vt)) {
+        model.CpuStatus(var.uintVal);
         var.Clear();
     }
     if (try_get_property(L"CurrentVoltage", object, var) && is_integer(var.vt)) {
         model.CurrentVoltage(var.uintVal);
         var.Clear();
     }
-
+    if (try_get_property(L"StatusInfo", object, var) && is_integer(var.vt)) {
+        model.StatusInfo(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Characteristics", object, var) && is_integer(var.vt)) {
+        model.Characteristics(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"UpgradeMethod", object, var) && is_integer(var.vt)) {
+        model.UpgradeMethod(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"PowerManagementSupported", object, var) && is_boolean(var.vt)) {
+        model.PowerManagementSupported(var.boolVal == VARIANT_TRUE);
+        var.Clear();
+    }
+    if (try_get_property(L"ErrorCleared", object, var) && is_boolean(var.vt)) {
+        model.ErrorCleared(var.boolVal == VARIANT_TRUE);
+        var.Clear();
+    }
     return model;
 }
