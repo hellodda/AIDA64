@@ -112,6 +112,12 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DisplayPage.xaml.h">
+      <DependentUpon>DisplayPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="Framework\DisplayService.h" />
+    <ClInclude Include="Framework\IDisplayService.h" />
     <ClInclude Include="Helpers\BindableBase.h" />
     <ClInclude Include="Models\CpuModel.h">
       <DependentUpon>Models\CpuModel.idl</DependentUpon>
@@ -124,6 +130,10 @@
     <ClInclude Include="Framework\CpuService.h" />
     <ClInclude Include="Framework\ICpuService.h" />
     <ClInclude Include="Framework\ServiceLocator.h" />
+    <ClInclude Include="Models\DisplayModel.h">
+      <DependentUpon>Models\DisplayModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ViewModels\CpuPageViewModel.h">
       <DependentUpon>ViewModels\CpuPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -146,6 +156,10 @@
     </ClInclude>
     <ClInclude Include="Framework\ProcessService.h" />
     <ClInclude Include="Helpers\RelayCommand.h" />
+    <ClInclude Include="ViewModels\DisplayPageViewModel.h">
+      <DependentUpon>ViewModels\DisplayPageViewModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ViewModels\MainViewModel.h">
       <DependentUpon>ViewModels\MainViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -157,11 +171,19 @@
     <Page Include="CpuPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="DisplayPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml" />
     <Xaml Include="Views\Hardware\CpuPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DIConfig.cpp" />
+    <ClCompile Include="DisplayPage.xaml.cpp">
+      <DependentUpon>DisplayPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="Framework\DisplayService.cpp" />
     <ClCompile Include="Helpers\BindableBase.cpp" />
     <ClCompile Include="Models\CpuModel.cpp">
       <DependentUpon>Models\CpuModel.idl</DependentUpon>
@@ -173,6 +195,10 @@
     </ClCompile>
     <ClCompile Include="Framework\CpuService.cpp" />
     <ClCompile Include="Framework\ServiceLocator.cpp" />
+    <ClCompile Include="Models\DisplayModel.cpp">
+      <DependentUpon>Models\DisplayModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="ViewModels\CpuPageViewModel.cpp">
       <DependentUpon>ViewModels\CpuPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -194,6 +220,10 @@
     </ClCompile>
     <ClCompile Include="Framework\ProcessService.cpp" />
     <ClCompile Include="Helpers\RelayCommand.cpp" />
+    <ClCompile Include="ViewModels\DisplayPageViewModel.cpp">
+      <DependentUpon>ViewModels\DisplayPageViewModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="ViewModels\MainViewModel.cpp">
       <DependentUpon>ViewModels\MainViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -201,12 +231,19 @@
     <ClCompile Include="WMIDataContext.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Midl Include="DisplayPage.idl">
+      <DependentUpon>DisplayPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="Models\CpuModel.idl">
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="CpuPage.idl">
       <DependentUpon>CpuPage.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="Models\DisplayModel.idl">
+      <SubType>Designer</SubType>
     </Midl>
     <Midl Include="ViewModels\CpuPageViewModel.idl">
       <SubType>Designer</SubType>
@@ -217,6 +254,9 @@
     <Midl Include="MainWindow.idl">
       <SubType>Code</SubType>
       <DependentUpon>MainWindow.xaml</DependentUpon>
+    </Midl>
+    <Midl Include="ViewModels\DisplayPageViewModel.idl">
+      <SubType>Designer</SubType>
     </Midl>
     <Midl Include="ViewModels\MainViewModel.idl">
       <SubType>Designer</SubType>

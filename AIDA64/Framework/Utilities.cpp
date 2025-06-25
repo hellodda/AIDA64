@@ -125,11 +125,11 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
         model.ProcessorId(var.bstrVal);
         var.Clear();
     }
-    if (try_get_property(L"DeviceID", object, var) && is_string(var.vt)) {
+    if (try_get_property(L"DeviceId", object, var) && is_string(var.vt)) {
         model.DeviceId(var.bstrVal);
         var.Clear();
     }
-    if (try_get_property(L"PNPDeviceID", object, var) && is_string(var.vt)) {
+    if (try_get_property(L"PNPDeviceId", object, var) && is_string(var.vt)) {
         model.PNPDeviceId(var.bstrVal);
         var.Clear();
     }
@@ -259,6 +259,32 @@ winrt::AIDA64::CpuModel from_wbem<winrt::AIDA64::CpuModel>(winrt::com_ptr<IWbemC
     }
     if (try_get_property(L"ErrorCleared", object, var) && is_boolean(var.vt)) {
         model.ErrorCleared(var.boolVal == VARIANT_TRUE);
+        var.Clear();
+    }
+    return model;
+}
+
+template<>
+winrt::AIDA64::DisplayModel from_wbem<winrt::AIDA64::DisplayModel>(winrt::com_ptr<IWbemClassObject> const& object)
+{
+    winrt::AIDA64::DisplayModel model{};
+    _variant_t var;
+    VariantInit(&var);
+
+    if (try_get_property(L"Name", object, var) && is_string(var.vt)) {
+        model.Name(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"DeviceId", object, var) && is_string(var.vt)) {
+        model.DeviceId(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ScreenWidth", object, var) && is_integer(var.vt)) {
+        model.ScreenWidth(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ScreenHeight", object, var), is_integer(var.vt)) {
+        model.ScreenHeight(var.uintVal);
         var.Clear();
     }
     return model;

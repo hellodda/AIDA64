@@ -1,0 +1,12 @@
+import "Models/DisplayModel.idl";
+
+namespace AIDA64
+{
+    [bindable]
+    [default_interface]
+    runtimeclass DisplayPageViewModel : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        DisplayPageViewModel();
+        DisplayModel DisplayModel;
+    }
+}

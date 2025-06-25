@@ -1,0 +1,11 @@
+import "ViewModels/DisplayPageViewModel.idl";
+
+namespace AIDA64
+{
+    [default_interface]
+    runtimeclass DisplayPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        DisplayPage();
+        DisplayPageViewModel ViewModel{ get; };
+    }
+}

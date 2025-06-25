@@ -1,0 +1,15 @@
+namespace AIDA64
+{
+    [bindable]
+    [default_interface]
+    runtimeclass DisplayModel
+    {
+        DisplayModel();
+
+        String Name;
+        String DeviceId;
+        String MonitorType;
+        UInt32 ScreenHeight;
+        UInt32 ScreenWidth;
+    }
+}

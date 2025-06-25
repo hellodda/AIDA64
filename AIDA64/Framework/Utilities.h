@@ -89,3 +89,6 @@ winrt::AIDA64::ProcessModel from_wbem(winrt::com_ptr<IWbemClassObject> const& ob
 
 template<>
 winrt::AIDA64::CpuModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
+
+template<>
+winrt::AIDA64::DisplayModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);

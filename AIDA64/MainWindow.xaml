@@ -48,7 +48,7 @@
                                 <FontIcon Glyph="&#xEDA3;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem Content="Display">
+                        <NavigationViewItem Content="Display" Tag="display">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE7F4;" />
                             </NavigationViewItem.Icon>

@@ -7,13 +7,16 @@
 
 #include "MainWindow.xaml.h"
 #include "CpuPage.xaml.h"
+#include "DisplayPage.xaml.h"
 
 // \/-- framework --\/ \\
 
 #include <Framework/Logger.h>
 #include <Framework/CpuService.h>
+#include <Framework/DisplayService.h>
 #include <Framework/ProcessService.h>
 #include <ViewModels/MainViewModel.h>
+#include <ViewModels/DisplayPageViewModel.h>
 
 namespace di = boost::di;
 
@@ -82,6 +85,9 @@ AIDA64::MainViewModel create_model<AIDA64::MainViewModel>(InjectorT const& injec
 template<>
 AIDA64::CpuPageViewModel create_model<AIDA64::CpuPageViewModel>(InjectorT const& injector);
 
+template<>
+AIDA64::DisplayPageViewModel create_model<AIDA64::DisplayPageViewModel>(InjectorT const& injector);
+
 //---------------------------------------------------------------------------
 // Windows Factory \/
 //---------------------------------------------------------------------------
@@ -95,6 +101,9 @@ AIDA64::MainWindow create_view<AIDA64::MainWindow>(InjectorT const& injector);
 
 template<>
 AIDA64::CpuPage create_view<AIDA64::CpuPage>(InjectorT const& injector);
+
+template<>
+AIDA64::DisplayPage create_view<AIDA64::DisplayPage>(InjectorT const& injector);
 
 
 namespace winrt::AIDA64

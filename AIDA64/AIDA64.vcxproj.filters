@@ -10,6 +10,7 @@
     <Page Include="CpuPage.xaml">
       <Filter>Views\Pages\Hardware</Filter>
     </Page>
+    <Page Include="DisplayPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -25,6 +26,8 @@
     <Midl Include="Models\CpuModel.idl">
       <Filter>Models</Filter>
     </Midl>
+    <Midl Include="Models\DisplayModel.idl" />
+    <Midl Include="ViewModels\DisplayPageViewModel.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -51,6 +54,7 @@
     </ClCompile>
     <ClCompile Include="DIConfig.cpp" />
     <ClCompile Include="Helpers\BindableBase.cpp" />
+    <ClCompile Include="Framework\DisplayService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -86,6 +90,8 @@
       <Filter>Framework\Services\ServiceLocator</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\BindableBase.h" />
+    <ClInclude Include="Framework\IDisplayService.h" />
+    <ClInclude Include="Framework\DisplayService.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
