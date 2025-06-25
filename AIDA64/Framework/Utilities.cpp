@@ -279,13 +279,14 @@ winrt::AIDA64::DisplayModel from_wbem<winrt::AIDA64::DisplayModel>(winrt::com_pt
         model.DeviceId(var.bstrVal);
         var.Clear();
     }
-    if (try_get_property(L"ScreenWidth", object, var) && is_integer(var.vt)) {
-        model.ScreenWidth(var.uintVal);
-        var.Clear();
+    DEVMODE dev{};
+    dev.dmSize = sizeof(DEVMODE);
+
+    if (EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &dev))
+    {
+        model.ScreenHeight(dev.dmPelsHeight);
+        model.ScreenWidth(dev.dmPelsWidth);
     }
-    if (try_get_property(L"ScreenHeight", object, var), is_integer(var.vt)) {
-        model.ScreenHeight(var.uintVal);
-        var.Clear();
-    }
+
     return model;
 }
