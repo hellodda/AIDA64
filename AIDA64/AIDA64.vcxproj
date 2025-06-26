@@ -119,6 +119,7 @@
     <ClInclude Include="Framework\DisplayService.h" />
     <ClInclude Include="Framework\IDisplayService.h" />
     <ClInclude Include="Helpers\BindableBase.h" />
+    <ClInclude Include="IDataContext.h" />
     <ClInclude Include="Models\CpuModel.h">
       <DependentUpon>Models\CpuModel.idl</DependentUpon>
       <SubType>Code</SubType>

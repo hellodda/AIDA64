@@ -8,7 +8,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -28,19 +27,18 @@
 
                 <StackPanel Orientation="Vertical" Spacing="2" VerticalAlignment="Center">
 
-                    <Border Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="5 5 0 0" Height="60" Padding="15">
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" CornerRadius="5 5 0 0" Height="60" Padding="15">
                         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="8">
-                            <FontIcon Glyph="&#xE70A;"  FontSize="20"/>
+                            <FontIcon Glyph="&#xE70A;" FontSize="20"/>
                             <TextBlock Text="{x:Bind ViewModel.DisplayModel.Name, Mode=OneWay}" FontSize="20" Margin="0 -2 0 0"/>
                         </StackPanel>
                     </Border>
 
-                    <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" Padding="15">
-
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
                         <StackPanel Orientation="Vertical" Spacing="25">
 
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="8">
-                                <FontIcon Glyph="&#xE946;" />
+                                <FontIcon Glyph="&#xE946;"/>
                                 <TextBlock Text="Identification" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
 
@@ -49,22 +47,19 @@
                                     <TextBlock Text="Device ID:"/>
                                     <TextBlock Text="Name:"/>
                                 </StackPanel>
-
                                 <StackPanel Orientation="Vertical" Spacing="10">
                                     <TextBlock Text="{x:Bind ViewModel.DisplayModel.DeviceId, Mode=OneWay}"/>
                                     <TextBlock Text="{x:Bind ViewModel.DisplayModel.Name, Mode=OneWay}"/>
                                 </StackPanel>
-
                             </StackPanel>
                         </StackPanel>
                     </Border>
 
-                    <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" Padding="15">
-
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
                         <StackPanel Orientation="Vertical" Spacing="25">
 
                             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="8">
-                                <FontIcon Glyph="&#xE92D;" />
+                                <FontIcon Glyph="&#xE92D;"/>
                                 <TextBlock Text="Screen Parameters" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
 
@@ -73,12 +68,145 @@
                                     <TextBlock Text="Width:"/>
                                     <TextBlock Text="Height:"/>
                                 </StackPanel>
-
                                 <StackPanel Orientation="Vertical" Spacing="10">
                                     <TextBlock Text="{x:Bind ViewModel.DisplayModel.ScreenWidth, Mode=OneWay}"/>
                                     <TextBlock Text="{x:Bind ViewModel.DisplayModel.ScreenHeight, Mode=OneWay}"/>
                                 </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
 
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
+                        <StackPanel Orientation="Vertical" Spacing="10">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="8">
+                                <FontIcon Glyph="&#xE946;"/>
+                                <TextBlock Text="General Info" FontSize="20" Margin="0 -2 0 0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Spacing="15">
+                              
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="Caption:"/>
+                                    <TextBlock Text="Description:"/>
+                                </StackPanel>
+                             
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.Caption, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.Description, Mode=OneWay}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
+                        <StackPanel Orientation="Vertical" Spacing="10">
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="8">
+                                <FontIcon Glyph="&#xE770;" />
+                                <TextBlock Text="System Info" FontSize="20" Margin="0 -2 0 0"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Spacing="15">
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="PNP Device ID:"/>
+                                    <TextBlock Text="System Name:"/>
+                                    <TextBlock Text="System Creation Class:"/>
+                                    <TextBlock Text="Creation Class:"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.PnpDeviceId, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.SystemName, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.SystemCreationClassName, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.CreationClassName, Mode=OneWay}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
+                        <StackPanel Orientation="Vertical" Spacing="10">
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="8">
+                                <FontIcon Glyph="&#xE946;"/>
+                                <TextBlock Text="Identification" FontSize="20" Margin="0 -2 0 0"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Spacing="15">
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="Monitor Manufacturer:"/>
+                                    <TextBlock Text="Monitor Type:"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.MonitorManufacturer, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.MonitorType, Mode=OneWay}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
+                        <StackPanel Orientation="Vertical" Spacing="10">
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="8">
+                                <FontIcon Glyph="&#xE895;" />
+                                <TextBlock Text="EDID / Refresh" FontSize="20" Margin="0 -2 0 0"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Spacing="15">
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="Instance Name:"/>
+                                    <TextBlock Text="Active:"/>
+                                    <TextBlock Text="Max Horizontal Size:"/>
+                                    <TextBlock Text="Max Vertical Size:"/>
+                                    <TextBlock Text="Min Refresh Rate:"/>
+                                    <TextBlock Text="Max Refresh Rate:"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.InstanceName, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.Active, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.MaxHorizontalImageSize, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.MaxVerticalImageSize, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.MinRefreshRate, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.MaxRefreshRate, Mode=OneWay}"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
+                        <StackPanel Orientation="Vertical" Spacing="10">
+
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="8">
+                                <FontIcon Glyph="&#xF259;" />
+                                <TextBlock Text="Configuration / Status" FontSize="20" Margin="0 -2 0 0"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Spacing="15">
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="Availability:"/>
+                                    <TextBlock Text="Power Management Supported:"/>
+                                    <TextBlock Text="Error Cleared:"/>
+                                    <TextBlock Text="Error Description:"/>
+                                    <TextBlock Text="Config Manager Error Code:"/>
+                                    <TextBlock Text="User Config:"/>
+                                    <TextBlock Text="Install Date:"/>
+                                    <TextBlock Text="Last Error Code:"/>
+                                    <TextBlock Text="Status:"/>
+                                    <TextBlock Text="Status Info:"/>
+                                    <TextBlock Text="Video Input Type:"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Vertical" Spacing="10">
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.Availability, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.PowerManagementSupported, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.ErrorCleared, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.ErrorDescription, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.ConfigManagerErrorCode, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.ConfigManagerUserConfig, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.InstallDate, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.LastErrorCode, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.Status, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.StatusInfo, Mode=OneWay}"/>
+                                    <TextBlock Text="{x:Bind ViewModel.DisplayModel.VideoInputType, Mode=OneWay}"/>
+                                </StackPanel>
                             </StackPanel>
                         </StackPanel>
                     </Border>
@@ -86,7 +214,6 @@
                     <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="0 0 5 5" Height="60" Padding="15">
 
                     </Border>
-
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

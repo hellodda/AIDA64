@@ -107,12 +107,6 @@ namespace winrt::AIDA64::implementation
         bool ErrorCleared() const noexcept;
         void ErrorCleared(bool const& value);
 
-        Windows::Foundation::Collections::IVector<uint16_t> VoltageCaps() const;
-        void VoltageCaps(Windows::Foundation::Collections::IVector<uint16_t> const& value);
-
-        Windows::Foundation::Collections::IVector<uint16_t> PowerManagementCapabilities() const;
-        void PowerManagementCapabilities(Windows::Foundation::Collections::IVector<uint16_t> const& value);
-
         hstring InstallDate() const noexcept;           
         void InstallDate(hstring const& value);
 

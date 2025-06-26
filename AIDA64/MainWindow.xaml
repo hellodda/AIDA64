@@ -10,8 +10,8 @@
     Title="AIDA64">
 
     <Grid>
-        <NavigationView x:Name="MainNavigation" ItemInvoked="MainNavigation_ItemInvoked">
-            <Frame x:Name="ContentFrame"/>
+        <NavigationView x:Name="MainNavigation" ItemInvoked="MainNavigation_ItemInvoked" BackRequested="MainNavigation_BackRequested">
+            <Frame x:Name="ContentFrame" Navigated="ContentFrame_Navigated"/>
             <NavigationView.MenuItems>
 
                 <!-- hardware -->

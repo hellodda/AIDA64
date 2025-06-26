@@ -63,3 +63,13 @@ void winrt::AIDA64::implementation::MainWindow::MainNavigation_ItemInvoked([[may
             }
         }
 }
+
+void winrt::AIDA64::implementation::MainWindow::ContentFrame_Navigated(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
+{
+    MainNavigation().IsBackEnabled(ContentFrame().CanGoBack());
+}
+
+void winrt::AIDA64::implementation::MainWindow::MainNavigation_BackRequested(winrt::Microsoft::UI::Xaml::Controls::NavigationView const& sender, winrt::Microsoft::UI::Xaml::Controls::NavigationViewBackRequestedEventArgs const& args)
+{
+    ContentFrame().GoBack();
+}

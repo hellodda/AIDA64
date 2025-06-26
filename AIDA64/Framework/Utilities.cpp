@@ -12,7 +12,7 @@ winrt::Windows::Foundation::IAsyncAction mta_context(std::function<void()> const
     co_return;
 }
 
-std::shared_ptr<winrt::AIDA64::Framework::WmiDataContext> get_mta_wmi_context()
+std::shared_ptr<winrt::AIDA64::Framework::IDataContext> get_mta_wmi_context()
 {
     static auto context = std::async(std::launch::async, [] {
        return std::make_shared<winrt::AIDA64::Framework::WmiDataContext>();
@@ -271,21 +271,150 @@ winrt::AIDA64::DisplayModel from_wbem<winrt::AIDA64::DisplayModel>(winrt::com_pt
     _variant_t var;
     VariantInit(&var);
 
-    if (try_get_property(L"Name", object, var) && is_string(var.vt)) {
+    if (try_get_property(L"Name", object, var) && is_string(var.vt))
+    {
         model.Name(var.bstrVal);
         var.Clear();
     }
-    if (try_get_property(L"DeviceId", object, var) && is_string(var.vt)) {
+    if (try_get_property(L"Caption", object, var) && is_string(var.vt))
+    {
+        model.Caption(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Description", object, var) && is_string(var.vt))
+    {
+        model.Description(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"DeviceID", object, var) && is_string(var.vt))
+    {
         model.DeviceId(var.bstrVal);
         var.Clear();
     }
-    DEVMODE dev{};
-    dev.dmSize = sizeof(DEVMODE);
-
-    if (EnumDisplaySettings(NULL, ENUM_CURRENT_SETTINGS, &dev))
+    if (try_get_property(L"PNPDeviceID", object, var) && is_string(var.vt))
     {
-        model.ScreenHeight(dev.dmPelsHeight);
-        model.ScreenWidth(dev.dmPelsWidth);
+        model.PnpDeviceId(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"SystemName", object, var) && is_string(var.vt))
+    {
+        model.SystemName(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"SystemCreationClassName", object, var) && is_string(var.vt))
+    {
+        model.SystemCreationClassName(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"CreationClassName", object, var) && is_string(var.vt))
+    {
+        model.CreationClassName(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"MonitorManufacturer", object, var) && is_string(var.vt))
+    {
+        model.MonitorManufacturer(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"MonitorType", object, var) && is_string(var.vt))
+    {
+        model.MonitorType(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ScreenWidth", object, var) && is_integer(var.vt))
+    {
+        model.ScreenWidth(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ScreenHeight", object, var) && is_integer(var.vt))
+    {
+        model.ScreenHeight(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"InstanceName", object, var) && is_string(var.vt))
+    {
+        model.InstanceName(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Active", object, var) && is_boolean(var.vt))
+    {
+        model.Active(var.boolVal);
+        var.Clear();
+    }
+    if (try_get_property(L"MaxHorizontalImageSize", object, var) && is_integer(var.vt))
+    {
+        model.MaxHorizontalImageSize(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"MaxVerticalImageSize", object, var) && is_integer(var.vt))
+    {
+        model.MaxVerticalImageSize(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"MinRefreshRate", object, var) && is_integer(var.vt))
+    {
+        model.MinRefreshRate(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"MaxRefreshRate", object, var) && is_integer(var.vt))
+    {
+        model.MaxRefreshRate(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Availability", object, var) && is_integer(var.vt))
+    {
+        model.Availability(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"PowerManagementSupported", object, var) && is_boolean(var.vt))
+    {
+        model.PowerManagementSupported(var.boolVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ErrorCleared", object, var) && is_boolean(var.vt))
+    {
+        model.ErrorCleared(var.boolVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ErrorDescription", object, var) && is_string(var.vt))
+    {
+        model.ErrorDescription(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ConfigManagerErrorCode", object, var) && is_integer(var.vt))
+    {
+        model.ConfigManagerErrorCode(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"ConfigManagerUserConfig", object, var) && is_boolean(var.vt))
+    {
+        model.ConfigManagerUserConfig(var.boolVal);
+        var.Clear();
+    }
+    if (try_get_property(L"InstallDate", object, var) && is_string(var.vt))
+    {
+        model.InstallDate(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"LastErrorCode", object, var) && is_integer(var.vt))
+    {
+        model.LastErrorCode(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"Status", object, var) && is_string(var.vt))
+    {
+        model.Status(var.bstrVal);
+        var.Clear();
+    }
+    if (try_get_property(L"StatusInfo", object, var) && is_integer(var.vt))
+    {
+        model.StatusInfo(var.uintVal);
+        var.Clear();
+    }
+    if (try_get_property(L"VideoInputType", object, var) && is_string(var.vt))
+    {
+        model.VideoInputType(var.bstrVal);
+        var.Clear();
     }
 
     return model;

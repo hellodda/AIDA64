@@ -240,8 +240,6 @@
                             </StackPanel>
                         </StackPanel>
                     </Border>
-
-
                     <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="0 0 5 5" Height="60" Padding="15">
 
                     </Border>

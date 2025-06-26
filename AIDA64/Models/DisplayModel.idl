@@ -7,9 +7,36 @@ namespace AIDA64
         DisplayModel();
 
         String Name;
+        String Caption;
+        String Description;
         String DeviceId;
+        String PnpDeviceId;
+        String SystemName;
+        String SystemCreationClassName;
+        String CreationClassName;
+        String MonitorManufacturer;
         String MonitorType;
-        UInt32 ScreenHeight;
+        String ErrorDescription;
+        String InstallDate;
+        String InstanceName;
+        String Status;
+        String VideoInputType;
+
         UInt32 ScreenWidth;
+        UInt32 ScreenHeight;
+        UInt32 MaxHorizontalImageSize;
+        UInt32 MaxVerticalImageSize;
+        UInt32 MinRefreshRate;
+        UInt32 MaxRefreshRate;
+        UInt32 ConfigManagerErrorCode;
+        UInt32 LastErrorCode;
+        
+        Boolean Active;
+        Boolean PowerManagementSupported;
+        Boolean ErrorCleared;
+        Boolean ConfigManagerUserConfig;
+       
+        UInt16 Availability;
+        UInt16 StatusInfo;
     }
 }

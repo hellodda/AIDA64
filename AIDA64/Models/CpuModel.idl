@@ -47,8 +47,5 @@ namespace AIDA64
 
         Boolean PowerManagementSupported;
         Boolean ErrorCleared;
-
-        Windows.Foundation.Collections.IVector<UInt16> VoltageCaps;
-        Windows.Foundation.Collections.IVector<UInt16> PowerManagementCapabilities;
     }
 }

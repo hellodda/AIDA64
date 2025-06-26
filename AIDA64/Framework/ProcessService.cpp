@@ -7,7 +7,7 @@ inline constexpr const wchar_t* QUERY_PROCESS_FROM = L"SELECT * FROM Win32_Proce
 
 namespace winrt::AIDA64::Framework
 {
-	ProcessService::ProcessService(std::shared_ptr<WmiDataContext> context)
+	ProcessService::ProcessService(std::shared_ptr<IDataContext> context)
 	{
 		m_context = std::move(context);
 	}

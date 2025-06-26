@@ -236,22 +236,4 @@ namespace winrt::AIDA64::implementation
     {
         if (m_errorCleared != value) m_errorCleared = value;
     }
-
-    IVector<uint16_t> CpuModel::VoltageCaps() const
-    {
-        return m_voltageCaps;
-    }
-    void CpuModel::VoltageCaps(IVector<uint16_t> const& value)
-    {
-        m_voltageCaps = value;
-    }
-
-    IVector<uint16_t> CpuModel::PowerManagementCapabilities() const
-    {
-        return m_powerManagementCapabilities;
-    }
-    void CpuModel::PowerManagementCapabilities(IVector<uint16_t> const& value)
-    {
-        m_powerManagementCapabilities = value;
-    }
 }

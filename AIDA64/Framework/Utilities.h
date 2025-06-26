@@ -39,7 +39,7 @@ T exchange_ptr(winrt::com_ptr<T> ptr)
 
 winrt::Windows::Foundation::IAsyncAction mta_context(std::function<void()> const& action);
 
-std::shared_ptr<winrt::AIDA64::Framework::WmiDataContext> get_mta_wmi_context();
+std::shared_ptr<winrt::AIDA64::Framework::IDataContext> get_mta_wmi_context();
 
 // don't use in UI context
 void wait(std::function<winrt::Windows::Foundation::IAsyncAction()> action);

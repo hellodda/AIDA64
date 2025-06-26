@@ -6,13 +6,13 @@ namespace winrt::AIDA64::Framework
 {
 	struct DisplayService : IDisplayService
 	{
-		DisplayService(std::shared_ptr<WmiDataContext> context);
+		DisplayService(std::shared_ptr<IDataContext> context);
 
 		IAsyncOperation<DisplayModel> GetDisplayInformationAsync() override;
 
 	private:
 
-		std::shared_ptr<WmiDataContext> m_context;
+		std::shared_ptr<IDataContext> m_context;
 	};
 }
 
