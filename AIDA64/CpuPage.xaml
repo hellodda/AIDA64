@@ -6,6 +6,7 @@
     xmlns:local="using:AIDA64"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:graph="using:AIDA64"
     mc:Ignorable="d">
 
     <Grid>
@@ -240,8 +241,17 @@
                             </StackPanel>
                         </StackPanel>
                     </Border>
-                    <Border  Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="0 0 5 5" Height="60" Padding="15">
-
+                    <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15">
+                        <StackPanel Orientation="Vertical" Spacing="25">
+                            <StackPanel Orientation="Horizontal" Spacing="5">
+                                <FontIcon Glyph="&#xE9D9;" />
+                                <TextBlock Text="Cpu Usage" FontSize="20" Margin="0 -2 0 0"/>
+                            </StackPanel>
+                            <local:Graph Points="{x:Bind ViewModel.UsagePoints}" Height="250" TitleText="Graph (Test Version)"/>
+                        </StackPanel>
+                    </Border>
+                    <Border Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="0 0 5 5" Height="60" Padding="15">
+                       
                     </Border>
 
                 </StackPanel>

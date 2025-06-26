@@ -23,14 +23,21 @@ namespace winrt::AIDA64::implementation
 
         void Inject(std::shared_ptr<ICpuService> service, std::shared_ptr<ILogger> logger);
 
-        winrt::CpuModel CpuModel();
+        winrt::CpuModel CpuModel() const noexcept;
         void CpuModel(winrt::CpuModel const& value);
+
+        winrt::IVectorView<Point> UsagePoints() const noexcept;
+        void UsagePoints(winrt::IVectorView<Point> const& value);
 
     private:
 
         winrt::IAsyncAction LoadDataAsync();
 
     private:
+
+        winrt::IVector<Point> m_cpuUsagePoints = single_threaded_vector<Point>();
+        winrt::Windows::System::Threading::ThreadPoolTimer m_timer{ nullptr };
+
         winrt::CpuModel m_cpu_model;
         winrt::ICommand AOAOAO;
 

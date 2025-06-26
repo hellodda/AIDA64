@@ -7,7 +7,6 @@
 
 #include <Framework/ILogger.h>
 #include <Framework/IProcessService.h>
-#include <Framework/ServiceLocator.h>
 
 namespace winrt
 {
@@ -26,16 +25,7 @@ namespace winrt::AIDA64::implementation
 
         void Inject(std::shared_ptr<ILogger> logger);
 
-        ICommand NavigateCommand();
-
-        INotifyPropertyChanged SelectedPage();
-        void SelectedPage(INotifyPropertyChanged const& value);
-
     private:
-
-        winrt::IObservableVector<INotifyPropertyChanged> m_pages = single_threaded_observable_vector<INotifyPropertyChanged>();
-        winrt::INotifyPropertyChanged m_selectedPage{};
-        winrt::ICommand m_navigateCommand;
 
         std::shared_ptr<ILogger> m_logger;
     };

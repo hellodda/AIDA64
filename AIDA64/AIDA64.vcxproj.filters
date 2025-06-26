@@ -10,7 +10,12 @@
     <Page Include="CpuPage.xaml">
       <Filter>Views\Pages\Hardware</Filter>
     </Page>
-    <Page Include="DisplayPage.xaml" />
+    <Page Include="DisplayPage.xaml">
+      <Filter>Views\Pages\Hardware</Filter>
+    </Page>
+    <Page Include="Graph.xaml">
+      <Filter>Controls</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -26,8 +31,12 @@
     <Midl Include="Models\CpuModel.idl">
       <Filter>Models</Filter>
     </Midl>
-    <Midl Include="Models\DisplayModel.idl" />
-    <Midl Include="ViewModels\DisplayPageViewModel.idl" />
+    <Midl Include="Models\DisplayModel.idl">
+      <Filter>Models</Filter>
+    </Midl>
+    <Midl Include="ViewModels\DisplayPageViewModel.idl">
+      <Filter>ViewModels</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -50,8 +59,12 @@
       <Filter>Framework\Services\CpuService</Filter>
     </ClCompile>
     <ClCompile Include="DIConfig.cpp" />
-    <ClCompile Include="Helpers\BindableBase.cpp" />
-    <ClCompile Include="Framework\DisplayService.cpp" />
+    <ClCompile Include="Helpers\BindableBase.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\DisplayService.cpp">
+      <Filter>Framework\Services\DisplayService</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -83,10 +96,18 @@
     <ClInclude Include="Framework\ICpuService.h">
       <Filter>Framework\Services\CpuService</Filter>
     </ClInclude>
-    <ClInclude Include="Helpers\BindableBase.h" />
-    <ClInclude Include="Framework\IDisplayService.h" />
-    <ClInclude Include="Framework\DisplayService.h" />
-    <ClInclude Include="IDataContext.h" />
+    <ClInclude Include="Helpers\BindableBase.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\DisplayService.h">
+      <Filter>Framework\Services\DisplayService</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IDisplayService.h">
+      <Filter>Framework\Services\DisplayService</Filter>
+    </ClInclude>
+    <ClInclude Include="IDataContext.h">
+      <Filter>Framework\Data</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -162,6 +183,12 @@
     </Filter>
     <Filter Include="Framework\Services\ServiceLocator">
       <UniqueIdentifier>{0070b55d-03f6-4c7a-bfc6-dba8965e4229}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Controls">
+      <UniqueIdentifier>{42d4131e-8d94-4227-91c3-4be82014fbfa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Services\DisplayService">
+      <UniqueIdentifier>{37c7da4b-8534-4d8b-bb12-3dfbd52eff43}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

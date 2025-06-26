@@ -8,5 +8,6 @@ namespace AIDA64
     {
         CpuPageViewModel();
         CpuModel CpuModel;
+        Windows.Foundation.Collections.IVectorView<Windows.Foundation.Point> UsagePoints;
     }
 }

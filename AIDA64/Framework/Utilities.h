@@ -27,6 +27,17 @@ struct page_data_t
     winrt::hstring tag;
 };
 
+template<typename controlT, typename propertyT>
+winrt::Microsoft::UI::Xaml::DependencyProperty register_property(winrt::hstring name, winrt::Microsoft::UI::Xaml::PropertyMetadata metadata = nullptr)
+{
+    return winrt::Microsoft::UI::Xaml::DependencyProperty::Register(
+        name,
+        winrt::xaml_typename<propertyT>(),
+        winrt::xaml_typename<controlT>(),
+        metadata
+    );
+}
+
 template<typename T>
 T exchange_ptr(winrt::com_ptr<T> ptr)
 {

@@ -118,6 +118,10 @@
     </ClInclude>
     <ClInclude Include="Framework\DisplayService.h" />
     <ClInclude Include="Framework\IDisplayService.h" />
+    <ClInclude Include="Graph.xaml.h">
+      <DependentUpon>Graph.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="Helpers\BindableBase.h" />
     <ClInclude Include="IDataContext.h" />
     <ClInclude Include="Models\CpuModel.h">
@@ -174,6 +178,9 @@
     <Page Include="DisplayPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Graph.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="MainWindow.xaml" />
     <Xaml Include="Views\Hardware\CpuPage.xaml" />
   </ItemGroup>
@@ -184,6 +191,10 @@
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="Framework\DisplayService.cpp" />
+    <ClCompile Include="Graph.xaml.cpp">
+      <DependentUpon>Graph.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="Helpers\BindableBase.cpp" />
     <ClCompile Include="Models\CpuModel.cpp">
       <DependentUpon>Models\CpuModel.idl</DependentUpon>
@@ -232,6 +243,10 @@
   <ItemGroup>
     <Midl Include="DisplayPage.idl">
       <DependentUpon>DisplayPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="Graph.idl">
+      <DependentUpon>Graph.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
     <Midl Include="Models\CpuModel.idl">
@@ -301,6 +316,7 @@
     <Import Project="..\packages\Microsoft.Windows.SDK.BuildTools.10.0.26100.4188\build\Microsoft.Windows.SDK.BuildTools.targets" Condition="Exists('..\packages\Microsoft.Windows.SDK.BuildTools.10.0.26100.4188\build\Microsoft.Windows.SDK.BuildTools.targets')" />
     <Import Project="..\packages\Microsoft.Windows.ImplementationLibrary.1.0.250325.1\build\native\Microsoft.Windows.ImplementationLibrary.targets" Condition="Exists('..\packages\Microsoft.Windows.ImplementationLibrary.1.0.250325.1\build\native\Microsoft.Windows.ImplementationLibrary.targets')" />
     <Import Project="..\packages\Microsoft.Web.WebView2.1.0.3296.44\build\native\Microsoft.Web.WebView2.targets" Condition="Exists('..\packages\Microsoft.Web.WebView2.1.0.3296.44\build\native\Microsoft.Web.WebView2.targets')" />
+    <Import Project="..\packages\Microsoft.Graphics.Win2D.1.3.2\build\native\Microsoft.Graphics.Win2D.targets" Condition="Exists('..\packages\Microsoft.Graphics.Win2D.1.3.2\build\native\Microsoft.Graphics.Win2D.targets')" />
   </ImportGroup>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -314,5 +330,6 @@
     <Error Condition="!Exists('..\packages\Microsoft.Windows.SDK.BuildTools.10.0.26100.4188\build\Microsoft.Windows.SDK.BuildTools.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.SDK.BuildTools.10.0.26100.4188\build\Microsoft.Windows.SDK.BuildTools.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Windows.ImplementationLibrary.1.0.250325.1\build\native\Microsoft.Windows.ImplementationLibrary.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Windows.ImplementationLibrary.1.0.250325.1\build\native\Microsoft.Windows.ImplementationLibrary.targets'))" />
     <Error Condition="!Exists('..\packages\Microsoft.Web.WebView2.1.0.3296.44\build\native\Microsoft.Web.WebView2.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Web.WebView2.1.0.3296.44\build\native\Microsoft.Web.WebView2.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Graphics.Win2D.1.3.2\build\native\Microsoft.Graphics.Win2D.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Graphics.Win2D.1.3.2\build\native\Microsoft.Graphics.Win2D.targets'))" />
   </Target>
 </Project>
