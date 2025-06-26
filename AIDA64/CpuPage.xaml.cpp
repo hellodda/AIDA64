@@ -24,6 +24,7 @@ namespace winrt::AIDA64::implementation
 		if (auto param = e.Parameter().try_as<AIDA64::CpuPageViewModel>())
 		{
 			m_viewModel = param;
+			
 		}
 	}
 

@@ -26,8 +26,10 @@ namespace winrt::AIDA64::implementation
         winrt::CpuModel CpuModel() const noexcept;
         void CpuModel(winrt::CpuModel const& value);
 
-        winrt::IVectorView<Point> UsagePoints() const noexcept;
-        void UsagePoints(winrt::IVectorView<Point> const& value);
+        winrt::IObservableVector<double> Values() const noexcept;
+        void Values(winrt::IObservableVector<double> const& value);
+
+        winrt::ICommand TESTA();
 
     private:
 
@@ -35,11 +37,12 @@ namespace winrt::AIDA64::implementation
 
     private:
 
-        winrt::IVector<Point> m_cpuUsagePoints = single_threaded_vector<Point>();
+        winrt::ICommand TEST;
+
+        winrt::IObservableVector<double> m_values = single_threaded_observable_vector<double>();
         winrt::Windows::System::Threading::ThreadPoolTimer m_timer{ nullptr };
 
         winrt::CpuModel m_cpu_model;
-        winrt::ICommand AOAOAO;
 
         std::shared_ptr<ICpuService> m_service;
         std::shared_ptr<ILogger> m_logger;

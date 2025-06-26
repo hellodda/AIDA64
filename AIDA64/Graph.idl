@@ -5,16 +5,14 @@ namespace AIDA64
     {
         Graph();
 
-        static Microsoft.UI.Xaml.DependencyProperty PointsProperty { get; };
         static Microsoft.UI.Xaml.DependencyProperty TitleTextProperty { get; };
         static Microsoft.UI.Xaml.DependencyProperty DefaultColorProperty { get; };
-        Windows.Foundation.Collections.IVectorView<Windows.Foundation.Point> Points;
-        String TitleText;
+
+        Windows.Foundation.Collections.IObservableVector<Double> Points;
         Windows.UI.Color DefaultColor;
 
-        void SetTotal(UInt64 bytes);
-        void SetPoints(Windows.Foundation.Collections.IVectorView<Windows.Foundation.Point> points);
-        void AddPoint(Windows.Foundation.Point point);
+        String TitleText;
+
 
         void Pause();
         void Error();

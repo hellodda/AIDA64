@@ -14,6 +14,12 @@ namespace winrt::AIDA64::implementation
     Graph::Graph()
     {
         InitializeComponent();
+
+        this->Loaded([this](auto&&, auto&&)
+        {
+                m_graphSize.Height = this->ActualHeight();
+                m_graphSize.Width = this->ActualWidth();
+        });
     }
 
     winrt::Microsoft::UI::Xaml::DependencyProperty Graph::PointsProperty()
@@ -32,34 +38,49 @@ namespace winrt::AIDA64::implementation
     }
 
     winrt::Microsoft::UI::Xaml::DependencyProperty Graph::m_pointsProperty =
-     register_property<AIDA64::Graph, winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Foundation::Point>>(
+     register_property<AIDA64::Graph, winrt::Windows::Foundation::Collections::IObservableVector<double>>(
         L"Points",
-        winrt::Microsoft::UI::Xaml::PropertyMetadata{
-            nullptr,
-            [](auto sender, auto args)
-            {
-                if (auto control = sender.try_as<AIDA64::Graph>())
-                {
-                    auto points = args.NewValue()
-                        .try_as<winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Foundation::Point>>();
-                    if (points)
-                    {
-                        control.SetPoints(points);
-                    }
-                }
-            }
-        }
+         winrt::Microsoft::UI::Xaml::PropertyMetadata{ nullptr,
+             [](auto d, auto e)
+             {
+                 if (auto graph = d.try_as<AIDA64::implementation::Graph>())
+                 {
+                     if (graph->m_vectorChangedToken.value != 0)
+                     {
+                         if (auto oldVec = e.OldValue().try_as<winrt::Windows::Foundation::Collections::IObservableVector<double>>())
+                         {
+                             oldVec.VectorChanged(graph->m_vectorChangedToken);
+                         }
+                         graph->m_vectorChangedToken = {};
+                     }
+
+                     if (auto newVec = e.NewValue().try_as<winrt::Windows::Foundation::Collections::IObservableVector<double>>())
+                     {
+                         auto weakGraph = graph->get_weak();
+
+                         graph->m_vectorChangedToken = newVec.VectorChanged(
+                             [weakGraph](auto const& sender, auto const& args)
+                             {
+                                 if (auto strong = weakGraph.get())
+                                 {
+                                     strong->OnVectorChanged(sender, args);
+                                 }
+                        }   );
+                     }
+                 }
+             }
+         }
     );
 
     winrt::Microsoft::UI::Xaml::DependencyProperty Graph::m_titleTextProperty = register_property<AIDA64::Graph, winrt::hstring>(L"TitleText");
     winrt::Microsoft::UI::Xaml::DependencyProperty Graph::m_defaultColorProperty = register_property<AIDA64::Graph, winrt::Windows::UI::Color>(L"DefaultColor");
 
-    winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Foundation::Point> Graph::Points() const noexcept
+    winrt::Windows::Foundation::Collections::IObservableVector<double> Graph::Points() const noexcept
     {
-        return winrt::unbox_value<winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Foundation::Point>>(GetValue(m_pointsProperty));
+        return winrt::unbox_value<winrt::Windows::Foundation::Collections::IObservableVector<double>>(GetValue(m_pointsProperty));
     }
 
-    void Graph::Points(winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Foundation::Point> const& value)
+    void Graph::Points(winrt::Windows::Foundation::Collections::IObservableVector<double> const& value)
     {
         SetValue(m_pointsProperty, winrt::box_value(value));
     }
@@ -84,48 +105,50 @@ namespace winrt::AIDA64::implementation
         SetValue(m_defaultColorProperty, winrt::box_value(value));
     }
 
-    void Graph::SetPoints(winrt::Windows::Foundation::Collections::IVectorView<winrt::Windows::Foundation::Point> const& points)
+    void Graph::OnVectorChanged(
+        winrt::Windows::Foundation::Collections::IObservableVector<double> const& sender,
+        winrt::Windows::Foundation::Collections::IVectorChangedEventArgs const& args)
     {
-        auto shapePoints = Shape().Points();
-        shapePoints.Clear();
-
-        for (auto const& pt : points)
+        if (args.CollectionChange() == winrt::Windows::Foundation::Collections::CollectionChange::ItemInserted)
         {
-            shapePoints.Append(pt);
-        }
+            auto index = args.Index();
+            float raw = static_cast<float>(sender.GetAt(index));
+            float y = getY(raw);
+       
+            auto shapePoints = Shape().Points();
 
-        if (points.Size() > 0)
-        {
-            auto last = points.GetAt(points.Size() - 1);
-            shapePoints.Append({ last.X, m_graphSize.Height });
+            if (shapePoints.Size() == 0)
+            {
+                shapePoints.Append({ 0, m_graphSize.Height });
+            }
+            if (shapePoints.Size() >= 2)
+            {
+                shapePoints.SetAt(shapePoints.Size() - 1, { m_currentX, y });
+            }
+
+            shapePoints.Append({ m_currentX, m_graphSize.Height });
+
+            makeAnimation(y);
+
+            m_currentX += XStep;
+
+            if (m_currentX > m_graphSize.Width)
+            {
+                m_currentX = 0;
+                shapePoints.Clear();
+                shapePoints.Append({ 0, m_graphSize.Height });
+            }
         }
     }
 
-    void Graph::AddPoint(winrt::Windows::Foundation::Point const& point)
+    float Graph::getY(float value)
     {
-        auto shapePoints = Shape().Points();
+        if (m_max <= 0)
+            return m_graphSize.Height;
 
-        if (shapePoints.Size() == 0)
-        {
-            shapePoints.Append({ 0, m_graphSize.Height });
-        }
-
-        if (shapePoints.Size() >= 2)
-        {
-            shapePoints.SetAt(shapePoints.Size() - 1, point);
-        }
-
-        shapePoints.Append({ point.X, m_graphSize.Height }); 
-    }
-
-    float Graph::getX(uint64_t progressBytes)
-    {
-        return m_graphSize.Width * (static_cast<float>(progressBytes) / m_total);
-    }
-
-    float Graph::getY(uint64_t speed)
-    {
-        return m_graphSize.Height * (1.0f - static_cast<float>(speed) / m_currentMax / m_ratio);
+        float clamped = std::min(value, m_max);
+        float normalized = clamped / m_max;
+        return m_graphSize.Height * (1.0f - normalized); 
     }
 
     void Graph::resizeGraphPoint(float ratio)

@@ -247,7 +247,8 @@
                                 <FontIcon Glyph="&#xE9D9;" />
                                 <TextBlock Text="Cpu Usage" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
-                            <local:Graph Points="{x:Bind ViewModel.UsagePoints}" Height="250" TitleText="Graph (Test Version)"/>
+                            <local:Graph Height="250" Points="{x:Bind ViewModel.Values, Mode=OneWay}" TitleText="{x:Bind ViewModel.CpuModel.LoadPercentage, Mode=OneWay}"/>
+                            <Button Content="RABOTAY PLIZ" Command="{x:Bind ViewModel.TESTA}"/>
                         </StackPanel>
                     </Border>
                     <Border Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="0 0 5 5" Height="60" Padding="15">

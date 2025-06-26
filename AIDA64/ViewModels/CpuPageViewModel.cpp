@@ -32,21 +32,36 @@ namespace winrt::AIDA64::implementation
 		}
 	}
 
-	winrt::IVectorView<Point> CpuPageViewModel::UsagePoints() const noexcept
+	void CpuPageViewModel::Values(winrt::IObservableVector<double> const& value)
 	{
-		return m_cpuUsagePoints.GetView();
+		if (m_values != value)
+		{
+			m_values = value;
+			RaisePropertyChanged(L"Values");
+		}
 	}
 
-	void CpuPageViewModel::UsagePoints(winrt::IVectorView<Point> const& value)
+	winrt::ICommand CpuPageViewModel::TESTA()
 	{
-		if (m_cpuUsagePoints != value)
+		if (!this->TEST)
 		{
-			for (auto var : value)
-			{
-				m_cpuUsagePoints.Append(var);
-			}
-			RaisePropertyChanged(L"UsagePoints");
+			TEST = winrt::make<RelayCommand>([this]() -> IAsyncAction {
+
+				for (int i = 0; i < 1000; i++)
+				{
+					co_await LoadDataAsync();
+				}
+
+
+				co_return;
+			});
 		}
+		return TEST;
+	}
+
+	winrt::IObservableVector<double> CpuPageViewModel::Values() const noexcept
+	{
+		return m_values;
 	}
 
 	winrt::IAsyncAction CpuPageViewModel::LoadDataAsync()
@@ -58,29 +73,10 @@ namespace winrt::AIDA64::implementation
 		if (!model) co_return;
 
 		CpuModel(model);
-				
 
-			winrt::IVector<winrt::Windows::Foundation::Point> points = single_threaded_vector<Point>();
+		m_values.Append(model.LoadPercentage());
 
-		float width = 1000.0f;
-		float height = 250.0f;
-		int count = 100;
-		float maxYValue = 250.0f;
-
-		for (int i = 0; i < count; ++i)
-		{
-			float x = i * (width / (count - 1));
-			float y = static_cast<float>(std::rand() % static_cast<int>(maxYValue));
-			float yCoord = height - y;
-
-			points.Append({ x, yCoord });
-		}
-
-		points.Append({ width, height });
-		points.Append({ 0, height });
-		
-
-		UsagePoints(points.GetView());
+		RaisePropertyChanged(L"Values");
 
 		co_return;
 	}
