@@ -49,9 +49,6 @@
     <ClCompile Include="Framework\CpuService.cpp">
       <Filter>Framework\Services\CpuService</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\ServiceLocator.cpp">
-      <Filter>Framework\Services\ServiceLocator</Filter>
-    </ClCompile>
     <ClCompile Include="DIConfig.cpp" />
     <ClCompile Include="Helpers\BindableBase.cpp" />
     <ClCompile Include="Framework\DisplayService.cpp" />
@@ -85,9 +82,6 @@
     </ClInclude>
     <ClInclude Include="Framework\ICpuService.h">
       <Filter>Framework\Services\CpuService</Filter>
-    </ClInclude>
-    <ClInclude Include="Framework\ServiceLocator.h">
-      <Filter>Framework\Services\ServiceLocator</Filter>
     </ClInclude>
     <ClInclude Include="Helpers\BindableBase.h" />
     <ClInclude Include="Framework\IDisplayService.h" />

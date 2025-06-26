@@ -130,7 +130,6 @@
     </ClInclude>
     <ClInclude Include="Framework\CpuService.h" />
     <ClInclude Include="Framework\ICpuService.h" />
-    <ClInclude Include="Framework\ServiceLocator.h" />
     <ClInclude Include="Models\DisplayModel.h">
       <DependentUpon>Models\DisplayModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -195,7 +194,6 @@
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="Framework\CpuService.cpp" />
-    <ClCompile Include="Framework\ServiceLocator.cpp" />
     <ClCompile Include="Models\DisplayModel.cpp">
       <DependentUpon>Models\DisplayModel.idl</DependentUpon>
       <SubType>Code</SubType>
