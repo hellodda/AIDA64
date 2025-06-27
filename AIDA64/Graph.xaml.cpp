@@ -22,22 +22,32 @@ namespace winrt::AIDA64::implementation
         });
     }
 
-    winrt::Microsoft::UI::Xaml::DependencyProperty Graph::PointsProperty()
+    Microsoft::UI::Xaml::DependencyProperty Graph::ValuesProperty()
     {
-        return m_pointsProperty;
+        return m_ValuesProperty;
     }
 
-    winrt::Microsoft::UI::Xaml::DependencyProperty Graph::TitleTextProperty()
+    Microsoft::UI::Xaml::DependencyProperty Graph::TitleTextProperty()
     {
         return m_titleTextProperty;
     }
 
-    winrt::Microsoft::UI::Xaml::DependencyProperty Graph::DefaultColorProperty()
+    Microsoft::UI::Xaml::DependencyProperty Graph::DefaultColorProperty()
     {
         return m_defaultColorProperty;
     }
 
-    winrt::Microsoft::UI::Xaml::DependencyProperty Graph::m_pointsProperty =
+    Microsoft::UI::Xaml::DependencyProperty Graph::StepSizeProperty()
+    {
+        return m_stepSizeProperty;
+    }
+
+    Microsoft::UI::Xaml::DependencyProperty Graph::MaxValueProperty()
+    {
+        return m_maxValueProperty;
+    }
+
+    Microsoft::UI::Xaml::DependencyProperty Graph::m_ValuesProperty =
      register_property<AIDA64::Graph, winrt::Windows::Foundation::Collections::IObservableVector<double>>(
         L"Points",
          winrt::Microsoft::UI::Xaml::PropertyMetadata{ nullptr,
@@ -72,17 +82,20 @@ namespace winrt::AIDA64::implementation
          }
     );
 
-    winrt::Microsoft::UI::Xaml::DependencyProperty Graph::m_titleTextProperty = register_property<AIDA64::Graph, winrt::hstring>(L"TitleText");
-    winrt::Microsoft::UI::Xaml::DependencyProperty Graph::m_defaultColorProperty = register_property<AIDA64::Graph, winrt::Windows::UI::Color>(L"DefaultColor");
+    Microsoft::UI::Xaml::DependencyProperty Graph::m_titleTextProperty = register_property<AIDA64::Graph, winrt::hstring>(L"TitleText");
+    Microsoft::UI::Xaml::DependencyProperty Graph::m_defaultColorProperty = register_property<AIDA64::Graph, winrt::Windows::UI::Color>(L"DefaultColor");
+    Microsoft::UI::Xaml::DependencyProperty Graph::m_stepSizeProperty = register_property<AIDA64::Graph, float>(L"StepSize");
+    Microsoft::UI::Xaml::DependencyProperty Graph::m_maxValueProperty = register_property<AIDA64::Graph, float>(L"MaxValue");
 
-    winrt::Windows::Foundation::Collections::IObservableVector<double> Graph::Points() const noexcept
+
+    winrt::Windows::Foundation::Collections::IObservableVector<double> Graph::Values() const noexcept
     {
-        return winrt::unbox_value<winrt::Windows::Foundation::Collections::IObservableVector<double>>(GetValue(m_pointsProperty));
+        return winrt::unbox_value<winrt::Windows::Foundation::Collections::IObservableVector<double>>(GetValue(m_ValuesProperty));
     }
 
-    void Graph::Points(winrt::Windows::Foundation::Collections::IObservableVector<double> const& value)
+    void Graph::Values(winrt::Windows::Foundation::Collections::IObservableVector<double> const& value)
     {
-        SetValue(m_pointsProperty, winrt::box_value(value));
+        SetValue(m_ValuesProperty, winrt::box_value(value));
     }
 
     winrt::hstring Graph::TitleText() const noexcept
@@ -103,6 +116,26 @@ namespace winrt::AIDA64::implementation
     void Graph::DefaultColor(Windows::UI::Color const& value)
     {
         SetValue(m_defaultColorProperty, winrt::box_value(value));
+    }
+
+    float Graph::StepSize() const noexcept
+    {
+        return winrt::unbox_value<float>(GetValue(m_stepSizeProperty));
+    }
+
+    void Graph::StepSize(float const& value)
+    {
+        SetValue(m_stepSizeProperty, winrt::box_value(value));
+    }
+
+    float Graph::MaxValue() const noexcept
+    {
+        return winrt::unbox_value<float>(GetValue(m_maxValueProperty));
+    }
+
+    void Graph::MaxValue(float const& value)
+    {
+        SetValue(m_maxValueProperty, winrt::box_value(value));
     }
 
     void Graph::OnVectorChanged(
@@ -130,7 +163,7 @@ namespace winrt::AIDA64::implementation
 
             makeAnimation(y);
 
-            m_currentX += XStep;
+            m_currentX += m_stepSize;
 
             if (m_currentX > m_graphSize.Width)
             {
@@ -143,11 +176,11 @@ namespace winrt::AIDA64::implementation
 
     float Graph::getY(float value)
     {
-        if (m_max <= 0)
+        if (m_maxValue <= 0)
             return m_graphSize.Height;
 
-        float clamped = std::min(value, m_max);
-        float normalized = clamped / m_max;
+        float clamped = std::min(value, m_maxValue);
+        float normalized = clamped / m_maxValue;
         return m_graphSize.Height * (1.0f - normalized); 
     }
 

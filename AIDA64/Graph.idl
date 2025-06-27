@@ -5,11 +5,17 @@ namespace AIDA64
     {
         Graph();
 
+        static Microsoft.UI.Xaml.DependencyProperty ValuesProperty { get; };
         static Microsoft.UI.Xaml.DependencyProperty TitleTextProperty { get; };
         static Microsoft.UI.Xaml.DependencyProperty DefaultColorProperty { get; };
+        static Microsoft.UI.Xaml.DependencyProperty StepSizeProperty { get; };
+        static Microsoft.UI.Xaml.DependencyProperty MaxValueProperty { get; };
 
-        Windows.Foundation.Collections.IObservableVector<Double> Points;
+        Windows.Foundation.Collections.IObservableVector<Double> Values;
         Windows.UI.Color DefaultColor;
+
+        Double StepSize;
+        Double MaxValue;
 
         String TitleText;
 

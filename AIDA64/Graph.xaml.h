@@ -18,35 +18,44 @@ namespace winrt::AIDA64::implementation
     {
         Graph();
 
-        static winrt::Microsoft::UI::Xaml::DependencyProperty PointsProperty();
+        static winrt::Microsoft::UI::Xaml::DependencyProperty ValuesProperty();
         static winrt::Microsoft::UI::Xaml::DependencyProperty TitleTextProperty();
         static winrt::Microsoft::UI::Xaml::DependencyProperty DefaultColorProperty();
+        static winrt::Microsoft::UI::Xaml::DependencyProperty StepSizeProperty();
+        static winrt::Microsoft::UI::Xaml::DependencyProperty MaxValueProperty();
 
-        winrt::Windows::Foundation::Collections::IObservableVector<double> Points() const noexcept;
-        void Points(winrt::Windows::Foundation::Collections::IObservableVector<double> const& value);
+        winrt::Windows::Foundation::Collections::IObservableVector<double> Values() const noexcept;
+        void Values(winrt::Windows::Foundation::Collections::IObservableVector<double> const& value);
  
         winrt::hstring TitleText() const noexcept;
         void TitleText(winrt::hstring const& value);
 
         winrt::Windows::UI::Color DefaultColor() const noexcept;
         void DefaultColor(winrt::Windows::UI::Color const& value);
+
+        float StepSize() const noexcept;
+        void StepSize(float const& value);
+
+        float MaxValue() const noexcept;
+        void MaxValue(float const& value);
+
         void Pause();
         void Error();
 
     private:
 
-        static winrt::Microsoft::UI::Xaml::DependencyProperty m_pointsProperty;
+        static winrt::Microsoft::UI::Xaml::DependencyProperty m_ValuesProperty;
         static winrt::Microsoft::UI::Xaml::DependencyProperty m_titleTextProperty;
         static winrt::Microsoft::UI::Xaml::DependencyProperty m_defaultColorProperty;
+        static winrt::Microsoft::UI::Xaml::DependencyProperty m_stepSizeProperty;
+        static winrt::Microsoft::UI::Xaml::DependencyProperty m_maxValueProperty;
 
         winrt::event_token m_vectorChangedToken{};
 
-        uint64_t m_total{};
-        uint64_t m_currentMax{ 1024 };
 
         float m_currentX{ 0.0f };
-        float m_max{ 100.0f };
-        constexpr static float XStep{ 30.0f };
+        float m_maxValue{ 100.0f };
+        float m_stepSize{ 30.0f };
 
         winrt::Windows::Foundation::Size m_graphSize{};
 
