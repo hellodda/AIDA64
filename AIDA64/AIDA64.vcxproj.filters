@@ -65,6 +65,9 @@
     <ClCompile Include="Framework\DisplayService.cpp">
       <Filter>Framework\Services\DisplayService</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\TaskScheduler.cpp">
+      <Filter>Framework\TaskScheduler</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -107,6 +110,9 @@
     </ClInclude>
     <ClInclude Include="IDataContext.h">
       <Filter>Framework\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\TaskScheduler.h">
+      <Filter>Framework\TaskScheduler</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +195,9 @@
     </Filter>
     <Filter Include="Framework\Services\DisplayService">
       <UniqueIdentifier>{37c7da4b-8534-4d8b-bb12-3dfbd52eff43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\TaskScheduler">
+      <UniqueIdentifier>{14e60b07-dbce-44e1-81fa-d0db98c0cf46}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

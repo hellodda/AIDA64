@@ -4,18 +4,20 @@
 #include "CpuPageViewModel.g.cpp"
 #endif
 
+#include <Framework/Utilities.h>
+
 namespace winrt::AIDA64::implementation
 {
 	CpuPageViewModel::CpuPageViewModel()
 	{
-
+	
 	}
 
 	void CpuPageViewModel::Inject(std::shared_ptr<ICpuService> service, std::shared_ptr<ILogger> logger)
 	{
 		m_service = std::move(service);
 		m_logger = std::move(logger);
-		LoadDataAsync();
+		Setup();
 	}
 
 	winrt::CpuModel CpuPageViewModel::CpuModel() const noexcept
@@ -40,44 +42,20 @@ namespace winrt::AIDA64::implementation
 			RaisePropertyChanged(L"Values");
 		}
 	}
-
-	winrt::ICommand CpuPageViewModel::TESTA()
-	{
-		if (!this->TEST)
-		{
-			TEST = winrt::make<RelayCommand>([this]() -> IAsyncAction {
-
-				for (int i = 0; i < 1000; i++)
-				{
-					co_await LoadDataAsync();
-				}
-
-
-				co_return;
-			});
-		}
-		return TEST;
-	}
-
 	winrt::IObservableVector<double> CpuPageViewModel::Values() const noexcept
 	{
 		return m_values;
 	}
 
-	winrt::IAsyncAction CpuPageViewModel::LoadDataAsync()
+	void CpuPageViewModel::Setup()
 	{
-		if (!m_service) co_return;
+		get_instance<DispatcherTaskScheduler>().AddTask([this]() -> IAsyncAction {
+			auto result = (co_await m_service->GetCpuInformationAsync()).GetAt(0);
 
-		auto model = (co_await m_service->GetCpuInformationAsync()).GetAt(0);
+			CpuModel(result);
 
-		if (!model) co_return;
-
-		CpuModel(model);
-
-		m_values.Append(model.LoadPercentage());
-
-		RaisePropertyChanged(L"Values");
-
-		co_return;
+			m_values.Append(static_cast<double>(result.LoadPercentage()));
+			RaisePropertyChanged(L"Values");
+		});
 	}
 }

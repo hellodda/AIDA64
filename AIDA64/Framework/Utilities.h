@@ -4,6 +4,7 @@
 #include <Models/ProcessModel.h>
 #include <winrt/Windows.UI.Xaml.Interop.h>
 #include <WMIDataContext.h>
+#include <Framework/TaskScheduler.h>
 
 //------------------------------------------------------------------
 //- other helpers \/
@@ -42,6 +43,13 @@ template<typename T>
 T exchange_ptr(winrt::com_ptr<T> ptr)
 {
     return *ptr.get();
+}
+
+template<typename T>
+T& get_instance()
+{
+    static T singleton_instance;
+    return singleton_instance;
 }
 
 //------------------------------------------------------------------

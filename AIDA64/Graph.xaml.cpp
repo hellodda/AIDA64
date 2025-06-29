@@ -19,74 +19,9 @@ namespace winrt::AIDA64::implementation
         {
                 m_graphSize.Height = this->ActualHeight();
                 m_graphSize.Width = this->ActualWidth();
+                UpdateBrushColor();
         });
     }
-
-    Microsoft::UI::Xaml::DependencyProperty Graph::ValuesProperty()
-    {
-        return m_ValuesProperty;
-    }
-
-    Microsoft::UI::Xaml::DependencyProperty Graph::TitleTextProperty()
-    {
-        return m_titleTextProperty;
-    }
-
-    Microsoft::UI::Xaml::DependencyProperty Graph::DefaultColorProperty()
-    {
-        return m_defaultColorProperty;
-    }
-
-    Microsoft::UI::Xaml::DependencyProperty Graph::StepSizeProperty()
-    {
-        return m_stepSizeProperty;
-    }
-
-    Microsoft::UI::Xaml::DependencyProperty Graph::MaxValueProperty()
-    {
-        return m_maxValueProperty;
-    }
-
-    Microsoft::UI::Xaml::DependencyProperty Graph::m_ValuesProperty =
-     register_property<AIDA64::Graph, winrt::Windows::Foundation::Collections::IObservableVector<double>>(
-        L"Points",
-         winrt::Microsoft::UI::Xaml::PropertyMetadata{ nullptr,
-             [](auto d, auto e)
-             {
-                 if (auto graph = d.try_as<AIDA64::implementation::Graph>())
-                 {
-                     if (graph->m_vectorChangedToken.value != 0)
-                     {
-                         if (auto oldVec = e.OldValue().try_as<winrt::Windows::Foundation::Collections::IObservableVector<double>>())
-                         {
-                             oldVec.VectorChanged(graph->m_vectorChangedToken);
-                         }
-                         graph->m_vectorChangedToken = {};
-                     }
-
-                     if (auto newVec = e.NewValue().try_as<winrt::Windows::Foundation::Collections::IObservableVector<double>>())
-                     {
-                         auto weakGraph = graph->get_weak();
-
-                         graph->m_vectorChangedToken = newVec.VectorChanged(
-                             [weakGraph](auto const& sender, auto const& args)
-                             {
-                                 if (auto strong = weakGraph.get())
-                                 {
-                                     strong->OnVectorChanged(sender, args);
-                                 }
-                        }   );
-                     }
-                 }
-             }
-         }
-    );
-
-    Microsoft::UI::Xaml::DependencyProperty Graph::m_titleTextProperty = register_property<AIDA64::Graph, winrt::hstring>(L"TitleText");
-    Microsoft::UI::Xaml::DependencyProperty Graph::m_defaultColorProperty = register_property<AIDA64::Graph, winrt::Windows::UI::Color>(L"DefaultColor");
-    Microsoft::UI::Xaml::DependencyProperty Graph::m_stepSizeProperty = register_property<AIDA64::Graph, float>(L"StepSize");
-    Microsoft::UI::Xaml::DependencyProperty Graph::m_maxValueProperty = register_property<AIDA64::Graph, float>(L"MaxValue");
-
 
     winrt::Windows::Foundation::Collections::IObservableVector<double> Graph::Values() const noexcept
     {
@@ -137,6 +72,33 @@ namespace winrt::AIDA64::implementation
     {
         SetValue(m_maxValueProperty, winrt::box_value(value));
     }
+
+    Microsoft::UI::Xaml::DependencyProperty Graph::ValuesProperty()
+    {
+        return m_ValuesProperty;
+    }
+
+    Microsoft::UI::Xaml::DependencyProperty Graph::TitleTextProperty()
+    {
+        return m_titleTextProperty;
+    }
+
+    Microsoft::UI::Xaml::DependencyProperty Graph::DefaultColorProperty()
+    {
+        return m_defaultColorProperty;
+    }
+
+    Microsoft::UI::Xaml::DependencyProperty Graph::StepSizeProperty()
+    {
+        return m_stepSizeProperty;
+    }
+
+    Microsoft::UI::Xaml::DependencyProperty Graph::MaxValueProperty()
+    {
+        return m_maxValueProperty;
+    }
+
+  
 
     void Graph::OnVectorChanged(
         winrt::Windows::Foundation::Collections::IObservableVector<double> const& sender,
@@ -262,13 +224,85 @@ namespace winrt::AIDA64::implementation
             }
         }
     }
-    void Graph::Pause()
+
+    void Graph::UpdateBrushColor()
     {
-        winrt::Microsoft::UI::Xaml::VisualStateManager::GoToState(*this, L"Pause", false);
+        winrt::Microsoft::UI::Xaml::Media::LinearGradientBrush brush;
+        brush.StartPoint({ 0.0f, 0.0f });
+        brush.EndPoint({ 0.0f, 1.0f });
+
+        auto baseColor = DefaultColor();
+
+        winrt::Microsoft::UI::Xaml::Media::GradientStop bottomStop;
+        bottomStop.Color(baseColor);
+        bottomStop.Offset(0.0);
+
+        winrt::Microsoft::UI::Xaml::Media::GradientStop topStop;
+        topStop.Color(winrt::Windows::UI::ColorHelper::FromArgb(0x10, baseColor.R, baseColor.G, baseColor.B));
+        topStop.Offset(1.0);
+
+        brush.GradientStops().Append(bottomStop);
+        brush.GradientStops().Append(topStop);
+
+        Shape().Fill(brush);
     }
 
-    void Graph::Error()
-    {
-        winrt::Microsoft::UI::Xaml::VisualStateManager::GoToState(*this, L"Error", false);
-    }
+}
+
+
+namespace winrt::AIDA64::implementation
+{
+    Microsoft::UI::Xaml::DependencyProperty Graph::m_titleTextProperty = register_property<AIDA64::Graph, winrt::hstring>(L"TitleText");
+    Microsoft::UI::Xaml::DependencyProperty Graph::m_stepSizeProperty = register_property<AIDA64::Graph, float>(L"StepSize");
+    Microsoft::UI::Xaml::DependencyProperty Graph::m_maxValueProperty = register_property<AIDA64::Graph, float>(L"MaxValue");
+
+    Microsoft::UI::Xaml::DependencyProperty Graph::m_ValuesProperty =
+        register_property<AIDA64::Graph, winrt::Windows::Foundation::Collections::IObservableVector<double>>(
+            L"Points",
+            winrt::Microsoft::UI::Xaml::PropertyMetadata{ nullptr,
+                [](auto d, auto e)
+                {
+                    if (auto graph = d.try_as<AIDA64::implementation::Graph>())
+                    {
+                        if (graph->m_vectorChangedToken.value != 0)
+                        {
+                            if (auto oldVec = e.OldValue().try_as<winrt::Windows::Foundation::Collections::IObservableVector<double>>())
+                            {
+                                oldVec.VectorChanged(graph->m_vectorChangedToken);
+                            }
+                            graph->m_vectorChangedToken = {};
+                        }
+
+                        if (auto newVec = e.NewValue().try_as<winrt::Windows::Foundation::Collections::IObservableVector<double>>())
+                        {
+                            auto weakGraph = graph->get_weak();
+
+                            graph->m_vectorChangedToken = newVec.VectorChanged(
+                                [weakGraph](auto const& sender, auto const& args)
+                                {
+                                    if (auto strong = weakGraph.get())
+                                    {
+                                        strong->OnVectorChanged(sender, args);
+                                    }
+                           });
+                        }
+                    }
+                }
+            }
+        );
+
+    Microsoft::UI::Xaml::DependencyProperty Graph::m_defaultColorProperty =
+     register_property<AIDA64::Graph, winrt::Windows::UI::Color>(
+        L"DefaultColor",
+        winrt::Microsoft::UI::Xaml::PropertyMetadata{
+            winrt::box_value(winrt::Windows::UI::Colors::LightGreen()),
+            [](auto d, auto e)
+            {
+                if (auto graph = d.try_as<AIDA64::implementation::Graph>())
+                {
+                    graph->UpdateBrushColor();
+                }
+            }
+    });
+
 }

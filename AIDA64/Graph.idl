@@ -18,9 +18,5 @@ namespace AIDA64
         Double MaxValue;
 
         String TitleText;
-
-
-        void Pause();
-        void Error();
     }
 }

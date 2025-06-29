@@ -29,11 +29,9 @@ namespace winrt::AIDA64::implementation
         winrt::IObservableVector<double> Values() const noexcept;
         void Values(winrt::IObservableVector<double> const& value);
 
-        winrt::ICommand TESTA();
-
     private:
 
-        winrt::IAsyncAction LoadDataAsync();
+        void Setup();
 
     private:
 

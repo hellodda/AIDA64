@@ -24,6 +24,7 @@ namespace winrt::AIDA64::implementation
         static winrt::Microsoft::UI::Xaml::DependencyProperty StepSizeProperty();
         static winrt::Microsoft::UI::Xaml::DependencyProperty MaxValueProperty();
 
+
         winrt::Windows::Foundation::Collections::IObservableVector<double> Values() const noexcept;
         void Values(winrt::Windows::Foundation::Collections::IObservableVector<double> const& value);
  
@@ -39,8 +40,19 @@ namespace winrt::AIDA64::implementation
         float MaxValue() const noexcept;
         void MaxValue(float const& value);
 
-        void Pause();
-        void Error();
+
+
+        void UpdateBrushColor();
+
+    private:
+
+        float getY(float value);
+
+        void resizeGraphPoint(float ratio);
+
+        void makeAnimation();
+
+        void makeAnimation(float y);
 
     private:
 
@@ -56,19 +68,9 @@ namespace winrt::AIDA64::implementation
         float m_currentX{ 0.0f };
         float m_maxValue{ 100.0f };
         float m_stepSize{ 30.0f };
-
-        winrt::Windows::Foundation::Size m_graphSize{};
-
-        float getY(float value);
-
-      
-        void resizeGraphPoint(float ratio);
         float m_ratio{ 1.0f };
 
-        void makeAnimation();
-
-        void makeAnimation(float y);
-        std::chrono::steady_clock::time_point m_start{};
+        winrt::Windows::Foundation::Size m_graphSize{};
 
         constexpr static auto BackgroundCircleDistance{ 6 };
 

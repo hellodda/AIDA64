@@ -138,6 +138,7 @@
       <DependentUpon>Models\DisplayModel.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="Framework\TaskScheduler.h" />
     <ClInclude Include="ViewModels\CpuPageViewModel.h">
       <DependentUpon>ViewModels\CpuPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -209,6 +210,7 @@
       <DependentUpon>Models\DisplayModel.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="Framework\TaskScheduler.cpp" />
     <ClCompile Include="ViewModels\CpuPageViewModel.cpp">
       <DependentUpon>ViewModels\CpuPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
