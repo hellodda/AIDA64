@@ -247,7 +247,7 @@
                                 <FontIcon Glyph="&#xE9D9;" />
                                 <TextBlock Text="Cpu Usage" FontSize="20" Margin="0 -2 0 0"/>
                             </StackPanel>
-                            <local:Graph Height="250" StepSize="15" DefaultColor="Red" Values="{x:Bind ViewModel.Values, Mode=OneWay}" TitleText="{x:Bind ViewModel.CpuModel.LoadPercentage, Mode=OneWay}"/>
+                            <local:Graph Height="250" StepSize="15" DefaultColor="{ThemeResource SystemAccentColor}" Values="{x:Bind ViewModel.Values, Mode=OneWay}" TitleText="{x:Bind ViewModel.CpuModel.LoadPercentage, Mode=OneWay}"/>
                         </StackPanel>
                     </Border>
                     <Border Background="{ThemeResource  ControlFillColorDefaultBrush}" CornerRadius="0 0 5 5" Height="60" Padding="15">
