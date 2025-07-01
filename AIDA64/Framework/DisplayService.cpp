@@ -14,7 +14,7 @@ namespace winrt::AIDA64::Framework
     {
         std::vector<com_ptr<IWbemClassObject>> result;
 
-        co_await m_context->QueryAsync(QUERY_DISPLAY_LIST, result);
+        co_await m_context->QueryAsync(QUERY_DISPLAY_LIST);
 
         DisplayModel displayModel{};
 

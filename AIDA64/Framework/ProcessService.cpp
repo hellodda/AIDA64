@@ -16,7 +16,7 @@ namespace winrt::AIDA64::Framework
 	{
 		std::vector<com_ptr<IWbemClassObject>> result;
 
-		co_await m_context->QueryAsync(QUERY_PROCESS_LIST, result);
+		co_await m_context->QueryAsync(QUERY_PROCESS_LIST);
 
 		IVector<ProcessModel> models = single_threaded_vector<ProcessModel>();
 

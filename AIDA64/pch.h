@@ -31,7 +31,6 @@
 
 
 #include <future>
-#include <boost/di.hpp>
 
 
 //

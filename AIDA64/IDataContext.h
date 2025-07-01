@@ -1,4 +1,6 @@
 #pragma once
+#include <async/task.h>
+#include "WmiObject.h"
 
 namespace winrt
 {
@@ -11,8 +13,7 @@ namespace winrt::AIDA64::Framework
 {
 	struct IDataContext
 	{
-		virtual std::vector<com_ptr<IWbemClassObject>> Query(hstring const& query) = 0;
-		virtual IAsyncAction QueryAsync(hstring const& query, std::vector<com_ptr<IWbemClassObject>>& result) = 0;
-
+		virtual std::vector<wmi::WmiObject> Query(hstring const& query) = 0;
+		virtual async::task<std::vector<wmi::WmiObject>> QueryAsync(hstring const& query) = 0;
 	};
 }

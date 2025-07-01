@@ -16,61 +16,25 @@
 #include <ViewModels/MainViewModel.h>
 #include <ViewModels/DisplayPageViewModel.h>
 
-namespace di = boost::di;
-
 using namespace winrt::AIDA64::Framework;
 using namespace winrt::AIDA64;
 using namespace winrt;
-
-
-inline auto create_injector()
-{
-  return di::make_injector(
-        di::bind<ILogger>().to<Logger>(),
-
-        di::bind<WmiDataContext>().to([&](auto&) -> std::shared_ptr<WmiDataContext> {
-            return get_mta_wmi_context();
-        }).in(di::singleton),
-
-        di::bind<ICpuService>().to([&](auto& inj) -> std::shared_ptr<ICpuService> {
-            auto logger = inj.template create<std::shared_ptr<ILogger>>();
-            auto wmi_context = inj.template create<std::shared_ptr<WmiDataContext>>();
-
-            return std::make_shared<CpuService>(wmi_context, logger);
-        }).in(di::singleton),
-
-        di::bind<IProcessService>().to([&](auto& inj) -> std::shared_ptr<IProcessService> {
-            auto logger = inj.template create<std::shared_ptr<ILogger>>();
-            auto wmi_context = inj.template create<std::shared_ptr<WmiDataContext>>();
-
-            return std::make_shared<ProcessService>(wmi_context, logger);
-        })
-    );
-}
-
-
-//---------------------------------------------------------------------------
-// using \/
-//---------------------------------------------------------------------------
-
-using InjectorT = decltype(create_injector());
-
 
 //---------------------------------------------------------------------------
 // Primary templates \/
 //---------------------------------------------------------------------------
 
 template<typename ModelT>
-ModelT create_model(InjectorT const& injector);
+ModelT create_model();
 
 template<typename viewT>
-viewT create_view(InjectorT const& injector);
+viewT create_view();
 
 //
 // >>>sub
 //
 
-inline std::vector<page_data_t> initialize_pages(InjectorT const& injector);
+inline std::vector<page_data_t> initialize_pages();
 
 //---------------------------------------------------------------------------
 // Models Factory \/
@@ -78,30 +42,30 @@ inline std::vector<page_data_t> initialize_pages(InjectorT const& injector);
 
 
 template<>
-AIDA64::MainViewModel create_model<AIDA64::MainViewModel>(InjectorT const& injector);
+AIDA64::MainViewModel create_model<AIDA64::MainViewModel>();
 
 template<>
-AIDA64::CpuPageViewModel create_model<AIDA64::CpuPageViewModel>(InjectorT const& injector);
+AIDA64::CpuPageViewModel create_model<AIDA64::CpuPageViewModel>();
 
 template<>
-AIDA64::DisplayPageViewModel create_model<AIDA64::DisplayPageViewModel>(InjectorT const& injector);
+AIDA64::DisplayPageViewModel create_model<AIDA64::DisplayPageViewModel>();
 
 //---------------------------------------------------------------------------
 // Windows Factory \/
 //---------------------------------------------------------------------------
 
 template<>
-AIDA64::MainWindow create_view<AIDA64::MainWindow>(InjectorT const& injector);
+AIDA64::MainWindow create_view<AIDA64::MainWindow>();
 
 //---------------------------------------------------------------------------
 // Pages Factory \/
 //---------------------------------------------------------------------------
 
 template<>
-AIDA64::CpuPage create_view<AIDA64::CpuPage>(InjectorT const& injector);
+AIDA64::CpuPage create_view<AIDA64::CpuPage>();
 
 template<>
-AIDA64::DisplayPage create_view<AIDA64::DisplayPage>(InjectorT const& injector);
+AIDA64::DisplayPage create_view<AIDA64::DisplayPage>();
 
 
 namespace winrt::AIDA64
@@ -115,9 +79,7 @@ namespace winrt::AIDA64
     {
         AIDA64::MainWindow create_application_window() override
         {
-            auto injector = create_injector();
-
-            auto view = create_view<AIDA64::MainWindow>(injector);
+            auto view = create_view<AIDA64::MainWindow>();
 
             return view;
         }

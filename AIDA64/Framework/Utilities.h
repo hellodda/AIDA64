@@ -111,3 +111,9 @@ winrt::AIDA64::CpuModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object
 
 template<>
 winrt::AIDA64::DisplayModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
+
+template<typename T>
+T from_wmi(wmi::WmiObject const& object);
+
+template<>
+winrt::AIDA64::CpuModel from_wmi(wmi::WmiObject const& object);

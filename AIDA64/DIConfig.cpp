@@ -1,19 +1,19 @@
 #include "pch.h"
 #include "DIConfig.h"
 
-std::vector<page_data_t> initialize_pages(InjectorT const& injector)
+std::vector<page_data_t> initialize_pages()
 {
     std::vector<page_data_t> pages;
 
     pages.push_back(page_data_t(
         L"cpu",
-        create_model<AIDA64::CpuPageViewModel>(injector),
-        create_view<AIDA64::CpuPage>(injector)
+        create_model<AIDA64::CpuPageViewModel>(),
+        create_view<AIDA64::CpuPage>()
     ));
     pages.push_back(page_data_t(
         L"display",
-        create_model<AIDA64::DisplayPageViewModel>(injector),
-        create_view<AIDA64::DisplayPage>(injector)
+        create_model<AIDA64::DisplayPageViewModel>(),
+        create_view<AIDA64::DisplayPage>()
     ));
 
     return pages;
@@ -26,9 +26,9 @@ std::vector<page_data_t> initialize_pages(InjectorT const& injector)
 
 
 template<>
-AIDA64::CpuPageViewModel create_model<AIDA64::CpuPageViewModel>(InjectorT const& injector)
+AIDA64::CpuPageViewModel create_model<AIDA64::CpuPageViewModel>()
 {
-    auto logger = injector.create<std::shared_ptr<ILogger>>();
+    auto logger = std::make_shared<Logger>();
     auto model = winrt::make<implementation::CpuPageViewModel>();
     auto service = std::make_shared<CpuService>(get_mta_wmi_context(), logger);
 
@@ -38,18 +38,18 @@ AIDA64::CpuPageViewModel create_model<AIDA64::CpuPageViewModel>(InjectorT const&
 }
 
 template<>
-AIDA64::MainViewModel create_model<AIDA64::MainViewModel>(InjectorT const& injector)
+AIDA64::MainViewModel create_model<AIDA64::MainViewModel>()
 {
-    auto logger = injector.create<std::shared_ptr<ILogger>>();
+    auto logger = std::make_shared<Logger>();
     auto main_view_model = winrt::make<implementation::MainViewModel>();
     main_view_model.as<implementation::MainViewModel>()->Inject(logger);
     return main_view_model;
 }
 
 template<>
-AIDA64::DisplayPageViewModel create_model<AIDA64::DisplayPageViewModel>(InjectorT const& injector)
+AIDA64::DisplayPageViewModel create_model<AIDA64::DisplayPageViewModel>()
 {
-    auto logger = injector.create<std::shared_ptr<ILogger>>();
+    auto logger = std::make_shared<Logger>();
     auto model = winrt::make<implementation::DisplayPageViewModel>();
     auto service = std::make_shared<DisplayService>(get_mta_wmi_context());
     model.as<implementation::DisplayPageViewModel>()->Inject(service, logger);
@@ -62,12 +62,12 @@ AIDA64::DisplayPageViewModel create_model<AIDA64::DisplayPageViewModel>(Injector
 
 
 template<>
-AIDA64::MainWindow create_view<AIDA64::MainWindow>(InjectorT const& injector)
+AIDA64::MainWindow create_view<AIDA64::MainWindow>()
 {
-    auto logger = injector.create<std::shared_ptr<ILogger>>();
+    auto logger = std::make_shared<Logger>();
     auto main_window = winrt::make<implementation::MainWindow>();
-    auto model = create_model<AIDA64::MainViewModel>(injector);
-    auto pages = initialize_pages(injector);
+    auto model = create_model<AIDA64::MainViewModel>();
+    auto pages = initialize_pages();
 
     main_window.as<implementation::MainWindow>()->Inject(model, logger, pages);
 
@@ -76,7 +76,7 @@ AIDA64::MainWindow create_view<AIDA64::MainWindow>(InjectorT const& injector)
 
 
 template<>
-AIDA64::CpuPage create_view<AIDA64::CpuPage>(InjectorT const& injector)
+AIDA64::CpuPage create_view<AIDA64::CpuPage>()
 {
     auto cpu_page = winrt::make<implementation::CpuPage>();
 
@@ -84,7 +84,7 @@ AIDA64::CpuPage create_view<AIDA64::CpuPage>(InjectorT const& injector)
 }
 
 template<>
-AIDA64::DisplayPage create_view<AIDA64::DisplayPage>(InjectorT const& injector)
+AIDA64::DisplayPage create_view<AIDA64::DisplayPage>()
 {
     auto page = winrt::make<implementation::DisplayPage>();
     return page;

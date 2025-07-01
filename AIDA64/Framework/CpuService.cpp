@@ -17,15 +17,13 @@ namespace winrt::AIDA64::Framework
 
         m_logger->log_info("YEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
-        std::vector<com_ptr<IWbemClassObject>> result;
-
-        co_await m_context->QueryAsync(QUERY_PROCESSOR_LIST, result);
+        auto result = co_await m_context->QueryAsync(QUERY_PROCESSOR_LIST);
 
         auto models = single_threaded_vector<CpuModel>();
 
         for (auto const& object : result)
         {
-            auto model = from_wbem<CpuModel>(object);
+            auto model = from_wmi<CpuModel>(object);
             models.Append(model);
         }
 

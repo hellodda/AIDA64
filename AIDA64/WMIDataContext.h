@@ -1,5 +1,7 @@
 #pragma once
 #include "IDataContext.h"
+#include "WmiObject.h"
+
 
 static constexpr const wchar_t* STANDART_NAMESPACE = L"ROOT\\CIMV2";
 
@@ -16,8 +18,8 @@ namespace winrt::AIDA64::Framework
 		WmiDataContext();
 		~WmiDataContext();
 	
-		std::vector<com_ptr<IWbemClassObject>> Query(hstring const& query) override;
-		IAsyncAction QueryAsync(hstring const& query, std::vector<com_ptr<IWbemClassObject>>& result) override;
+		std::vector<wmi::WmiObject> Query(hstring const& query) override;
+		async::task<std::vector<wmi::WmiObject>>QueryAsync(hstring const& query) override;
 
 		void ContextNameSpace(hstring const& namespace_);
 		hstring ContextNameSpace() const noexcept;

@@ -50,7 +50,7 @@ namespace winrt::AIDA64::Framework
 		));
 	}
 
-	std::vector<com_ptr<IWbemClassObject>> WmiDataContext::Query(hstring const& query)
+	std::vector<wmi::WmiObject> WmiDataContext::Query(hstring const& query)
 	{
 		winrt::com_ptr<IEnumWbemClassObject> enumerator{ nullptr };
 
@@ -62,7 +62,7 @@ namespace winrt::AIDA64::Framework
 			enumerator.put()
 		));
 
-		std::vector<com_ptr<IWbemClassObject>> objects;
+		std::vector<wmi::WmiObject> objects;
 		ULONG uReturn{ 0 };
 
 		while (enumerator)
@@ -78,13 +78,13 @@ namespace winrt::AIDA64::Framework
 		return objects;
 	}
 
-	IAsyncAction WmiDataContext::QueryAsync(hstring const& query, std::vector<com_ptr<IWbemClassObject>>& result)
+	async::task<std::vector<wmi::WmiObject>> WmiDataContext::QueryAsync(hstring const& query)
 	{
 		co_await winrt::resume_background();
 
-		result = Query(query);
+		auto result = Query(query);
 
-		co_return;
+		co_return result;
 	}
 
 	void WmiDataContext::ContextNameSpace(hstring const& namespace_)

@@ -170,6 +170,7 @@
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="WMIDataContext.h" />
+    <ClInclude Include="WmiObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -241,6 +242,7 @@
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="WMIDataContext.cpp" />
+    <ClCompile Include="WmiObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="DisplayPage.idl">
