@@ -123,6 +123,7 @@
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="Helpers\BindableBase.h" />
+    <ClInclude Include="Wmi\WmiQuerySink.h" />
     <ClInclude Include="Wmi\IWmiDataContext.h" />
     <ClInclude Include="Models\CpuModel.h">
       <DependentUpon>Models\CpuModel.idl</DependentUpon>
@@ -242,6 +243,7 @@
       <DependentUpon>ViewModels\MainViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="Wmi\WmiQuerySink.cpp" />
     <ClCompile Include="Wmi\WmiDataContext.cpp" />
     <ClCompile Include="Wmi\WmiMapping.cpp" />
     <ClCompile Include="Wmi\WmiObject.cpp" />

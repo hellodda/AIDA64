@@ -46,9 +46,6 @@
     <ClCompile Include="Framework\ProcessService.cpp">
       <Filter>Framework\Services\ProcessService</Filter>
     </ClCompile>
-    <ClCompile Include="WMIDataContext.cpp">
-      <Filter>Framework\Data</Filter>
-    </ClCompile>
     <ClCompile Include="Framework\Utilities.cpp">
       <Filter>Framework\Utilities</Filter>
     </ClCompile>
@@ -68,6 +65,10 @@
     <ClCompile Include="Framework\TaskScheduler.cpp">
       <Filter>Framework\TaskScheduler</Filter>
     </ClCompile>
+    <ClCompile Include="Wmi\WmiDataContext.cpp" />
+    <ClCompile Include="Wmi\WmiMapping.cpp" />
+    <ClCompile Include="Wmi\WmiObject.cpp" />
+    <ClCompile Include="Wmi\WmiQuerySink.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -80,9 +81,6 @@
     </ClInclude>
     <ClInclude Include="Framework\IProcessService.h">
       <Filter>Framework\Services\ProcessService</Filter>
-    </ClInclude>
-    <ClInclude Include="WMIDataContext.h">
-      <Filter>Framework\Data</Filter>
     </ClInclude>
     <ClInclude Include="Framework\Utilities.h">
       <Filter>Framework\Utilities</Filter>
@@ -108,12 +106,14 @@
     <ClInclude Include="Framework\IDisplayService.h">
       <Filter>Framework\Services\DisplayService</Filter>
     </ClInclude>
-    <ClInclude Include="IDataContext.h">
-      <Filter>Framework\Data</Filter>
-    </ClInclude>
     <ClInclude Include="Framework\TaskScheduler.h">
       <Filter>Framework\TaskScheduler</Filter>
     </ClInclude>
+    <ClInclude Include="Wmi\IWmiDataContext.h" />
+    <ClInclude Include="Wmi\WmiMapping.h" />
+    <ClInclude Include="Wmi\WmiDataContext.h" />
+    <ClInclude Include="Wmi\WmiObject.h" />
+    <ClInclude Include="Wmi\WmiQuerySink.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">

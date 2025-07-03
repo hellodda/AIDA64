@@ -1,5 +1,6 @@
-#include "pch.h"
+﻿#include "pch.h"
 #include "WmiDataContext.h"
+#include "WmiQuerySink.h"
 
 namespace winrt::AIDA64::Framework
 {
@@ -78,9 +79,18 @@ namespace winrt::AIDA64::Framework
 	{
 		co_await winrt::resume_background();
 
-		auto result = Query(query);
+		auto sink = winrt::make_self<wmi::WmiQuerySink>();
+		winrt::check_hresult(m_services->ExecQueryAsync(
+			_bstr_t(L"WQL"),
+			query,
+			0,
+			NULL,
+			sink.get()
+		));
 
-		co_return result;
+		co_await sink->wait_async();    
+
+		co_return std::move(sink->results);
 	}
 
 	void WmiDataContext::ContextNamespace(_bstr_t const& namespace_)
