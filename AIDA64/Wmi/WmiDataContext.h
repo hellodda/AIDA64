@@ -20,7 +20,7 @@ namespace wmi
 		void initialize();
 
 	private:		
-		_bstr_t m_namespace{ variables::STANDART_NAMESPACE };
+		_bstr_t m_namespace{ variables::DEFAULT_NAMESPACE };
 		winrt::com_ptr<IWbemServices> m_services{ nullptr };
 	};
 }

@@ -13,7 +13,7 @@ namespace winrt::AIDA64::Framework
     {
         co_await winrt::resume_background();
 
-        auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_DISPLAY_LIST);
+        auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_WIN32_DESKTOP_MONITOR);
 
         AIDA64::DisplayModel model{};
 

@@ -12,7 +12,7 @@ namespace winrt::AIDA64::Framework
     {
         co_await winrt::resume_background();
 
-        auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_PROCESS_LIST);
+        auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_WIN32_PROCESS);
 
         auto models = winrt::single_threaded_vector<AIDA64::ProcessModel>();
 

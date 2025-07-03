@@ -14,7 +14,7 @@ namespace winrt::AIDA64::Framework
 
         m_logger->log_info("YEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
-        auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_PROCESSOR_LIST);
+        auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_WIN32_PROCESSOR);
 
         auto models = winrt::single_threaded_vector<AIDA64::CpuModel>();
 
