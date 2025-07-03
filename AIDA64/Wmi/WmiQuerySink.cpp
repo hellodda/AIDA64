@@ -13,8 +13,6 @@ namespace wmi
 	{
 		for (LONG i = 0; i < lObjectCount; i++)
 		{
-			winrt::com_ptr<IWbemClassObject> ptr;
-			apObjArray[i]->AddRef();
 			m_results.emplace_back(apObjArray[i]);
 		}
 		return WBEM_S_NO_ERROR;
