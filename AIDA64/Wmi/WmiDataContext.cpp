@@ -90,7 +90,7 @@ namespace winrt::AIDA64::Framework
 
 		co_await sink->wait_async();    
 
-		co_return std::move(sink->results);
+		co_return sink->Results();
 	}
 
 	void WmiDataContext::ContextNamespace(_bstr_t const& namespace_)

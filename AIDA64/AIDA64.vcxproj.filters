@@ -69,6 +69,7 @@
     <ClCompile Include="Wmi\WmiMapping.cpp" />
     <ClCompile Include="Wmi\WmiObject.cpp" />
     <ClCompile Include="Wmi\WmiQuerySink.cpp" />
+    <ClCompile Include="Win32Helpers\critical_section.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -114,6 +115,7 @@
     <ClInclude Include="Wmi\WmiDataContext.h" />
     <ClInclude Include="Wmi\WmiObject.h" />
     <ClInclude Include="Wmi\WmiQuerySink.h" />
+    <ClInclude Include="Win32Helpers\critical_section.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">

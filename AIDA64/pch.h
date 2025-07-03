@@ -32,7 +32,6 @@
 
 #include <future>
 
-
 //
 // \/ patom udalyu
 //

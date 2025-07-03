@@ -112,6 +112,7 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Win32Helpers\critical_section.h" />
     <ClInclude Include="DisplayPage.xaml.h">
       <DependentUpon>DisplayPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -189,6 +190,7 @@
     <Xaml Include="Views\Hardware\CpuPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Win32Helpers\critical_section.cpp" />
     <ClCompile Include="DIConfig.cpp" />
     <ClCompile Include="DisplayPage.xaml.cpp">
       <DependentUpon>DisplayPage.xaml</DependentUpon>
