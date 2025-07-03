@@ -1,31 +1,29 @@
 #include "pch.h"
-#include "Utilities.h"
 #include "ProcessService.h"
 
+#include <Wmi/WmiMapping.h>
+
 inline constexpr const wchar_t* QUERY_PROCESS_LIST = L"SELECT * FROM Win32_Process";
-inline constexpr const wchar_t* QUERY_PROCESS_FROM = L"SELECT * FROM Win32_Process WHERE";
 
 namespace winrt::AIDA64::Framework
 {
-	ProcessService::ProcessService(std::shared_ptr<IDataContext> context)
-	{
-		m_context = std::move(context);
-	}
+    ProcessService::ProcessService(std::shared_ptr<IWmiDataContext> context)
+        : m_context(std::move(context)) {}
 
-	IAsyncOperation<IVector<ProcessModel>> ProcessService::GetAllProcessesAsync()
-	{
-		std::vector<com_ptr<IWbemClassObject>> result;
+    Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVector<AIDA64::ProcessModel>>ProcessService::GetAllProcessesAsync()
+    {
+        co_await winrt::resume_background();
 
-		co_await m_context->QueryAsync(QUERY_PROCESS_LIST);
+        auto result = co_await m_context->QueryAsync(QUERY_PROCESS_LIST);
 
-		IVector<ProcessModel> models = single_threaded_vector<ProcessModel>();
+        auto models = winrt::single_threaded_vector<AIDA64::ProcessModel>();
 
-		for (auto& object : result)
-		{
-			auto model = from_wbem<ProcessModel>(object);
-			models.Append(model);
-		}
-		co_return models;
-	}
+        for (auto const& wmo : result)
+        {
+            //auto model = wmi::from_wbem<winrt::AIDA64::ProcessModel>(wbemObject);
+            //models.Append(model);
+        }
+
+        co_return models;
+    }
 }
-

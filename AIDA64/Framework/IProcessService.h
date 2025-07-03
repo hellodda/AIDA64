@@ -1,17 +1,10 @@
 #pragma once
 #include <Models/ProcessModel.h>
-#include <WMIDataContext.h>
-
-namespace winrt
-{
-	using namespace Windows::Foundation;
-	using namespace AIDA64;
-}
 
 namespace winrt::AIDA64::Framework
 {
-	struct IProcessService
-	{
-		virtual IAsyncOperation<IVector<ProcessModel>> GetAllProcessesAsync() = 0;
-	};
+    struct IProcessService
+    {
+        virtual Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVector<AIDA64::ProcessModel>>GetAllProcessesAsync() = 0;
+    };
 }

@@ -5,6 +5,11 @@
 
 namespace wmi
 {
+    bool try_get_property(std::wstring const& property_name, winrt::com_ptr<IWbemClassObject> const& object, _variant_t& variant)
+    {
+        return SUCCEEDED(object->Get(property_name.c_str(), NULL, &variant, NULL, NULL));
+    }
+
     WmiObject::WmiObject(IWbemClassObject* object)
     {
         m_object.attach(object);

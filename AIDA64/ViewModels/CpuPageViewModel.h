@@ -13,6 +13,7 @@ namespace winrt
     using namespace AIDA64;
     using namespace AIDA64::Framework;
     using namespace AIDA64::Helpers;
+    using namespace Windows::Foundation::Collections;
 }
 
 namespace winrt::AIDA64::implementation

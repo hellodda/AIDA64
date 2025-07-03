@@ -17,8 +17,8 @@ namespace winrt::AIDA64::implementation
 
         this->Loaded([this](auto&&, auto&&)
         {
-                m_graphSize.Height = this->ActualHeight();
-                m_graphSize.Width = this->ActualWidth();
+                m_graphSize.Height = static_cast<float>(this->ActualHeight());
+                m_graphSize.Width = static_cast<float>(this->ActualWidth());
                 UpdateBrushColor();
         });
     }

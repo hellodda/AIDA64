@@ -3,7 +3,9 @@
 
 namespace wmi
 {
-	using value_t = std::variant<std::wstring, int, uint32_t, bool>;
+	static bool try_get_property(std::wstring const& property_name, winrt::com_ptr<IWbemClassObject> const& object, _variant_t& variant);
+
+	using value_t = std::variant<std::wstring, int, bool>;
 
 	struct WmiObject
 	{
@@ -17,6 +19,7 @@ namespace wmi
         std::optional<T> get_property(std::wstring const& name) const
         {
             auto opt = get_property(name);
+
             if (!opt) return std::nullopt;
 
             if (auto p = std::get_if<T>(&*opt))

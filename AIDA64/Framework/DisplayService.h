@@ -1,18 +1,18 @@
 #pragma once
 #include "IDisplayService.h"
-#include <WMIDataContext.h>
+
+#include <Wmi/IWmiDataContext.h>
+#include <Models/DisplayModel.h>
 
 namespace winrt::AIDA64::Framework
 {
-	struct DisplayService : IDisplayService
-	{
-		DisplayService(std::shared_ptr<IDataContext> context);
+    struct DisplayService : IDisplayService
+    {
+        DisplayService(std::shared_ptr<IWmiDataContext> context);
 
-		IAsyncOperation<DisplayModel> GetDisplayInformationAsync() override;
+        Windows::Foundation::IAsyncOperation<AIDA64::DisplayModel>GetDisplayInformationAsync() override;
 
-	private:
-
-		std::shared_ptr<IDataContext> m_context;
-	};
+    private:
+        std::shared_ptr<IWmiDataContext> m_context;
+    };
 }
-

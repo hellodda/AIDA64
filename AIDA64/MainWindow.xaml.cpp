@@ -43,11 +43,11 @@ void winrt::AIDA64::implementation::MainWindow::MainNavigation_ItemInvoked([[may
         if (!container)
             return;
 
-        auto tagInspectable = container.Tag();
+        auto tag_obj = container.Tag();
         hstring tag;
         try
         {
-            tag = winrt::unbox_value<hstring>(tagInspectable);
+            tag = winrt::unbox_value<hstring>(tag_obj);
         }
         catch (...)
         {

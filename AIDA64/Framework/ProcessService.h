@@ -1,22 +1,16 @@
 #pragma once
 #include "IProcessService.h"
-
-namespace winrt
-{
-	using namespace Windows::Foundation;
-}
+#include <Wmi/IWmiDataContext.h>
 
 namespace winrt::AIDA64::Framework
 {
-	struct ProcessService : IProcessService
-	{
-		ProcessService(std::shared_ptr<IDataContext> context);
+    struct ProcessService : IProcessService
+    {
+        ProcessService(std::shared_ptr<IWmiDataContext> context);
 
-		IAsyncOperation<IVector<ProcessModel>> GetAllProcessesAsync() override;
+        Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVector<AIDA64::ProcessModel>>GetAllProcessesAsync() override;
 
-	private:
-
-		std::shared_ptr<IDataContext> m_context;
-	};
+    private:
+        std::shared_ptr<IWmiDataContext> m_context;
+    };
 }
-

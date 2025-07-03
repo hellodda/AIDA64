@@ -123,7 +123,7 @@
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="Helpers\BindableBase.h" />
-    <ClInclude Include="IDataContext.h" />
+    <ClInclude Include="Wmi\IWmiDataContext.h" />
     <ClInclude Include="Models\CpuModel.h">
       <DependentUpon>Models\CpuModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -169,8 +169,9 @@
       <DependentUpon>ViewModels\MainViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
-    <ClInclude Include="WMIDataContext.h" />
-    <ClInclude Include="WmiObject.h" />
+    <ClInclude Include="Wmi\WmiMapping.h" />
+    <ClInclude Include="Wmi\WmiDataContext.h" />
+    <ClInclude Include="Wmi\WmiObject.h" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
@@ -241,8 +242,9 @@
       <DependentUpon>ViewModels\MainViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
-    <ClCompile Include="WMIDataContext.cpp" />
-    <ClCompile Include="WmiObject.cpp" />
+    <ClCompile Include="Wmi\WmiDataContext.cpp" />
+    <ClCompile Include="Wmi\WmiMapping.cpp" />
+    <ClCompile Include="Wmi\WmiObject.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="DisplayPage.idl">

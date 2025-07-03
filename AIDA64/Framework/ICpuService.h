@@ -1,17 +1,10 @@
 #pragma once
 #include <Models/CpuModel.h>
-#include <WMIDataContext.h>
-
-namespace winrt
-{
-	using namespace Windows::Foundation;
-	using namespace AIDA64;
-}
 
 namespace winrt::AIDA64::Framework
 {
-	struct ICpuService
-	{
-		virtual IAsyncOperation<IVector<CpuModel>> GetCpuInformationAsync() = 0;
-	};
+    struct ICpuService
+    {
+        virtual Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVector<AIDA64::CpuModel>>GetCpuInformationAsync() = 0;
+    };
 }

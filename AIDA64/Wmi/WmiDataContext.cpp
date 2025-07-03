@@ -1,8 +1,5 @@
 #include "pch.h"
-#include "WMIDataContext.h"
-
-#include <Framework/Utilities.h>
-
+#include "WmiDataContext.h"
 
 namespace winrt::AIDA64::Framework
 {
@@ -73,7 +70,7 @@ namespace winrt::AIDA64::Framework
 
 			if (uReturn == 0) break;
 
-			objects.push_back(object);
+			objects.emplace_back(std::move(object));
 		}
 		return objects;
 	}
@@ -87,7 +84,7 @@ namespace winrt::AIDA64::Framework
 		co_return result;
 	}
 
-	void WmiDataContext::ContextNameSpace(hstring const& namespace_)
+	void WmiDataContext::ContextNamespace(hstring const& namespace_)
 	{
 		if (m_namespace != namespace_)
 		{
@@ -95,7 +92,7 @@ namespace winrt::AIDA64::Framework
 		}
 	}
 
-	hstring WmiDataContext::ContextNameSpace() const noexcept
+	hstring WmiDataContext::ContextNamespace() const noexcept
 	{
 		return m_namespace;
 	}

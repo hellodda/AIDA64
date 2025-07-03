@@ -1,5 +1,5 @@
 #pragma once
-#include "IDataContext.h"
+#include "IWmiDataContext.h"
 #include "WmiObject.h"
 
 
@@ -13,7 +13,7 @@ namespace winrt
 
 namespace winrt::AIDA64::Framework
 {
-	struct WmiDataContext : IDataContext
+	struct WmiDataContext : IWmiDataContext
 	{
 		WmiDataContext();
 		~WmiDataContext();
@@ -21,8 +21,8 @@ namespace winrt::AIDA64::Framework
 		std::vector<wmi::WmiObject> Query(hstring const& query) override;
 		async::task<std::vector<wmi::WmiObject>>QueryAsync(hstring const& query) override;
 
-		void ContextNameSpace(hstring const& namespace_);
-		hstring ContextNameSpace() const noexcept;
+		void ContextNamespace(hstring const& namespace_);
+		hstring ContextNamespace() const noexcept;
 
 	private:
 

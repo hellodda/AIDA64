@@ -3,7 +3,7 @@
 #include <Models/CpuModel.h>
 #include <Models/ProcessModel.h>
 #include <winrt/Windows.UI.Xaml.Interop.h>
-#include <WMIDataContext.h>
+#include <Wmi/IWmiDataContext.h>
 #include <Framework/TaskScheduler.h>
 
 //------------------------------------------------------------------
@@ -22,6 +22,8 @@ struct page_data_t
         this->page_type = winrt::xaml_typename<pageT>();
         this->tag = tag;
     }
+
+    page_data_t(page_data_t const& other) : tag(other.tag), view_model(other.view_model), page_type(other.page_type) {}
 
     winrt::IInspectable view_model;
     winrt::Windows::UI::Xaml::Interop::TypeName page_type;
@@ -58,7 +60,7 @@ T& get_instance()
 
 winrt::Windows::Foundation::IAsyncAction mta_context(std::function<void()> const& action);
 
-std::shared_ptr<winrt::AIDA64::Framework::IDataContext> get_mta_wmi_context();
+std::shared_ptr<winrt::AIDA64::Framework::IWmiDataContext> get_mta_wmi_context();
 
 // don't use in UI context
 void wait(std::function<winrt::Windows::Foundation::IAsyncAction()> action);
@@ -86,34 +88,3 @@ namespace this_thread
     bool is_sta();
     APTTYPE get_apartment_type();
 }
-
-//-----------------------------------------------------------------
-//- helper functions for defining types
-//-----------------------------------------------------------------
-
-bool is_integer(VARTYPE const& type);
-bool is_string(VARTYPE const& type);
-bool is_boolean(VARTYPE const& type);
-bool try_get_property(std::wstring const& property_name, winrt::com_ptr<IWbemClassObject> const& object, _variant_t& variant);
-
-//-----------------------------------------------------------------
-//- Mapping : VARIANT to Models
-//-----------------------------------------------------------------
-
-template<typename T>
-T from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
-
-template<>
-winrt::AIDA64::ProcessModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
-
-template<>
-winrt::AIDA64::CpuModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
-
-template<>
-winrt::AIDA64::DisplayModel from_wbem(winrt::com_ptr<IWbemClassObject> const& object);
-
-template<typename T>
-T from_wmi(wmi::WmiObject const& object);
-
-template<>
-winrt::AIDA64::CpuModel from_wmi(wmi::WmiObject const& object);

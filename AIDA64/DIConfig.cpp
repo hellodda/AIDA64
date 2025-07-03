@@ -1,91 +1,40 @@
 #include "pch.h"
 #include "DIConfig.h"
 
+void register_pages()
+{
+    auto logger = std::make_shared<Logger>();
+    auto context = get_mta_wmi_context(); 
+
+    register_page_entry<ICpuService, CpuService, implementation::CpuPageViewModel, implementation::CpuPage>(L"cpu", logger, context);
+
+    register_page_entry<IDisplayService, DisplayService, implementation::DisplayPageViewModel, implementation::DisplayPage>(L"display", logger, context);
+}
+
 std::vector<page_data_t> initialize_pages()
 {
     std::vector<page_data_t> pages;
+    for (auto& [tag, page] : PageRegistry::Instance().Pages())
+    {
+        if (tag == L"main") continue;
 
-    pages.push_back(page_data_t(
-        L"cpu",
-        create_model<AIDA64::CpuPageViewModel>(),
-        create_view<AIDA64::CpuPage>()
-    ));
-    pages.push_back(page_data_t(
-        L"display",
-        create_model<AIDA64::DisplayPageViewModel>(),
-        create_view<AIDA64::DisplayPage>()
-    ));
-
+        pages.emplace_back(page);
+    }
     return pages;
 }
-
-
-//---------------------------------------------------------------------------
-// models factory \/
-//---------------------------------------------------------------------------
-
-
-template<>
-AIDA64::CpuPageViewModel create_model<AIDA64::CpuPageViewModel>()
-{
-    auto logger = std::make_shared<Logger>();
-    auto model = winrt::make<implementation::CpuPageViewModel>();
-    auto service = std::make_shared<CpuService>(get_mta_wmi_context(), logger);
-
-    model.as<implementation::CpuPageViewModel>()->Inject(service, logger);
-
-    return model;
-}
-
-template<>
-AIDA64::MainViewModel create_model<AIDA64::MainViewModel>()
-{
-    auto logger = std::make_shared<Logger>();
-    auto main_view_model = winrt::make<implementation::MainViewModel>();
-    main_view_model.as<implementation::MainViewModel>()->Inject(logger);
-    return main_view_model;
-}
-
-template<>
-AIDA64::DisplayPageViewModel create_model<AIDA64::DisplayPageViewModel>()
-{
-    auto logger = std::make_shared<Logger>();
-    auto model = winrt::make<implementation::DisplayPageViewModel>();
-    auto service = std::make_shared<DisplayService>(get_mta_wmi_context());
-    model.as<implementation::DisplayPageViewModel>()->Inject(service, logger);
-    return model;
-}
-
-//---------------------------------------------------------------------------
-// views factory \/
-//---------------------------------------------------------------------------
-
 
 template<>
 AIDA64::MainWindow create_view<AIDA64::MainWindow>()
 {
-    auto logger = std::make_shared<Logger>();
-    auto main_window = winrt::make<implementation::MainWindow>();
-    auto model = create_model<AIDA64::MainViewModel>();
+    register_pages();
+
+    auto model = winrt::make<implementation::MainViewModel>();
+
+    auto window = winrt::make<implementation::MainWindow>();
+
     auto pages = initialize_pages();
 
-    main_window.as<implementation::MainWindow>()->Inject(model, logger, pages);
+    window.as<implementation::MainWindow>()->Inject(model, std::make_shared<Logger>(), pages);
 
-    return main_window;
-}
-
-
-template<>
-AIDA64::CpuPage create_view<AIDA64::CpuPage>()
-{
-    auto cpu_page = winrt::make<implementation::CpuPage>();
-
-    return cpu_page;
-}
-
-template<>
-AIDA64::DisplayPage create_view<AIDA64::DisplayPage>()
-{
-    auto page = winrt::make<implementation::DisplayPage>();
-    return page;
+    return window;
 }
