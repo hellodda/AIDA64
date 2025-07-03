@@ -3,7 +3,6 @@
 
 #include <Wmi/WmiMapping.h>
 
-inline constexpr const wchar_t* QUERY_DISPLAY_LIST = L"SELECT * FROM Win32_DesktopMonitor";
 
 namespace winrt::AIDA64::Framework
 {
@@ -14,7 +13,7 @@ namespace winrt::AIDA64::Framework
     {
         co_await winrt::resume_background();
 
-        auto result = co_await m_context->QueryAsync(QUERY_DISPLAY_LIST);
+        auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_DISPLAY_LIST);
 
         AIDA64::DisplayModel model{};
 

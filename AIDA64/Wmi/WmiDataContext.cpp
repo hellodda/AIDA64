@@ -75,7 +75,7 @@ namespace wmi
 		return objects;
 	}
 
-	async::task<std::vector<wmi::WmiObject>> WmiDataContext::QueryAsync(_bstr_t const& query)
+	async::task<std::vector<wmi::WmiObject>> WmiDataContext::QueryAsync(_bstr_t const query)
 	{
 		co_await winrt::resume_background();
 

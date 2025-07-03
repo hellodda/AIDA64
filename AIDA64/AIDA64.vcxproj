@@ -124,6 +124,7 @@
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="Helpers\BindableBase.h" />
+    <ClInclude Include="Wmi\IWmiObject.h" />
     <ClInclude Include="Wmi\WmiQuerySink.h" />
     <ClInclude Include="Wmi\IWmiDataContext.h" />
     <ClInclude Include="Models\CpuModel.h">

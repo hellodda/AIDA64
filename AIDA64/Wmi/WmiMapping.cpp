@@ -9,7 +9,7 @@
 namespace wmi
 {
     template<>
-    winrt::AIDA64::CpuModel from_wmi<winrt::AIDA64::CpuModel>(WmiObject const& object)
+    winrt::AIDA64::CpuModel from_wmi<winrt::AIDA64::CpuModel>(IWmiObject const& object)
     {
         winrt::AIDA64::CpuModel model{};
 
@@ -96,7 +96,7 @@ namespace wmi
     }
 
     template<>
-    winrt::AIDA64::DisplayModel from_wmi<winrt::AIDA64::DisplayModel>(wmi::WmiObject const& object)
+    winrt::AIDA64::DisplayModel from_wmi<winrt::AIDA64::DisplayModel>(IWmiObject const& object)
     {
         winrt::AIDA64::DisplayModel model;
 

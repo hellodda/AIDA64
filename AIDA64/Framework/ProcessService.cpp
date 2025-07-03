@@ -3,8 +3,6 @@
 
 #include <Wmi/WmiMapping.h>
 
-inline constexpr const wchar_t* QUERY_PROCESS_LIST = L"SELECT * FROM Win32_Process";
-
 namespace winrt::AIDA64::Framework
 {
     ProcessService::ProcessService(std::shared_ptr<wmi::IWmiDataContext> context)
@@ -14,7 +12,7 @@ namespace winrt::AIDA64::Framework
     {
         co_await winrt::resume_background();
 
-        auto result = co_await m_context->QueryAsync(QUERY_PROCESS_LIST);
+        auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_PROCESS_LIST);
 
         auto models = winrt::single_threaded_vector<AIDA64::ProcessModel>();
 

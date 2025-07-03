@@ -3,8 +3,6 @@
 
 #include <Wmi/WmiMapping.h>
 
-inline constexpr const wchar_t* QUERY_PROCESSOR_LIST = L"SELECT * FROM Win32_Processor";
-
 namespace winrt::AIDA64::Framework
 {
     CpuService::CpuService(std::shared_ptr<wmi::IWmiDataContext> context, std::shared_ptr<ILogger> logger)
@@ -16,7 +14,7 @@ namespace winrt::AIDA64::Framework
 
         m_logger->log_info("YEEEEEEEEEEEEEEEEEEEEEEEEEE");
 
-        auto result = co_await m_context->QueryAsync(QUERY_PROCESSOR_LIST);
+        auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_PROCESSOR_LIST);
 
         auto models = winrt::single_threaded_vector<AIDA64::CpuModel>();
 

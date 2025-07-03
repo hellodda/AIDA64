@@ -14,7 +14,7 @@ namespace wmi
     {
         m_object.copy_from(object);
     }
-    std::optional<value_t> wmi::WmiObject::get_property(std::wstring name) const
+    std::optional<property_value_t> wmi::WmiObject::get_property(std::wstring name) const
 	{
         _variant_t var;
         
@@ -26,16 +26,16 @@ namespace wmi
         switch (var.vt)
         {
         case VT_BOOL:
-            return value_t{ var.boolVal };
+            return property_value_t{ var.boolVal };
 
         case VT_I4:
         case VT_INT:
         case VT_UINT:
-            return value_t{ static_cast<int32_t>(var.intVal) };
+            return property_value_t{ static_cast<int32_t>(var.intVal) };
 
         case VT_BSTR:
             if (var.bstrVal)
-                return value_t{ std::wstring{ var.bstrVal } };
+                return property_value_t{ std::wstring{ var.bstrVal } };
             else
                 return std::nullopt;
 
