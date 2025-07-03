@@ -6,6 +6,12 @@
 #include <Models/ProcessModel.h>
 #include <winrt/AIDA64.h>
 
+#define MAP_PROPERTY(type, property_name) \
+    if (auto val = object.get_property<type>(L#property_name)) model.property_name(*val);
+
+#define MAP_PROPERTY_EX(type, property_name, setter_name) \
+    if (auto val = object.get_property<type>(L##property_name)) model.setter_name(*val);
+
 namespace wmi
 {
     template<>
@@ -13,86 +19,48 @@ namespace wmi
     {
         winrt::AIDA64::CpuModel model{};
 
-        if (auto val = object.get_property<std::wstring>(L"Caption"))
-            model.Caption(*val);
-        if (auto val = object.get_property<std::wstring>(L"Name"))
-            model.Name(*val);
-        if (auto val = object.get_property<std::wstring>(L"Manufacturer"))
-            model.Manufacturer(*val);
-        if (auto val = object.get_property<std::wstring>(L"ProcessorId"))
-            model.ProcessorId(*val);
-        if (auto val = object.get_property<std::wstring>(L"DeviceId"))
-            model.DeviceId(*val);
-        if (auto val = object.get_property<std::wstring>(L"PNPDeviceId"))
-            model.PNPDeviceId(*val);
-        if (auto val = object.get_property<std::wstring>(L"SystemName"))
-            model.SystemName(*val);
-        if (auto val = object.get_property<std::wstring>(L"CreationClassName"))
-            model.CreationClassName(*val);
-        if (auto val = object.get_property<std::wstring>(L"Description"))
-            model.Description(*val);
-        if (auto val = object.get_property<std::wstring>(L"PartNumber"))
-            model.PartNumber(*val);
-        if (auto val = object.get_property<std::wstring>(L"OtherFamilyDescription"))
-            model.OtherFamilyDescription(*val);
-        if (auto val = object.get_property<std::wstring>(L"UniqueId"))
-            model.UniqueId(*val);
-        if (auto val = object.get_property<std::wstring>(L"InstallDate"))
-            model.InstallDate(*val);
-        if (auto val = object.get_property<std::wstring>(L"Status"))
-            model.Status(*val);
-        if (auto val = object.get_property<std::wstring>(L"Role"))
-            model.Role(*val);
+        MAP_PROPERTY(std::wstring, Caption)
+        MAP_PROPERTY(std::wstring, Name)
+        MAP_PROPERTY(std::wstring, Manufacturer)
+        MAP_PROPERTY(std::wstring, ProcessorId)
+        MAP_PROPERTY(std::wstring, DeviceId)
+        MAP_PROPERTY(std::wstring, PNPDeviceId)
+        MAP_PROPERTY(std::wstring, SystemName)
+        MAP_PROPERTY(std::wstring, CreationClassName)
+        MAP_PROPERTY(std::wstring, Description)
+        MAP_PROPERTY(std::wstring, PartNumber)
+        MAP_PROPERTY(std::wstring, OtherFamilyDescription)
+        MAP_PROPERTY(std::wstring, UniqueId)
+        MAP_PROPERTY(std::wstring, InstallDate)
+        MAP_PROPERTY(std::wstring, Status)
+        MAP_PROPERTY(std::wstring, Role)
 
-        if (auto val = object.get_property<int32_t>(L"AddressWidth"))
-            model.AddressWidth(*val);
-        if (auto val = object.get_property<int32_t>(L"DataWidth"))
-            model.DataWidth(*val);
-        if (auto val = object.get_property<int32_t>(L"ExternalClock"))
-            model.ExternalClock(*val);
-        if (auto val = object.get_property<int32_t>(L"CurrentClockSpeed"))
-            model.CurrentClockSpeed(*val);
-        if (auto val = object.get_property<int32_t>(L"MaxClockSpeed"))
-            model.MaxClockSpeed(*val);
-        if (auto val = object.get_property<int32_t>(L"NumberOfCores"))
-            model.NumberOfCores(*val);
-        if (auto val = object.get_property<int32_t>(L"NumberOfLogicalProcessors"))
-            model.NumberOfLogicalProcessors(*val);
-        if (auto val = object.get_property<int32_t>(L"L2CacheSize"))
-            model.L2CacheSize(*val);
-        if (auto val = object.get_property<int32_t>(L"L3CacheSize"))
-            model.L3CacheSize(*val);
-        if (auto val = object.get_property<int32_t>(L"Level"))
-            model.Level(*val);
-        if (auto val = object.get_property<int32_t>(L"LastErrorCode"))
-            model.LastErrorCode(*val);
-        if (auto val = object.get_property<int32_t>(L"LoadPercentage"))
-            model.LoadPercentage(*val);
-        if (auto val = object.get_property<int32_t>(L"Architecture"))
-            model.Architecture(*val);
-        if (auto val = object.get_property<int32_t>(L"Family"))
-            model.Family(*val);
-        if (auto val = object.get_property<int32_t>(L"Stepping"))
-            model.Stepping(*val);
-        if (auto val = object.get_property<int32_t>(L"Revision"))
-            model.Revision(*val);
-        if (auto val = object.get_property<int32_t>(L"CpuStatus"))
-            model.CpuStatus(*val);
-        if (auto val = object.get_property<int32_t>(L"CurrentVoltage"))
-            model.CurrentVoltage(*val);
-        if (auto val = object.get_property<int32_t>(L"StatusInfo"))
-            model.StatusInfo(*val);
-        if (auto val = object.get_property<int32_t>(L"Characteristics"))
-            model.Characteristics(*val);
-        if (auto val = object.get_property<int32_t>(L"UpgradeMethod"))
-            model.UpgradeMethod(*val);
+        MAP_PROPERTY(int32_t, AddressWidth)
+        MAP_PROPERTY(int32_t, DataWidth)
+        MAP_PROPERTY(int32_t, ExternalClock)
+        MAP_PROPERTY(int32_t, CurrentClockSpeed)
+        MAP_PROPERTY(int32_t, MaxClockSpeed)
+        MAP_PROPERTY(int32_t, NumberOfCores)
+        MAP_PROPERTY(int32_t, NumberOfLogicalProcessors)
+        MAP_PROPERTY(int32_t, L2CacheSize)
+        MAP_PROPERTY(int32_t, L3CacheSize)
+        MAP_PROPERTY(int32_t, Level)
+        MAP_PROPERTY(int32_t, LastErrorCode)
+        MAP_PROPERTY(int32_t, LoadPercentage)
+        MAP_PROPERTY(int32_t, Architecture)
+        MAP_PROPERTY(int32_t, Family)
+        MAP_PROPERTY(int32_t, Stepping)
+        MAP_PROPERTY(int32_t, Revision)
+        MAP_PROPERTY(int32_t, CpuStatus)
+        MAP_PROPERTY(int32_t, CurrentVoltage)
+        MAP_PROPERTY(int32_t, StatusInfo)
+        MAP_PROPERTY(int32_t, Characteristics)
+        MAP_PROPERTY(int32_t, UpgradeMethod)
 
-        if (auto val = object.get_property<bool>(L"PowerManagementSupported"))
-            model.PowerManagementSupported(*val);
-        if (auto val = object.get_property<bool>(L"ErrorCleared"))
-            model.ErrorCleared(*val);
+        MAP_PROPERTY(bool, PowerManagementSupported)
+        MAP_PROPERTY(bool, ErrorCleared)
 
-        return model;
+            return model;
     }
 
     template<>
@@ -100,66 +68,38 @@ namespace wmi
     {
         winrt::AIDA64::DisplayModel model;
 
-        if (auto val = object.get_property<std::wstring>(L"Name"))
-            model.Name(*val);
-        if (auto val = object.get_property<std::wstring>(L"Caption"))
-            model.Caption(*val);
-        if (auto val = object.get_property<std::wstring>(L"Description"))
-            model.Description(*val);
-        if (auto val = object.get_property<std::wstring>(L"DeviceID"))
-            model.DeviceId(*val);
-        if (auto val = object.get_property<std::wstring>(L"PNPDeviceID"))
-            model.PnpDeviceId(*val);
-        if (auto val = object.get_property<std::wstring>(L"SystemName"))
-            model.SystemName(*val);
-        if (auto val = object.get_property<std::wstring>(L"SystemCreationClassName"))
-            model.SystemCreationClassName(*val);
-        if (auto val = object.get_property<std::wstring>(L"CreationClassName"))
-            model.CreationClassName(*val);
-        if (auto val = object.get_property<std::wstring>(L"MonitorManufacturer"))
-            model.MonitorManufacturer(*val);
-        if (auto val = object.get_property<std::wstring>(L"MonitorType"))
-            model.MonitorType(*val);
-        if (auto val = object.get_property<int32_t>(L"ScreenWidth"))
-            model.ScreenWidth(*val);
-        if (auto val = object.get_property<int32_t>(L"ScreenHeight"))
-            model.ScreenHeight(*val);
-        if (auto val = object.get_property<std::wstring>(L"InstanceName"))
-            model.InstanceName(*val);
-        if (auto val = object.get_property<bool>(L"Active"))
-            model.Active(*val);
-        if (auto val = object.get_property<int32_t>(L"MaxHorizontalImageSize"))
-            model.MaxHorizontalImageSize(*val);
-        if (auto val = object.get_property<int32_t>(L"MaxVerticalImageSize"))
-            model.MaxVerticalImageSize(*val);
-        if (auto val = object.get_property<int32_t>(L"MinRefreshRate"))
-            model.MinRefreshRate(*val);
-        if (auto val = object.get_property<int32_t>(L"MaxRefreshRate"))
-            model.MaxRefreshRate(*val);
-        if (auto val = object.get_property<int32_t>(L"Availability"))
-            model.Availability(*val);
-        if (auto val = object.get_property<bool>(L"PowerManagementSupported"))
-            model.PowerManagementSupported(*val);
-        if (auto val = object.get_property<bool>(L"ErrorCleared"))
-            model.ErrorCleared(*val);
-        if (auto val = object.get_property<std::wstring>(L"ErrorDescription"))
-            model.ErrorDescription(*val);
-        if (auto val = object.get_property<int32_t>(L"ConfigManagerErrorCode"))
-            model.ConfigManagerErrorCode(*val);
-        if (auto val = object.get_property<bool>(L"ConfigManagerUserConfig"))
-            model.ConfigManagerUserConfig(*val);
-        if (auto val = object.get_property<std::wstring>(L"InstallDate"))
-            model.InstallDate(*val);
-        if (auto val = object.get_property<int32_t>(L"LastErrorCode"))
-            model.LastErrorCode(*val);
-        if (auto val = object.get_property<std::wstring>(L"Status"))
-            model.Status(*val);
-        if (auto val = object.get_property<int32_t>(L"StatusInfo"))
-            model.StatusInfo(*val);
-        if (auto val = object.get_property<std::wstring>(L"VideoInputType"))
-            model.VideoInputType(*val);
+        MAP_PROPERTY(std::wstring, Name)
+        MAP_PROPERTY(std::wstring, Caption)
+        MAP_PROPERTY(std::wstring, Description)
+        MAP_PROPERTY(std::wstring, DeviceId)
+        MAP_PROPERTY(std::wstring, PnpDeviceId)
+        MAP_PROPERTY(std::wstring, SystemName)
+        MAP_PROPERTY(std::wstring, SystemCreationClassName)
+        MAP_PROPERTY(std::wstring, CreationClassName)
+        MAP_PROPERTY(std::wstring, MonitorManufacturer)
+        MAP_PROPERTY(std::wstring, MonitorType)
+        MAP_PROPERTY(int32_t, ScreenWidth)
+        MAP_PROPERTY(int32_t, ScreenHeight)
+        MAP_PROPERTY(std::wstring, InstanceName)
+        MAP_PROPERTY(bool, Active)
+        MAP_PROPERTY(int32_t, MaxHorizontalImageSize)
+        MAP_PROPERTY(int32_t, MaxVerticalImageSize)
+        MAP_PROPERTY(int32_t, MinRefreshRate)
+        MAP_PROPERTY(int32_t, MaxRefreshRate)
+        MAP_PROPERTY(int32_t, Availability)
+        MAP_PROPERTY(bool, PowerManagementSupported)
+        MAP_PROPERTY(bool, ErrorCleared)
+        MAP_PROPERTY(std::wstring, ErrorDescription)
+        MAP_PROPERTY(int32_t, ConfigManagerErrorCode)
+        MAP_PROPERTY(bool, ConfigManagerUserConfig)
+        MAP_PROPERTY(std::wstring, InstallDate)
+        MAP_PROPERTY(int32_t, LastErrorCode)
+        MAP_PROPERTY(std::wstring, Status)
+        MAP_PROPERTY(int32_t, StatusInfo)
+        MAP_PROPERTY(std::wstring, VideoInputType)
 
-        return model;
+            return model;
     }
-
 }
+
+#undef MAP_PROPERTY
