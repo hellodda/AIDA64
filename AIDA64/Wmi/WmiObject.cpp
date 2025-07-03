@@ -12,8 +12,7 @@ namespace wmi
 
     WmiObject::WmiObject(IWbemClassObject* object)
     {
-        object->AddRef();
-        m_object.attach(object);
+        m_object.copy_from(object);
     }
     std::optional<value_t> wmi::WmiObject::get_property(std::wstring name) const
 	{
