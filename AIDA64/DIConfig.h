@@ -72,6 +72,10 @@ struct ServiceFactory
         {
             return std::make_shared<T>(m_logger, m_context);
         }
+        else if constexpr (std::is_constructible_v<T, std::shared_ptr<IWmiDataContext>>)
+        {
+            return std::make_shared<T>(m_context);
+        }
         else
             return nullptr;
     }

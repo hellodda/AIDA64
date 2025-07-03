@@ -24,6 +24,7 @@ namespace winrt::AIDA64::Framework
         {
             auto model = wmi::from_wmi<AIDA64::CpuModel>(wmo);
             models.Append(model);
+            m_logger->log_info("cpu model lp: " + std::to_string(model.LoadPercentage()));
         }
 
         co_return models;

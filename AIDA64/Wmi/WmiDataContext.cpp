@@ -7,7 +7,6 @@ namespace winrt::AIDA64::Framework
 	{
 		initialize();
 	}
-
 	WmiDataContext::~WmiDataContext()
 	{
 		winrt::uninit_apartment();
@@ -25,7 +24,7 @@ namespace winrt::AIDA64::Framework
 		));
 
 		winrt::check_hresult(locator->ConnectServer(
-			BSTR(m_namespace.c_str()),
+			m_namespace,
 			NULL,
 			NULL,
 			0,
@@ -47,13 +46,13 @@ namespace winrt::AIDA64::Framework
 		));
 	}
 
-	std::vector<wmi::WmiObject> WmiDataContext::Query(hstring const& query)
+	std::vector<wmi::WmiObject> WmiDataContext::Query(_bstr_t const& query)
 	{
 		winrt::com_ptr<IEnumWbemClassObject> enumerator{ nullptr };
 
 		winrt::check_hresult(m_services->ExecQuery(
 			BSTR(L"WQL"),
-			BSTR(query.c_str()),
+			query,
 			WBEM_FLAG_FORWARD_ONLY | WBEM_FLAG_RETURN_IMMEDIATELY,
 			NULL,
 			enumerator.put()
@@ -75,7 +74,7 @@ namespace winrt::AIDA64::Framework
 		return objects;
 	}
 
-	async::task<std::vector<wmi::WmiObject>> WmiDataContext::QueryAsync(hstring const& query)
+	async::task<std::vector<wmi::WmiObject>> WmiDataContext::QueryAsync(_bstr_t const& query)
 	{
 		co_await winrt::resume_background();
 
@@ -84,7 +83,7 @@ namespace winrt::AIDA64::Framework
 		co_return result;
 	}
 
-	void WmiDataContext::ContextNamespace(hstring const& namespace_)
+	void WmiDataContext::ContextNamespace(_bstr_t const& namespace_)
 	{
 		if (m_namespace != namespace_)
 		{
@@ -92,7 +91,7 @@ namespace winrt::AIDA64::Framework
 		}
 	}
 
-	hstring WmiDataContext::ContextNamespace() const noexcept
+	_bstr_t WmiDataContext::ContextNamespace() const noexcept
 	{
 		return m_namespace;
 	}

@@ -34,21 +34,12 @@ namespace winrt::AIDA64::implementation
     }
     void App::OnLaunched([[maybe_unused]] LaunchActivatedEventArgs const& e)
     {
-        //OPEN_CONSOLE
+        OPEN_CONSOLE
 
         m_factory = std::make_shared<AIDA64::ApplicationFactory>();
     
         window = m_factory->create_application_window();
 
         window.Activate();
-    }
-
-    void App::StartTimer()  
-    {  
-        using namespace std::chrono_literals; 
-
-        m_timer = winrt::Windows::System::Threading::ThreadPoolTimer::CreatePeriodicTimer([](winrt::Windows::System::Threading::ThreadPoolTimer const& time) {  
-          
-        }, 1000ms);  
     }
 }
