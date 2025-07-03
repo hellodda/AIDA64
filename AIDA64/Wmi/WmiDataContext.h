@@ -4,7 +4,7 @@
 
 static constexpr const wchar_t* STANDART_NAMESPACE = L"ROOT\\CIMV2";
 
-namespace winrt::AIDA64::Framework
+namespace wmi
 {
 	struct WmiDataContext : IWmiDataContext
 	{
@@ -24,6 +24,6 @@ namespace winrt::AIDA64::Framework
 	private:		
 		
 		_bstr_t m_namespace{ STANDART_NAMESPACE };
-		com_ptr<IWbemServices> m_services{ nullptr };
+		winrt::com_ptr<IWbemServices> m_services{ nullptr };
 	};
 }

@@ -7,7 +7,7 @@ inline constexpr const wchar_t* QUERY_PROCESS_LIST = L"SELECT * FROM Win32_Proce
 
 namespace winrt::AIDA64::Framework
 {
-    ProcessService::ProcessService(std::shared_ptr<IWmiDataContext> context)
+    ProcessService::ProcessService(std::shared_ptr<wmi::IWmiDataContext> context)
         : m_context(std::move(context)) {}
 
     Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVector<AIDA64::ProcessModel>>ProcessService::GetAllProcessesAsync()

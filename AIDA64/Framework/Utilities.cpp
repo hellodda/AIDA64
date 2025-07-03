@@ -12,10 +12,10 @@ winrt::Windows::Foundation::IAsyncAction mta_context(std::function<void()> const
     co_return;
 }
 
-std::shared_ptr<winrt::AIDA64::Framework::IWmiDataContext> get_mta_wmi_context()
+std::shared_ptr<wmi::IWmiDataContext> get_mta_wmi_context()
 {
     static auto context = std::async(std::launch::async, [] {
-       return std::make_shared<winrt::AIDA64::Framework::WmiDataContext>();
+       return std::make_shared<wmi::WmiDataContext>();
     }).get();
     return context;
 }

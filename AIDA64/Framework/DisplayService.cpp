@@ -7,7 +7,7 @@ inline constexpr const wchar_t* QUERY_DISPLAY_LIST = L"SELECT * FROM Win32_Deskt
 
 namespace winrt::AIDA64::Framework
 {
-    DisplayService::DisplayService(std::shared_ptr<IWmiDataContext> context)
+    DisplayService::DisplayService(std::shared_ptr<wmi::IWmiDataContext> context)
         : m_context(std::move(context)) {}
 
     Windows::Foundation::IAsyncOperation<AIDA64::DisplayModel>DisplayService::GetDisplayInformationAsync()

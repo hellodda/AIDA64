@@ -2,14 +2,7 @@
 #include <async/task.h>
 #include "WmiObject.h"
 
-namespace winrt
-{
-	using namespace winrt::Windows::Foundation;
-	using namespace winrt::Windows::Foundation::Collections;
-}
-
-
-namespace winrt::AIDA64::Framework
+namespace wmi
 {
 	struct IWmiDataContext
 	{

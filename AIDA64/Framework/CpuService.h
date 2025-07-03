@@ -10,12 +10,12 @@ namespace winrt::AIDA64::Framework
 {
     struct CpuService : ICpuService
     {
-        CpuService(std::shared_ptr<IWmiDataContext> context, std::shared_ptr<ILogger> logger);
+        CpuService(std::shared_ptr<wmi::IWmiDataContext> context, std::shared_ptr<ILogger> logger);
 
         Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVector<AIDA64::CpuModel>>GetCpuInformationAsync() override;
 
     private:
-        std::shared_ptr<IWmiDataContext> m_context;
+        std::shared_ptr<wmi::IWmiDataContext> m_context;
         std::shared_ptr<ILogger> m_logger;
     };
 }

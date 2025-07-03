@@ -25,7 +25,7 @@ struct page_data_t
 
     page_data_t(page_data_t const& other) : tag(other.tag), view_model(other.view_model), page_type(other.page_type) {}
 
-    winrt::IInspectable view_model;
+    winrt::Windows::Foundation::IInspectable view_model;
     winrt::Windows::UI::Xaml::Interop::TypeName page_type;
     winrt::hstring tag;
 };
@@ -60,7 +60,7 @@ T& get_instance()
 
 winrt::Windows::Foundation::IAsyncAction mta_context(std::function<void()> const& action);
 
-std::shared_ptr<winrt::AIDA64::Framework::IWmiDataContext> get_mta_wmi_context();
+std::shared_ptr<wmi::IWmiDataContext> get_mta_wmi_context();
 
 // don't use in UI context
 void wait(std::function<winrt::Windows::Foundation::IAsyncAction()> action);

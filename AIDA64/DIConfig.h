@@ -57,22 +57,22 @@ template<typename T>
 struct ServiceFactory
 {
     std::shared_ptr<ILogger> m_logger;
-    std::shared_ptr<IWmiDataContext> m_context;
+    std::shared_ptr<wmi::IWmiDataContext> m_context;
 
-    ServiceFactory(std::shared_ptr<ILogger> l, std::shared_ptr<IWmiDataContext> ctx)
+    ServiceFactory(std::shared_ptr<ILogger> l, std::shared_ptr<wmi::IWmiDataContext> ctx)
         : m_logger(std::move(l)), m_context(std::move(ctx)) {}
 
     auto Create()
     {
-        if constexpr (std::is_constructible_v<T, std::shared_ptr<IWmiDataContext>, std::shared_ptr<ILogger>>)
+        if constexpr (std::is_constructible_v<T, std::shared_ptr<wmi::IWmiDataContext>, std::shared_ptr<ILogger>>)
         {
             return std::make_shared<T>(m_context, m_logger);
         }
-        else if constexpr (std::is_constructible_v<T, std::shared_ptr<ILogger>,std::shared_ptr<IWmiDataContext>>)
+        else if constexpr (std::is_constructible_v<T, std::shared_ptr<ILogger>,std::shared_ptr<wmi::IWmiDataContext>>)
         {
             return std::make_shared<T>(m_logger, m_context);
         }
-        else if constexpr (std::is_constructible_v<T, std::shared_ptr<IWmiDataContext>>)
+        else if constexpr (std::is_constructible_v<T, std::shared_ptr<wmi::IWmiDataContext>>)
         {
             return std::make_shared<T>(m_context);
         }
@@ -112,15 +112,6 @@ struct ViewFactory
     }
 };
 
-struct hstring_less
-{
-    bool operator()(winrt::hstring const& a, winrt::hstring const& b) const noexcept
-    {
-        return std::wstring_view{ a } < std::wstring_view{ b };
-    }
-};
-
-
 class PageRegistry
 {
 public:
@@ -138,11 +129,11 @@ public:
     const auto& Pages() const { return m_pages; }
 
 private:
-    std::map<winrt::hstring, page_data_t, hstring_less> m_pages;
+    std::map<winrt::hstring, page_data_t> m_pages;
 };
 
 template<typename InterfaceT, typename ServiceT, typename ViewModelT, typename ViewT>
-void register_page_entry(std::wstring_view tag, std::shared_ptr<ILogger> logger, std::shared_ptr<IWmiDataContext> ctx)
+void register_page_entry(std::wstring_view tag, std::shared_ptr<ILogger> logger, std::shared_ptr<wmi::IWmiDataContext> ctx)
 {
     auto service = ServiceFactory<ServiceT>(logger, ctx).Create();
     auto vm = ViewModelFactory<ViewModelT, InterfaceT>(service, logger).Create();

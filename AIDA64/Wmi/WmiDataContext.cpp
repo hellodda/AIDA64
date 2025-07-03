@@ -2,7 +2,7 @@
 #include "WmiDataContext.h"
 #include "WmiQuerySink.h"
 
-namespace winrt::AIDA64::Framework
+namespace wmi
 {
 	WmiDataContext::WmiDataContext()
 	{
@@ -64,7 +64,7 @@ namespace winrt::AIDA64::Framework
 
 		while (enumerator)
 		{
-			com_ptr<IWbemClassObject> object{ nullptr };
+			winrt::com_ptr<IWbemClassObject> object{ nullptr };
 
 			enumerator->Next(WBEM_INFINITE, 1, object.put(), &uReturn);
 

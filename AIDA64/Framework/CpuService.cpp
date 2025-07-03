@@ -7,7 +7,7 @@ inline constexpr const wchar_t* QUERY_PROCESSOR_LIST = L"SELECT * FROM Win32_Pro
 
 namespace winrt::AIDA64::Framework
 {
-    CpuService::CpuService(std::shared_ptr<IWmiDataContext> context, std::shared_ptr<ILogger> logger)
+    CpuService::CpuService(std::shared_ptr<wmi::IWmiDataContext> context, std::shared_ptr<ILogger> logger)
         : m_context(std::move(context)), m_logger(std::move(logger)) {}
 
     Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVector<AIDA64::CpuModel>>CpuService::GetCpuInformationAsync()
