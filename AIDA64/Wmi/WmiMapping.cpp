@@ -10,7 +10,7 @@
     if (auto val = object.get_property<type>(L#property_name)) model.property_name(*val);
 
 #define MAP_PROPERTY_EX(type, property_name, setter_name) \
-    if (auto val = object.get_property<type>(L##property_name)) model.setter_name(*val);
+    if (auto val = object.get_property<type>(L#property_name)) model.setter_name(*val);
 
 namespace wmi
 {
@@ -60,7 +60,7 @@ namespace wmi
         MAP_PROPERTY(bool, PowerManagementSupported)
         MAP_PROPERTY(bool, ErrorCleared)
 
-            return model;
+        return model;
     }
 
     template<>
@@ -78,28 +78,31 @@ namespace wmi
         MAP_PROPERTY(std::wstring, CreationClassName)
         MAP_PROPERTY(std::wstring, MonitorManufacturer)
         MAP_PROPERTY(std::wstring, MonitorType)
-        MAP_PROPERTY(int32_t, ScreenWidth)
-        MAP_PROPERTY(int32_t, ScreenHeight)
         MAP_PROPERTY(std::wstring, InstanceName)
-        MAP_PROPERTY(bool, Active)
+        MAP_PROPERTY(std::wstring, ErrorDescription)
+        MAP_PROPERTY(std::wstring, InstallDate)
+        MAP_PROPERTY(std::wstring, Status)
+        MAP_PROPERTY(std::wstring, VideoInputType)
+      
         MAP_PROPERTY(int32_t, MaxHorizontalImageSize)
         MAP_PROPERTY(int32_t, MaxVerticalImageSize)
         MAP_PROPERTY(int32_t, MinRefreshRate)
         MAP_PROPERTY(int32_t, MaxRefreshRate)
         MAP_PROPERTY(int32_t, Availability)
+        MAP_PROPERTY(int32_t, ScreenWidth)
+        MAP_PROPERTY(int32_t, ScreenHeight)
+        MAP_PROPERTY(int32_t, ConfigManagerErrorCode)
+        MAP_PROPERTY(int32_t, LastErrorCode)
+        MAP_PROPERTY(int32_t, StatusInfo)
+
         MAP_PROPERTY(bool, PowerManagementSupported)
         MAP_PROPERTY(bool, ErrorCleared)
-        MAP_PROPERTY(std::wstring, ErrorDescription)
-        MAP_PROPERTY(int32_t, ConfigManagerErrorCode)
         MAP_PROPERTY(bool, ConfigManagerUserConfig)
-        MAP_PROPERTY(std::wstring, InstallDate)
-        MAP_PROPERTY(int32_t, LastErrorCode)
-        MAP_PROPERTY(std::wstring, Status)
-        MAP_PROPERTY(int32_t, StatusInfo)
-        MAP_PROPERTY(std::wstring, VideoInputType)
+        MAP_PROPERTY(bool, Active)
 
-            return model;
+        return model;
     }
 }
 
+#undef MAP_PROPERTY_EX
 #undef MAP_PROPERTY

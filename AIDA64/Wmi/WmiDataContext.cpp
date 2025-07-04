@@ -78,7 +78,7 @@ namespace wmi
 	async::task<std::vector<wmi::WmiObject>> WmiDataContext::QueryAsync(_bstr_t const query)
 	{
 		co_await winrt::resume_background();
-
+		
 		auto sink = winrt::make_self<wmi::WmiQuerySink>();
 		winrt::check_hresult(m_services->ExecQueryAsync(
 			_bstr_t(L"WQL"),
@@ -88,7 +88,7 @@ namespace wmi
 			sink.get()
 		));
 
-		co_await sink->wait_async();    
+		co_await sink->WaitAsync();    
 
 		co_return sink->Results();
 	}

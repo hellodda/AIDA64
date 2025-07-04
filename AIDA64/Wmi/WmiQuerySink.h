@@ -12,7 +12,7 @@ namespace wmi
 
 		HRESULT STDMETHODCALLTYPE SetStatus([[maybe_unused]] LONG lFlags, [[maybe_unused]] HRESULT hResult, [[maybe_unused]] BSTR strParam, [[maybe_unused]] IWbemClassObject* pObjParam) noexcept override;
 
-		winrt::Windows::Foundation::IAsyncAction wait_async();
+		winrt::Windows::Foundation::IAsyncAction WaitAsync();
 
 	private:
 		win32::critical_section m_cs;
