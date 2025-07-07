@@ -6,6 +6,7 @@
 
 #include <winrt/Windows.UI.Xaml.Interop.h>
 #include <ViewModels/CpuPageViewModel.h>
+#include <ViewModels/SettingsViewModel.h>
 #include <Framework/Utilities.h>
 
 using namespace winrt;
@@ -35,7 +36,8 @@ void winrt::AIDA64::implementation::MainWindow::MainNavigation_ItemInvoked([[may
 {
     if (args.IsSettingsInvoked())
     {
-        //ContentFrame().Navigate(xaml_typename<SettingsPage>());
+        auto vm = winrt::make<implementation::SettingsViewModel>();
+        ContentFrame().Navigate(xaml_typename<SettingsPage>(), vm);
     }
     else
     {

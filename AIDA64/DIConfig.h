@@ -6,6 +6,9 @@
 #include "MainWindow.xaml.h"
 #include "CpuPage.xaml.h"
 #include "DisplayPage.xaml.h"
+#include "SettingsPage.xaml.h"
+#include "AiPage.xaml.h"
+
 
 // \/-- framework --\/ \\
 
@@ -13,8 +16,11 @@
 #include <Framework/CpuService.h>
 #include <Framework/DisplayService.h>
 #include <Framework/ProcessService.h>
+#include <Framework/AiClient.h>
 #include <ViewModels/MainViewModel.h>
 #include <ViewModels/DisplayPageViewModel.h>
+#include <ViewModels/SettingsViewModel.h>
+#include <ViewModels/AiPageViewModel.h>
 #include <Wmi/IWmiDataContext.h>
 
 #include <winrt/Windows.Foundation.Collections.h>
@@ -77,7 +83,7 @@ struct ServiceFactory
             return std::make_shared<T>(m_context);
         }
         else
-            return nullptr;
+            return std::make_shared<T>();
     }
 };
 
@@ -137,6 +143,14 @@ void register_page_entry(std::wstring_view tag, std::shared_ptr<ILogger> logger,
 {
     auto service = ServiceFactory<ServiceT>(logger, ctx).Create();
     auto vm = ViewModelFactory<ViewModelT, InterfaceT>(service, logger).Create();
+    auto view = ViewFactory<ViewT>().Create();
+    PageRegistry::Instance().RegisterPage({ winrt::hstring{tag}, vm, view });
+}
+
+template<typename ViewModelT, typename ViewT>
+void register_page_entry(std::wstring_view tag)
+{
+    auto vm = winrt::make<ViewModelT>();
     auto view = ViewFactory<ViewT>().Create();
     PageRegistry::Instance().RegisterPage({ winrt::hstring{tag}, vm, view });
 }

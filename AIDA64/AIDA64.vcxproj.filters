@@ -16,6 +16,8 @@
     <Page Include="Graph.xaml">
       <Filter>Controls</Filter>
     </Page>
+    <Page Include="SettingsPage.xaml" />
+    <Page Include="AiPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -37,6 +39,9 @@
     <Midl Include="ViewModels\DisplayPageViewModel.idl">
       <Filter>ViewModels</Filter>
     </Midl>
+    <Midl Include="Models\VisualConfiguration.idl" />
+    <Midl Include="ViewModels\SettingsViewModel.idl" />
+    <Midl Include="ViewModels\AiPageViewModel.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -70,6 +75,10 @@
     <ClCompile Include="Wmi\WmiObject.cpp" />
     <ClCompile Include="Wmi\WmiQuerySink.cpp" />
     <ClCompile Include="Win32Helpers\critical_section.cpp" />
+    <ClCompile Include="Config\ApplicationConfiguration.cpp" />
+    <ClCompile Include="Win32Helpers\BatteryController.cpp" />
+    <ClCompile Include="Config\ApplicationState.cpp" />
+    <ClCompile Include="Framework\AiClient.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -117,6 +126,11 @@
     <ClInclude Include="Wmi\WmiQuerySink.h" />
     <ClInclude Include="Win32Helpers\critical_section.h" />
     <ClInclude Include="Wmi\IWmiObject.h" />
+    <ClInclude Include="Config\ApplicationConfiguration.h" />
+    <ClInclude Include="Win32Helpers\BatteryController.h" />
+    <ClInclude Include="Config\ApplicationState.h" />
+    <ClInclude Include="Framework\AiClient.h" />
+    <ClInclude Include="Framework\IAiClient.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -140,6 +154,13 @@
     <Image Include="Assets\LockScreenLogo.scale-200.png">
       <Filter>Assets</Filter>
     </Image>
+    <Image Include="..\..\..\..\OneDrive\Изображения\Снимки экрана\Mica.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Acrylic.png" />
+    <Image Include="Assets\Mica.png" />
+    <Image Include="..\..\..\..\OneDrive\Изображения\Снимки экрана\None.png" />
+    <Image Include="Assets\None.png" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">

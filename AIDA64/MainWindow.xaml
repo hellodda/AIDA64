@@ -7,13 +7,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="AIDA64">
+    Title="AIDA64"
+    >
 
     <Grid>
-        <NavigationView x:Name="MainNavigation" ItemInvoked="MainNavigation_ItemInvoked" BackRequested="MainNavigation_BackRequested">
+
+        <NavigationView Margin="0,31,0,0" x:Name="MainNavigation" ItemInvoked="MainNavigation_ItemInvoked" BackRequested="MainNavigation_BackRequested">
             <Frame x:Name="ContentFrame" Navigated="ContentFrame_Navigated"/>
             <NavigationView.MenuItems>
-
                 <!-- hardware -->
 
                 <NavigationViewItem Content="Hardware">
@@ -284,12 +285,13 @@
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
                     </NavigationViewItem.MenuItems>
+                    
                 </NavigationViewItem>
                 
-                <!--sub-->
-                
-                <NavigationViewItem Content="Help">
-                    <NavigationViewItem.Icon/>
+                <NavigationViewItem Content="AI" Tag="ai">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xF4A5;" />
+                    </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 
             </NavigationView.MenuItems>

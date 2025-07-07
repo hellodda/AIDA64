@@ -1,0 +1,15 @@
+import "Models/VisualConfiguration.idl";
+
+namespace AIDA64
+{
+    [bindable]
+    [default_interface]
+    runtimeclass SettingsViewModel 
+    {
+        SettingsViewModel();
+        Windows.Foundation.Collections.IObservableVector<VisualConfiguration> Backdrops;
+        Boolean BatterySaveEnabled;        
+
+        void ChangeBackdrop(String value);
+    }
+}

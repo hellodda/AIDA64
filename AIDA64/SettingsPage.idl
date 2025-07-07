@@ -1,0 +1,11 @@
+import "ViewModels/SettingsViewModel.idl";
+
+namespace AIDA64
+{
+    [default_interface]
+    runtimeclass SettingsPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        SettingsPage();
+        SettingsViewModel ViewModel { get; };
+    }
+}

@@ -1,0 +1,11 @@
+import "ViewModels/AiPageViewModel.idl";
+
+namespace AIDA64
+{
+    [default_interface]
+    runtimeclass AiPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        AiPage();
+        AiPageViewModel ViewModel { get; };
+    }
+}

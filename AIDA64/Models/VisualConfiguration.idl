@@ -1,0 +1,11 @@
+namespace AIDA64
+{
+    [bindable]
+    [default_interface]
+    runtimeclass VisualConfiguration 
+    {
+        VisualConfiguration();
+        String ImagePath;
+        String Value;
+    }
+}

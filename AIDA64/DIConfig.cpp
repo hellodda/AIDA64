@@ -9,6 +9,8 @@ void register_pages()
     register_page_entry<ICpuService, CpuService, implementation::CpuPageViewModel, implementation::CpuPage>(L"cpu", logger, context);
 
     register_page_entry<IDisplayService, DisplayService, implementation::DisplayPageViewModel, implementation::DisplayPage>(L"display", logger, context);
+
+    register_page_entry<IAiClient, AiClient, implementation::AiPageViewModel, implementation::AiPage>(L"ai", nullptr, nullptr);
 }
 
 std::vector<page_data_t> initialize_pages()

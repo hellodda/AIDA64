@@ -2,6 +2,7 @@
 #include "MainViewModel.h"
 #if __has_include("MainViewModel.g.cpp")
 #include "MainViewModel.g.cpp"
+#include "AiPageViewModel.h"
 #endif
 
 namespace winrt::AIDA64::implementation

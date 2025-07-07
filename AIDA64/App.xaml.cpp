@@ -2,6 +2,8 @@
 #include "App.xaml.h"
 #include "MainWindow.xaml.h"
 #include "CpuPage.xaml.h"
+#include <Config/ApplicationConfiguration.h>
+#include <Win32Helpers/BatteryController.h>
 
 #if __has_include("module.g.cpp")
 #  include "module.g.cpp"
@@ -38,8 +40,12 @@ namespace winrt::AIDA64::implementation
 
         m_factory = std::make_shared<AIDA64::ApplicationFactory>();
     
-        window = m_factory->create_application_window();
+        m_window = m_factory->create_application_window();
 
-        window.Activate();
+        configuration::ApplicationState::Instance().Window(m_window);
+        configuration::ApplicationState::Instance().ConfigureApplicationAsync();
+
+        m_window.Activate();
     }
 }
+

@@ -27,6 +27,12 @@ void wait(std::function<winrt::Windows::Foundation::IAsyncAction()> action)
     }).get();
 }
 
+bool to_bool(const std::string& str)
+{
+    return str == "true";
+}
+
+
 //-------------------------------------------------------------
 // other helpers /\ apartment helpers \/
 //-------------------------------------------------------------

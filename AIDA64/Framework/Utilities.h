@@ -88,3 +88,6 @@ namespace this_thread
     bool is_sta();
     APTTYPE get_apartment_type();
 }
+
+
+bool to_bool(const std::string& str);

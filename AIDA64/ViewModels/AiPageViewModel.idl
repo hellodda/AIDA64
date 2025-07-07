@@ -1,0 +1,12 @@
+namespace AIDA64
+{
+    [bindable]
+    [default_interface]
+    runtimeclass AiPageViewModel : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        AiPageViewModel();
+        Microsoft.UI.Xaml.Input.ICommand SendRequest { get; };
+        String ResponseMessage;
+        String RequestMessage;
+    }
+}

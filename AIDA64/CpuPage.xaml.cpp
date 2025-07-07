@@ -17,7 +17,7 @@ namespace winrt::AIDA64::implementation
 {
 	CpuPage::CpuPage()
 	{
-		NavigationCacheMode(Microsoft::UI::Xaml::Navigation::NavigationCacheMode::Required);
+		
     }
 	void CpuPage::OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
 	{

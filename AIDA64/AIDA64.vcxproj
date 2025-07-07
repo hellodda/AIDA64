@@ -112,6 +112,31 @@
     <Manifest Include="app.manifest" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Framework\AiClient.h" />
+    <ClInclude Include="AiPage.xaml.h">
+      <DependentUpon>AiPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="Config\ApplicationState.h" />
+    <ClInclude Include="Framework\IAiClient.h" />
+    <ClInclude Include="ViewModels\AiPageViewModel.h">
+      <DependentUpon>ViewModels\AiPageViewModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="Win32Helpers\BatteryController.h" />
+    <ClInclude Include="Config\ApplicationConfiguration.h" />
+    <ClInclude Include="Models\VisualConfiguration.h">
+      <DependentUpon>Models\VisualConfiguration.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="SettingsPage.xaml.h">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ViewModels\SettingsViewModel.h">
+      <DependentUpon>ViewModels\SettingsViewModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="Win32Helpers\critical_section.h" />
     <ClInclude Include="DisplayPage.xaml.h">
       <DependentUpon>DisplayPage.xaml</DependentUpon>
@@ -178,6 +203,9 @@
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml" />
+    <Page Include="AiPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="CpuPage.xaml">
       <SubType>Designer</SubType>
     </Page>
@@ -188,9 +216,36 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="MainWindow.xaml" />
+    <Page Include="SettingsPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Xaml Include="Views\Hardware\CpuPage.xaml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Framework\AiClient.cpp" />
+    <ClCompile Include="AiPage.xaml.cpp">
+      <DependentUpon>AiPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="Config\ApplicationState.cpp" />
+    <ClCompile Include="ViewModels\AiPageViewModel.cpp">
+      <DependentUpon>ViewModels\AiPageViewModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="Win32Helpers\BatteryController.cpp" />
+    <ClCompile Include="Config\ApplicationConfiguration.cpp" />
+    <ClCompile Include="Models\VisualConfiguration.cpp">
+      <DependentUpon>Models\VisualConfiguration.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="SettingsPage.xaml.cpp">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ViewModels\SettingsViewModel.cpp">
+      <DependentUpon>ViewModels\SettingsViewModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="Win32Helpers\critical_section.cpp" />
     <ClCompile Include="DIConfig.cpp" />
     <ClCompile Include="DisplayPage.xaml.cpp">
@@ -252,6 +307,10 @@
     <ClCompile Include="Wmi\WmiObject.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Midl Include="AiPage.idl">
+      <DependentUpon>AiPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
     <Midl Include="DisplayPage.idl">
       <DependentUpon>DisplayPage.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -270,6 +329,16 @@
     <Midl Include="Models\DisplayModel.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="Models\VisualConfiguration.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="SettingsPage.idl">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="ViewModels\AiPageViewModel.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="ViewModels\CpuPageViewModel.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -286,6 +355,9 @@
     <Midl Include="ViewModels\MainViewModel.idl">
       <SubType>Designer</SubType>
     </Midl>
+    <Midl Include="ViewModels\SettingsViewModel.idl">
+      <SubType>Designer</SubType>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt">
@@ -293,7 +365,12 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\OneDrive\Изображения\Снимки экрана\Mica.png" />
+    <Image Include="..\..\..\..\OneDrive\Изображения\Снимки экрана\None.png" />
+    <Image Include="Assets\Acrylic.png" />
     <Image Include="Assets\LockScreenLogo.scale-200.png" />
+    <Image Include="Assets\Mica.png" />
+    <Image Include="Assets\None.png" />
     <Image Include="Assets\SplashScreen.scale-200.png" />
     <Image Include="Assets\Square150x150Logo.scale-200.png" />
     <Image Include="Assets\Square44x44Logo.scale-200.png" />
