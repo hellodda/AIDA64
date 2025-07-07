@@ -1,4 +1,5 @@
 ``` super duper alpha ;) ```
 
-![Screenshot 2025-06-25 191958](https://github.com/user-attachments/assets/e3d21162-782d-4c94-a6a6-39e893ecd49e)
-![Screenshot 2025-06-26 200953](https://github.com/user-attachments/assets/4010e85e-0087-4392-920f-16d8dc6d3091)
+![Снимок экрана 2025-07-07 023326](https://github.com/user-attachments/assets/a048f0da-d61b-49fa-b5e8-f6119818fc81)
+![Снимок экрана 2025-07-07 023306](https://github.com/user-attachments/assets/e0205034-25c5-485a-988e-f89b86698ef9)
+![Снимок экрана 2025-07-07 023355](https://github.com/user-attachments/assets/d0231dde-19ee-474b-9c33-f06bad72c95d)
