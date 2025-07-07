@@ -8,6 +8,7 @@
 #include <Config/ApplicationState.h>
 #include <Framework/Utilities.h>
 #include <Win32Helpers/BatteryController.h>
+#include <iostream>
 
 namespace winrt::AIDA64::implementation
 {
@@ -68,5 +69,22 @@ namespace winrt::AIDA64::implementation
 	bool SettingsViewModel::BatterySaveEnabled() const noexcept
 	{
 		return configuration::ApplicationState::Instance().EcoMode();
+	}
+	winrt::ICommand SettingsViewModel::OpenConsoleCommand()
+	{
+		if (!m_openConsoleCommand)
+		{
+			m_openConsoleCommand = winrt::make<RelayCommand>([this]() -> IAsyncAction {
+
+				FILE* stream;
+				freopen_s(&stream, "CONOUT$", "w", stdout);
+				freopen_s(&stream, "CONOUT$", "w", stderr);
+				freopen_s(&stream, "CONIN$", "r", stdin);
+
+			
+				co_return;
+			});
+		}
+		return m_openConsoleCommand;
 	}
 }

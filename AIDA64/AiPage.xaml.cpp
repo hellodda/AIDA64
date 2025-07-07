@@ -21,3 +21,17 @@ namespace winrt::AIDA64::implementation
 		return m_viewmodel;
 	}
 }
+
+void winrt::AIDA64::implementation::AiPage::Page_KeyDown(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Input::KeyRoutedEventArgs const& e)
+{
+	if (e.Key() == winrt::Windows::System::VirtualKey::Enter)
+	{
+		if (ViewModel().SendRequest().CanExecute(nullptr))
+		{
+			ViewModel().SendRequest().Execute(nullptr);
+			RequestBox().Text(L"");
+			RequestBox().PlaceholderText(L"");
+		}
+		e.Handled(true);
+	}
+}

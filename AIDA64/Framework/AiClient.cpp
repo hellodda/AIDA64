@@ -1,100 +1,107 @@
 ﻿#include "pch.h"
 #include "AiClient.h"
-#include <winrt/Windows.Foundation.h>
 #include <winrt/Windows.Web.Http.h>
-#include <winrt/Windows.Storage.Streams.h>
 #include <winrt/Windows.Data.Json.h>
+#include <regex>
 
 using namespace winrt;
-using namespace Windows::Foundation;
 using namespace Windows::Web::Http;
-using namespace Windows::Storage::Streams;
 using namespace Windows::Data::Json;
+using namespace winrt;
+using namespace Windows::Foundation;
+using namespace Windows::Web::Http::Headers;
 
 namespace winrt::AIDA64::Framework
 {
-    IAsyncOperation<hstring> AiClient::SendRequestAsync(hstring const& request)
-    {
-        HttpRequestMessage request_message{ HttpMethod::Post(), m_uri };
-
-        request_message.Headers().Insert(L"Authorization", L"Bearer " + m_token);
-
+    JsonObject AiClient::BuildRequestJson(hstring const& systemConfig, hstring const& userRequest) {
         JsonObject body;
-        body.Insert(L"model", JsonValue::CreateStringValue(L"deepseek-ai/DeepSeek-R1-0528"));
+        body.Insert(L"model", JsonValue::CreateStringValue(L"meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8"));
 
         JsonArray messages;
 
-        JsonObject systemMessage;
-        systemMessage.Insert(L"role", JsonValue::CreateStringValue(L"system"));
-        systemMessage.Insert(L"content", JsonValue::CreateStringValue(m_systemConfiguration));
+        auto makeMsg = [&](std::wstring role, hstring content) {
+            JsonObject obj;
+            obj.Insert(L"role", JsonValue::CreateStringValue(role));
+            obj.Insert(L"content", JsonValue::CreateStringValue(content));
+            return obj;
+        };
 
-        JsonObject userMessage;
-        userMessage.Insert(L"role", JsonValue::CreateStringValue(L"user"));
-        userMessage.Insert(L"content", JsonValue::CreateStringValue(request));
-
-        messages.Append(systemMessage);
-        messages.Append(userMessage);
-
+        messages.Append(makeMsg(L"system", systemConfig));
+        messages.Append(makeMsg(L"user", userRequest));
         body.Insert(L"messages", messages);
-        body.Insert(L"temperature", JsonValue::CreateNumberValue(0));
+
+        body.Insert(L"temperature", JsonValue::CreateNumberValue(0.0));
         body.Insert(L"stream", JsonValue::CreateBooleanValue(false));
         body.Insert(L"max_completion_tokens", JsonValue::CreateNumberValue(1000));
+        return body;
+    }
 
-        request_message.Content(HttpStringContent(body.Stringify(), UnicodeEncoding::Utf8, L"application/json"));
-
-        auto response = co_await m_client.SendRequestAsync(request_message);
-        auto response_buffer = co_await response.Content().ReadAsBufferAsync();
-
-        DataReader reader = DataReader::FromBuffer(response_buffer);
-        reader.UnicodeEncoding(UnicodeEncoding::Utf8);
-        hstring response_body = reader.ReadString(reader.UnconsumedBufferLength());
-
-        auto jsonResponse = Windows::Data::Json::JsonObject::Parse(response_body);
-
-        Windows::Data::Json::JsonArray choices = jsonResponse.GetNamedArray(L"choices");
-
-        if (choices.Size() > 0)
+    hstring AiClient::StripSpeakTags(hstring const& input) {
+        
+        std::wregex rgx(LR"(<speak>(.*?)</speak>)", std::regex_constants::icase);
+        std::wsmatch m;
+        std::wstring winput = input.c_str();
+        
+        if (std::regex_search(winput, m, rgx) && m.size() > 1)
         {
-            Windows::Data::Json::JsonObject firstChoice = choices.GetObjectAt(0);
-            Windows::Data::Json::JsonObject message = firstChoice.GetNamedObject(L"message");
-            hstring content = message.GetNamedString(L"content");
-            std::wstring s = content.c_str();
-
-            const std::wstring speakOpen = L"<speak>";
-            const std::wstring speakClose = L"</speak>";
-
-            size_t start = s.find(speakOpen);
-            size_t end = s.find(speakClose);
-
-            if (start != std::wstring::npos && end != std::wstring::npos && end > start)
-            {
-                s = s.substr(start + speakOpen.length(), end - (start + speakOpen.length()));
-                co_return hstring{ s };
-            }
-            else
-            {
-                co_return L"Ответ не найден.";
-            }
+            return hstring{ m[1].str() };
         }
-        else
+        return input;
+    }
+
+    hstring AiClient::ParseChatContent(hstring const& jsonText)
+    {
+        auto root = JsonObject::Parse(jsonText);
+        auto choices = root.GetNamedArray(L"choices");
+        if (choices.Size() == 0) {
+            throw hresult_error(E_FAIL, L"No choices in response");
+        }
+        auto first = choices.GetObjectAt(0).GetNamedObject(L"message");
+        auto content = first.GetNamedString(L"content");
+        return StripSpeakTags(content);
+    }
+
+    IAsyncOperation<hstring> AiClient::SendRequestAsync(hstring const& request)
+    {
+        try
         {
-            co_return L"No response content found.";
-        }
+            HttpRequestMessage req{ HttpMethod::Post(), m_uri };
+            req.Headers().Insert(L"Authorization", L"Bearer " + m_token);
 
+            auto body = BuildRequestJson(m_systemConfiguration, request);
+            req.Content(HttpStringContent{
+                body.Stringify(),
+                Windows::Storage::Streams::UnicodeEncoding::Utf8,
+                L"application/json"
+            });
+
+            auto resp = co_await m_client.SendRequestAsync(req);
+            resp.EnsureSuccessStatusCode();
+
+            auto respText = co_await resp.Content().ReadAsStringAsync();
+
+            co_return ParseChatContent(respText);
+        }
+        catch (hresult_error const& ex)
+        {
+            co_return L"[Error] " + ex.message();
+        }
+        catch (...)
+        {
+            co_return L"[Error] Unexpected failure";
+        }
     }
 
     void AiClient::Uri(Windows::Foundation::Uri const& uri)
     {
         m_uri = uri;
     }
-
     void AiClient::Token(hstring const& token)
     {
         m_token = token;
     }
-
-    void AiClient::SystemConfiguration(hstring const& config)
+    void AiClient::SystemConfiguration(hstring const& cfg)
     {
-        m_systemConfiguration = config;
+        m_systemConfiguration = cfg;
     }
 }

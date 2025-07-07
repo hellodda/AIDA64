@@ -68,6 +68,16 @@
 
                         </Grid>
                     </Border>
+
+                    <Border Height="70">
+                        <Button CornerRadius="5" Command="{x:Bind ViewModel.OpenConsoleCommand}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch">
+                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left" Spacing="8">
+                                <FontIcon Glyph="&#xE756;" FontSize="20"/>
+                                <TextBlock Text="Open Debug Console" FontSize="15" Margin="0 -2 0 0"/>
+                            </StackPanel>
+                        </Button>
+                    </Border>
+
                 </StackPanel>
             </StackPanel>
         </ScrollViewer>

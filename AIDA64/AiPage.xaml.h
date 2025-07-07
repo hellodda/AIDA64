@@ -15,6 +15,8 @@ namespace winrt::AIDA64::implementation
 
     private:
         AIDA64::AiPageViewModel m_viewmodel;
+    public:
+        void Page_KeyDown(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Input::KeyRoutedEventArgs const& e);
     };
 }
 

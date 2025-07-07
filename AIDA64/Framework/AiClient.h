@@ -17,9 +17,13 @@ namespace winrt::AIDA64::Framework
 		void Token(hstring const& token);
 		void SystemConfiguration(hstring const& config);
 
+		JsonObject BuildRequestJson(hstring const& systemConfig, hstring const& userRequest);
+		hstring ParseChatContent(hstring const& jsonText);
+		hstring StripSpeakTags(hstring const& input);
+
 	private:
 		Windows::Foundation::Uri m_uri{ L"https://api.intelligence.io.solutions/api/v1/chat/completions" };
-		hstring m_systemConfiguration{ L"You are a helpful assistant. Always reply with your final answer only, enclosed in <speak> and </speak> tags. Do not include any internal reasoning or other tags. Including <speak> and </speak> is MANDATORY, OTHERWISE THE PROGRAM WILL CRASH DO NOT FORGET TO CLOSE!" };
+		hstring m_systemConfiguration{ L"You are a useful assistant. AIDA6464-WinUI3 applications your goal is to help the user with the computer. Always reply with your final answer only, enclosed in <speak> and </speak> tags. Do not include any internal reasoning or other tags. Including <speak> and </speak> is MANDATORY, OTHERWISE THE PROGRAM WILL CRASH DO NOT FORGET TO CLOSE!" };
 		hstring m_token{ L"io-v2-eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJvd25lciI6IjcwZjA1OTI5LWY2NWYtNDRkMi05MTUxLWU3NjMxM2Y5NGRkYSIsImV4cCI6NDkwNTQ5ODk3Mn0.KPfbfz-7Zjiq7MiE4F0Srf2EwzowFQFYYuWZiJBLHLmAoxfAaVvdIYumk3OWdATrcgJTLUcM70GH4hqcqAeE8Q" };
 		HttpClient m_client;
 	};

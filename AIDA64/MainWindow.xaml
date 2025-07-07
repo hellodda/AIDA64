@@ -13,6 +13,7 @@
     <Grid>
 
         <NavigationView Margin="0,31,0,0" x:Name="MainNavigation" ItemInvoked="MainNavigation_ItemInvoked" BackRequested="MainNavigation_BackRequested">
+
             <Frame x:Name="ContentFrame" Navigated="ContentFrame_Navigated"/>
             <NavigationView.MenuItems>
                 <!-- hardware -->

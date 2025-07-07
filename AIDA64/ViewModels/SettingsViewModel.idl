@@ -8,6 +8,7 @@ namespace AIDA64
     {
         SettingsViewModel();
         Windows.Foundation.Collections.IObservableVector<VisualConfiguration> Backdrops;
+        Microsoft.UI.Xaml.Input.ICommand OpenConsoleCommand { get; };
         Boolean BatterySaveEnabled;        
 
         void ChangeBackdrop(String value);

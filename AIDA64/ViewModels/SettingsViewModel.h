@@ -30,7 +30,11 @@ namespace winrt::AIDA64::implementation
         void BatterySaveEnabled(bool value);
         bool BatterySaveEnabled() const noexcept;
 
+        winrt::ICommand OpenConsoleCommand();
+
     private:
+        winrt::ICommand m_openConsoleCommand;
+
         winrt::IObservableVector<AIDA64::VisualConfiguration> m_backdrops = single_threaded_observable_vector<AIDA64::VisualConfiguration>();
     };
 }

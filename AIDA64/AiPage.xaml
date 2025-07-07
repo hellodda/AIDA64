@@ -6,7 +6,8 @@
     xmlns:local="using:AIDA64"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    KeyDown="Page_KeyDown">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -26,23 +27,15 @@
          VerticalScrollMode="Enabled"
          HorizontalScrollBarVisibility="Disabled"
          VerticalScrollBarVisibility="Auto">
+            
             <StackPanel Grid.Row="1" Spacing="20" Padding="25">
 
-                <StackPanel Orientation="Vertical" Spacing="5" VerticalAlignment="Center">
+                <StackPanel Orientation="Vertical" Spacing="2" VerticalAlignment="Center">
                     <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15" CornerRadius="5">
-                        <StackPanel Orientation="Vertical" Spacing="25">
-
-                            <TextBox PlaceholderText="hello, rate my pc!..." Height="250" Text="{x:Bind ViewModel.RequestMessage, Mode=TwoWay}"/>
-                            <Button Content="Send" Command="{x:Bind ViewModel.SendRequest}"/>
-                            <ScrollViewer Height="250" VerticalScrollBarVisibility="Auto" Background="{ThemeResource SystemControlBackgroundBaseLowBrush}" CornerRadius="5" Padding="5">
-                                <TextBlock Text="{x:Bind ViewModel.ResponseMessage, Mode=OneWay}"
-                                   TextWrapping="Wrap"
-                                   FontSize="14" />
-                            </ScrollViewer>
-
-
-
-
+                        <StackPanel Orientation="Vertical" Spacing="5">
+                            <TextBox IsReadOnly="True" CornerRadius="5" Height="350" Text="{x:Bind ViewModel.ResponseMessage, Mode=OneWay}" TextWrapping="Wrap" FontSize="14"/>
+                            <ProgressBar IsEnabled="True" IsIndeterminate="True"/>
+                            <TextBox x:Name="RequestBox" CornerRadius="5" PlaceholderText="say, hi! ..." Height="50" Text="{x:Bind ViewModel.RequestMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </Border>
                 </StackPanel>
