@@ -26,7 +26,7 @@ namespace winrt::AIDA64::Framework
 
         JsonObject systemMessage;
         systemMessage.Insert(L"role", JsonValue::CreateStringValue(L"system"));
-        systemMessage.Insert(L"content", JsonValue::CreateStringValue(L"You are a helpful assistant. Always respond only with your final answer enclosed inside <speak> and </speak> tags. Do not include any internal reasoning or other tags."));
+        systemMessage.Insert(L"content", JsonValue::CreateStringValue(m_systemConfiguration));
 
         JsonObject userMessage;
         userMessage.Insert(L"role", JsonValue::CreateStringValue(L"user"));
@@ -38,7 +38,7 @@ namespace winrt::AIDA64::Framework
         body.Insert(L"messages", messages);
         body.Insert(L"temperature", JsonValue::CreateNumberValue(0));
         body.Insert(L"stream", JsonValue::CreateBooleanValue(false));
-        body.Insert(L"max_completion_tokens", JsonValue::CreateNumberValue(500));
+        body.Insert(L"max_completion_tokens", JsonValue::CreateNumberValue(1000));
 
         request_message.Content(HttpStringContent(body.Stringify(), UnicodeEncoding::Utf8, L"application/json"));
 
@@ -83,13 +83,18 @@ namespace winrt::AIDA64::Framework
 
     }
 
-    void AiClient::Uri(Windows::Foundation::Uri uri)
+    void AiClient::Uri(Windows::Foundation::Uri const& uri)
     {
         m_uri = uri;
     }
 
-    void AiClient::Token(hstring token)
+    void AiClient::Token(hstring const& token)
     {
         m_token = token;
+    }
+
+    void AiClient::SystemConfiguration(hstring const& config)
+    {
+        m_systemConfiguration = config;
     }
 }
