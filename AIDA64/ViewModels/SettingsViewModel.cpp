@@ -4,11 +4,12 @@
 #include "SettingsViewModel.g.cpp"
 #endif
 
-#include <Config/ApplicationConfiguration.h>
 #include <Config/ApplicationState.h>
 #include <Framework/Utilities.h>
 #include <Win32Helpers/BatteryController.h>
-#include <iostream>
+#include <winrt/Windows.Storage.h>
+
+
 
 namespace winrt::AIDA64::implementation
 {
@@ -49,7 +50,7 @@ namespace winrt::AIDA64::implementation
 		}
 		else if (value == L"Mica")
 		{
-			configuration::ApplicationState::Instance().Backdrop(Microsoft::UI::Xaml::Media::MicaBackdrop());
+			configuration::ApplicationState::Instance().Test();
 		}
 		else
 		{
