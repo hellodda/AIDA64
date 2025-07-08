@@ -11,5 +11,6 @@ namespace AIDA64
         Windows.Foundation.Collections.IObservableVector<ChatMessage> Messages;
         String ResponseMessage;
         String RequestMessage;
+        Boolean IsLoading;
     }
 }

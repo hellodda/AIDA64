@@ -128,6 +128,7 @@
       <DependentUpon>ViewModels\AiPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="Convertors\VisibilityConverter.h" />
     <ClInclude Include="Win32Helpers\BatteryController.h" />
     <ClInclude Include="Config\ApplicationConfiguration.h" />
     <ClInclude Include="Models\VisualConfiguration.h">
@@ -242,6 +243,7 @@
       <DependentUpon>ViewModels\AiPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="Convertors\VisibilityConverter.cpp" />
     <ClCompile Include="Win32Helpers\BatteryController.cpp" />
     <ClCompile Include="Config\ApplicationConfiguration.cpp" />
     <ClCompile Include="Models\VisualConfiguration.cpp">

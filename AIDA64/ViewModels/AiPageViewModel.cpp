@@ -24,8 +24,12 @@ namespace winrt::AIDA64::implementation
 
 				m_messages.Append(my_message);
 
+				IsLoading(true);
+
 				auto response = co_await m_client->SendRequestAsync(m_requestMessage);
-				
+			
+				IsLoading(false);
+
 				ai_message.Message(response);
 				ai_message.IsSent(false);
 				
@@ -68,6 +72,18 @@ namespace winrt::AIDA64::implementation
 		{
 			m_messages = value;
 			RaisePropertyChanged(L"Messages");
+		}
+	}
+	bool AiPageViewModel::IsLoading() const noexcept
+	{
+		return m_isLoading;
+	}
+	void AiPageViewModel::IsLoading(bool value)
+	{
+		if (m_isLoading != value)
+		{
+			m_isLoading = value;
+			RaisePropertyChanged(L"IsLoading");
 		}
 	}
 }

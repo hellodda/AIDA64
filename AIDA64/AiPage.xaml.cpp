@@ -5,6 +5,7 @@
 #endif
 
 #include <Convertors/MessageAlignmentConverter.h>
+#include <Convertors/VisibilityConverter.h>
 
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
@@ -16,6 +17,7 @@ namespace winrt::AIDA64::implementation
 		InitializeComponent();
 
 		Resources().Insert(winrt::box_value(hstring{ L"MessageAlignmentConverter" }), winrt::make<Convertors::MessageAlignmentConverter>());
+		Resources().Insert(winrt::box_value(hstring{ L"VisibilityConverter" }), winrt::make<Convertors::VisibilityConverter>());
 	}
 
 	void AiPage::OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)

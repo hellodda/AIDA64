@@ -77,7 +77,7 @@
                                 </ListView.ItemContainerStyle>
                             </ListView>
 
-                            <ProgressBar IsEnabled="True" IsIndeterminate="True"/>
+                            <ProgressBar IsEnabled="True" IsIndeterminate="{x:Bind ViewModel.IsLoading, Mode=OneWay}" Visibility="{x:Bind ViewModel.IsLoading, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
                             <TextBox x:Name="RequestBox" CornerRadius="5" PlaceholderText="say, hi! ..." Height="50" Text="{x:Bind ViewModel.RequestMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </Border>
