@@ -16,8 +16,12 @@
     <Page Include="Graph.xaml">
       <Filter>Controls</Filter>
     </Page>
-    <Page Include="SettingsPage.xaml" />
-    <Page Include="AiPage.xaml" />
+    <Page Include="AiPage.xaml">
+      <Filter>Views\Pages\Other</Filter>
+    </Page>
+    <Page Include="SettingsPage.xaml">
+      <Filter>Views\Pages\Other</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -39,10 +43,18 @@
     <Midl Include="ViewModels\DisplayPageViewModel.idl">
       <Filter>ViewModels</Filter>
     </Midl>
-    <Midl Include="Models\VisualConfiguration.idl" />
-    <Midl Include="ViewModels\SettingsViewModel.idl" />
-    <Midl Include="ViewModels\AiPageViewModel.idl" />
-    <Midl Include="Models\ChatMessage.idl" />
+    <Midl Include="ViewModels\AiPageViewModel.idl">
+      <Filter>ViewModels</Filter>
+    </Midl>
+    <Midl Include="Models\ChatMessage.idl">
+      <Filter>Models</Filter>
+    </Midl>
+    <Midl Include="ViewModels\SettingsViewModel.idl">
+      <Filter>ViewModels</Filter>
+    </Midl>
+    <Midl Include="Models\VisualConfiguration.idl">
+      <Filter>Models</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -71,16 +83,36 @@
     <ClCompile Include="Framework\TaskScheduler.cpp">
       <Filter>Framework\TaskScheduler</Filter>
     </ClCompile>
-    <ClCompile Include="Wmi\WmiDataContext.cpp" />
-    <ClCompile Include="Wmi\WmiMapping.cpp" />
-    <ClCompile Include="Wmi\WmiObject.cpp" />
-    <ClCompile Include="Wmi\WmiQuerySink.cpp" />
-    <ClCompile Include="Win32Helpers\critical_section.cpp" />
-    <ClCompile Include="Win32Helpers\BatteryController.cpp" />
-    <ClCompile Include="Config\ApplicationState.cpp" />
-    <ClCompile Include="Framework\AiClient.cpp" />
-    <ClCompile Include="Convertors\MessageAlignmentConverter.cpp" />
-    <ClCompile Include="Convertors\VisibilityConverter.cpp" />
+    <ClCompile Include="Framework\AiClient.cpp">
+      <Filter>Framework\Clients</Filter>
+    </ClCompile>
+    <ClCompile Include="Config\ApplicationState.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32Helpers\BatteryController.cpp">
+      <Filter>Win32Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Win32Helpers\critical_section.cpp">
+      <Filter>Win32Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Convertors\MessageAlignmentConverter.cpp">
+      <Filter>Convertors</Filter>
+    </ClCompile>
+    <ClCompile Include="Convertors\VisibilityConverter.cpp">
+      <Filter>Convertors</Filter>
+    </ClCompile>
+    <ClCompile Include="Wmi\WmiDataContext.cpp">
+      <Filter>Wmi</Filter>
+    </ClCompile>
+    <ClCompile Include="Wmi\WmiMapping.cpp">
+      <Filter>Wmi</Filter>
+    </ClCompile>
+    <ClCompile Include="Wmi\WmiObject.cpp">
+      <Filter>Wmi</Filter>
+    </ClCompile>
+    <ClCompile Include="Wmi\WmiQuerySink.cpp">
+      <Filter>Wmi</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -121,20 +153,48 @@
     <ClInclude Include="Framework\TaskScheduler.h">
       <Filter>Framework\TaskScheduler</Filter>
     </ClInclude>
-    <ClInclude Include="Wmi\IWmiDataContext.h" />
-    <ClInclude Include="Wmi\WmiMapping.h" />
-    <ClInclude Include="Wmi\WmiDataContext.h" />
-    <ClInclude Include="Wmi\WmiObject.h" />
-    <ClInclude Include="Wmi\WmiQuerySink.h" />
-    <ClInclude Include="Win32Helpers\critical_section.h" />
-    <ClInclude Include="Wmi\IWmiObject.h" />
-    <ClInclude Include="Win32Helpers\BatteryController.h" />
-    <ClInclude Include="Config\ApplicationState.h" />
-    <ClInclude Include="Framework\AiClient.h" />
-    <ClInclude Include="Framework\IAiClient.h" />
-    <ClInclude Include="Convertors\MessageAlignmentConverter.h" />
-    <ClInclude Include="Convertors\VisibilityConverter.h" />
-    <ClInclude Include="Framework\IPlugin.h" />
+    <ClInclude Include="Framework\AiClient.h">
+      <Filter>Framework\Clients</Filter>
+    </ClInclude>
+    <ClInclude Include="Config\ApplicationState.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32Helpers\BatteryController.h">
+      <Filter>Win32Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Win32Helpers\critical_section.h">
+      <Filter>Win32Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IAiClient.h">
+      <Filter>Framework\Clients</Filter>
+    </ClInclude>
+    <ClInclude Include="Wmi\IWmiDataContext.h">
+      <Filter>Wmi</Filter>
+    </ClInclude>
+    <ClInclude Include="Wmi\IWmiObject.h">
+      <Filter>Wmi</Filter>
+    </ClInclude>
+    <ClInclude Include="Convertors\MessageAlignmentConverter.h">
+      <Filter>Convertors</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IPlugin.h">
+      <Filter>Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Convertors\VisibilityConverter.h">
+      <Filter>Convertors</Filter>
+    </ClInclude>
+    <ClInclude Include="Wmi\WmiMapping.h">
+      <Filter>Wmi</Filter>
+    </ClInclude>
+    <ClInclude Include="Wmi\WmiDataContext.h">
+      <Filter>Wmi</Filter>
+    </ClInclude>
+    <ClInclude Include="Wmi\WmiObject.h">
+      <Filter>Wmi</Filter>
+    </ClInclude>
+    <ClInclude Include="Wmi\WmiQuerySink.h">
+      <Filter>Wmi</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -161,10 +221,18 @@
     <Image Include="..\..\..\..\OneDrive\Изображения\Снимки экрана\Mica.png">
       <Filter>Assets</Filter>
     </Image>
-    <Image Include="Assets\Acrylic.png" />
-    <Image Include="Assets\Mica.png" />
-    <Image Include="..\..\..\..\OneDrive\Изображения\Снимки экрана\None.png" />
-    <Image Include="Assets\None.png" />
+    <Image Include="Assets\Acrylic.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\Mica.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="..\..\..\..\OneDrive\Изображения\Снимки экрана\None.png">
+      <Filter>Assets</Filter>
+    </Image>
+    <Image Include="Assets\None.png">
+      <Filter>Assets</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Assets">
@@ -203,9 +271,6 @@
     <Filter Include="Framework\Services\ProcessService">
       <UniqueIdentifier>{0856d59a-5076-49c1-a147-47b69dc9ed14}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Data">
-      <UniqueIdentifier>{188bbfc5-7c34-4a68-b0b3-635011ea1f55}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Framework\Utilities">
       <UniqueIdentifier>{97faa9e9-653e-4b0d-a811-8e4696db2ba7}</UniqueIdentifier>
     </Filter>
@@ -226,6 +291,24 @@
     </Filter>
     <Filter Include="Framework\TaskScheduler">
       <UniqueIdentifier>{14e60b07-dbce-44e1-81fa-d0db98c0cf46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Convertors">
+      <UniqueIdentifier>{60a2b12c-0ee2-427c-8a08-a158e9713398}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Framework\Clients">
+      <UniqueIdentifier>{febb26a1-05fc-4187-a662-badfbc3007e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Configuration">
+      <UniqueIdentifier>{695b899a-8af7-4877-ae45-767ca1415c32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Win32Helpers">
+      <UniqueIdentifier>{4940079d-2f37-4213-bfc4-08dfaefd95bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Wmi">
+      <UniqueIdentifier>{edf70561-c434-4a26-aced-cc477bcab53d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Views\Pages\Other">
+      <UniqueIdentifier>{4fbe77fb-634a-4d63-b775-f6795e7347e2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
