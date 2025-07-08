@@ -76,7 +76,6 @@
     <ClCompile Include="Wmi\WmiObject.cpp" />
     <ClCompile Include="Wmi\WmiQuerySink.cpp" />
     <ClCompile Include="Win32Helpers\critical_section.cpp" />
-    <ClCompile Include="Config\ApplicationConfiguration.cpp" />
     <ClCompile Include="Win32Helpers\BatteryController.cpp" />
     <ClCompile Include="Config\ApplicationState.cpp" />
     <ClCompile Include="Framework\AiClient.cpp" />
@@ -129,13 +128,13 @@
     <ClInclude Include="Wmi\WmiQuerySink.h" />
     <ClInclude Include="Win32Helpers\critical_section.h" />
     <ClInclude Include="Wmi\IWmiObject.h" />
-    <ClInclude Include="Config\ApplicationConfiguration.h" />
     <ClInclude Include="Win32Helpers\BatteryController.h" />
     <ClInclude Include="Config\ApplicationState.h" />
     <ClInclude Include="Framework\AiClient.h" />
     <ClInclude Include="Framework\IAiClient.h" />
     <ClInclude Include="Convertors\MessageAlignmentConverter.h" />
     <ClInclude Include="Convertors\VisibilityConverter.h" />
+    <ClInclude Include="Framework\IPlugin.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">

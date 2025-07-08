@@ -11,22 +11,31 @@
     KeyDown="Page_KeyDown">
 
     <Page.Resources>
+        
         <DataTemplate x:Key="MessageViewTemplate" x:DataType="local:ChatMessage">
             <Grid Height="Auto"
                   Margin="4"
                   HorizontalAlignment="{x:Bind IsSent, Converter={StaticResource MessageAlignmentConverter}}">
+                
                 <StackPanel MinHeight="75"
                             Width="350"
                             Padding="10"
                             Background="{ThemeResource ControlFillColorDefaultBrush}"
                             CornerRadius="{StaticResource ControlCornerRadius}">
-                    <TextBlock Text="{x:Bind Message}"
+                    
+                    <RichTextBlock
                             FontSize="12"
                             TextWrapping="Wrap"
-                            Foreground="{ThemeResource SystemColorHighlightTextColor}"/>
+                            Foreground="{ThemeResource SystemColorHighlightTextColor}">
+                        <Paragraph>
+                            <Run Text="{x:Bind Message}" />
+                        </Paragraph>
+                    </RichTextBlock>
+                    
                 </StackPanel>
             </Grid>
         </DataTemplate>
+        
     </Page.Resources>
 
     <Grid>
@@ -78,7 +87,7 @@
                             </ListView>
 
                             <ProgressBar IsEnabled="True" IsIndeterminate="{x:Bind ViewModel.IsLoading, Mode=OneWay}" Visibility="{x:Bind ViewModel.IsLoading, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"/>
-                            <TextBox x:Name="RequestBox" CornerRadius="5" PlaceholderText="say, hi! ..." Height="50" Text="{x:Bind ViewModel.RequestMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                            <TextBox x:Name="RequestBox" CornerRadius="5" PlaceholderText="say hi! ..." Height="50" Text="{x:Bind ViewModel.RequestMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>
                     </Border>
                 </StackPanel>

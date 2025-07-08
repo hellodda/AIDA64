@@ -19,12 +19,12 @@ namespace winrt::AIDA64::implementation
 		}
 	}
 
-	winrt::hstring VisualConfiguration::Value() const noexcept
+	Windows::Foundation::IInspectable VisualConfiguration::Value() const noexcept
 	{
 		return m_value;
 	}
 
-	void VisualConfiguration::Value(winrt::hstring const& value)
+	void VisualConfiguration::Value(Windows::Foundation::IInspectable const& value)
 	{
 		if (m_value != value)
 		{

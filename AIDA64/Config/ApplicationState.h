@@ -10,8 +10,8 @@ namespace winrt::AIDA64::configuration
 			return instance;
 		}
 		
-		Windows::Foundation::IAsyncAction ConfigureApplicationAsync();
-		Windows::Foundation::IAsyncAction ConfigureApplicationAsync(std::function<Windows::Foundation::IAsyncAction(ApplicationState&)> schema);
+		Windows::Foundation::IAsyncAction ConfigureApplication();
+		Windows::Foundation::IAsyncAction ConfigureApplication(std::function<Windows::Foundation::IAsyncAction(ApplicationState&)> schema);
 
 		Microsoft::UI::Xaml::Window Window() const noexcept;
 		void Window(Microsoft::UI::Xaml::Window const& value);

@@ -120,6 +120,7 @@
     <ClInclude Include="Config\ApplicationState.h" />
     <ClInclude Include="Framework\IAiClient.h" />
     <ClInclude Include="Convertors\MessageAlignmentConverter.h" />
+    <ClInclude Include="Framework\IPlugin.h" />
     <ClInclude Include="Models\ChatMessage.h">
       <DependentUpon>Models\ChatMessage.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -130,7 +131,6 @@
     </ClInclude>
     <ClInclude Include="Convertors\VisibilityConverter.h" />
     <ClInclude Include="Win32Helpers\BatteryController.h" />
-    <ClInclude Include="Config\ApplicationConfiguration.h" />
     <ClInclude Include="Models\VisualConfiguration.h">
       <DependentUpon>Models\VisualConfiguration.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -245,7 +245,6 @@
     </ClCompile>
     <ClCompile Include="Convertors\VisibilityConverter.cpp" />
     <ClCompile Include="Win32Helpers\BatteryController.cpp" />
-    <ClCompile Include="Config\ApplicationConfiguration.cpp" />
     <ClCompile Include="Models\VisualConfiguration.cpp">
       <DependentUpon>Models\VisualConfiguration.idl</DependentUpon>
       <SubType>Code</SubType>

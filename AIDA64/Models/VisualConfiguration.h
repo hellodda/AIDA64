@@ -11,12 +11,12 @@ namespace winrt::AIDA64::implementation
         winrt::hstring ImagePath() const noexcept;
         void ImagePath(winrt::hstring const& value);
 
-        winrt::hstring Value() const noexcept;
-        void Value(winrt::hstring const& value);
+        Windows::Foundation::IInspectable Value() const noexcept;
+        void Value(Windows::Foundation::IInspectable const& value);
 
     private:
 
-        winrt::hstring m_value{};
+        winrt::Windows::Foundation::IInspectable m_value{};
         winrt::hstring m_imagePath{};
     };
 }

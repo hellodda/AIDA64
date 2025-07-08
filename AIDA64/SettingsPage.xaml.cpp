@@ -33,7 +33,8 @@ namespace winrt::AIDA64::implementation
 void winrt::AIDA64::implementation::SettingsPage::BackdropsCollection_ItemClick(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::Controls::ItemClickEventArgs const& e)
 {
 	auto clickedItem = e.ClickedItem().as<AIDA64::VisualConfiguration>();
-	m_viewmodel.ChangeBackdrop(clickedItem.Value());
+
+	m_viewmodel.ChangeBackdrop(winrt::unbox_value<hstring>(clickedItem.Value()));
 }
 
 void winrt::AIDA64::implementation::SettingsPage::ToggleSwitch_Toggled(winrt::Windows::Foundation::IInspectable const& sender, winrt::Microsoft::UI::Xaml::RoutedEventArgs const& e)

@@ -43,7 +43,7 @@ namespace winrt::AIDA64::implementation
         m_window = m_factory->create_application_window();
 
         configuration::ApplicationState::Instance().Window(m_window);
-        configuration::ApplicationState::Instance().ConfigureApplicationAsync();
+        configuration::ApplicationState::Instance().ConfigureApplication();
 
         m_window.Activate();
     }

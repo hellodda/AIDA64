@@ -6,6 +6,6 @@ namespace AIDA64
     {
         VisualConfiguration();
         String ImagePath;
-        String Value;
+        Object Value;
     }
 }

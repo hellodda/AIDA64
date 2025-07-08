@@ -61,6 +61,7 @@ void winrt::AIDA64::implementation::MainWindow::MainNavigation_ItemInvoked([[may
                 if (tag == page.tag)  
                 {  
                     ContentFrame().Navigate(page.page_type, page.view_model);
+                    return;
                 }  
             }
         }

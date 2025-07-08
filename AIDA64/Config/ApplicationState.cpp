@@ -11,26 +11,43 @@
 
 namespace winrt::AIDA64::configuration
 {
-	Windows::Foundation::IAsyncAction ApplicationState::ConfigureApplicationAsync()
+	Windows::Foundation::IAsyncAction ApplicationState::ConfigureApplication()
 	{
-		auto backdrop_type = co_await configuration::ApplicationConfiguration::Instance().LoadDataAsync(L"Backdrop");
-		auto eco_mode = co_await configuration::ApplicationConfiguration::Instance().LoadDataAsync(L"EcoMode");
+		using namespace Windows::Storage;
+		using namespace Microsoft::UI::Xaml::Media;
 
-		if (backdrop_type == L"Mica")
+		auto settings = ApplicationData::Current().LocalSettings().Values();
+
+		hstring backdropType = L"None";
+		if (settings.HasKey(L"Backdrop"))
 		{
-			configuration::ApplicationState::Instance().Backdrop(Microsoft::UI::Xaml::Media::MicaBackdrop());
+			backdropType = unbox_value<hstring>(settings.Lookup(L"Backdrop"));
 		}
-		else if (backdrop_type == L"Acrylic")
+
+		if (backdropType == L"Acrylic")
 		{
-			configuration::ApplicationState::Instance().Backdrop(Microsoft::UI::Xaml::Media::DesktopAcrylicBackdrop());
+			Backdrop(DesktopAcrylicBackdrop());
+		}
+		else if (backdropType == L"Mica")
+		{
+			Backdrop(MicaBackdrop());
 		}
 		else
 		{
-			configuration::ApplicationState::Instance().Backdrop(nullptr);
+			Backdrop(nullptr);
 		}
-		EcoMode(to_bool(winrt::to_string(eco_mode)));
+
+		bool ecoModeEnabled = false;
+		if (settings.HasKey(L"EcoMode"))
+		{
+			ecoModeEnabled = unbox_value<bool>(settings.Lookup(L"EcoMode"));
+		}
+
+		EcoMode(ecoModeEnabled);
+
+		co_return;
 	}
-	Windows::Foundation::IAsyncAction ApplicationState::ConfigureApplicationAsync(std::function<Windows::Foundation::IAsyncAction(ApplicationState&)> schema)
+	Windows::Foundation::IAsyncAction ApplicationState::ConfigureApplication(std::function<Windows::Foundation::IAsyncAction(ApplicationState&)> schema)
 	{
 		co_await schema(*this);
 	}

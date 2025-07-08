@@ -39,19 +39,6 @@ namespace winrt::AIDA64::Framework
         return body;
     }
 
-    hstring AiClient::StripSpeakTags(hstring const& input) {
-        
-        std::wregex rgx(LR"(<speak>(.*?)</speak>)", std::regex_constants::icase);
-        std::wsmatch m;
-        std::wstring winput = input.c_str();
-        
-        if (std::regex_search(winput, m, rgx) && m.size() > 1)
-        {
-            return hstring{ m[1].str() };
-        }
-        return input;
-    }
-
     hstring AiClient::ParseChatContent(hstring const& jsonText)
     {
         auto root = JsonObject::Parse(jsonText);
@@ -61,7 +48,7 @@ namespace winrt::AIDA64::Framework
         }
         auto first = choices.GetObjectAt(0).GetNamedObject(L"message");
         auto content = first.GetNamedString(L"content");
-        return StripSpeakTags(content);
+        return content;
     }
 
     IAsyncOperation<hstring> AiClient::SendRequestAsync(hstring const& request)
