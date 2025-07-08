@@ -26,6 +26,8 @@ namespace winrt::AIDA64::implementation
         winrt::DisplayModel DisplayModel();
         void DisplayModel(winrt::DisplayModel const& value);
 
+        void Activate();
+
     private:
 
         IAsyncAction LoadDataAsync();

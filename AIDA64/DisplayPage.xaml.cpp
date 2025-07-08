@@ -19,6 +19,7 @@ namespace winrt::AIDA64::implementation
 		if (auto param = e.Parameter().try_as<AIDA64::DisplayPageViewModel>())
 		{
 			m_viewmodel = param;
+			m_viewmodel.Activate();
 		}
 	}
 }

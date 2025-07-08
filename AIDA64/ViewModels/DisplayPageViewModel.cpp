@@ -10,7 +10,6 @@ namespace winrt::AIDA64::implementation
 	{
 		m_service = std::move(service);
 		m_logger = std::move(logger);
-		LoadDataAsync();
 	}
 
 	winrt::DisplayModel DisplayPageViewModel::DisplayModel()
@@ -37,5 +36,9 @@ namespace winrt::AIDA64::implementation
 		DisplayModel(model);
 
 		co_return;
+	}
+	void DisplayPageViewModel::Activate()
+	{
+		LoadDataAsync();
 	}
 }

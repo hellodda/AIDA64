@@ -8,5 +8,7 @@ namespace AIDA64
     {
         DisplayPageViewModel();
         DisplayModel DisplayModel;
+
+        void Activate();
     }
 }

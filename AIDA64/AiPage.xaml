@@ -13,9 +13,7 @@
     <Page.Resources>
         
         <DataTemplate x:Key="MessageViewTemplate" x:DataType="local:ChatMessage">
-            <Grid Height="Auto"
-                  Margin="4"
-                  HorizontalAlignment="{x:Bind IsSent, Converter={StaticResource MessageAlignmentConverter}}">
+            <Grid Height="Auto" HorizontalAlignment="{x:Bind IsSent, Converter={StaticResource MessageAlignmentConverter}}">
                 
                 <StackPanel MaxWidth="375"
                             Padding="10"
@@ -66,15 +64,13 @@
                             <ListView Height="500" x:Name="InvertedListView"
                                   ItemsSource="{x:Bind ViewModel.Messages}"
                                   ItemTemplate="{StaticResource MessageViewTemplate}"
-                                  Margin="10"
                                   SelectionMode="None"
                                   VerticalAlignment="Stretch"
                                   HorizontalAlignment="Stretch">
 
                                 <ListView.ItemsPanel>
                                     <ItemsPanelTemplate>
-                                        <ItemsStackPanel ItemsUpdatingScrollMode="KeepLastItemInView"
-                                     VerticalAlignment="Bottom"/>
+                                        <ItemsStackPanel ItemsUpdatingScrollMode="KeepLastItemInView" VerticalAlignment="Bottom"/>
                                     </ItemsPanelTemplate>
                                 </ListView.ItemsPanel>
 
