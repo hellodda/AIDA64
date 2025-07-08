@@ -17,8 +17,7 @@
                   Margin="4"
                   HorizontalAlignment="{x:Bind IsSent, Converter={StaticResource MessageAlignmentConverter}}">
                 
-                <StackPanel MinHeight="75"
-                            Width="350"
+                <StackPanel MaxWidth="375"
                             Padding="10"
                             Background="{ThemeResource ControlFillColorDefaultBrush}"
                             CornerRadius="{StaticResource ControlCornerRadius}">

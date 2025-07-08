@@ -1,12 +1,12 @@
 #include "pch.h"
 #include "ApplicationState.h"
-#include <Config/ApplicationConfiguration.h>
 #include <Win32Helpers/BatteryController.h>
 #include <Framework/Utilities.h>
 #include <winrt/Microsoft.UI.Composition.SystemBackdrops.h>
 #include <winrt/Microsoft.UI.Composition.h>
 #include <winrt/Microsoft.UI.Xaml.Media.h>
 #include <winrt/Windows.System.h>
+#include <winrt/Windows.Storage.h>
 
 
 namespace winrt::AIDA64::configuration

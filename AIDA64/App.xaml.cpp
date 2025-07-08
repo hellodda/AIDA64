@@ -2,7 +2,6 @@
 #include "App.xaml.h"
 #include "MainWindow.xaml.h"
 #include "CpuPage.xaml.h"
-#include <Config/ApplicationConfiguration.h>
 #include <Win32Helpers/BatteryController.h>
 
 #if __has_include("module.g.cpp")

@@ -17,7 +17,6 @@ namespace winrt::AIDA64::implementation
 	{
 		m_service = std::move(service);
 		m_logger = std::move(logger);
-		Setup();
 	}
 
 	winrt::CpuModel CpuPageViewModel::CpuModel() const noexcept
@@ -47,15 +46,51 @@ namespace winrt::AIDA64::implementation
 		return m_values;
 	}
 
-	void CpuPageViewModel::Setup()
+	void CpuPageViewModel::Activate()
 	{
-		get_instance<DispatcherTaskScheduler>().AddTask([this]() -> IAsyncAction {
-			auto result = (co_await m_service->GetCpuInformationAsync()).GetAt(0);
+		if (!m_isActivated)
+		{
 
-			CpuModel(result);
+			IsDataLoaded(false);
+			IsLoading(true);
 
-			m_values.Append(static_cast<double>(result.LoadPercentage()));
-			RaisePropertyChanged(L"Values");
-		});
+			get_instance<DispatcherTaskScheduler>().AddTask([&]() -> IAsyncAction {
+
+				auto result = (co_await m_service->GetCpuInformationAsync()).GetAt(0);
+
+				IsDataLoaded(true);
+				IsLoading(false);
+
+				CpuModel(result);
+
+				m_values.Append(static_cast<double>(result.LoadPercentage()));
+				RaisePropertyChanged(L"Values");
+			});
+			m_isActivated = true;
+		}
+	}
+	bool CpuPageViewModel::IsDataLoaded() const noexcept
+	{
+		return m_isDataLoaded;
+	}
+	void CpuPageViewModel::IsDataLoaded(bool value)
+	{
+		if (m_isDataLoaded != value)
+		{
+			m_isDataLoaded = value;
+			RaisePropertyChanged(L"IsDataLoaded");
+		}
+	}
+	bool CpuPageViewModel::IsLoading() const noexcept
+	{
+		return m_isLoading;
+	}
+	void CpuPageViewModel::IsLoading(bool value)
+	{
+		if (m_isLoading != value)
+		{
+			m_isLoading = value;
+			RaisePropertyChanged(L"IsLoading");
+		}
 	}
 }

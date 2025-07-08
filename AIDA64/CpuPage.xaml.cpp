@@ -7,6 +7,8 @@
 #include <Framework/ICpuService.h>
 #include <Framework/CpuService.h>
 #include <Framework/Utilities.h>
+#include <Convertors/VisibilityConverter.h>
+
 #include <iostream>
 #include <memory>
 
@@ -17,14 +19,14 @@ namespace winrt::AIDA64::implementation
 {
 	CpuPage::CpuPage()
 	{
-		
+		Resources().Insert(box_value(L"VisibilityConverter"), make<Convertors::VisibilityConverter>());
     }
 	void CpuPage::OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
 	{
 		if (auto param = e.Parameter().try_as<AIDA64::CpuPageViewModel>())
 		{
 			m_viewModel = param;
-			
+			m_viewModel.Activate();
 		}
 	}
 

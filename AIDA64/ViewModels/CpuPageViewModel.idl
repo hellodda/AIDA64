@@ -9,5 +9,8 @@ namespace AIDA64
         CpuPageViewModel();
         CpuModel CpuModel;
         Windows.Foundation.Collections.IObservableVector<Double> Values;
+        Boolean IsDataLoaded;
+        Boolean IsLoading;
+        void Activate();
     }
 }

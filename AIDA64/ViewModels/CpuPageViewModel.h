@@ -30,11 +30,19 @@ namespace winrt::AIDA64::implementation
         winrt::IObservableVector<double> Values() const noexcept;
         void Values(winrt::IObservableVector<double> const& value);
 
+        void Activate();
+        
+        bool IsDataLoaded() const noexcept;
+        void IsDataLoaded(bool value);
+
+        bool IsLoading() const noexcept;
+        void IsLoading(bool value);
+
     private:
 
-        void Setup();
-
-    private:
+        bool m_isDataLoaded;
+        bool m_isLoading;
+        bool m_isActivated{ false };
 
         winrt::ICommand TEST;
 
