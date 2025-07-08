@@ -37,7 +37,7 @@ void winrt::AIDA64::implementation::AiPage::Page_KeyDown(winrt::Windows::Foundat
 {
 	if (e.Key() == winrt::Windows::System::VirtualKey::Enter)
 	{
-		if (ViewModel().SendRequest().CanExecute(nullptr))
+		if (ViewModel().SendRequest().CanExecute(nullptr) && !ViewModel().IsLoading())
 		{
 			ViewModel().SendRequest().Execute(nullptr);
 			RequestBox().Text(L"");
