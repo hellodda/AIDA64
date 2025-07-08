@@ -19,16 +19,19 @@ namespace winrt::AIDA64::Framework
 
         JsonArray messages;
 
-        auto makeMsg = [&](std::wstring role, hstring content) {
+        auto make_message = [&](std::wstring role, hstring content) {
             JsonObject obj;
             obj.Insert(L"role", JsonValue::CreateStringValue(role));
             obj.Insert(L"content", JsonValue::CreateStringValue(content));
             return obj;
         };
 
-        messages.Append(makeMsg(L"system", systemConfig));
-        messages.Append(makeMsg(L"user", userRequest));
+        messages.Append(make_message(L"system", systemConfig));
+        messages.Append(make_message(L"user", userRequest));
+
         body.Insert(L"messages", messages);
+
+      
 
         body.Insert(L"temperature", JsonValue::CreateNumberValue(0.0));
         body.Insert(L"stream", JsonValue::CreateBooleanValue(false));

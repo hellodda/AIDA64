@@ -7,7 +7,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    NavigationCacheMode="Enabled"
     KeyDown="Page_KeyDown">
+
+    <Page.Resources>
+        <DataTemplate x:Key="MessageViewTemplate" x:DataType="local:ChatMessage">
+            <Grid Height="Auto"
+                  Margin="4"
+                  HorizontalAlignment="{x:Bind IsSent, Converter={StaticResource MessageAlignmentConverter}}">
+                <StackPanel MinHeight="75"
+                            Width="350"
+                            Padding="10"
+                            Background="{ThemeResource ControlFillColorDefaultBrush}"
+                            CornerRadius="{StaticResource ControlCornerRadius}">
+                    <TextBlock Text="{x:Bind Message}"
+                            FontSize="12"
+                            TextWrapping="Wrap"
+                            Foreground="{ThemeResource SystemColorHighlightTextColor}"/>
+                </StackPanel>
+            </Grid>
+        </DataTemplate>
+    </Page.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
@@ -33,7 +53,30 @@
                 <StackPanel Orientation="Vertical" Spacing="2" VerticalAlignment="Center">
                     <Border Background="{ThemeResource ControlFillColorDefaultBrush}" Padding="15" CornerRadius="5">
                         <StackPanel Orientation="Vertical" Spacing="5">
-                            <TextBox IsReadOnly="True" CornerRadius="5" Height="350" Text="{x:Bind ViewModel.ResponseMessage, Mode=OneWay}" TextWrapping="Wrap" FontSize="14"/>
+
+
+                            <ListView Height="500" x:Name="InvertedListView"
+                                  ItemsSource="{x:Bind ViewModel.Messages}"
+                                  ItemTemplate="{StaticResource MessageViewTemplate}"
+                                  Margin="10"
+                                  SelectionMode="None"
+                                  VerticalAlignment="Stretch"
+                                  HorizontalAlignment="Stretch">
+
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <ItemsStackPanel ItemsUpdatingScrollMode="KeepLastItemInView"
+                                     VerticalAlignment="Bottom"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                            </ListView>
+
                             <ProgressBar IsEnabled="True" IsIndeterminate="True"/>
                             <TextBox x:Name="RequestBox" CornerRadius="5" PlaceholderText="say, hi! ..." Height="50" Text="{x:Bind ViewModel.RequestMessage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
                         </StackPanel>

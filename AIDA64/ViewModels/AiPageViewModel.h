@@ -6,6 +6,8 @@
 #include <Helpers/BindableBase.h>
 #include <Helpers/RelayCommand.h>
 
+#include <Models/ChatMessage.h>
+
 using namespace winrt::AIDA64::Framework;
 
 namespace winrt::AIDA64::implementation
@@ -24,10 +26,14 @@ namespace winrt::AIDA64::implementation
         hstring RequestMessage() const noexcept;
         void RequestMessage(hstring const& value);
 
+        Windows::Foundation::Collections::IObservableVector<AIDA64::ChatMessage> Messages() const noexcept;
+        void Messages(Windows::Foundation::Collections::IObservableVector<AIDA64::ChatMessage> const& value);
+
     private:
         ICommand m_sendRequestCommand;
         hstring m_requestMessage;
         hstring m_responseMessage;
+        Windows::Foundation::Collections::IObservableVector<AIDA64::ChatMessage> m_messages = single_threaded_observable_vector<AIDA64::ChatMessage>();
         std::shared_ptr<IAiClient> m_client;
     };
 }

@@ -47,7 +47,7 @@ namespace winrt::AIDA64::implementation
 
 		if (value == L"Mica")
 		{
-			configuration::ApplicationState::Instance().Backdrop(Microsoft::UI::Xaml::Media::MicaBackdrop());
+			configuration::ApplicationState::Instance().Test();
 		}
 		else if (value == L"Acrylic")
 		{

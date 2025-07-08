@@ -4,11 +4,20 @@
 #include "AiPage.g.cpp"
 #endif
 
+#include <Convertors/MessageAlignmentConverter.h>
+
 using namespace winrt;
 using namespace Microsoft::UI::Xaml;
 
 namespace winrt::AIDA64::implementation
 {
+	AiPage::AiPage()
+	{
+		InitializeComponent();
+
+		Resources().Insert(winrt::box_value(hstring{ L"MessageAlignmentConverter" }), winrt::make<Convertors::MessageAlignmentConverter>());
+	}
+
 	void AiPage::OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
 	{
 		if (auto param = e.Parameter().try_as<AIDA64::AiPageViewModel>())

@@ -3,6 +3,11 @@
 #include <Config/ApplicationConfiguration.h>
 #include <Win32Helpers/BatteryController.h>
 #include <Framework/Utilities.h>
+#include <winrt/Microsoft.UI.Composition.SystemBackdrops.h>
+#include <winrt/Microsoft.UI.Composition.h>
+#include <winrt/Microsoft.UI.Xaml.Media.h>
+#include <winrt/Windows.System.h>
+
 
 namespace winrt::AIDA64::configuration
 {
@@ -70,6 +75,25 @@ namespace winrt::AIDA64::configuration
 		{
 			m_backdrop = value;
 			m_window.SystemBackdrop(m_backdrop);
+		}
+	}
+	void ApplicationState::Test()
+	{
+		auto dispatcherQueue = winrt::Microsoft::UI::Dispatching::DispatcherQueue::GetForCurrentThread();
+		auto windowNative = m_window.as<winrt::Microsoft::UI::Composition::ICompositionSupportsSystemBackdrop>();
+
+
+		if (winrt::Microsoft::UI::Composition::SystemBackdrops::MicaController::IsSupported())
+		{
+			m_micaController = winrt::Microsoft::UI::Composition::SystemBackdrops::MicaController();
+			m_backdropConfiguration = winrt::Microsoft::UI::Composition::SystemBackdrops::SystemBackdropConfiguration();
+
+			m_backdropConfiguration.IsInputActive(true);
+			m_backdropConfiguration.Theme(winrt::Microsoft::UI::Composition::SystemBackdrops::SystemBackdropTheme::Default);
+
+			m_micaController.Kind(winrt::Microsoft::UI::Composition::SystemBackdrops::MicaKind::BaseAlt); 
+			m_micaController.AddSystemBackdropTarget(windowNative);
+			m_micaController.SetSystemBackdropConfiguration(m_backdropConfiguration);
 		}
 	}
 }

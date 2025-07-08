@@ -1,3 +1,5 @@
+import "Models/ChatMessage.idl";
+
 namespace AIDA64
 {
     [bindable]
@@ -6,6 +8,7 @@ namespace AIDA64
     {
         AiPageViewModel();
         Microsoft.UI.Xaml.Input.ICommand SendRequest { get; };
+        Windows.Foundation.Collections.IObservableVector<ChatMessage> Messages;
         String ResponseMessage;
         String RequestMessage;
     }

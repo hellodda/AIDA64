@@ -16,8 +16,20 @@ namespace winrt::AIDA64::implementation
 		{
 			m_sendRequestCommand = winrt::make<Helpers::RelayCommand>([this]() -> IAsyncAction {
 
+				AIDA64::ChatMessage ai_message;
+				AIDA64::ChatMessage my_message;
+
+				my_message.Message(m_requestMessage);
+				my_message.IsSent(true);
+
+				m_messages.Append(my_message);
+
 				auto response = co_await m_client->SendRequestAsync(m_requestMessage);
-				ResponseMessage(response);
+				
+				ai_message.Message(response);
+				ai_message.IsSent(false);
+				
+				m_messages.Append(ai_message);
 			});
 		}
 		return m_sendRequestCommand;
@@ -44,6 +56,18 @@ namespace winrt::AIDA64::implementation
 		{
 			m_requestMessage = value;
 			RaisePropertyChanged(L"RequestMessage");
+		}
+	}
+	Windows::Foundation::Collections::IObservableVector<AIDA64::ChatMessage> AiPageViewModel::Messages() const noexcept
+	{
+		return m_messages;
+	}
+	void AiPageViewModel::Messages(Windows::Foundation::Collections::IObservableVector<AIDA64::ChatMessage> const& value)
+	{
+		if (m_messages != value)
+		{
+			m_messages = value;
+			RaisePropertyChanged(L"Messages");
 		}
 	}
 }

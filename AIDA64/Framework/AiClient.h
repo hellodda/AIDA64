@@ -1,6 +1,7 @@
 #pragma once
 #include <winrt/Windows.Networking.h>
 #include <winrt/Windows.Web.Http.h>
+#include <winrt/Windows.Data.Json.h>
 #include "IAiClient.h"
 
 using namespace winrt;

@@ -6,10 +6,7 @@ namespace winrt::AIDA64::implementation
 {
     struct AiPage : AiPageT<AiPage>
     {
-        AiPage()
-        {
-      
-        }
+        AiPage();
         void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
         AIDA64::AiPageViewModel ViewModel();
 

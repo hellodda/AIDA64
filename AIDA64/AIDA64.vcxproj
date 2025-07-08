@@ -119,6 +119,11 @@
     </ClInclude>
     <ClInclude Include="Config\ApplicationState.h" />
     <ClInclude Include="Framework\IAiClient.h" />
+    <ClInclude Include="Convertors\MessageAlignmentConverter.h" />
+    <ClInclude Include="Models\ChatMessage.h">
+      <DependentUpon>Models\ChatMessage.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="ViewModels\AiPageViewModel.h">
       <DependentUpon>ViewModels\AiPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -228,6 +233,11 @@
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="Config\ApplicationState.cpp" />
+    <ClCompile Include="Convertors\MessageAlignmentConverter.cpp" />
+    <ClCompile Include="Models\ChatMessage.cpp">
+      <DependentUpon>Models\ChatMessage.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="ViewModels\AiPageViewModel.cpp">
       <DependentUpon>ViewModels\AiPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -318,6 +328,9 @@
     <Midl Include="Graph.idl">
       <DependentUpon>Graph.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="Models\ChatMessage.idl">
+      <SubType>Designer</SubType>
     </Midl>
     <Midl Include="Models\CpuModel.idl">
       <SubType>Designer</SubType>

@@ -42,6 +42,7 @@
     <Midl Include="Models\VisualConfiguration.idl" />
     <Midl Include="ViewModels\SettingsViewModel.idl" />
     <Midl Include="ViewModels\AiPageViewModel.idl" />
+    <Midl Include="Models\ChatMessage.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -79,6 +80,7 @@
     <ClCompile Include="Win32Helpers\BatteryController.cpp" />
     <ClCompile Include="Config\ApplicationState.cpp" />
     <ClCompile Include="Framework\AiClient.cpp" />
+    <ClCompile Include="Convertors\MessageAlignmentConverter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -131,6 +133,7 @@
     <ClInclude Include="Config\ApplicationState.h" />
     <ClInclude Include="Framework\AiClient.h" />
     <ClInclude Include="Framework\IAiClient.h" />
+    <ClInclude Include="Convertors\MessageAlignmentConverter.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
