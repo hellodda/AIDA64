@@ -116,16 +116,16 @@ namespace wmi
         MAP_PROPERTY(std::wstring, BankLabel)
         MAP_PROPERTY(std::wstring, CapacityStr)
 
-        MAP_PROPERTY(uint64_t, Capacity)
+        MAP_PROPERTY(int32_t, Capacity)
      
-        MAP_PROPERTY(uint32_t, Speed)
+        MAP_PROPERTY(int32_t, Speed)
 
-        MAP_PROPERTY(uint16_t, DataWidth)
-        MAP_PROPERTY(uint16_t, TotalWidth)
-        MAP_PROPERTY(uint16_t, FormFactor)
-        MAP_PROPERTY(uint16_t, MemoryType)
+        MAP_PROPERTY(int32_t, DataWidth)
+        MAP_PROPERTY(int32_t, TotalWidth)
+        MAP_PROPERTY(int32_t, FormFactor)
+        MAP_PROPERTY(int32_t, MemoryType)
 
-        MAP_PROPERTY(uint8_t, SMBIOSMemoryType)
+        MAP_PROPERTY(int32_t, SMBIOSMemoryType)
       
         return model;
     }

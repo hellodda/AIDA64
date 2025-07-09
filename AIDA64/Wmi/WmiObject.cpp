@@ -48,12 +48,6 @@ namespace wmi
         case VT_UINT:
             return property_value_t{ static_cast<uint32_t>(var.uintVal) };
 
-        case VT_I8:
-            return property_value_t{ static_cast<int64_t>(var.llVal) }; 
-
-        case VT_UI8:
-            return property_value_t{ static_cast<uint64_t>(var.ullVal) };
-
         case VT_BSTR:
             if (var.bstrVal)
                 return property_value_t{ std::wstring{ var.bstrVal } };
