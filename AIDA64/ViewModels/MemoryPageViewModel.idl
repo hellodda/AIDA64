@@ -1,0 +1,15 @@
+import "Models/MemoryModel.idl";
+
+namespace AIDA64
+{
+    [bindable]
+    [default_interface]
+    runtimeclass MemoryPageViewModel : Microsoft.UI.Xaml.Data.INotifyPropertyChanged
+    {
+        MemoryPageViewModel();
+        MemoryModel MemoryModel;
+        
+
+        void Activate();
+    }
+}

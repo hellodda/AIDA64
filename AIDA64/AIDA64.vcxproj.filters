@@ -22,23 +22,15 @@
     <Page Include="SettingsPage.xaml">
       <Filter>Views\Pages\Other</Filter>
     </Page>
+    <Page Include="MemoryPage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
-    <Midl Include="Models\ProcessModel.idl">
-      <Filter>Models</Filter>
-    </Midl>
     <Midl Include="ViewModels\MainViewModel.idl">
       <Filter>ViewModels</Filter>
     </Midl>
     <Midl Include="ViewModels\CpuPageViewModel.idl">
       <Filter>ViewModels</Filter>
-    </Midl>
-    <Midl Include="Models\CpuModel.idl">
-      <Filter>Models</Filter>
-    </Midl>
-    <Midl Include="Models\DisplayModel.idl">
-      <Filter>Models</Filter>
     </Midl>
     <Midl Include="ViewModels\DisplayPageViewModel.idl">
       <Filter>ViewModels</Filter>
@@ -55,6 +47,19 @@
     <Midl Include="Models\VisualConfiguration.idl">
       <Filter>Models</Filter>
     </Midl>
+    <Midl Include="Models\CpuModel.idl">
+      <Filter>Models\DTO</Filter>
+    </Midl>
+    <Midl Include="Models\DisplayModel.idl">
+      <Filter>Models\DTO</Filter>
+    </Midl>
+    <Midl Include="Models\ProcessModel.idl">
+      <Filter>Models\DTO</Filter>
+    </Midl>
+    <Midl Include="Models\MemoryModel.idl">
+      <Filter>Models\DTO</Filter>
+    </Midl>
+    <Midl Include="ViewModels\MemoryPageViewModel.idl" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -113,6 +118,7 @@
     <ClCompile Include="Wmi\WmiQuerySink.cpp">
       <Filter>Wmi</Filter>
     </ClCompile>
+    <ClCompile Include="Framework\MemoryService.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -195,6 +201,8 @@
     <ClInclude Include="Wmi\WmiQuerySink.h">
       <Filter>Wmi</Filter>
     </ClInclude>
+    <ClInclude Include="Framework\IMemoryService.h" />
+    <ClInclude Include="Framework\MemoryService.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -309,6 +317,9 @@
     </Filter>
     <Filter Include="Views\Pages\Other">
       <UniqueIdentifier>{4fbe77fb-634a-4d63-b775-f6795e7347e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\DTO">
+      <UniqueIdentifier>{5e3e7cbb-2595-45de-bdd8-4a1ad64dff4d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

@@ -4,6 +4,7 @@
 #include <Models/CpuModel.h>
 #include <Models/DisplayModel.h>
 #include <Models/ProcessModel.h>
+#include <Models/MemoryModel.h>
 
 #include <winrt/AIDA64.h>
 
@@ -23,4 +24,7 @@ namespace wmi
 
 	template<>
 	winrt::AIDA64::DisplayModel from_wmi(IWmiObject const& object);
+
+	template<>
+	winrt::AIDA64::MemoryModel from_wmi(IWmiObject const& object);
 }

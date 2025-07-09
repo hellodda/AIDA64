@@ -5,7 +5,7 @@
 
 namespace wmi
 {
-	using property_value_t = std::variant<std::wstring, int, bool>;
+	using property_value_t = std::variant<std::wstring, int64_t, int32_t, int16_t, int8_t, uint64_t, uint32_t, uint16_t, uint8_t, bool>;
 
 	struct IWmiObject
 	{

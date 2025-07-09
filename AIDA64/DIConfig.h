@@ -8,17 +8,19 @@
 #include "DisplayPage.xaml.h"
 #include "SettingsPage.xaml.h"
 #include "AiPage.xaml.h"
-
+#include "MemoryPage.xaml.h"
 
 // \/-- framework --\/ \\
 
 #include <Framework/Logger.h>
 #include <Framework/CpuService.h>
 #include <Framework/DisplayService.h>
+#include <Framework/MemoryService.h>
 #include <Framework/ProcessService.h>
 #include <Framework/AiClient.h>
 #include <ViewModels/MainViewModel.h>
 #include <ViewModels/DisplayPageViewModel.h>
+#include <ViewModels/MemoryPageViewModel.h>
 #include <ViewModels/SettingsViewModel.h>
 #include <ViewModels/AiPageViewModel.h>
 #include <Wmi/IWmiDataContext.h>

@@ -21,6 +21,7 @@ namespace wmi
         inline constexpr const wchar_t* QUERY_WIN32_DESKTOP_MONITOR = L"SELECT * FROM Win32_DesktopMonitor";
         inline constexpr const wchar_t* QUERY_ACPI_THERMAL_TEMPERATURE = L"SELECT CurrentTemperature FROM MSAcpi_ThermalZoneTemperature";
         inline constexpr const wchar_t* QUERY_WIN32_FAN = L"SELECT * FROM Win32_Fan";
+        inline constexpr const wchar_t* QUERY_WIN32_PHYSICAL_MEMORY = L"SELECT * FROM Win32_PhysicalMemory";
     }
 
 }

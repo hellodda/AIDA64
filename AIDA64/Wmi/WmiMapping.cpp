@@ -102,6 +102,33 @@ namespace wmi
 
         return model;
     }
+
+    template<>
+    winrt::AIDA64::MemoryModel from_wmi<winrt::AIDA64::MemoryModel>(IWmiObject const& object)
+    {
+        winrt::AIDA64::MemoryModel model;
+
+        MAP_PROPERTY(std::wstring, Manufacturer)
+        MAP_PROPERTY(std::wstring, SerialNumber)
+        MAP_PROPERTY(std::wstring, PartNumber)
+        MAP_PROPERTY(std::wstring, Tag)
+        MAP_PROPERTY(std::wstring, DeviceLocator)
+        MAP_PROPERTY(std::wstring, BankLabel)
+        MAP_PROPERTY(std::wstring, CapacityStr)
+
+        MAP_PROPERTY(uint64_t, Capacity)
+     
+        MAP_PROPERTY(uint32_t, Speed)
+
+        MAP_PROPERTY(uint16_t, DataWidth)
+        MAP_PROPERTY(uint16_t, TotalWidth)
+        MAP_PROPERTY(uint16_t, FormFactor)
+        MAP_PROPERTY(uint16_t, MemoryType)
+
+        MAP_PROPERTY(uint8_t, SMBIOSMemoryType)
+      
+        return model;
+    }
 }
 
 #undef MAP_PROPERTY_EX

@@ -30,7 +30,7 @@
                                 <FontIcon Glyph="&#xE950;" />
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
-                        <NavigationViewItem Content="Memory">
+                        <NavigationViewItem Content="Memory" Tag="mem">
                             <NavigationViewItem.Icon>
                                 <FontIcon Glyph="&#xE77C;" />
                             </NavigationViewItem.Icon>

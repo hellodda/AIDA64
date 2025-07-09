@@ -1,0 +1,11 @@
+import "ViewModels/MemoryPageViewModel.idl";
+
+namespace AIDA64
+{
+    [default_interface]
+    runtimeclass MemoryPage : Microsoft.UI.Xaml.Controls.Page
+    {
+        MemoryPage();
+        MemoryPageViewModel ViewModel{ get; };
+    }
+}

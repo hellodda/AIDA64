@@ -120,7 +120,13 @@
     <ClInclude Include="Config\ApplicationState.h" />
     <ClInclude Include="Framework\IAiClient.h" />
     <ClInclude Include="Convertors\MessageAlignmentConverter.h" />
+    <ClInclude Include="Framework\IMemoryService.h" />
     <ClInclude Include="Framework\IPlugin.h" />
+    <ClInclude Include="Framework\MemoryService.h" />
+    <ClInclude Include="Models\MemoryModel.h">
+      <DependentUpon>Models\MemoryModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="Models\ChatMessage.h">
       <DependentUpon>Models\ChatMessage.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -130,6 +136,14 @@
       <SubType>Code</SubType>
     </ClInclude>
     <ClInclude Include="Convertors\VisibilityConverter.h" />
+    <ClInclude Include="MemoryPage.xaml.h">
+      <DependentUpon>MemoryPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
+    <ClInclude Include="ViewModels\MemoryPageViewModel.h">
+      <DependentUpon>ViewModels\MemoryPageViewModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClInclude>
     <ClInclude Include="Win32Helpers\BatteryController.h" />
     <ClInclude Include="Models\VisualConfiguration.h">
       <DependentUpon>Models\VisualConfiguration.idl</DependentUpon>
@@ -225,6 +239,9 @@
     <Page Include="SettingsPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="MemoryPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Xaml Include="Views\Hardware\CpuPage.xaml" />
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +252,11 @@
     </ClCompile>
     <ClCompile Include="Config\ApplicationState.cpp" />
     <ClCompile Include="Convertors\MessageAlignmentConverter.cpp" />
+    <ClCompile Include="Framework\MemoryService.cpp" />
+    <ClCompile Include="Models\MemoryModel.cpp">
+      <DependentUpon>Models\MemoryModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="Models\ChatMessage.cpp">
       <DependentUpon>Models\ChatMessage.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -244,6 +266,14 @@
       <SubType>Code</SubType>
     </ClCompile>
     <ClCompile Include="Convertors\VisibilityConverter.cpp" />
+    <ClCompile Include="MemoryPage.xaml.cpp">
+      <DependentUpon>MemoryPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
+    <ClCompile Include="ViewModels\MemoryPageViewModel.cpp">
+      <DependentUpon>ViewModels\MemoryPageViewModel.idl</DependentUpon>
+      <SubType>Code</SubType>
+    </ClCompile>
     <ClCompile Include="Win32Helpers\BatteryController.cpp" />
     <ClCompile Include="Models\VisualConfiguration.cpp">
       <DependentUpon>Models\VisualConfiguration.idl</DependentUpon>
@@ -330,6 +360,9 @@
       <DependentUpon>Graph.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Midl>
+    <Midl Include="Models\MemoryModel.idl">
+      <SubType>Designer</SubType>
+    </Midl>
     <Midl Include="Models\ChatMessage.idl">
       <SubType>Designer</SubType>
     </Midl>
@@ -367,6 +400,13 @@
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="ViewModels\MainViewModel.idl">
+      <SubType>Designer</SubType>
+    </Midl>
+    <Midl Include="MemoryPage.idl">
+      <DependentUpon>MemoryPage.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Midl>
+    <Midl Include="ViewModels\MemoryPageViewModel.idl">
       <SubType>Designer</SubType>
     </Midl>
     <Midl Include="ViewModels\SettingsViewModel.idl">

@@ -1,0 +1,24 @@
+namespace AIDA64
+{
+    [bindable]
+    [default_interface]
+    runtimeclass MemoryModel
+    {
+        MemoryModel();
+
+        String BankLabel;
+        UInt64 Capacity;
+        String CapacityStr;
+        UInt16 DataWidth;
+        UInt16 TotalWidth;
+        UInt32 Speed;
+        String Manufacturer;
+        String SerialNumber;
+        String PartNumber;
+        UInt16 FormFactor;
+        UInt16 MemoryType;
+        UInt8 SMBIOSMemoryType;
+        String Tag;
+        String DeviceLocator;
+    }
+}
