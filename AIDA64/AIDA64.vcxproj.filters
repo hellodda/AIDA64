@@ -22,7 +22,9 @@
     <Page Include="SettingsPage.xaml">
       <Filter>Views\Pages\Other</Filter>
     </Page>
-    <Page Include="MemoryPage.xaml" />
+    <Page Include="MemoryPage.xaml">
+      <Filter>Views\Pages\Hardware</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -59,7 +61,9 @@
     <Midl Include="Models\MemoryModel.idl">
       <Filter>Models\DTO</Filter>
     </Midl>
-    <Midl Include="ViewModels\MemoryPageViewModel.idl" />
+    <Midl Include="ViewModels\MemoryPageViewModel.idl">
+      <Filter>ViewModels</Filter>
+    </Midl>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp" />
@@ -118,7 +122,15 @@
     <ClCompile Include="Wmi\WmiQuerySink.cpp">
       <Filter>Wmi</Filter>
     </ClCompile>
-    <ClCompile Include="Framework\MemoryService.cpp" />
+    <ClCompile Include="Helpers\ViewModelBase.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Framework\MemoryService.cpp">
+      <Filter>Framework\MemoryService</Filter>
+    </ClCompile>
+    <ClCompile Include="Convertors\ReverseVisibilityConverter.cpp">
+      <Filter>Convertors</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -183,9 +195,6 @@
     <ClInclude Include="Convertors\MessageAlignmentConverter.h">
       <Filter>Convertors</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\IPlugin.h">
-      <Filter>Framework</Filter>
-    </ClInclude>
     <ClInclude Include="Convertors\VisibilityConverter.h">
       <Filter>Convertors</Filter>
     </ClInclude>
@@ -201,8 +210,18 @@
     <ClInclude Include="Wmi\WmiQuerySink.h">
       <Filter>Wmi</Filter>
     </ClInclude>
-    <ClInclude Include="Framework\IMemoryService.h" />
-    <ClInclude Include="Framework\MemoryService.h" />
+    <ClInclude Include="Helpers\ViewModelBase.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\IMemoryService.h">
+      <Filter>Framework\MemoryService</Filter>
+    </ClInclude>
+    <ClInclude Include="Framework\MemoryService.h">
+      <Filter>Framework\MemoryService</Filter>
+    </ClInclude>
+    <ClInclude Include="Convertors\ReverseVisibilityConverter.h">
+      <Filter>Convertors</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Wide310x150Logo.scale-200.png">
@@ -321,6 +340,9 @@
     <Filter Include="Models\DTO">
       <UniqueIdentifier>{5e3e7cbb-2595-45de-bdd8-4a1ad64dff4d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Framework\MemoryService">
+      <UniqueIdentifier>{15481456-7825-4772-b6e7-ff4d149da85f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="readme.txt" />
@@ -333,9 +355,5 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
-    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natstepfilter" />
   </ItemGroup>
 </Project>
