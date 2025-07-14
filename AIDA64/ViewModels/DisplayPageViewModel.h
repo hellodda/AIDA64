@@ -7,6 +7,7 @@
 
 #include <Helpers/BindableBase.h>
 #include <Helpers/RelayCommand.h>
+#include <Helpers/ViewModelBase.h>
 
 namespace winrt
 {
@@ -17,7 +18,7 @@ namespace winrt
 
 namespace winrt::AIDA64::implementation
 {
-    struct DisplayPageViewModel : DisplayPageViewModelT<DisplayPageViewModel, BindableBase>
+    struct DisplayPageViewModel : DisplayPageViewModelT<DisplayPageViewModel, ViewModelBase>
     {
         DisplayPageViewModel() = default;
 
@@ -26,7 +27,7 @@ namespace winrt::AIDA64::implementation
         winrt::DisplayModel DisplayModel();
         void DisplayModel(winrt::DisplayModel const& value);
 
-        void Activate();
+        void OnActivate() override;
 
     private:
 

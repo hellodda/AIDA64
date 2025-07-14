@@ -8,6 +8,7 @@
 #include <Framework/CpuService.h>
 #include <Framework/Utilities.h>
 #include <Convertors/VisibilityConverter.h>
+#include <Convertors/ReverseVisibilityConverter.h>
 
 #include <iostream>
 #include <memory>
@@ -20,6 +21,7 @@ namespace winrt::AIDA64::implementation
 	CpuPage::CpuPage()
 	{
 		Resources().Insert(box_value(L"VisibilityConverter"), make<Convertors::VisibilityConverter>());
+		Resources().Insert(box_value(L"ReverseVisibilityConverter"), make<Convertors::ReverseVisibilityConverter>());
     }
 	void CpuPage::OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
 	{

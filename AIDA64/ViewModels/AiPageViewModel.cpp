@@ -74,16 +74,8 @@ namespace winrt::AIDA64::implementation
 			RaisePropertyChanged(L"Messages");
 		}
 	}
-	bool AiPageViewModel::IsLoading() const noexcept
+	void AiPageViewModel::OnActivate()
 	{
-		return m_isLoading;
-	}
-	void AiPageViewModel::IsLoading(bool value)
-	{
-		if (m_isLoading != value)
-		{
-			m_isLoading = value;
-			RaisePropertyChanged(L"IsLoading");
-		}
+
 	}
 }

@@ -23,7 +23,7 @@
 
         <ProgressRing Grid.Row="1" Visibility="{x:Bind ViewModel.IsLoading, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" IsIndeterminate="True" Width="150" Height="150" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <ScrollViewer Visibility="{x:Bind ViewModel.IsDataLoaded, Mode=OneWay, Converter={StaticResource VisibilityConverter}}"
+        <ScrollViewer Visibility="{x:Bind ViewModel.IsLoading, Mode=OneWay, Converter={StaticResource ReverseVisibilityConverter}}"
             Grid.Row="1"
             HorizontalScrollMode="Disabled"
             VerticalScrollMode="Enabled"

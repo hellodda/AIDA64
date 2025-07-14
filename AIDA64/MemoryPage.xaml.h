@@ -8,10 +8,7 @@ namespace winrt::AIDA64::implementation
 {
     struct MemoryPage : MemoryPageT<MemoryPage>
     {
-        MemoryPage()
-        {
-           
-        }
+        MemoryPage();
 
         void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
 

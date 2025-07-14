@@ -8,7 +8,7 @@ namespace AIDA64
     {
         MemoryPageViewModel();
         MemoryModel MemoryModel;
-        
+        Boolean IsLoading;
 
         void Activate();
     }

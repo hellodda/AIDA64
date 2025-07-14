@@ -8,6 +8,8 @@ namespace AIDA64
     {
         DisplayPageViewModel();
         DisplayModel DisplayModel;
+        Boolean IsLoading;        
+
 
         void Activate();
     }

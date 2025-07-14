@@ -2,7 +2,9 @@
 
 #include "MemoryPageViewModel.g.h"
 
-#include <Helpers/BindableBase.h>
+
+#include <Helpers/ViewModelBase.h>
+
 #include <Framework/IMemoryService.h>
 
 namespace winrt
@@ -14,7 +16,7 @@ namespace winrt
 
 namespace winrt::AIDA64::implementation
 {
-    struct MemoryPageViewModel : MemoryPageViewModelT<MemoryPageViewModel, BindableBase>
+    struct MemoryPageViewModel : MemoryPageViewModelT<MemoryPageViewModel, ViewModelBase>
     {
         MemoryPageViewModel() = default;
 
@@ -23,7 +25,7 @@ namespace winrt::AIDA64::implementation
         AIDA64::MemoryModel MemoryModel() const noexcept;
         void MemoryModel(AIDA64::MemoryModel const& model);
 
-        void Activate();
+        void OnActivate() override;
 
     private:
 

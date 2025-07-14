@@ -5,6 +5,7 @@
 
 #include <Helpers/BindableBase.h>
 #include <Helpers/RelayCommand.h>
+#include <Helpers/ViewModelBase.h>
 
 #include <Models/ChatMessage.h>
 
@@ -12,7 +13,7 @@ using namespace winrt::AIDA64::Framework;
 
 namespace winrt::AIDA64::implementation
 {
-    struct AiPageViewModel : AiPageViewModelT<AiPageViewModel, Helpers::BindableBase>
+    struct AiPageViewModel : AiPageViewModelT<AiPageViewModel, Helpers::ViewModelBase>
     {
         AiPageViewModel() = default;
 
@@ -29,12 +30,10 @@ namespace winrt::AIDA64::implementation
         Windows::Foundation::Collections::IObservableVector<AIDA64::ChatMessage> Messages() const noexcept;
         void Messages(Windows::Foundation::Collections::IObservableVector<AIDA64::ChatMessage> const& value);
 
-        bool IsLoading() const noexcept;
-        void IsLoading(bool value);
+        void OnActivate() override;
 
     private:
         ICommand m_sendRequestCommand;
-        bool m_isLoading;
         hstring m_requestMessage;
         hstring m_responseMessage;
         Windows::Foundation::Collections::IObservableVector<AIDA64::ChatMessage> m_messages = single_threaded_observable_vector<AIDA64::ChatMessage>();

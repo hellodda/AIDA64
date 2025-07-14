@@ -121,7 +121,6 @@
     <ClInclude Include="Framework\IAiClient.h" />
     <ClInclude Include="Convertors\MessageAlignmentConverter.h" />
     <ClInclude Include="Framework\IMemoryService.h" />
-    <ClInclude Include="Framework\IPlugin.h" />
     <ClInclude Include="Framework\MemoryService.h" />
     <ClInclude Include="Models\MemoryModel.h">
       <DependentUpon>Models\MemoryModel.idl</DependentUpon>
@@ -131,6 +130,8 @@
       <DependentUpon>Models\ChatMessage.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClInclude>
+    <ClInclude Include="Helpers\ViewModelBase.h" />
+    <ClInclude Include="Convertors\ReverseVisibilityConverter.h" />
     <ClInclude Include="ViewModels\AiPageViewModel.h">
       <DependentUpon>ViewModels\AiPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>
@@ -261,6 +262,8 @@
       <DependentUpon>Models\ChatMessage.idl</DependentUpon>
       <SubType>Code</SubType>
     </ClCompile>
+    <ClCompile Include="Helpers\ViewModelBase.cpp" />
+    <ClCompile Include="Convertors\ReverseVisibilityConverter.cpp" />
     <ClCompile Include="ViewModels\AiPageViewModel.cpp">
       <DependentUpon>ViewModels\AiPageViewModel.idl</DependentUpon>
       <SubType>Code</SubType>

@@ -5,8 +5,8 @@
 #include <Framework/ICpuService.h>
 #include <Framework/ILogger.h>
 
-#include <Helpers/BindableBase.h>
 #include <Helpers/RelayCommand.h>
+#include <Helpers/ViewModelBase.h>
 
 namespace winrt
 {
@@ -18,7 +18,7 @@ namespace winrt
 
 namespace winrt::AIDA64::implementation
 {
-    struct CpuPageViewModel : CpuPageViewModelT<CpuPageViewModel, BindableBase>
+    struct CpuPageViewModel : CpuPageViewModelT<CpuPageViewModel, ViewModelBase>
     {
         CpuPageViewModel();
 
@@ -30,20 +30,9 @@ namespace winrt::AIDA64::implementation
         winrt::IObservableVector<double> Values() const noexcept;
         void Values(winrt::IObservableVector<double> const& value);
 
-        void Activate();
-        
-        bool IsDataLoaded() const noexcept;
-        void IsDataLoaded(bool value);
-
-        bool IsLoading() const noexcept;
-        void IsLoading(bool value);
+        void OnActivate() override;
 
     private:
-
-        bool m_isDataLoaded;
-        bool m_isLoading;
-        bool m_isActivated{ false };
-
         winrt::ICommand TEST;
 
         winrt::IObservableVector<double> m_values = single_threaded_observable_vector<double>();

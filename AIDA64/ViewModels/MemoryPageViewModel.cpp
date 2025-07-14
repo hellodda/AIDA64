@@ -25,7 +25,7 @@ namespace winrt::AIDA64::implementation
 		}
 	}
 
-	void MemoryPageViewModel::Activate()
+	void MemoryPageViewModel::OnActivate()
 	{
 		LoadDataAsync();
 	}
@@ -34,7 +34,11 @@ namespace winrt::AIDA64::implementation
 	{
 		if (!m_service) throw hresult_error(E_FAIL, L"Service is Null!");
 
+		IsLoading(true);
+
 		auto model = co_await m_service->GetMemoryInformationAsync();
+
+		IsLoading(false);
 
 		MemoryModel(model);
 	}

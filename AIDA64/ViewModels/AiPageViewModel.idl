@@ -12,5 +12,7 @@ namespace AIDA64
         String ResponseMessage;
         String RequestMessage;
         Boolean IsLoading;
+
+        void Activate();
     }
 }

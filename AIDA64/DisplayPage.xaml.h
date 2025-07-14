@@ -13,10 +13,7 @@ namespace winrt::AIDA64::implementation
 {
     struct DisplayPage : DisplayPageT<DisplayPage>
     {
-        DisplayPage()
-        {
-           
-        }
+        DisplayPage();
 
         void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
 

@@ -18,11 +18,14 @@
             <TextBlock Text="Memory" FontSize="25"/>
         </Border>
 
-        <ScrollViewer Grid.Row="1"
-                      HorizontalScrollMode="Disabled"
-                      VerticalScrollMode="Enabled"
-                      HorizontalScrollBarVisibility="Disabled"
-                      VerticalScrollBarVisibility="Auto">
+        <ProgressRing Grid.Row="1" Visibility="{x:Bind ViewModel.IsLoading, Mode=OneWay, Converter={StaticResource VisibilityConverter}}" IsIndeterminate="True" Width="150" Height="150" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+
+        <ScrollViewer Visibility="{x:Bind ViewModel.IsLoading, Mode=OneWay, Converter={StaticResource ReverseVisibilityConverter}}"
+            Grid.Row="1"
+            HorizontalScrollMode="Disabled"
+            VerticalScrollMode="Enabled"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
             <StackPanel Grid.Row="1" Spacing="2" Padding="25">
 
         
