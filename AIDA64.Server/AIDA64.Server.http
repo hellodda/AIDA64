@@ -1,0 +1,6 @@
+@AIDA64.Server_HostAddress = http://localhost:5091
+
+GET {{AIDA64.Server_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
