@@ -77,7 +77,7 @@ namespace wmi
 		return objects;
 	}
 
-	async::task<std::vector<wmi::WmiObject>> WmiDataContext::QueryAsync(_bstr_t const query)
+	async::task<std::vector<wmi::WmiObject>> WmiDataContext::QueryAsync(_bstr_t const& query)
 	{
 		if (!m_services) throw winrt::hresult_error(E_POINTER, L"data context services is null!");
 		

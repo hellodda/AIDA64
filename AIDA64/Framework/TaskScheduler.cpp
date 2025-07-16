@@ -6,7 +6,7 @@ namespace winrt::AIDA64::Framework
     DispatcherTaskScheduler::DispatcherTaskScheduler()
     {
         m_timer = winrt::Microsoft::UI::Xaml::DispatcherTimer{};
-        m_timer.Interval(500ms);
+        m_timer.Interval(850ms);
         m_timer.Tick([this](auto&, auto&) {
             for (auto& task : m_tasks)
             {
