@@ -1,9 +1,10 @@
 ﻿#pragma once
 
 #include "AiPageViewModel.g.h"
-#include <Framework/IAiClient.h>
 
-#include <Helpers/BindableBase.h>
+#include <Framework/IAiClient.h>
+#include <Framework/ILogger.h>
+
 #include <Helpers/RelayCommand.h>
 #include <Helpers/ViewModelBase.h>
 
@@ -17,7 +18,7 @@ namespace winrt::AIDA64::implementation
     {
         AiPageViewModel() = default;
 
-        void Inject(std::shared_ptr<IAiClient> client);
+        void Inject(std::shared_ptr<IAiClient> client, std::shared_ptr<ILogger> logger);
 
         ICommand SendRequest();
 
@@ -38,6 +39,7 @@ namespace winrt::AIDA64::implementation
         hstring m_responseMessage;
         Windows::Foundation::Collections::IObservableVector<AIDA64::ChatMessage> m_messages = single_threaded_observable_vector<AIDA64::ChatMessage>();
         std::shared_ptr<IAiClient> m_client;
+        std::shared_ptr<ILogger> m_logger;
     };
 }
 

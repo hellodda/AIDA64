@@ -6,9 +6,10 @@
 
 namespace winrt::AIDA64::implementation
 {
-	void MemoryPageViewModel::Inject(std::shared_ptr<IMemoryService> service)
+	void MemoryPageViewModel::Inject(std::shared_ptr<IMemoryService> service, std::shared_ptr<ILogger> logger)
 	{
 		m_service = std::move(service);
+		m_logger = std::move(logger);
 	}
 
 	AIDA64::MemoryModel MemoryPageViewModel::MemoryModel() const noexcept
@@ -27,13 +28,13 @@ namespace winrt::AIDA64::implementation
 
 	void MemoryPageViewModel::OnActivate()
 	{
+		if (!m_service || !m_logger) throw hresult_error(E_FAIL, L"null!");
+
 		LoadDataAsync();
 	}
 
 	IAsyncAction MemoryPageViewModel::LoadDataAsync()
 	{
-		if (!m_service) throw hresult_error(E_FAIL, L"Service is Null!");
-
 		IsLoading(true);
 
 		auto model = co_await m_service->GetMemoryInformationAsync();

@@ -12,7 +12,7 @@ void register_pages()
 
     register_page_entry<IMemoryService, MemoryService, implementation::MemoryPageViewModel, implementation::MemoryPage>(L"mem", logger, context);
 
-    register_page_entry<IAiClient, AiClient, implementation::AiPageViewModel, implementation::AiPage>(L"ai", nullptr, nullptr);
+    register_page_entry<IAiClient, AiClient, implementation::AiPageViewModel, implementation::AiPage>(L"ai", logger, nullptr);
 }
 
 std::vector<page_data_t> initialize_pages()

@@ -13,6 +13,10 @@ namespace winrt::AIDA64::Framework
 	struct AiClient : IAiClient
 	{
 		Windows::Foundation::IAsyncOperation<hstring> SendRequestAsync(hstring const& request) override;
+
+		hstring BaseAddress() const noexcept;
+		void BaseAddress(hstring const& value);
+
 	private:
 		hstring m_baseAddress = L"http://localhost:5091";
 		HttpClient m_client;

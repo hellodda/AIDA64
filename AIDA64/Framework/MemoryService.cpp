@@ -7,10 +7,7 @@
 namespace winrt::AIDA64::Framework
 {
 	MemoryService::MemoryService(std::shared_ptr<wmi::IWmiDataContext> context, std::shared_ptr<ILogger> logger)
-	{
-		m_context = std::move(context);
-		m_logger = std::move(logger);
-	}
+		: m_context(std::move(context)), m_logger(std::move(logger)) {};
 
 	Windows::Foundation::IAsyncOperation<AIDA64::MemoryModel> MemoryService::GetMemoryInformationAsync()
 	{

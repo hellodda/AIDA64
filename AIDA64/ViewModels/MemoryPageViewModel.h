@@ -6,6 +6,7 @@
 #include <Helpers/ViewModelBase.h>
 
 #include <Framework/IMemoryService.h>
+#include <Framework/ILogger.h>
 
 namespace winrt
 {
@@ -20,7 +21,7 @@ namespace winrt::AIDA64::implementation
     {
         MemoryPageViewModel() = default;
 
-        void Inject(std::shared_ptr<IMemoryService> service);
+        void Inject(std::shared_ptr<IMemoryService> service, std::shared_ptr<ILogger> logger);
 
         AIDA64::MemoryModel MemoryModel() const noexcept;
         void MemoryModel(AIDA64::MemoryModel const& model);
@@ -32,9 +33,9 @@ namespace winrt::AIDA64::implementation
         winrt::IAsyncAction LoadDataAsync();
 
     private:
-
         AIDA64::MemoryModel m_memory_model{};
         std::shared_ptr<IMemoryService> m_service;
+        std::shared_ptr<ILogger> m_logger;
     };
 }
 

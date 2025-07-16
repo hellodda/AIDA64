@@ -27,8 +27,6 @@ namespace winrt::AIDA64::implementation
 	}
 	winrt::IAsyncAction DisplayPageViewModel::LoadDataAsync()
 	{
-		if (!m_service) throw hresult_error(E_FAIL, L"Service is Null!");
-
 		IsLoading(true);
 
 		auto model = co_await m_service->GetDisplayInformationAsync();
@@ -43,6 +41,8 @@ namespace winrt::AIDA64::implementation
 	}
 	void DisplayPageViewModel::OnActivate()
 	{
+		if (!m_service || !m_logger) throw hresult_error(E_FAIL, L"null!");
+
 		LoadDataAsync();
 	}
 }

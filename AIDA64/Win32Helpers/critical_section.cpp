@@ -24,7 +24,7 @@ namespace win32
 
 	void critical_section::lock() noexcept
 	{
-		if (!m_cs) throw std::runtime_error("Critical Section is NULL!");
+		if (!m_cs) throw HRESULT(E_ABORT);
 
 		EnterCriticalSection(m_cs);
 	}

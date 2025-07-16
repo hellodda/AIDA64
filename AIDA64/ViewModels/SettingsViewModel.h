@@ -22,7 +22,6 @@ namespace winrt::AIDA64::implementation
     {
         SettingsViewModel();
 
-
         Windows::Foundation::Collections::IObservableVector<AIDA64::VisualConfiguration> Backdrops() const noexcept;
         void Backdrops(Windows::Foundation::Collections::IObservableVector<AIDA64::VisualConfiguration> const& value);
 

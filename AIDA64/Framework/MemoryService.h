@@ -12,7 +12,6 @@ namespace winrt::AIDA64::Framework
 		Windows::Foundation::IAsyncOperation<AIDA64::MemoryModel> GetMemoryInformationAsync() override;
 
 	private:
-
 		std::shared_ptr<wmi::IWmiDataContext> m_context;
 		std::shared_ptr<ILogger> m_logger;
 	};

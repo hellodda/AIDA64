@@ -6,9 +6,10 @@
 
 namespace winrt::AIDA64::implementation
 {
-	void AiPageViewModel::Inject(std::shared_ptr<IAiClient> client)
+	void AiPageViewModel::Inject(std::shared_ptr<IAiClient> client, std::shared_ptr<ILogger> logger)
 	{
 		m_client = std::move(client);
+		m_logger = std::move(logger);
 	}
 	ICommand AiPageViewModel::SendRequest()
 	{
@@ -76,6 +77,6 @@ namespace winrt::AIDA64::implementation
 	}
 	void AiPageViewModel::OnActivate()
 	{
-
+		if (!m_client || !m_logger) throw hresult_error(E_FAIL, L"null!");
 	}
 }

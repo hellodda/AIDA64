@@ -49,6 +49,8 @@ namespace wmi
 
 	std::vector<wmi::WmiObject> WmiDataContext::Query(_bstr_t const& query)
 	{
+		if (!m_services) throw winrt::hresult_error(E_POINTER, L"data context services is null!");
+
 		winrt::com_ptr<IEnumWbemClassObject> enumerator{ nullptr };
 
 		winrt::check_hresult(m_services->ExecQuery(
@@ -77,7 +79,7 @@ namespace wmi
 
 	async::task<std::vector<wmi::WmiObject>> WmiDataContext::QueryAsync(_bstr_t const query)
 	{
-		co_await winrt::resume_background();
+		if (!m_services) throw winrt::hresult_error(E_POINTER, L"data context services is null!");
 		
 		auto sink = winrt::make_self<wmi::WmiQuerySink>();
 		winrt::check_hresult(m_services->ExecQueryAsync(

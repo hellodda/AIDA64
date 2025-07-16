@@ -1,12 +1,9 @@
 ﻿#include "pch.h"
 #include "AiClient.h"
 #include <winrt/Windows.Web.Http.h>
-#include <winrt/Windows.Data.Json.h>
-#include <regex>
 
 using namespace winrt;
 using namespace Windows::Web::Http;
-using namespace Windows::Data::Json;
 using namespace winrt;
 using namespace Windows::Foundation;
 using namespace Windows::Web::Http::Headers;
@@ -15,6 +12,9 @@ namespace winrt::AIDA64::Framework
 {
     IAsyncOperation<hstring> AiClient::SendRequestAsync(hstring const& request)
     {
+        if (request.empty())
+            co_return hstring{};
+
         try
         {
             Uri uri{ m_baseAddress + L"/Ai?message=" + Uri::EscapeComponent(request) };
@@ -34,6 +34,17 @@ namespace winrt::AIDA64::Framework
         catch (...)
         {
             co_return L"[Error] Unexpected failure";
+        }
+    }
+    hstring AiClient::BaseAddress() const noexcept
+    {
+        return m_baseAddress;
+    }
+    void AiClient::BaseAddress(hstring const& value)
+    {
+        if (m_baseAddress != value)
+        {
+            m_baseAddress = value;
         }
     }
 }

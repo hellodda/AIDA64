@@ -16,6 +16,8 @@ namespace wmi
     }
     std::optional<property_value_t> wmi::WmiObject::get_property(std::wstring name) const
 	{
+        if (!m_object) throw winrt::hresult_error(E_POINTER, L"object is null!");
+
         _variant_t var;
         
         if (!try_get_property(name, m_object, var))

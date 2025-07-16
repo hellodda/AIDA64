@@ -48,6 +48,8 @@ namespace winrt::AIDA64::implementation
 
 	void CpuPageViewModel::OnActivate()
 	{
+		if (!m_service || !m_logger) throw hresult_error(E_POINTER, L"null!");
+
 		IsLoading(true);
 
 		get_instance<DispatcherTaskScheduler>().AddTask([&]() -> IAsyncAction {

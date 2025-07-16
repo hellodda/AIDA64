@@ -11,6 +11,8 @@ namespace winrt::AIDA64::Framework
 
     Windows::Foundation::IAsyncOperation<Windows::Foundation::Collections::IVector<AIDA64::CpuModel>>CpuService::GetCpuInformationAsync()
     {
+        if (!m_context || !m_logger) throw hresult_error(E_POINTER, L"null!");
+
         co_await winrt::resume_background();
 
         m_logger->log_info("YEEEEEEEEEEEEEEEEEEEEEEEEEE");

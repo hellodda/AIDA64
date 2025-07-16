@@ -40,14 +40,8 @@
     <Midl Include="ViewModels\AiPageViewModel.idl">
       <Filter>ViewModels</Filter>
     </Midl>
-    <Midl Include="Models\ChatMessage.idl">
-      <Filter>Models</Filter>
-    </Midl>
     <Midl Include="ViewModels\SettingsViewModel.idl">
       <Filter>ViewModels</Filter>
-    </Midl>
-    <Midl Include="Models\VisualConfiguration.idl">
-      <Filter>Models</Filter>
     </Midl>
     <Midl Include="Models\CpuModel.idl">
       <Filter>Models\DTO</Filter>
@@ -63,6 +57,12 @@
     </Midl>
     <Midl Include="ViewModels\MemoryPageViewModel.idl">
       <Filter>ViewModels</Filter>
+    </Midl>
+    <Midl Include="Models\ChatMessage.idl">
+      <Filter>Models\Other</Filter>
+    </Midl>
+    <Midl Include="Models\VisualConfiguration.idl">
+      <Filter>Models\Other</Filter>
     </Midl>
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +126,7 @@
       <Filter>Helpers</Filter>
     </ClCompile>
     <ClCompile Include="Framework\MemoryService.cpp">
-      <Filter>Framework\MemoryService</Filter>
+      <Filter>Framework\Services\MemoryService</Filter>
     </ClCompile>
     <ClCompile Include="Convertors\ReverseVisibilityConverter.cpp">
       <Filter>Convertors</Filter>
@@ -214,10 +214,10 @@
       <Filter>Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Framework\IMemoryService.h">
-      <Filter>Framework\MemoryService</Filter>
+      <Filter>Framework\Services\MemoryService</Filter>
     </ClInclude>
     <ClInclude Include="Framework\MemoryService.h">
-      <Filter>Framework\MemoryService</Filter>
+      <Filter>Framework\Services\MemoryService</Filter>
     </ClInclude>
     <ClInclude Include="Convertors\ReverseVisibilityConverter.h">
       <Filter>Convertors</Filter>
@@ -307,9 +307,6 @@
     <Filter Include="Framework\Services\CpuService">
       <UniqueIdentifier>{c6c4072c-2ab5-453a-9b79-fa86ccf1874f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\Services\ServiceLocator">
-      <UniqueIdentifier>{0070b55d-03f6-4c7a-bfc6-dba8965e4229}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Controls">
       <UniqueIdentifier>{42d4131e-8d94-4227-91c3-4be82014fbfa}</UniqueIdentifier>
     </Filter>
@@ -340,8 +337,11 @@
     <Filter Include="Models\DTO">
       <UniqueIdentifier>{5e3e7cbb-2595-45de-bdd8-4a1ad64dff4d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Framework\MemoryService">
+    <Filter Include="Framework\Services\MemoryService">
       <UniqueIdentifier>{15481456-7825-4772-b6e7-ff4d149da85f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models\Other">
+      <UniqueIdentifier>{d243ab33-d9ac-480d-a9be-239be1aa9e8f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -355,5 +355,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natvis" />
+    <Natvis Include="$(MSBuildThisFileDirectory)..\..\natvis\wil.natstepfilter" />
   </ItemGroup>
 </Project>

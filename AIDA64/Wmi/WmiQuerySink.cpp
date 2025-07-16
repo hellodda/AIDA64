@@ -11,6 +11,8 @@ namespace wmi
 	}
 	HRESULT STDMETHODCALLTYPE WmiQuerySink::Indicate(LONG lObjectCount, IWbemClassObject** apObjArray) noexcept
 	{
+		if (!apObjArray) return E_POINTER;
+
 		std::lock_guard<win32::critical_section> lock(m_cs);
 
 		m_results.reserve(m_results.size() + lObjectCount);
@@ -23,8 +25,7 @@ namespace wmi
 	}
 	HRESULT STDMETHODCALLTYPE WmiQuerySink::SetStatus(LONG lFlags, HRESULT hResult, BSTR strParam, IWbemClassObject* pObjParam) noexcept
 	{
-		::SetEvent(m_event.get());
-		return WBEM_S_NO_ERROR;
+		return ::SetEvent(m_event.get()) ? WBEM_S_NO_ERROR : WBEM_E_FAILED;
 	}
 	winrt::Windows::Foundation::IAsyncAction WmiQuerySink::WaitAsync()
 	{
