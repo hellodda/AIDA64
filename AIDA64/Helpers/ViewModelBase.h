@@ -11,6 +11,9 @@ namespace winrt::AIDA64::Helpers
 		virtual void OnActivate();
 		void Activate();
 
+		virtual void OnSuspend();
+		void Suspend();
+
 	private:
 		bool m_isLoading{ false };
 		bool m_isActivated{ false };

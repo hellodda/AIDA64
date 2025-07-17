@@ -26,9 +26,29 @@ namespace winrt::AIDA64::Framework
         m_timer.Start();
     }
 
-    void DispatcherTaskScheduler::AddTask(std::function<winrt::Windows::Foundation::IAsyncAction()> task)
+    uint64_t DispatcherTaskScheduler::AddTask(std::function<winrt::Windows::Foundation::IAsyncAction()> task)
     {
-        m_tasks.emplace_back(std::move(task));
+        uint64_t id = m_nId++;
+        m_tasks.emplace_back(id, std::move(task));
+        return id;
+    }
+
+    void DispatcherTaskScheduler::RemoveTask(uint64_t id)
+    {
+        for (auto it = m_tasks.begin(); it != m_tasks.end(); ++it)
+        {
+            if (it->id != id)
+            {
+                continue;
+            }
+            if (it->inFlight.load() && it->action)
+            {
+                it->action().Cancel();
+                it->inFlight.store(false);
+            }
+            m_tasks.erase(it);
+            return;
+        }
     }
 
     void DispatcherTaskScheduler::Stop()

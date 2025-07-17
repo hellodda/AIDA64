@@ -19,12 +19,24 @@ namespace winrt::AIDA64::Helpers
 	{
 
 	}
+	void ViewModelBase::OnSuspend()
+	{
+
+	}
 	void ViewModelBase::Activate()
 	{
 		if (!m_isActivated)
 		{
 			OnActivate();
 			m_isActivated = true;
+		}
+	}
+	void ViewModelBase::Suspend()
+	{
+		if (m_isActivated)
+		{
+			OnSuspend();
+			m_isActivated = false;
 		}
 	}
 }

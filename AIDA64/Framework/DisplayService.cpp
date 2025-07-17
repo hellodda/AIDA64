@@ -3,26 +3,48 @@
 
 #include <Wmi/WmiMapping.h>
 
-
 namespace winrt::AIDA64::Framework
 {
     DisplayService::DisplayService(std::shared_ptr<wmi::IWmiDataContext> context, std::shared_ptr<ILogger> logger)
-        : m_context(std::move(context)), m_logger(std::move(logger)) {}
+        : m_context(std::move(context)), m_logger(std::move(logger)) {
+    }
 
-    Windows::Foundation::IAsyncOperation<AIDA64::DisplayModel>DisplayService::GetDisplayInformationAsync()
+    Windows::Foundation::IAsyncOperation<AIDA64::DisplayModel> DisplayService::GetDisplayInformationAsync()
     {
-        if (!m_context) throw hresult_error(E_FAIL, L"context or logger is null!");
+        if (!m_context || !m_logger)
+        {
+            throw hresult_error(E_POINTER, L"DisplayService: context or logger is null.");
+        }
 
         co_await winrt::resume_background();
 
-        auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_WIN32_DESKTOP_MONITOR);
+        m_logger->log_info("[DisplayService] Starting GetDisplayInformationAsync...");
 
-        AIDA64::DisplayModel model{};
-
-        for (auto const& wmo : result)
+        try
         {
-            model = wmi::from_wmi<DisplayModel>(wmo);
+            auto result = co_await m_context->QueryAsync(wmi::variables::QUERY_WIN32_DESKTOP_MONITOR);
+            m_logger->log_info("[DisplayService] WMI query completed. Parsing results...");
+
+            AIDA64::DisplayModel model{};
+
+            for (auto const& wmo : result)
+            {
+                model = wmi::from_wmi<DisplayModel>(wmo);
+                m_logger->log_info("[DisplayService] Display model parsed.");
+            }
+
+            m_logger->log_info("[DisplayService] Returning display model.");
+            co_return model;
         }
-        co_return model;
+        catch (const std::exception& ex)
+        {
+            m_logger->log_error(std::string("[DisplayService] Exception occurred: ") + ex.what());
+            throw;
+        }
+        catch (...)
+        {
+            m_logger->log_critical("[DisplayService] Unknown error occurred.");
+            throw;
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace winrt::AIDA64::implementation
         CpuPage();
 
         void OnNavigatedTo(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
+        void OnNavigatedFrom(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e);
 
         winrt::CpuPageViewModel ViewModel();
 

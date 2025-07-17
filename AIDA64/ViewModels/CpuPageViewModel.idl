@@ -11,5 +11,6 @@ namespace AIDA64
         Windows.Foundation.Collections.IObservableVector<Double> Values;
         Boolean IsLoading;
         void Activate();
+        void Suspend();
     }
 }

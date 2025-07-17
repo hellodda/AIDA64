@@ -52,7 +52,7 @@ namespace winrt::AIDA64::implementation
 
 		IsLoading(true);
 
-		get_instance<DispatcherTaskScheduler>().AddTask([&]() -> IAsyncAction {
+		m_taskid = get_instance<DispatcherTaskScheduler>().AddTask([&]() -> IAsyncAction {
 
 			auto result = (co_await m_service->GetCpuInformationAsync()).GetAt(0);
 
@@ -63,5 +63,9 @@ namespace winrt::AIDA64::implementation
 			m_values.Append(static_cast<double>(result.LoadPercentage()));
 			RaisePropertyChanged(L"Values");
 		});
+	}
+	void CpuPageViewModel::OnSuspend()
+	{
+		get_instance<DispatcherTaskScheduler>().RemoveTask(m_taskid);
 	}
 }

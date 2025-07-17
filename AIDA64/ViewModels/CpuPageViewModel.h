@@ -31,9 +31,11 @@ namespace winrt::AIDA64::implementation
         void Values(winrt::IObservableVector<double> const& value);
 
         void OnActivate() override;
+        void OnSuspend() override;
 
     private:
         winrt::ICommand TEST;
+        uint64_t m_taskid;
 
         winrt::IObservableVector<double> m_values = single_threaded_observable_vector<double>();
         winrt::Windows::System::Threading::ThreadPoolTimer m_timer{ nullptr };

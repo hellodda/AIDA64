@@ -31,6 +31,13 @@ namespace winrt::AIDA64::implementation
 			m_viewModel.Activate();
 		}
 	}
+	void CpuPage::OnNavigatedFrom(Microsoft::UI::Xaml::Navigation::NavigationEventArgs const& e)
+	{
+		if (m_viewModel)
+		{
+			m_viewModel.Suspend();
+		}
+	}
 
 	winrt::CpuPageViewModel CpuPage::ViewModel()
 	{
