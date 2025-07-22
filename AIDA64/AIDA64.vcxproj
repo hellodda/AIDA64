@@ -243,6 +243,9 @@
     <Page Include="MemoryPage.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Styles\FontSizes.xaml" />
+    <Page Include="Styles\TextBlock.xaml" />
+    <Page Include="Styles\Thickness.xaml" />
     <Xaml Include="Views\Hardware\CpuPage.xaml" />
   </ItemGroup>
   <ItemGroup>

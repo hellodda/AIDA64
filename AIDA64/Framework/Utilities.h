@@ -5,6 +5,7 @@
 #include <winrt/Windows.UI.Xaml.Interop.h>
 #include <Wmi/IWmiDataContext.h>
 #include <Framework/TaskScheduler.h>
+#include <functional>
 
 //------------------------------------------------------------------
 //- other helpers \/

@@ -11,10 +11,31 @@
     >
 
     <Grid>
+        <Grid x:Name="AppTitleBar"
+         Canvas.ZIndex="1"
+         Height="{Binding ElementName=MainNavigation, Path=CompactPaneLength}"
+         IsHitTestVisible="True"
+         VerticalAlignment="Top">
+            <Image Source="/Assets/WindowIcon.ico"
+              HorizontalAlignment="Left"
+              Width="16"
+              Height="16" />
+            <TextBlock x:Name="AppTitleBarText"
+                  VerticalAlignment="Center"
+                  TextWrapping="NoWrap"
+                  Style="{StaticResource CaptionTextBlockStyle}"
+                  Margin="28,0,0,0"/>
+        </Grid>
 
-        <NavigationView Margin="0,31,0,0" x:Name="MainNavigation" ItemInvoked="MainNavigation_ItemInvoked" BackRequested="MainNavigation_BackRequested">
+        <NavigationView
+        x:Name="MainNavigation"
+        Canvas.ZIndex="0"
+        IsBackButtonVisible="Visible"
+        IsSettingsVisible="True"
+        ExpandedModeThresholdWidth="1280"
+        ItemInvoked="MainNavigation_ItemInvoked" BackRequested="MainNavigation_BackRequested">
 
-            <Frame x:Name="ContentFrame" Navigated="ContentFrame_Navigated"/>
+
             <NavigationView.MenuItems>
                 <!-- hardware -->
 
@@ -89,7 +110,7 @@
                 </NavigationViewItem>
 
                 <!--software-->
-                
+
                 <NavigationViewItem Content="Software">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEBE8;" />
@@ -159,7 +180,7 @@
                         </NavigationViewItem>
                     </NavigationViewItem.MenuItems>
                 </NavigationViewItem>
-                
+
                 <!-- Monitoring -->
                 <NavigationViewItem Content="Monitoring">
                     <NavigationViewItem.Icon>
@@ -286,16 +307,19 @@
                             </NavigationViewItem.Icon>
                         </NavigationViewItem>
                     </NavigationViewItem.MenuItems>
-                    
+
                 </NavigationViewItem>
-                
+
                 <NavigationViewItem Content="AI" Tag="ai">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xF4A5;" />
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                
+
             </NavigationView.MenuItems>
         </NavigationView>
+        <Grid Margin="{StaticResource NavigationViewPageContentMargin}">
+            <Frame x:Name="ContentFrame" Navigated="ContentFrame_Navigated"/>
+        </Grid>
     </Grid>
 </Window>

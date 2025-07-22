@@ -25,6 +25,15 @@
     <Page Include="MemoryPage.xaml">
       <Filter>Views\Pages\Hardware</Filter>
     </Page>
+    <Page Include="Styles\TextBlock.xaml">
+      <Filter>Styles</Filter>
+    </Page>
+    <Page Include="Styles\Thickness.xaml">
+      <Filter>Styles</Filter>
+    </Page>
+    <Page Include="Styles\FontSizes.xaml">
+      <Filter>Styles</Filter>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="MainWindow.idl" />
@@ -342,6 +351,18 @@
     </Filter>
     <Filter Include="Models\Other">
       <UniqueIdentifier>{d243ab33-d9ac-480d-a9be-239be1aa9e8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services">
+      <UniqueIdentifier>{ec56f73c-5680-483b-890e-f668448504b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services\Activation">
+      <UniqueIdentifier>{8266eccd-447f-42b1-a01e-2643acc0f1ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Services\Activation\Handlers">
+      <UniqueIdentifier>{ff28c566-ddca-48fd-8098-abbd92c8e412}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Styles">
+      <UniqueIdentifier>{6d1b8de0-c333-429f-a279-cd2e77bc49f9}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
