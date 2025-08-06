@@ -6,7 +6,7 @@
 <img width="2237" height="540" alt="Снимок экрана 2025-08-06 190929" src="https://github.com/user-attachments/assets/3b3884fc-5047-4c98-b106-d3853372e419" />
 </p>
 
-## 🚀 WinUI3 AIDA64 Clone
+## 🚀 AIDA64-WinUI3
 
 \*A modern system monitoring tool built with **WinUI 3** and **C++/WinRT*, featuring a sleek interface and extensible design.*
 
