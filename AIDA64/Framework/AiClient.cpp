@@ -4,7 +4,6 @@
 
 using namespace winrt;
 using namespace Windows::Web::Http;
-using namespace winrt;
 using namespace Windows::Foundation;
 using namespace Windows::Web::Http::Headers;
 
