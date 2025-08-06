@@ -26,6 +26,8 @@
 
 This project provides a clean, responsive interface inspired by AIDA64, built using **WinUI 3** and **C++/WinRT**. It targets Windows 10 (1903+) and Windows 11, offering deep insights into system performance with smooth animations and theming support.
 
+It leverages **Windows Management Instrumentation (WMI)** as the **core data provider**, ensuring access to detailed system information such as CPU load, memory usage, GPU stats, and hardware sensors.
+
 > ⚠️ **Early Alpha:** This is a very early-stage prototype. Many features and code components will be refined or rewritten in upcoming releases (if I'm not lazy 😉).
 
 ---
