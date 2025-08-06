@@ -1,115 +1,106 @@
-**WinUI3 AIDA64 Clone**
-*A modern system monitoring tool built with WinUI 3 and C++/WinRT*
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![C++](https://img.shields.io/badge/Language-C%2B%2B-blue.svg)](https://isocpp.org)
+[![WinUI 3](https://img.shields.io/badge/Framework-WinUI%203-blueviolet.svg)](https://docs.microsoft.com/windows/apps/winui/)
+
+<p align="center">
+<img width="2237" height="540" alt="Снимок экрана 2025-08-06 190929" src="https://github.com/user-attachments/assets/3b3884fc-5047-4c98-b106-d3853372e419" />
+</p>
+
+## 🚀 WinUI3 AIDA64 Clone
+
+\*A modern system monitoring tool built with **WinUI 3** and **C++/WinRT*, featuring a sleek interface and extensible design.*
 
 ---
 
-<p align="center">
-  <img src="assets/cpu_page.png" alt="CPU Page Preview" width="48%" />
-  <img src="assets/memory_page.png" alt="Memory Page Preview" width="48%" />
-</p>
+## ✨ Features
 
-**Live Demo**: *Coming Soon*
-
-## 🚀 Table of Contents
-
-1. [Overview](#overview)
-2. [Features](#features)
-3. [Pages](#pages)
-4. [Screenshots](#screenshots)
-5. [Getting Started](#getting-started)
-
-   * [Prerequisites](#prerequisites)
-   * [Installation](#installation)
-6. [Usage](#usage)
-7. [Contributing](#contributing)
-8. [Roadmap](#roadmap)
-9. [License](#license)
+* 🖥️ **Real-time Monitoring:** CPU, GPU, Memory, Disk, Network
+* 🎨 **Customizable Themes:** Light, Dark, and Accent Colors
+* 🤖 **AI Assistant:** Integrated chatbot for diagnostics and tips
+* 🔌 **Plugin Architecture:** Easily extend functionality
+* 📦 **Modular Codebase:** Clean separation of concerns
 
 ---
 
 ## 📝 Overview
 
-This project is a sleek system monitoring utility inspired by AIDA64, built on **WinUI 3** and **C++/WinRT**. It provides real-time insights into your PC’s hardware and performance through a clean, responsive interface.
+This project provides a clean, responsive interface inspired by AIDA64, built using **WinUI 3** and **C++/WinRT**. It targets Windows 10 (1903+) and Windows 11, offering deep insights into system performance with smooth animations and theming support.
 
-## ✨ Features
+> ⚠️ **Early Alpha:** This is a very early-stage prototype. Many features and code components will be refined or rewritten in upcoming releases (if I'm not lazy 😉).
 
-* **Modern UI** with smooth animations
-* **Real-time monitoring** of CPU, GPU, memory, and more
-* **Customizable settings** for performance tuning
-* **AI Assistant** to help diagnose common PC issues
-* **Modular architecture** for easy extension
+---
 
 ## 📑 Pages
 
-| Page             | Description                                        |
-| ---------------- | -------------------------------------------------- |
-| **CPU**          | View core usage, clock speeds, temperatures        |
-| **Memory**       | Track RAM usage, swap paging, available capacity   |
-| **Display**      | Configure resolution, refresh rate, color profiles |
-| **Settings**     | App preferences, theme, update channels            |
-| **AI Assistant** | Chat-based helper for troubleshooting and tips     |
+| Page             | Description                                     |
+| ---------------- | ----------------------------------------------- |
+| **CPU**          | Core usage, frequencies, temperatures           |
+| **Memory**       | RAM usage, swap activity, available capacity    |
+| **Display**      | Resolution, refresh rate, color profiles        |
+| **AI Assistant** | Chatbot helper for troubleshooting              |
+| **Settings**     | Themes, update channels, performance thresholds |
+
+---
 
 ## 📸 Screenshots
 
 <p align="center">
-  <img width="2878" height="1518" alt="Снимок экрана 2025-08-06 184354" src="https://github.com/user-attachments/assets/a958807d-a6c9-4d75-8f79-bbfb0c5bd568" width="48%"/>
-  <img width="2879" height="1521" alt="Снимок экрана 2025-08-06 184536" src="https://github.com/user-attachments/assets/67ad46e5-1b84-48a3-8ad0-d9a4db1d6595" width="48%"/>
-</p>
-
-<p align="center">
-   <img width="2879" height="1514" alt="Снимок экрана 2025-08-06 185138" src="https://github.com/user-attachments/assets/3ed6fd44-c496-4f26-b3c9-0e0e6ae84622" />
+  <img width="1940" height="1250" alt="Снимок экрана 2025-08-06 191201" src="https://github.com/user-attachments/assets/66da5e0c-e302-4832-8cd7-9341a8419c61" width="45%"/>
+  <img width="1939" height="1281" alt="Снимок экрана 2025-08-06 191135" src="https://github.com/user-attachments/assets/3e68c191-6946-4230-ae1b-9c2b63f3b103" width="45%"/>
+  <img width="1941" height="1299" alt="Снимок экрана 2025-08-06 191107" src="https://github.com/user-attachments/assets/5d1f24dd-471d-4d57-90b1-a21d73583843" width="45%"/>
 </p>
 
 ---
 
-## 🛠️ Getting Started
+## 🏁 Getting Started
 
 ### Prerequisites
 
-* Windows 10 (version 1903+) or Windows 11
-* Visual Studio 2022 with **C++/WinRT** and **WinUI 3** workloads
+* **Windows 10** (1903+) / **Windows 11**
+* **Visual Studio 2022** with **C++/WinRT**, **WinUI 3**, and **NuGet** workloads
 
 ### Installation
 
-```powershell
-# Clone the repository
-git clone https://github.com/<your-user>/WinUI-AIDA64-Clone.git
-cd WinUI-AIDA64-Clone
-
-# Open the solution in Visual Studio
-start WinUIAIDA64.sln
-
-# Build and run
+```bash
+git clone https://github.com/hellodda/AIDA64.git
+cd AIDA64
+# Restore NuGet packages
+nuget restore
+# Open solution
+enable-winui3-solution WinUIAIDA64.sln
+# Build & Run in Visual Studio
 ```
-
-## 🏃 Usage
-
-1. Launch the app from Visual Studio or the built executable.
-2. Navigate through the pages using the sidebar.
-3. Customize settings in the **Settings** page.
-4. Ask the **AI Assistant** for troubleshooting tips or performance suggestions.
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository.
-2. Create a branch: `git checkout -b feature/YourFeature`
-3. Commit your changes: `git commit -m "Add YourFeature"`
-4. Push to the branch: `git push origin feature/YourFeature`
-5. Open a Pull Request
-
-## 🗺️ Roadmap
-
-* [ ] GPU monitoring page
-* [ ] Disk and network stats
-* [ ] Plugin support
-* [ ] Localization
-
-## 📄 License
-
-This project is licensed under the **MIT License**. See [LICENSE](LICENSE) for details.
 
 ---
 
-*Made with ❤️ by [Your Name](https://github.com/<your-user>)*
+## 💡 Usage
+
+1. Launch **AIDA64** from Visual Studio or the built executable.
+2. Select a page from the sidebar to view system metrics.
+3. Open **Settings** to customize themes and update preferences.
+4. Chat with the **AI Assistant** for quick diagnostics and tips.
+
+---
+
+
+1. Fork the repo
+2. `git checkout -b feature/YourFeature`
+3. \`git commit -m "feat: Add Feature"
+4. `git push origin feature/YourFeature`
+5. Open a **Pull Request**
+
+
+---
+
+## 🗺️ Roadmap & Future Plans
+
+Below is a sneak peek of our development roadmap. 📈
+
+All of the pages and features shown above will be implemented in upcoming releases:
+
+<p align="center">
+  <img width="1933" height="1223" alt="Снимок экрана 2025-08-06 191544" src="https://github.com/user-attachments/assets/dc981574-00c8-4ca9-9214-0b91eb33ca3b" />
+</p>
+
+---
+
