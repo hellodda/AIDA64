@@ -84,16 +84,6 @@ enable-winui3-solution WinUIAIDA64.sln
 
 ---
 
-
-1. Fork the repo
-2. `git checkout -b feature/YourFeature`
-3. \`git commit -m "feat: Add Feature"
-4. `git push origin feature/YourFeature`
-5. Open a **Pull Request**
-
-
----
-
 ## 🗺️ Roadmap & Future Plans
 
 Below is a sneak peek of our development roadmap. 📈
