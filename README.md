@@ -3,7 +3,7 @@
 [![WinUI 3](https://img.shields.io/badge/Framework-WinUI%203-blueviolet.svg)](https://docs.microsoft.com/windows/apps/winui/)
 
 <p align="center">
-<img width="2237" height="540" alt="Снимок экрана 2025-08-06 190929" src="https://github.com/user-attachments/assets/3b3884fc-5047-4c98-b106-d3853372e419" />
+  <img width="2227" height="828" alt="Снимок экрана 2025-08-09 225906" src="https://github.com/user-attachments/assets/d8a1efdd-042b-4f6c-b881-e87ea09308dc" />
 </p>
 
 ## 🚀 AIDA64-WinUI3
@@ -47,9 +47,9 @@ It leverages **Windows Management Instrumentation (WMI)** as the **core data pro
 ## 📸 Screenshots
 
 <p align="center">
-  <img width="1940" height="1250" alt="Снимок экрана 2025-08-06 191201" src="https://github.com/user-attachments/assets/66da5e0c-e302-4832-8cd7-9341a8419c61" width="45%"/>
-  <img width="1939" height="1281" alt="Снимок экрана 2025-08-06 191135" src="https://github.com/user-attachments/assets/3e68c191-6946-4230-ae1b-9c2b63f3b103" width="45%"/>
-  <img width="1941" height="1299" alt="Снимок экрана 2025-08-06 191107" src="https://github.com/user-attachments/assets/5d1f24dd-471d-4d57-90b1-a21d73583843" width="45%"/>
+  <img width="2126" height="1291" alt="Снимок экрана 2025-08-09 225942" src="https://github.com/user-attachments/assets/355d8c0c-8f5b-4eb8-97a9-93951969cfb2" width="45%"/>
+  <img width="2091" height="1275" alt="Снимок экрана 2025-08-09 230020" src="https://github.com/user-attachments/assets/d44d49bf-2bd9-4487-af13-b12e720df507" width="45%"/>
+  <img width="2108" height="1252" alt="Снимок экрана 2025-08-09 230044" src="https://github.com/user-attachments/assets/ecfe8016-0141-4f43-96f8-7c4d057063cc" width="45%"/>
 </p>
 
 ---
